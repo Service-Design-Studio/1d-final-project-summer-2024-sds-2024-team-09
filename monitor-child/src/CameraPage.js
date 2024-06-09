@@ -1,21 +1,17 @@
 import React, { useRef, useEffect } from 'react';
-import { Link } from 'react-router-dom';
 import { createConsumer } from '@rails/actioncable';
 
-
-const LiveViewPage = () => {
+const CameraPage = () => {
     const videoRef = useRef(null);
     const canvasRef = useRef(null);
-    const cable = createConsumer('ws://localhost:3000/cable'); // Adjust the URL to match your server
+    const cable = createConsumer('ws://localhost:3000/cable');
 
     useEffect(() => {
         navigator.mediaDevices.getUserMedia({ video: true })
             .then(stream => {
                 videoRef.current.srcObject = stream;
             })
-            .catch(err => {
-                console.error('Error accessing the camera', err)
-            });
+            .catch(err => console.error("Error accessing camera: ", err));
 
         const channel = cable.subscriptions.create('VideoFeedChannel', {
             received(data) {
@@ -23,7 +19,6 @@ const LiveViewPage = () => {
             }
         });
 
-        // Capture frames and send them via WebSocket
         setInterval(() => {
             const canvas = canvasRef.current;
             const context = canvas.getContext('2d');
@@ -36,13 +31,11 @@ const LiveViewPage = () => {
 
     return (
         <div>
-            <h1>Live View</h1>
-            <video ref={videoRef} autoPlay></video>
-            <Link to="/">
-                <button>Back</button>
-            </Link>
+            <h1>Live Camera Feed</h1>
+            <video ref={videoRef} autoPlay style={{ display: 'none' }}></video>
+            <canvas ref={canvasRef} width="640" height="480"></canvas>
         </div>
-    )
+    );
 };
 
-export default LiveViewPage;
+export default CameraPage;

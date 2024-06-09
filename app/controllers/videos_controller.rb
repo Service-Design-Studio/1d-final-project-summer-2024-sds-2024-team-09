@@ -21,7 +21,11 @@ class VideosController < ApplicationController
 
   # POST /videos or /videos.json
   def create
-    @video = Video.new(video_params)
+    frame = params[:frame]
+    # Process the frame (e.g., save to file or stream to clients)
+    ActionCable.server.broadcast 'video_feed_channel', frame: frame.read
+    head :ok
+    """@video = Video.new(video_params)
 
     respond_to do |format|
       if @video.save
@@ -31,7 +35,7 @@ class VideosController < ApplicationController
         format.html { render :new, status: :unprocessable_entity }
         format.json { render json: @video.errors, status: :unprocessable_entity }
       end
-    end
+    end"""
   end
 
   # PATCH/PUT /videos/1 or /videos/1.json

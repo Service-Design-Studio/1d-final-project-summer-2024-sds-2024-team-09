@@ -7,7 +7,7 @@ const AdminPage = () => {
             <h1>Welcome, Admin</h1>
             <div style={{ display: 'flex', justifyContent: 'space-between' }}>
                 <button>Send Notification</button>
-                <Link to="/admin-live-view">
+                <Link to="/camera">
                     <button>Open Live View</button>
                 </Link>
             </div>
