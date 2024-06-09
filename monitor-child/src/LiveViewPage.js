@@ -41,7 +41,6 @@ const LiveViewPage = () => {
             </Link>
         </div>
     )
-});
 };
 
 export default LiveViewPage;
