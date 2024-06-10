@@ -7,27 +7,43 @@ const CameraPage = () => {
     const cable = createConsumer('ws://localhost:3000/cable');
 
     useEffect(() => {
-        navigator.mediaDevices.getUserMedia({ video: true })
-            .then(stream => {
-                videoRef.current.srcObject = stream;
-            })
-            .catch(err => console.error("Error accessing camera: ", err));
 
-        const channel = cable.subscriptions.create('VideoFeedChannel', {
-            received(data) {
-                console.log(data);
+        const setupCamera = async () => {
+            try {
+                const stream = await navigator.mediaDevices.getUserMedia({ video: true });
+                if (videoRef.current) {
+                    videoRef.current.srcObject = stream;
+                }
+            } catch (err) {
+                console.error("Error accessing camera: ", err);
             }
-        });
+        };
+        setupCamera();
 
-        setInterval(() => {
-            const canvas = canvasRef.current;
-            const context = canvas.getContext('2d');
-            context.drawImage(videoRef.current, 0, 0, canvas.width, canvas.height);
-            canvas.toBlob(blob => {
-                channel.send({ frame: blob });
-            }, 'image/jpeg');
+        const interval = setInterval(() => {
+            if (videoRef.current && canvasRef.current) {
+                const canvas = canvasRef.current;
+                const context = canvas.getContext('2d');
+                context.drawImage(videoRef.current, 0, 0, canvas.width, canvas.height);
+                canvas.toBlob(blob => {
+                    // Ensure the channel is created before sending blobs
+                    const channel = cable.subscriptions.create('VideoFeedChannel', {
+                        received(data) {
+                            console.log('Received', data);
+                        }
+                    });
+                    const reader = new FileReader();
+                    reader.readAsDataURL(blob);
+                    reader.onloadend = () => {
+                        channel.send({ frame: reader.result });
+                    };
+                }, 'image/jpeg');
+            }
         }, 100); // Capture frame every 100ms
-    }, []);
+
+        // Cleanup on unmount
+        return () => clearInterval(interval);
+    }, [cable]);
 
     return (
         <div>

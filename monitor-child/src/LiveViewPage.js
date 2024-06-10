@@ -1,48 +1,32 @@
-import React, { useRef, useEffect } from 'react';
-import { Link } from 'react-router-dom';
+// src/LiveViewPage.js
+import React, { useState, useEffect } from 'react';
 import { createConsumer } from '@rails/actioncable';
 
-
 const LiveViewPage = () => {
-    const videoRef = useRef(null);
-    const canvasRef = useRef(null);
+    const [frame, setFrame] = useState(null);
     const cable = createConsumer('ws://localhost:3000/cable'); // Adjust the URL to match your server
 
     useEffect(() => {
-        navigator.mediaDevices.getUserMedia({ video: true })
-            .then(stream => {
-                videoRef.current.srcObject = stream;
-            })
-            .catch(err => {
-                console.error('Error accessing the camera', err)
-            });
-
+        // this subscription will receive the frame data from the server
         const channel = cable.subscriptions.create('VideoFeedChannel', {
             received(data) {
-                console.log(data);
+                // Update the frame state with the received data
+                setFrame(data.frame);
             }
         });
 
-        // Capture frames and send them via WebSocket
-        setInterval(() => {
-            const canvas = canvasRef.current;
-            const context = canvas.getContext('2d');
-            context.drawImage(videoRef.current, 0, 0, canvas.width, canvas.height);
-            canvas.toBlob(blob => {
-                channel.send({ frame: blob });
-            }, 'image/jpeg');
-        }, 100); // Capture frame every 100ms
-    }, []);
+        // Cleanup on unmount
+        return () => channel.unsubscribe();
+    }, [cable]);
 
     return (
         <div>
-            <h1>Live View</h1>
-            <video ref={videoRef} autoPlay></video>
-            <Link to="/">
-                <button>Back</button>
-            </Link>
+            <h1>Live Camera Feed</h1>
+            {frame ? (
+                <img src={`data:image/jpeg;base64,${frame}`} alt="Live Feed" />
+            ) : <p>Loading...</p>}
         </div>
-    )
+    );
 };
 
 export default LiveViewPage;

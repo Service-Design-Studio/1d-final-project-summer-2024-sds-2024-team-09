@@ -4,7 +4,6 @@ import { createRoot } from 'react-dom/client';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
-import CameraPage from './CameraPage';
 
 // Find the root element in the DOM
 const container = document.getElementById('root');
@@ -15,7 +14,6 @@ const root = createRoot(container);
 // Render your component(s) inside the root
 root.render(
   <React.StrictMode>
-    <CameraPage />
     <App />
   </React.StrictMode>
 );
