@@ -1,0 +1,2 @@
+class SignalingMessage < ApplicationRecord
+end
