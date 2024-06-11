@@ -25,11 +25,12 @@ class VideosController < ApplicationController
     # Process the frame (e.g., save to file or stream to clients)
     ActionCable.server.broadcast 'video_feed_channel', frame: frame.read
     head :ok
+
     """@video = Video.new(video_params)
 
     respond_to do |format|
       if @video.save
-        format.html { redirect_to video_url(@video), notice: "Video was successfully created." }
+        format.html { redirect_to video_url(@video), notice: 'Video was successfully created.' }
         format.json { render :show, status: :created, location: @video }
       else
         format.html { render :new, status: :unprocessable_entity }
