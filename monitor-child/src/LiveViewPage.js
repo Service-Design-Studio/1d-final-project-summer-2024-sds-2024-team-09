@@ -1,9 +1,10 @@
 // src/LiveViewPage.js
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { createConsumer } from '@rails/actioncable';
 
 const LiveViewPage = () => {
     const [frame, setFrame] = useState(null);
+    const audioRef = useRef(null);
     const cable = createConsumer('ws://localhost:3000/cable'); // Adjust the URL to match your server
 
     useEffect(() => {
@@ -12,6 +13,12 @@ const LiveViewPage = () => {
             received(data) {
                 // Update the frame state with the received data
                 setFrame(data.frame);
+                if (audioRef.current && data.audio) {
+                    const audioBlob = new Blob([new Uint8Array(data.audio)], { type: 'audio/webm' });
+                    const audioUrl = URL.createObjectURL(audioBlob);
+                    audioRef.current.src = audioUrl;
+                    audioRef.current.play();
+                }
             }
         });
 
@@ -25,6 +32,7 @@ const LiveViewPage = () => {
             {frame ? (
                 <img src={`data:image/jpeg;base64,${frame}`} alt="Live Feed" />
             ) : <p>Loading...</p>}
+            <audio ref={audioRef} controls />
         </div>
     );
 };

@@ -10,7 +10,8 @@ class VideoFeedChannel < ApplicationCable::Channel
   def receive(data)
     # Process the incoming frame data
     frame_data = data['frame']
+    audio_data = data['audio']
     # Broadcast the frame to all subscribers (for demo purposes)
-    ActionCable.server.broadcast('video_feed_channel',{frame: frame_data})
+    ActionCable.server.broadcast('video_feed_channel',{frame: frame_data, audio:audio_data})
   end
 end
