@@ -6,18 +6,23 @@ const WebRTC = () => {
     const { room } = useParams();
     const localVideoRef = useRef(null);
     const remoteVideoRef = useRef(null);
-    const [pc, setPc] = useState(new RTCPeerConnection());
-    const [localStream, setLocalStream] = useState(null);
+    const [pc, setPc] = useState(null);
 
     useEffect(() => {
+        const pc = new RTCPeerConnection(); // Create a new RTCPeerConnection instance
+        setPc(pc); // Save the instance in the state
+
+        const sendSignalledData = async (data) => {
+            await axios.post('/signal_data', { signal_data: { room, data } });
+        };
+
         const setupWebRTC = async () => {
             const stream = await navigator.mediaDevices.getUserMedia({ video: true, audio: true });
             localVideoRef.current.srcObject = stream;
-            setLocalStream(stream);
 
             pc.onicecandidate = event => {
                 if (event.candidate) {
-                    sendSignalData(JSON.stringify({ candidate: event.candidate }));
+                    sendSignalledData(JSON.stringify({ candidate: event.candidate }));
                 }
             };
 
@@ -37,7 +42,7 @@ const WebRTC = () => {
                     await pc.setRemoteDescription(new RTCSessionDescription(offer));
                     const answer = await pc.createAnswer();
                     await pc.setLocalDescription(answer);
-                    sendSignalData(JSON.stringify({ answer }));
+                    sendSignalledData(JSON.stringify({ answer }));
                 } else if (answer) {
                     await pc.setRemoteDescription(new RTCSessionDescription(answer));
                 }
@@ -47,15 +52,35 @@ const WebRTC = () => {
         setupWebRTC();
     }, [room]);
 
+    // send signal data to the server
     const sendSignalData = async (data) => {
         await axios.post('/signal_data', { signal_data: { room, data } });
     };
 
+    const createRoom = async () => {
+        const newRoom = room;  // Generate a unique room ID
+        try {
+            const response = await axios.post('/create_room', { room: newRoom });
+            const { room } = response.data;
+            window.location.href = `/webrtc/${room}`;  // Redirect to the new room
+        } catch (error) {
+            console.error('Error creating room:', error);
+        }
+    };
+
     const createOffer = async () => {
+        console.log("Hello");
+        console.log(room);
+        await createRoom();  // i want to create a room before creating an offer
+        console.log("Checkpoint 1");
         const offer = await pc.createOffer();
+        console.log("Checkpoint 2");
         await pc.setLocalDescription(offer);
         sendSignalData(JSON.stringify({ offer }));
     };
+
+
+
 
     return (
         <div>

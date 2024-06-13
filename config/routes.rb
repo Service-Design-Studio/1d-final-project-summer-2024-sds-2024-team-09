@@ -1,5 +1,8 @@
 Rails.application.routes.draw do
   resources :signal_data, only: [:create, :show]
+  get '/signal_data/:room', to: 'signal_data#show'
+  post '/signal_data', to: 'signal_data#create'
+  post '/create_room', to: 'rooms#create'
   #resources :videos, only: [:create]
   #mount ActionCable.server => '/cable'
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
