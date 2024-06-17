@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import AgoraRTC, { AudienceLatencyLevelType } from 'agora-rtc-sdk-ng';
+import 'bootstrap/dist/css/bootstrap.min.css';
+
 
 const CameraBroadcastPage = () => {
     const [rtc, setRtc] = useState({
@@ -101,11 +103,20 @@ const CameraBroadcastPage = () => {
         window.leaveChannel = leaveChannel;
     }, [rtc, remotePlayerContainer]);
 
+
     return (
-        <div>
-            <h1>Camera Broadcast Page</h1>
-            <button onClick={() => window.joinChannel()}>Watch the broadcast</button>
-            <button onClick={() => window.leaveChannel()}>Leave the broadcast</button>
+        <div className="container mt-5">
+            <div className="text-center">
+                <h1 className="display-4 mb-4">Camera Broadcast Page</h1>
+                <div className="btn-group" role="group">
+                    <button className="btn btn-primary" onClick={() => window.joinChannel()}>
+                        Watch the broadcast
+                    </button>
+                    <button className="btn btn-danger" onClick={() => window.leaveChannel()}>
+                        Leave the broadcast
+                    </button>
+                </div>
+            </div>
         </div>
     );
 };

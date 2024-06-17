@@ -1,6 +1,8 @@
 import React from 'react';
 import AgoraRTC from 'agora-rtc-sdk-ng';
 import { AudienceLatencyLevelType } from 'agora-rtc-sdk-ng';
+import 'bootstrap/dist/css/bootstrap.min.css';
+
 
 const CameraPage = () => {
 
@@ -87,10 +89,14 @@ const CameraPage = () => {
     };
 
     return (
-        <div>
-            <h1>Camera Page</h1>
-            <button onClick={handleJoinAsHost}>Join as Host</button>
-            <button onClick={endStream}>Leave</button>
+        <div className="container mt-5">
+            <div className="text-center">
+                <h1 className="display-4 mb-4">Camera Page</h1>
+                <div className="btn-group" role="group">
+                    <button className="btn btn-primary" onClick={handleJoinAsHost}>Join as Host</button>
+                    <button className="btn btn-danger" onClick={endStream}>Leave</button>
+                </div>
+            </div>
         </div>
     );
 };

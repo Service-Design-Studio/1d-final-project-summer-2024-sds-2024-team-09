@@ -1,15 +1,28 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import 'bootstrap/dist/css/bootstrap.min.css';
+
 
 const UserPage = () => {
     return (
-        <div>
-            <h1>User Page</h1>
-            <p>Camera Name: CAM 1</p>
-            <Link to="/camera-broadcast">
-                <button>Join as Audience</button>
-            </Link>
+        <div className="container mt-5">
+            <div className="card mt-4">
+                <div className="card-body text-center">
+                    <h1 className="card-title">Camera 1</h1>
+                    <p className="card-text">Active</p>
+                    <Link to="/camera-broadcast" className="btn btn-primary btn-lg">
+                        Watch Live
+                    </Link>
+                </div>
+            </div>
+            <div className="card mt-4">
+                <div className="card-body text-center">
+                    <h1 className="card-title">Camera 2</h1>
+                    <p className="card-text">Not Active</p>
+                </div>
+            </div>
         </div>
+
     );
 };
 

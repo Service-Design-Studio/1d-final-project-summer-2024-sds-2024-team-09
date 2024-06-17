@@ -6,6 +6,8 @@ import IndexPage from '../components/IndexPage';
 import CameraBroadcastPage from '../components/CameraBroadcastPage';
 import CameraPage from '../components/CameraPage';
 import UserPage from '../components/UserPage';
+import 'bootstrap/dist/css/bootstrap.min.css';
+
 
 document.addEventListener('DOMContentLoaded', () => {
     const rootElement = document.getElementById('root');
