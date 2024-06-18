@@ -1,7 +1,11 @@
 # Add your own tasks in files placed in lib/tasks ending in .rake,
 # for example lib/tasks/capistrano.rake, and they will automatically be available to Rake.
 
-Cucumber::Rake::Task.new(:cucumber)
+require 'rake'
+require 'rspec/core/rake_task'
 
-# You can define additional Rake tasks if needed
-task default: :cucumber
+# Define the RSpec task
+RSpec::Core::RakeTask.new(:spec)
+
+# Set the default task to run RSpec
+task default: :spec
