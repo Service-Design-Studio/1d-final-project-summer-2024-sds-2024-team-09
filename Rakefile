@@ -2,10 +2,11 @@
 # for example lib/tasks/capistrano.rake, and they will automatically be available to Rake.
 
 require 'rake'
-require 'rspec/core/rake_task'
+require_relative 'config/application'
 
-# Define the RSpec task
-RSpec::Core::RakeTask.new(:spec)
+Rails.application.load_tasks
 
-# Set the default task to run RSpec
-task default: :spec
+# Define a new task to run RSpec
+task :run_rspec do
+  sh "RAILS_ENV=test rspec"
+end
