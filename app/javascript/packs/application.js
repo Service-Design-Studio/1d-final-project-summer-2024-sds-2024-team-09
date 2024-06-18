@@ -16,7 +16,7 @@ document.addEventListener('DOMContentLoaded', () => {
             <Router>
                 <Routes>
                     <Route path="/" element={<IndexPage />} />
-                    <Route path="/camera-broadcast" element={<CameraBroadcastPage />} />
+                    <Route path="/camera_broadcast" element={<CameraBroadcastPage />} />
                     <Route path="/camera" element={<CameraPage />} />
                     <Route path="/user" element={<UserPage />} />
                 </Routes>

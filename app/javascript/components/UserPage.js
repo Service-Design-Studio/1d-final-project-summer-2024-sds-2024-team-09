@@ -10,7 +10,7 @@ const UserPage = () => {
                 <div className="card-body text-center">
                     <h1 className="card-title">Camera 1</h1>
                     <p className="card-text">Active</p>
-                    <Link to="/camera-broadcast" className="btn btn-primary btn-lg">
+                    <Link to="/camera_broadcast" className="btn btn-primary btn-lg">
                         Watch Live
                     </Link>
                 </div>

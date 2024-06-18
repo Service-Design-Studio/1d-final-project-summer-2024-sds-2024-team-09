@@ -104,6 +104,10 @@ const CameraBroadcastPage = () => {
     return (
         <div>
             <h1>Camera Broadcast Page</h1>
+<<<<<<< Updated upstream
+=======
+            <p>This page is what parents would see when monitoring their children from home. </p>
+>>>>>>> Stashed changes
             <button onClick={() => window.joinChannel()}>Watch the broadcast</button>
             <button onClick={() => window.leaveChannel()}>Leave the broadcast</button>
         </div>

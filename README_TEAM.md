@@ -33,11 +33,21 @@ This launches the rails server and the app will be ran.
 - localhost:3000/camera: Camera page
 - localhost:3000/camera-broadcast: CameraBroadcast page
 
+<<<<<<< Updated upstream
 ## Bless
 
 
 
 
+=======
+4) handling routing:
+- `app/config/routes.rb`: handles all the routes for the Rails applications
+- `app/controllers/pages_controller.rb`: handle controller routing. 
+- `app/javascript/packs/application.js`: handles routing throughout the front-end, paths must match controllers
+
+## Bless
+
+>>>>>>> Stashed changes
 * Ruby version
 
 * System dependencies
