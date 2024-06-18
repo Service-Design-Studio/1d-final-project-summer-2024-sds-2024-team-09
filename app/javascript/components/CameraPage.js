@@ -92,6 +92,7 @@ const CameraPage = () => {
         <div className="container mt-5">
             <div className="text-center">
                 <h1 className="display-4 mb-4">Camera Page</h1>
+                <p>This page is the UI page for the camera at home.</p>
                 <div className="btn-group" role="group">
                     <button className="btn btn-primary" onClick={handleJoinAsHost}>Join as Host</button>
                     <button className="btn btn-danger" onClick={endStream}>Leave</button>

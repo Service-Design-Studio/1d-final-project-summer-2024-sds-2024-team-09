@@ -31,12 +31,15 @@ This launches the rails server and the app will be ran.
 - localhost:3000: Index.js
 - localhost:3000/user: User Page
 - localhost:3000/camera: Camera page
-- localhost:3000/camera-broadcast: CameraBroadcast page
+- localhost:3000/camera_broadcast: CameraBroadcast page
 
+4) handling routing:
+In order to ensure that the pages are all displayed properly in a rails app, these 4 files must be defined properly: 
+- `app/config/routes.rb`: handles all the routes for the Rails applications
+- `app/controllers/pages_controller.rb`: handle controller routing. 
+- `app/javascript/packs/application.js`: handles routing throughout the front-end, paths must match controllers
+- `app/views/pages/xxx.html.erb`: handle all the default templated stuff, what should show up on each html page
 ## Bless
-
-
-
 
 * Ruby version
 

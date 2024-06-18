@@ -108,6 +108,7 @@ const CameraBroadcastPage = () => {
         <div className="container mt-5">
             <div className="text-center">
                 <h1 className="display-4 mb-4">Camera Broadcast Page</h1>
+                <p>This page is what parents would see when monitoring their children from home. </p>
                 <div className="btn-group" role="group">
                     <button className="btn btn-primary" onClick={() => window.joinChannel()}>
                         Watch the broadcast
