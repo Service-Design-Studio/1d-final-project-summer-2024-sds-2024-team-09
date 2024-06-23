@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Camera Broadcast Page</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+    <script src="https://download.agora.io/sdk/release/AgoraRTC_N.js"></script>
+</head>
+<body>
+    <div class="container mt-5">
+        <div class="text-center">
+            <h1 class="display-4 mb-4">Camera Broadcast Page</h1>
+            <p>This page is what parents would see when monitoring their children from home.</p>
+            <div class="btn-group" role="group">
+                <button class="btn btn-primary" onclick="joinChannel()">Watch the broadcast</button>
+                <button class="btn btn-danger" onclick="leaveChannel()">Leave the broadcast</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        let rtc = {
+            localAudioTrack: null,
+            localVideoTrack: null,
+            client: null,
+        };
+
+        let remotePlayerContainer = null;
+
+        const APP_ID = 'fa3a10495b62421c8f7179b868b65feb';
+        const TOKEN = '007eJxTYNCckSzq+kHgyLTDpeW64T/Nj0rML7BlfLuQ5cmNkLVcxpYKDGmJxomGBiaWpklmRiZGhskWaeaG5pZJFmYWSWamaalJ/24UpzUEMjIkzr/KxMgAgSA+G0NSYmVuYgUDAwArxh+7';
+        const CHANNEL = 'baymax';
+
+        const joinChannel = async () => {
+            const client = AgoraRTC.createClient({
+                mode: "live",
+                codec: "vp8",
+            });
+
+            try {
+                client.setClientRole("audience", {
+                    level: AgoraRTC.AudienceLatencyLevelType.AUDIENCE_LEVEL_LOW_LATENCY,
+                });
+
+                console.log("APP_ID", APP_ID, "CHANNEL", CHANNEL);
+                const new_id = Math.floor(Math.random() * 1000000);
+                console.log("new_id", new_id);
+                await client.join(APP_ID, CHANNEL, TOKEN, new_id);
+
+                client.on("user-published", async (user, mediaType) => {
+                    console.log("user-published", user, mediaType);
+                    await client.subscribe(user, mediaType);
+                    console.log("subscribe success");
+
+                    if (mediaType === "video") {
+                        const remoteVideoTrack = user.videoTrack;
+
+                        if (remotePlayerContainer) {
+                            remotePlayerContainer.remove();
+                        }
+
+                        remotePlayerContainer = document.createElement("div");
+                        remotePlayerContainer.id = user.uid.toString();
+                        remotePlayerContainer.textContent = "Remote user " + user.uid.toString();
+                        remotePlayerContainer.style.width = "640px";
+                        remotePlayerContainer.style.height = "480px";
+                        document.body.append(remotePlayerContainer);
+
+                        remoteVideoTrack.play(remotePlayerContainer);
+                    }
+
+                    if (mediaType === "audio") {
+                        const remoteAudioTrack = user.audioTrack;
+                        remoteAudioTrack.play();
+                    }
+                });
+
+                client.on("user-unpublished", (user) => {
+                    console.log("user-unpublished", user);
+                    if (remotePlayerContainer && remotePlayerContainer.id === user.uid.toString()) {
+                        remotePlayerContainer.remove();
+                        remotePlayerContainer = null;
+                    }
+                });
+
+                rtc.client = client;
+            } catch (error) {
+                console.error('Failed to join as audience:', error);
+            }
+        };
+
+        const leaveChannel = async () => {
+            if (rtc.client) {
+                await rtc.client.leave();
+                rtc.client.removeAllListeners();
+
+                if (remotePlayerContainer) {
+                    remotePlayerContainer.remove();
+                    remotePlayerContainer = null;
+                }
+
+                rtc.client = null;
+
+                console.log("Left the channel successfully");
+                window.location.href = '<%= user_page_path %>';
+            }
+        };
+    </script>
+</body>
+</html>

@@ -1,23 +1,19 @@
 Rails.application.routes.draw do
-  root 'pages#home'
+  root 'movies#index'
 
-  get 'camera', to: 'pages#camera'
 
-  get 'camera_broadcast', to: 'pages#camera_broadcast'
+  resources :movies
 
-  get 'user', to: 'pages#user'
+  get 'camera', to: 'movies#camera'
 
-  mount ActionCable.server => '/cable'
-  #resources :videos, only: [:create]
-  #mount ActionCable.server => '/cable'
-  # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
+  get 'camera_broadcast', to: 'movies#camera_broadcast'
 
-  # Reveal health status on /up that returns 200 if the app boots with no exceptions, otherwise 500.
-  # Can be used by load balancers and uptime monitors to verify that the app is live.
-  #get "up" => "rails/health#show", as: :rails_health_check
+  get 'user', to: 'movies#user'
 
-  # Defines the root path route ("/")
-  # root "posts#index"
-  #root 'pages#index'
-  #mount ActionCable.server => '/cable'
+  get 'user_page', to: 'movies#user', as: 'user_page'
+
+  get 'index_page', to: 'movies#index', as: 'index_page'
+
+
+
 end
