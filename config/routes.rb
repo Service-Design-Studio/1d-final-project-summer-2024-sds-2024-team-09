@@ -20,4 +20,11 @@ Rails.application.routes.draw do
   # root "posts#index"
   #root 'pages#index'
   #mount ActionCable.server => '/cable'
+
+
+  #######################
+  # JYA PART - SPRINT 2 #
+  #######################
+  resources :videos, only: [:new, :create, :show, :index]
+  root "videos#index"
 end
