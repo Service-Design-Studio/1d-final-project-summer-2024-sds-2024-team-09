@@ -1,4 +1,8 @@
 class PagesController < ApplicationController
+
+  def record
+    @histories = History.all
+  end
   def home
   end
 

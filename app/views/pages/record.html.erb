@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Agora Cloud Recording</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+    <script src="https://download.agora.io/sdk/release/AgoraRTC_N.js"></script>
+</head>
+<body>
+    <div class="container mt-5">
+        <div class="text-center">
+            <h1 class="display-4 mb-4">Agora Cloud Recording</h1>
+            <div class="btn-group" role="group">
+                <button id="start-btn" class="btn btn-primary" onclick="startRecording()">Start Recording</button>
+                <button id="stop-btn" class="btn btn-danger" onclick="stopRecording()" style="display: none;">Stop Recording</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        let rtc = {
+            localAudioTrack: null,
+            localVideoTrack: null,
+            client: null,
+        };
+
+        const APP_ID = 'd543c7c876734c4a82da72a588edd047';
+        const TOKEN = '007eJxTYDhya9HuRWdr9644UuN4Z4HQw+vJB39P0qidIf7q51b1VV81FRhSTE2Mk82TLczNzI1Nkk0SLYxSEs2NEk0tLFJTUgxMzKdZ1aQ1BDIyGM+QYGRkgEAQn40hKbEyN7GCgQEA0B0jRA==';
+        const CHANNEL = 'baymax';
+        const UID = '123456';
+
+        let resourceId;
+        let sid;
+        let recordingStartTime;
+
+        const startRecording = async () => {
+            try {
+                rtc.client = AgoraRTC.createClient({ mode: "rtc", codec: "vp8" });
+                await rtc.client.join(APP_ID, CHANNEL, TOKEN, UID);
+
+                rtc.localAudioTrack = await AgoraRTC.createMicrophoneAudioTrack();
+                rtc.localVideoTrack = await AgoraRTC.createCameraVideoTrack();
+                await rtc.client.publish([rtc.localAudioTrack, rtc.localVideoTrack]);
+
+                recordingStartTime = new Date().toISOString();
+
+                // Start Cloud Recording
+                const response = await fetch('/start_recording', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({
+                        channel: CHANNEL,
+                        uid: UID
+                    })
+                });
+
+                const data = await response.json();
+                resourceId = data.resourceId;
+                sid = data.sid;
+
+                document.getElementById('start-btn').style.display = 'none';
+                document.getElementById('stop-btn').style.display = 'inline-block';
+
+                console.log('Recording started successfully!');
+            } catch (error) {
+                console.error('Failed to start recording:', error);
+            }
+        };
+
+        const stopRecording = async () => {
+            try {
+                if (rtc.localAudioTrack) {
+                    rtc.localAudioTrack.close();
+                }
+                if (rtc.localVideoTrack) {
+                    rtc.localVideoTrack.close();
+                }
+                if (rtc.client) {
+                    await rtc.client.leave();
+                }
+
+                document.getElementById('start-btn').style.display = 'inline-block';
+                document.getElementById('stop-btn').style.display = 'none';
+
+                console.log('Recording stopped successfully!');
+
+                const recordingEndTime = new Date().toISOString();
+
+                // Stop Cloud Recording
+                await fetch('/stop_recording', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({
+                        resourceId: resourceId,
+                        sid: sid,
+                        channel: CHANNEL,
+                        uid: UID
+                    })
+                });
+
+                console.log('Recording metadata saved successfully!');
+            } catch (error) {
+                console.error('Failed to stop recording:', error);
+            }
+        };
+    </script>
+</body>
+</html>

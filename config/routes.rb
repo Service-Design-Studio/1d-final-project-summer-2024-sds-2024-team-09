@@ -1,13 +1,13 @@
 Rails.application.routes.draw do
-  root 'pages#home'
+  # root 'pages#home'
 
-  get 'camera', to: 'pages#camera'
+  # get 'camera', to: 'pages#camera'
 
-  get 'camera_broadcast', to: 'pages#camera_broadcast'
+  # get 'camera_broadcast', to: 'pages#camera_broadcast'
 
-  get 'user', to: 'pages#user'
+  # get 'user', to: 'pages#user'
 
-  mount ActionCable.server => '/cable'
+  # mount ActionCable.server => '/cable'
   #resources :videos, only: [:create]
   #mount ActionCable.server => '/cable'
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
@@ -20,11 +20,37 @@ Rails.application.routes.draw do
   # root "posts#index"
   #root 'pages#index'
   #mount ActionCable.server => '/cable'
+  #######################
+  # testing #
+  #######################
+  root 'pages#index'
 
 
-  #######################
-  # JYA PART - SPRINT 2 #
-  #######################
+  resources :movies
+
+  get 'camera', to: 'pages#camera'
+
+  get 'camera_broadcast', to: 'pages#camera_broadcast'
+
+  get 'user', to: 'pages#user'
+
+  get 'user_page', to: 'pages#user', as: 'user_page'
+
+  get 'history', to: 'videos#index'
+
+  get 'record', to: 'pages#record'
+
+  get 'histories', to: 'histories#index'
+
+  resources :histories, only: [:index, :create, :update]
+  post 'start_recording', to: 'recordings#start'
+  post 'stop_recording', to: 'recordings#stop'
+
+  post 'devices/assign_uid', to: 'devices#assign_uid'
+
+  # #######################
+  # # JYA PART - SPRINT 2 #
+  # #######################
   resources :videos, only: [:new, :create, :show, :index]
-  root "videos#index"
+  # root "videos#index"
 end
