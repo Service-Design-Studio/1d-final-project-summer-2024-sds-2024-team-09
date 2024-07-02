@@ -1,2 +1,0 @@
-class SignalDatum < ApplicationRecord
-end

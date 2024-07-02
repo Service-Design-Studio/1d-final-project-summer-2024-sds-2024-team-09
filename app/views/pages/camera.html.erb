@@ -1,2 +1,107 @@
-<div id="root"></div>
-<%= javascript_pack_tag 'application' %>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Camera Page</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+    <script src="https://download.agora.io/sdk/release/AgoraRTC_N.js"></script>
+</head>
+<body>
+    <div class="container mt-5">
+        <div class="text-center">
+            <h1 class="display-4 mb-4">Camera Page</h1>
+            <p>This page is the UI page for the camera at home.</p>
+            <div class="btn-group" role="group">
+                <button class="btn btn-primary" onclick="handleJoinAsHost()">Join as Host</button>
+                <button class="btn btn-danger" onclick="endStream()">Leave</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        let rtc = {
+            localAudioTrack: null,
+            localVideoTrack: null,
+            client: null,
+        };
+
+        const APP_ID = 'd543c7c876734c4a82da72a588edd047';
+        const TOKEN = '007eJxTYAi++WbT7wPuP2boT3zsnyq/qPJXi6PF5qVXpkiX/2vh2nhYgSHF1MQ42TzZwtzM3Ngk2STRwigl0dwo0dTCIjUlxcDEXHRtc1pDICODbNJrVkYGCATx2RiSEitzEysYGABi5yJf';
+        const CHANNEL = 'baymax';
+
+        // Function to generate sequential UID and save it in localStorage
+        const getUID = () => {
+            let uid = localStorage.getItem('uid');
+            if (!uid) {
+                let lastUID = localStorage.getItem('lastUID');
+                lastUID = lastUID ? parseInt(lastUID) + 1 : 1;
+                uid = lastUID.toString().padStart(5, '0');
+                localStorage.setItem('uid', uid);
+                localStorage.setItem('lastUID', lastUID);
+            }
+            return uid;
+        };
+
+        const handleJoinAsHost = async () => {
+            const UID = getUID();
+
+            rtc.client = AgoraRTC.createClient({
+                mode: "live",
+                codec: "vp8",
+                clientRoleOptions: {
+                    level: AgoraRTC.AudienceLatencyLevelType.AUDIENCE_LEVEL_LOW_LATENCY
+                }
+            });
+
+            try {
+                rtc.client.setClientRole('host');
+                console.log("APP_ID", APP_ID, "CHANNEL", CHANNEL);
+                await rtc.client.join(APP_ID, CHANNEL, TOKEN, UID);
+                rtc.localAudioTrack = await AgoraRTC.createMicrophoneAudioTrack();
+                rtc.localVideoTrack = await AgoraRTC.createCameraVideoTrack();
+                await rtc.client.publish([rtc.localAudioTrack, rtc.localVideoTrack]);
+                const localPlayerContainer = document.createElement('div');
+                localPlayerContainer.id = UID;
+                localPlayerContainer.textContent = 'Local user ' + UID;
+                localPlayerContainer.style.width = '640px';
+                localPlayerContainer.style.height = '480px';
+                document.body.append(localPlayerContainer);
+                rtc.localVideoTrack.play(localPlayerContainer);
+                console.log('Host joined successfully with UID:', UID);
+            } catch (error) {
+                console.error('Failed to join as host:', error);
+            }
+        };
+
+        const endStream = async () => {
+            try {
+                if (rtc.localAudioTrack) {
+                    rtc.localAudioTrack.close();
+                }
+                if (rtc.localVideoTrack) {
+                    rtc.localVideoTrack.close();
+                }
+                const localPlayerContainer = document.getElementById(getUID());
+                if (localPlayerContainer) {
+                    localPlayerContainer.remove();
+                }
+                if (rtc.client && rtc.client.remoteUsers) {
+                    rtc.client.remoteUsers.forEach(user => {
+                        const playerContainer = document.getElementById(user.uid);
+                        if (playerContainer) {
+                            playerContainer.remove();
+                        }
+                    });
+                }
+                if (rtc.client) {
+                    await rtc.client.leave();
+                }
+                console.log('Stream ended successfully!');
+            } catch (error) {
+                console.error('Failed to end the stream:', error);
+            }
+        };
+    </script>
+</body>
+</html>
