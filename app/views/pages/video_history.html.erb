@@ -5,6 +5,18 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Video History</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+    <!-- Updated CSS file to style input fields -->
+    <style> 
+        .video-title {
+            font-weight: bold;
+            cursor: pointer;
+        }
+        .video-title-input {
+            display: none;
+            width: 100%;
+            font-size: 1.25rem;
+        }
+    </style>
 </head>
 <body>
     <div class="container mt-5">
@@ -14,7 +26,7 @@
             <div id="video-list" class="mt-4"></div>
         </div>
     </div>
-
+    
     <!-- Modal for video playback -->
     <div class="modal fade" id="videoModal" tabindex="-1" role="dialog" aria-labelledby="videoModalLabel" aria-hidden="true">
         <div class="modal-dialog" role="document">
@@ -47,9 +59,8 @@
                 videoItem.innerHTML = `
                     <div class="card-body">
                         <h5 class="card-title">
-                            <a href="#" class="video-link" data-path="${video.path}" data-title="${video.title}">
-                                ${video.title}
-                            </a>
+                            <span class="video-title" onclick="editTitle(this)">${video.title}</span>
+                            <input class="video-title-input" type="text" value="${video.title}" onblur="saveTitle(this, ${video.id})" onkeydown="handleKey(event, this, ${video.id})">
                         </h5>
                         <p class="card-text">Uploaded on: ${new Date(video.date).toLocaleDateString()} at ${new Date(video.date).toLocaleTimeString()}</p>
                     </div>
@@ -67,6 +78,43 @@
                     $('#videoModal').modal('show');
                 });
             });
+        }
+        // JS code to handle the inline editing of video title
+        function editTitle(element) {
+            const input = element.nextElementSibling;
+            element.style.display = 'none';
+            input.style.display = 'inline';
+            input.focus();
+        }
+
+        function saveTitle(input, videoId) {
+            const newTitle = input.value;
+            input.style.display = 'none';
+            const span = input.previousElementSibling;
+            span.innerText = newTitle;
+            span.style.display = 'inline';
+
+            // Save the new title to the server
+            fetch(`/api/videos/${videoId}`, {
+                method: 'PUT',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ title: newTitle })
+            })
+            .then(response => response.json())
+            .then(data => {
+                console.log('Success:', data);
+            })
+            .catch((error) => {
+                console.error('Error:', error);
+            });
+        }
+
+        function handleKey(event, input, videoId) {
+            if (event.key === 'Enter') {
+                input.blur();
+            }
         }
 
         fetchVideos();
