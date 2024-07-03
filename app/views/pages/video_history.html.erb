@@ -14,7 +14,6 @@
         </div>
     </div>
     <script>
-        // Function to fetch video data from the server
         async function fetchVideos() {
             const response = await fetch('/api/videos');
             const videos = await response.json();
@@ -28,7 +27,7 @@
                         <h5 class="card-title">
                             <input type="text" value="${video.title}" data-id="${video.id}" class="form-control title-input" />
                         </h5>
-                        <p class="card-text">Uploaded on: ${video.date}</p>
+                        <p class="card-text">Uploaded on: ${new Date(video.date).toLocaleDateString()}</p>
                         <video src="${video.path}" controls class="w-100"></video>
                     </div>
                 `;
@@ -54,3 +53,4 @@
     </script>
 </body>
 </html>
+

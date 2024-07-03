@@ -7,3 +7,7 @@
 #   ["Action", "Comedy", "Drama", "Horror"].each do |genre_name|
 #     MovieGenre.find_or_create_by!(name: genre_name)
 #   end
+Video.create([
+  { title: 'Sample Video 1', date: Date.parse('2024-07-01'), path: '/videos/sample1.mp4' },
+  { title: 'Sample Video 2', date: Date.parse('2024-07-02'), path: '/videos/sample2.mp4' }
+])
