@@ -5,8 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Video History</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
-    <!-- Updated CSS file to style input fields -->
-    <style> 
+    <style>
         .video-title {
             font-weight: bold;
             cursor: pointer;
@@ -15,6 +14,10 @@
             display: none;
             width: 100%;
             font-size: 1.25rem;
+            text-align: center;
+        }
+        .edit-button {
+            cursor: pointer;
         }
     </style>
 </head>
@@ -26,7 +29,7 @@
             <div id="video-list" class="mt-4"></div>
         </div>
     </div>
-    
+
     <!-- Modal for video playback -->
     <div class="modal fade" id="videoModal" tabindex="-1" role="dialog" aria-labelledby="videoModalLabel" aria-hidden="true">
         <div class="modal-dialog" role="document">
@@ -57,32 +60,33 @@
                 const videoItem = document.createElement('div');
                 videoItem.className = 'card mb-3';
                 videoItem.innerHTML = `
-                    <div class="card-body">
-                        <h5 class="card-title">
-                            <span class="video-title" onclick="editTitle(this)">${video.title}</span>
-                            <input class="video-title-input" type="text" value="${video.title}" onblur="saveTitle(this, ${video.id})" onkeydown="handleKey(event, this, ${video.id})">
-                        </h5>
-                        <p class="card-text">Uploaded on: ${new Date(video.date).toLocaleDateString()} at ${new Date(video.date).toLocaleTimeString()}</p>
+                    <div class="card-body d-flex justify-content-center align-items-center">
+                        <div>
+                            <h5 class="card-title">
+                                <a href="#" class="video-title" data-path="${video.path}" data-title="${video.title}" onclick="viewVideo(event, '${video.path}', '${video.title}')">${video.title}</a>
+                                <input class="video-title-input" type="text" value="${video.title}" onblur="saveTitle(this, ${video.id})" onkeydown="handleKey(event, this, ${video.id})">
+                            </h5>
+                        </div>
+                        <button class="btn btn-sm btn-primary edit-button ml-2" onclick="editTitle(this)">Edit Title</button>
                     </div>
+                    <p class="card-text text-center">Uploaded on: ${new Date(video.date).toLocaleDateString()} at ${new Date(video.date).toLocaleTimeString()}</p>
                 `;
                 videoList.appendChild(videoItem);
             });
-
-            document.querySelectorAll('.video-link').forEach(link => {
-                link.addEventListener('click', (e) => {
-                    e.preventDefault();
-                    const videoPath = e.target.getAttribute('data-path');
-                    const videoTitle = e.target.getAttribute('data-title');
-                    document.getElementById('videoPlayer').src = videoPath;
-                    document.getElementById('videoModalLabel').innerText = videoTitle;
-                    $('#videoModal').modal('show');
-                });
-            });
         }
-        // JS code to handle the inline editing of video title
-        function editTitle(element) {
-            const input = element.nextElementSibling;
-            element.style.display = 'none';
+
+        function viewVideo(event, path, title) {
+            event.preventDefault();
+            document.getElementById('videoPlayer').src = path;
+            document.getElementById('videoModalLabel').innerText = title;
+            $('#videoModal').modal('show');
+        }
+
+        function editTitle(button) {
+            const titleElement = button.previousElementSibling.querySelector('.video-title');
+            const input = button.previousElementSibling.querySelector('.video-title-input');
+            titleElement.style.display = 'none';
+            button.style.display = 'none';
             input.style.display = 'inline';
             input.focus();
         }
@@ -90,9 +94,11 @@
         function saveTitle(input, videoId) {
             const newTitle = input.value;
             input.style.display = 'none';
-            const span = input.previousElementSibling;
-            span.innerText = newTitle;
-            span.style.display = 'inline';
+            const titleLink = input.previousElementSibling;
+            const button = input.parentElement.nextElementSibling;
+            titleLink.innerText = newTitle;
+            titleLink.style.display = 'inline';
+            button.style.display = 'inline';
 
             // Save the new title to the server
             fetch(`/api/videos/${videoId}`, {
