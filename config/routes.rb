@@ -27,7 +27,8 @@ Rails.application.routes.draw do
     get 'user', to: 'pages#record'
 
     # Route for video history page
-    get 'video_history', to: 'pages#video_history'
+    get 'video-history', to: 'pages#video_history'
+
 
     # mount ActionCable.server => '/cable'
     #resources :videos, only: [:create]

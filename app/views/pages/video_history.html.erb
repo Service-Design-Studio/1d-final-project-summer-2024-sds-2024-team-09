@@ -5,6 +5,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Video History</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+    <style>
+        .small-video {
+            width: 400px; /* Adjust the width as needed */
+            height: auto; /* Maintain aspect ratio */
+        }
+    </style>
 </head>
 <body>
     <div class="container mt-5">
@@ -28,7 +34,7 @@
                             <input type="text" value="${video.title}" data-id="${video.id}" class="form-control title-input" />
                         </h5>
                         <p class="card-text">Uploaded on: ${new Date(video.date).toLocaleDateString()}</p>
-                        <video src="${video.path}" controls class="w-100"></video>
+                        <video src="${video.path}" controls class="small-video"></video>
                     </div>
                 `;
                 videoList.appendChild(videoItem);
@@ -53,4 +59,3 @@
     </script>
 </body>
 </html>
-
