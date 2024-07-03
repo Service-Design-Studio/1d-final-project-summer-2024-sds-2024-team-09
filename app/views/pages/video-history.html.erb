@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Video History</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+</head>
+<body>
+    <div class="container mt-5">
+        <div class="text-center">
+            <h1 class="display-4">Video History</h1>
+            <div id="video-list" class="mt-4"></div>
+        </div>
+    </div>
+    <script>
+        // Function to fetch video data from the server
+        async function fetchVideos() {
+            const response = await fetch('/api/videos');
+            const videos = await response.json();
+            const videoList = document.getElementById('video-list');
+
+            videos.forEach(video => {
+                const videoItem = document.createElement('div');
+                videoItem.className = 'card mb-3';
+                videoItem.innerHTML = `
+                    <div class="card-body">
+                        <h5 class="card-title">
+                            <input type="text" value="${video.title}" data-id="${video.id}" class="form-control title-input" />
+                        </h5>
+                        <p class="card-text">Uploaded on: ${video.date}</p>
+                        <video src="${video.path}" controls class="w-100"></video>
+                    </div>
+                `;
+                videoList.appendChild(videoItem);
+            });
+
+            document.querySelectorAll('.title-input').forEach(input => {
+                input.addEventListener('change', async (e) => {
+                    const id = e.target.getAttribute('data-id');
+                    const newTitle = e.target.value;
+                    await fetch(`/api/videos/${id}`, {
+                        method: 'PUT',
+                        headers: {
+                            'Content-Type': 'application/json'
+                        },
+                        body: JSON.stringify({ title: newTitle })
+                    });
+                });
+            });
+        }
+
+        fetchVideos();
+    </script>
+</body>
+</html>

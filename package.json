@@ -1,0 +1,21 @@
+{
+  "name": "1d-final-project-summer-2024-sds-2024-team-09",
+  "version": "1.0.0",
+  "description": "This README would normally document whatever steps are necessary to get the\r application up and running.",
+  "main": "index.js",
+  "directories": {
+    "lib": "lib",
+    "test": "test"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.20.2",
+    "cors": "^2.8.5",
+    "express": "^4.19.2"
+  }
+}
