@@ -1,24 +1,15 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+**Video History Page Compilation -**
 
-Things you may want to cover:
+ • app/views/pages/video_history.html.erb: HTML, CSS and Javascript template for the video history page
+ 
+ • controller/api/videos_controller.rb: controller that handles API requests related to video resources
 
-* Ruby version
+ • public/videos: video files stored here
 
-* System dependencies
+ • db/seeds.rb: Seed the database with sample videos
+- To add/delete video: Run rails console -> Video.destroy_all -> Run rails db:seed after quitting rails console
+  
 
-* Configuration
 
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
