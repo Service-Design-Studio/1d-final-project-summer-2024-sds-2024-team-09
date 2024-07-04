@@ -50,6 +50,8 @@
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+    <script src="../videos/edit_button.js"></script> <!-- Corrected path to JavaScript file -->
+
     <script>
         async function fetchVideos() {
             const response = await fetch('/api/videos');
@@ -64,14 +66,25 @@
                         <div>
                             <h5 class="card-title">
                                 <a href="#" class="video-title" data-path="${video.path}" data-title="${video.title}" onclick="viewVideo(event, '${video.path}', '${video.title}')">${video.title}</a>
-                                <input class="video-title-input" type="text" value="${video.title}" onblur="saveTitle(this, ${video.id})" onkeydown="handleKey(event, this, ${video.id})">
+                                <input class="video-title-input" type="text" value="${video.title}" data-video-id="${video.id}">
                             </h5>
                         </div>
-                        <button class="btn btn-sm btn-primary edit-button ml-2" onclick="editTitle(this)">Edit Title</button>
+                        <button class="btn btn-sm btn-primary edit-button ml-2">Edit Title</button>
                     </div>
                     <p class="card-text text-center">Uploaded on: ${new Date(video.date).toLocaleDateString()} at ${new Date(video.date).toLocaleTimeString()}</p>
                 `;
                 videoList.appendChild(videoItem);
+            });
+
+            // Re-initialize event listeners after loading videos
+            document.querySelectorAll('.edit-button').forEach(button => {
+                console.log("Attaching click event to dynamically added edit button", button);
+                button.addEventListener('click', () => editTitle(button));
+            });
+
+            document.querySelectorAll('.video-title-input').forEach(input => {
+                input.addEventListener('blur', () => saveTitle(input, input.dataset.videoId));
+                input.addEventListener('keydown', (event) => handleKey(event, input, input.dataset.videoId));
             });
         }
 
@@ -80,47 +93,6 @@
             document.getElementById('videoPlayer').src = path;
             document.getElementById('videoModalLabel').innerText = title;
             $('#videoModal').modal('show');
-        }
-
-        function editTitle(button) {
-            const titleElement = button.previousElementSibling.querySelector('.video-title');
-            const input = button.previousElementSibling.querySelector('.video-title-input');
-            titleElement.style.display = 'none';
-            button.style.display = 'none';
-            input.style.display = 'inline';
-            input.focus();
-        }
-
-        function saveTitle(input, videoId) {
-            const newTitle = input.value;
-            input.style.display = 'none';
-            const titleLink = input.previousElementSibling;
-            const button = input.parentElement.nextElementSibling;
-            titleLink.innerText = newTitle;
-            titleLink.style.display = 'inline';
-            button.style.display = 'inline';
-
-            // Save the new title to the server
-            fetch(`/api/videos/${videoId}`, {
-                method: 'PUT',
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify({ title: newTitle })
-            })
-            .then(response => response.json())
-            .then(data => {
-                console.log('Success:', data);
-            })
-            .catch((error) => {
-                console.error('Error:', error);
-            });
-        }
-
-        function handleKey(event, input, videoId) {
-            if (event.key === 'Enter') {
-                input.blur();
-            }
         }
 
         fetchVideos();
