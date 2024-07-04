@@ -17,6 +17,9 @@
                 <a href="/history" class="btn btn-secondary btn-lg mx-2">History</a>
                 <a href="/record" class="btn btn-secondary btn-lg mx-2">Record</a>
                 <a href="/histories" class="btn btn-secondary btn-lg mx-2">histories</a>
+                <%= form_with url: run_makefile_path, method: :post do %>
+                    <%= submit_tag 'Run Makefile', class: 'btn btn-danger btn-lg mx-2' %>
+                <% end %>
             </div>
         </div>
     </div>
