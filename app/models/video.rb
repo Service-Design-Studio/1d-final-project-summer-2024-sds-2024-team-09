@@ -6,9 +6,3 @@ class Video < ApplicationRecord
         file_path.url
     end
 end
-
-# app/models/video.rb
-# class Video < ApplicationRecord
-#     mount_uploader :file_path, VideoUploader
-#   end
-  

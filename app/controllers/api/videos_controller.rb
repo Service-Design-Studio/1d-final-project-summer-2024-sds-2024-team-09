@@ -8,6 +8,17 @@ module Api
     def index
       videos = Video.all
       #render json: videos
+
+      #Apply sorting
+      case params[:sort_by]
+      when 'title'
+        videos = videos.order(title: params[:order] == 'desc' ? :desc : :asc)
+      when 'duration'
+        videos = videos.order(duration: params[:order] == 'desc' ? :desc : :asc)
+      else
+        videos = videos.order(created_at: params[:order] == 'desc' ? :desc : :asc)
+      end
+
       render json: videos.map { |video| video.as_json(only: [:id, :title, :created_at], methods: [:file_path_url]) }
     end
 

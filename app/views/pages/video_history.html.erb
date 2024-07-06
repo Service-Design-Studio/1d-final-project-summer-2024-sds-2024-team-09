@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Video History</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
-    <%= csrf_meta_tags %> <!-- Add this line for CSRF meta tags -->
+    <%= csrf_meta_tags %> <!-- CSRF meta tags -->
     <style>
         .video-title {
             font-weight: bold;
@@ -27,6 +27,14 @@
         <div class="text-center">
             <h1 class="display-4">Video History</h1>
             <p>View the recorded videos from the livestreams</p>
+            <div class="sort-options mt-3">
+                <button class="btn btn-secondary" onclick="sortVideos('created_at', 'asc')">Sort by Date Asc</button>
+                <button class="btn btn-secondary" onclick="sortVideos('created_at', 'desc')">Sort by Date Desc</button>
+                <button class="btn btn-secondary" onclick="sortVideos('title', 'asc')">Sort by Title Asc</button>
+                <button class="btn btn-secondary" onclick="sortVideos('title', 'desc')">Sort by Title Desc</button>
+                <button class="btn btn-secondary" onclick="sortVideos('duration', 'asc')">Sort by Duration Asc</button>
+                <button class="btn btn-secondary" onclick="sortVideos('duration', 'desc')">Sort by Duration Desc</button>
+            </div>
             <div id="video-list" class="mt-4"></div>
         </div>
     </div>
@@ -53,14 +61,18 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
 
     <script>
-        async function fetchVideos() {
+        let currentSortBy = 'created_at';
+        let currentOrder = 'asc';
+
+        async function fetchVideos(sortBy = 'created_at', order = 'asc') {
             try {
-                const response = await fetch('/api/videos');
+                const response = await fetch(`/api/videos?sort_by=${sortBy}&order=${order}`);
                 if (!response.ok) {
                     throw new Error(`HTTP error! status: ${response.status}`);
                 }
                 const videos = await response.json();
                 const videoList = document.getElementById('video-list');
+                videoList.innerHTML = '';
 
                 videos.forEach(video => {
                     const videoItem = document.createElement('div');
@@ -77,6 +89,7 @@
                             <button class="btn btn-sm btn-danger delete-button ml-2" onclick="deleteVideo(${video.id}, this)">Delete</button>
                         </div>
                         <p class="card-text text-center">Uploaded on: ${new Date(video.created_at).toLocaleDateString()} at ${new Date(video.created_at).toLocaleTimeString()}</p>
+                        <p class="card-text text-center">Duration: ${video.duration} seconds</p>
                     `;
                     videoList.appendChild(videoItem);
                 });
@@ -92,6 +105,12 @@
             } catch (error) {
                 console.error('Failed to fetch videos:', error);
             }
+        }
+
+        function sortVideos(sortBy, order) {
+            currentSortBy = sortBy;
+            currentOrder = order;
+            fetchVideos(sortBy, order);
         }
 
         function viewVideo(event, path, title) {
@@ -123,13 +142,23 @@
                 method: 'PUT',
                 headers: {
                     'Content-Type': 'application/json',
-                    'X-CSRF-Token': document.querySelector('meta[name="csrf-token"]').getAttribute('content') // Add CSRF token here
+                    'X-CSRF-Token': document.querySelector('meta[name="csrf-token"]').getAttribute('content')
                 },
                 body: JSON.stringify({ title: newTitle })
             })
-            .then(response => response.json())
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error('Network response was not ok');
+                }
+                return response.json();
+            })
             .then(data => {
                 console.log('Success:', data);
+                // Update the title in the current video list
+                const video = videos.find(v => v.id === videoId);
+                if (video) {
+                    video.title = newTitle;
+                }
             })
             .catch((error) => {
                 console.error('Error:', error);
@@ -147,7 +176,7 @@
                 const response = await fetch(`/api/videos/${videoId}`, {
                     method: 'DELETE',
                     headers: {
-                        'X-CSRF-Token': document.querySelector('meta[name="csrf-token"]').getAttribute('content') // Add CSRF token here
+                        'X-CSRF-Token': document.querySelector('meta[name="csrf-token"]').getAttribute('content')
                     }
                 });
                 if (!response.ok) {
@@ -161,7 +190,7 @@
             }
         }
 
-        fetchVideos();
+        fetchVideos(currentSortBy, currentOrder);
     </script>
 </body>
 </html>
