@@ -6,7 +6,9 @@ Rails.application.routes.draw do
   # get "up" => "rails/health#show", as: :rails_health_check
 
   # Defines the root path route ("/")
-  root 'pages#index'
+
+  # root 'pages#index'
+  root 'videos#index'
 
   # get 'home', to: 'pages#home'
 
@@ -38,8 +40,9 @@ Rails.application.routes.draw do
   # Resources for videos
   resources :videos, only: [:index, :show, :edit, :update, :destroy]
 
+
    # API routes for videos
-    namespace :api do
-      resources :videos, only: [:index, :update]
-    end
+  namespace :api do
+    resources :videos, only: [:index, :update]
+  end
 end

@@ -1,11 +1,7 @@
-class CreateVideos < ActiveRecord::Migration[6.1]
+class AddFilePathToVideos < ActiveRecord::Migration[7.1]
   def change
-    # create_table :videos do |t|
-    #   t.string :title
-    #   t.string :file_path
+    add_column :videos, :file_path, :string
 
-    #   t.timestamps
-    # end
     create_table "videos", force: :cascade do |t|
       t.string "title"
       t.string "file_path"

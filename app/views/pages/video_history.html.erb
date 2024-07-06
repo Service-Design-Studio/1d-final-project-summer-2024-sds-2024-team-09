@@ -50,43 +50,46 @@
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
-    <script src="../videos/edit_button.js"></script> <!-- Corrected path to JavaScript file -->
 
     <script>
         async function fetchVideos() {
-            const response = await fetch('/api/videos');  // Fetch videos from the new API endpoint
-            const videos = await response.json();
-            const videoList = document.getElementById('video-list');
+            try {
+                const response = await fetch('/api/videos');
+                if (!response.ok) {
+                    throw new Error(`HTTP error! status: ${response.status}`);
+                }
+                const videos = await response.json();
+                const videoList = document.getElementById('video-list');
 
-            videos.forEach(video => {
-                const videoItem = document.createElement('div');
-                videoItem.className = 'card mb-3';
-                videoItem.innerHTML = `
-                    <div class="card-body d-flex justify-content-center align-items-center">
-                        <div>
-                            <h5 class="card-title">
-                                <a href="#" class="video-title" data-path="${video.path}" data-title="${video.title}" onclick="viewVideo(event, '${video.path}', '${video.title}')">${video.title}</a>
-                                <input class="video-title-input" type="text" value="${video.title}" data-video-id="${video.id}">
-
-                            </h5>
+                videos.forEach(video => {
+                    const videoItem = document.createElement('div');
+                    videoItem.className = 'card mb-3';
+                    videoItem.innerHTML = `
+                        <div class="card-body d-flex justify-content-center align-items-center">
+                            <div>
+                                <h5 class="card-title">
+                                    <a href="${video.file_path_url}" class="video-title" data-path="${video.file_path_url}" data-title="${video.title}" onclick="viewVideo(event, '${video.file_path_url}', '${video.title}')">${video.title}</a>
+                                    <input class="video-title-input" type="text" value="${video.title}" data-video-id="${video.id}">
+                                </h5>
+                            </div>
+                            <button class="btn btn-sm btn-primary edit-button ml-2">Edit Title</button>
                         </div>
-                        <button class="btn btn-sm btn-primary edit-button ml-2">Edit Title</button>
-                    </div>
-                    <p class="card-text text-center">Uploaded on: ${new Date(video.created_at).toLocaleDateString()} at ${new Date(video.created_at).toLocaleTimeString()}</p>  <!-- Use created_at for the date -->
-                `;
-                videoList.appendChild(videoItem);
-            });
+                        <p class="card-text text-center">Uploaded on: ${new Date(video.created_at).toLocaleDateString()} at ${new Date(video.created_at).toLocaleTimeString()}</p>
+                    `;
+                    videoList.appendChild(videoItem);
+                });
 
-            // Re-initialize event listeners after loading videos
-            document.querySelectorAll('.edit-button').forEach(button => {
-                console.log("Attaching click event to dynamically added edit button", button);
-                button.addEventListener('click', () => editTitle(button));
-            });
+                document.querySelectorAll('.edit-button').forEach(button => {
+                    button.addEventListener('click', () => editTitle(button));
+                });
 
-            document.querySelectorAll('.video-title-input').forEach(input => {
-                input.addEventListener('blur', () => saveTitle(input, input.dataset.videoId));
-                input.addEventListener('keydown', (event) => handleKey(event, input, input.dataset.videoId));
-            });
+                document.querySelectorAll('.video-title-input').forEach(input => {
+                    input.addEventListener('blur', () => saveTitle(input, input.dataset.videoId));
+                    input.addEventListener('keydown', (event) => handleKey(event, input, input.dataset.videoId));
+                });
+            } catch (error) {
+                console.error('Failed to fetch videos:', error);
+            }
         }
 
         function viewVideo(event, path, title) {
@@ -94,6 +97,46 @@
             document.getElementById('videoPlayer').src = path;
             document.getElementById('videoModalLabel').innerText = title;
             $('#videoModal').modal('show');
+        }
+
+        function editTitle(button) {
+            const titleElement = button.previousElementSibling.querySelector('.video-title');
+            const input = button.previousElementSibling.querySelector('.video-title-input');
+            titleElement.style.display = 'none';
+            button.style.display = 'none';
+            input.style.display = 'inline';
+            input.focus();
+        }
+
+        function saveTitle(input, videoId) {
+            const newTitle = input.value;
+            input.style.display = 'none';
+            const titleLink = input.previousElementSibling;
+            const button = input.parentElement.nextElementSibling;
+            titleLink.innerText = newTitle;
+            titleLink.style.display = 'inline';
+            button.style.display = 'inline';
+
+            fetch(`/api/videos/${videoId}`, {
+                method: 'PUT',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ title: newTitle })
+            })
+            .then(response => response.json())
+            .then(data => {
+                console.log('Success:', data);
+            })
+            .catch((error) => {
+                console.error('Error:', error);
+            });
+        }
+
+        function handleKey(event, input, videoId) {
+            if (event.key === 'Enter') {
+                input.blur();
+            }
         }
 
         fetchVideos();
