@@ -19,13 +19,9 @@ Rails.application.routes.draw do
     # root "pages#index"
 
     get 'camera', to: 'pages#camera'
-
     get 'camera_broadcast', to: 'pages#camera_broadcast'
-
     get 'user', to: 'pages#user'
-
     get 'user', to: 'pages#record'
-
     # Route for video history page
     get 'video-history', to: 'pages#video_history'
 
@@ -39,17 +35,11 @@ Rails.application.routes.draw do
     # Can be used by load balancers and uptime monitors to verify that the app is live.
     #get "up" => "rails/health#show", as: :rails_health_check
 
-
+  # Resources for videos
+  resources :videos, only: [:index, :show, :edit, :update, :destroy]
 
    # API routes for videos
     namespace :api do
       resources :videos, only: [:index, :update]
     end
-
-
-    #######################
-    # JYA PART - SPRINT 2 #
-    #######################
-    # resources :videos, only: [:new, :create, :show, :index]
-    # root "videos#index"
 end

@@ -1,11 +1,14 @@
 # app/controllers/api/videos_controller.rb
 module Api
   class VideosController < ApplicationController
-    protect_from_forgery with: :null_session
+    #protect_from_forgery with: :null_session
+    skip_before_action :verify_authenticity_token
+
 
     def index
       videos = Video.all
-      render json: videos
+      #render json: videos
+      render json: @videos.as_json(only: [:id, :title, :created_at], methods: [:file_path_url])
     end
 
     def update

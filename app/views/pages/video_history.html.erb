@@ -52,7 +52,7 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
     <script>
         async function fetchVideos() {
-            const response = await fetch('/api/videos');
+            const response = await fetch('/api/videos');  // Fetch videos from the new API endpoint
             const videos = await response.json();
             const videoList = document.getElementById('video-list');
 
@@ -63,13 +63,13 @@
                     <div class="card-body d-flex justify-content-center align-items-center">
                         <div>
                             <h5 class="card-title">
-                                <a href="#" class="video-title" data-path="${video.path}" data-title="${video.title}" onclick="viewVideo(event, '${video.path}', '${video.title}')">${video.title}</a>
+                                <a href="#" class="video-title" data-path="${video.file_path_url}" data-title="${video.title}" onclick="viewVideo(event, '${video.file_path_url}', '${video.title}')">${video.title}</a>  <!-- Use file_path_url for the video path -->
                                 <input class="video-title-input" type="text" value="${video.title}" onblur="saveTitle(this, ${video.id})" onkeydown="handleKey(event, this, ${video.id})">
                             </h5>
                         </div>
                         <button class="btn btn-sm btn-primary edit-button ml-2" onclick="editTitle(this)">Edit Title</button>
                     </div>
-                    <p class="card-text text-center">Uploaded on: ${new Date(video.date).toLocaleDateString()} at ${new Date(video.date).toLocaleTimeString()}</p>
+                    <p class="card-text text-center">Uploaded on: ${new Date(video.created_at).toLocaleDateString()} at ${new Date(video.created_at).toLocaleTimeString()}</p>  <!-- Use created_at for the date -->
                 `;
                 videoList.appendChild(videoItem);
             });
