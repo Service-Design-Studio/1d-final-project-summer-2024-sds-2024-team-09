@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Video History</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+    <%= csrf_meta_tags %> <!-- Add this line for CSRF meta tags -->
     <style>
         .video-title {
             font-weight: bold;
@@ -16,7 +17,7 @@
             font-size: 1.25rem;
             text-align: center;
         }
-        .edit-button {
+        .edit-button, .delete-button {
             cursor: pointer;
         }
     </style>
@@ -73,6 +74,7 @@
                                 </h5>
                             </div>
                             <button class="btn btn-sm btn-primary edit-button ml-2">Edit Title</button>
+                            <button class="btn btn-sm btn-danger delete-button ml-2" onclick="deleteVideo(${video.id}, this)">Delete</button>
                         </div>
                         <p class="card-text text-center">Uploaded on: ${new Date(video.created_at).toLocaleDateString()} at ${new Date(video.created_at).toLocaleTimeString()}</p>
                     `;
@@ -120,7 +122,8 @@
             fetch(`/api/videos/${videoId}`, {
                 method: 'PUT',
                 headers: {
-                    'Content-Type': 'application/json'
+                    'Content-Type': 'application/json',
+                    'X-CSRF-Token': document.querySelector('meta[name="csrf-token"]').getAttribute('content') // Add CSRF token here
                 },
                 body: JSON.stringify({ title: newTitle })
             })
@@ -136,6 +139,25 @@
         function handleKey(event, input, videoId) {
             if (event.key === 'Enter') {
                 input.blur();
+            }
+        }
+
+        async function deleteVideo(videoId, button) {
+            try {
+                const response = await fetch(`/api/videos/${videoId}`, {
+                    method: 'DELETE',
+                    headers: {
+                        'X-CSRF-Token': document.querySelector('meta[name="csrf-token"]').getAttribute('content') // Add CSRF token here
+                    }
+                });
+                if (!response.ok) {
+                    throw new Error(`HTTP error! status: ${response.status}`);
+                }
+                const videoCard = button.closest('.card');
+                videoCard.remove();
+                console.log(`Video ${videoId} deleted successfully.`);
+            } catch (error) {
+                console.error(`Failed to delete video ${videoId}:`, error);
             }
         }
 

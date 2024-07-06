@@ -43,6 +43,6 @@ Rails.application.routes.draw do
 
    # API routes for videos
   namespace :api do
-    resources :videos, only: [:index, :update]
+    resources :videos, only: [:index, :update, :destroy]
   end
 end
