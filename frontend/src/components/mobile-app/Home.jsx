@@ -4,9 +4,9 @@ import DeviceNotifs from './DeviceNotifs';
 
 function Home() {
     const albums = [
-        { id: 1, title: 'Bedroom', notifCount: 2, image: 'path/to/image1.jpg', status: 'Live' },
-        { id: 2, title: 'Living Room', notifCount: 0, image: 'path/to/image2.jpg', status: 'Not Live' },
-        { id: 3, title: 'Child Room', notifCount: 0, image: 'path/to/image3.jpg', status: 'Not Live' },
+        { id: 1, title: 'Bedroom', notifCount: 2, image: 'https://s3-ap-southeast-1.amazonaws.com/atap-main/gallery-full/23d6b593-403c-4603-88e4-b8ad244bbe0f/3rooms-luxury-condo-design.jpg', status: 'Live' },
+        { id: 2, title: 'Living Room', notifCount: 0, image: 'https://images.squarespace-cdn.com/content/v1/5f40a8cf9f9f8d5592b55cc3/3aea3a0b-444a-47d7-8bbf-ae6f2323fb5c/1232.png', status: 'Not Live' },
+        { id: 3, title: 'Child Room', notifCount: 0, image: 'https://st.hzcdn.com/simgs/b991b1f60e4a9b68_4-0015/home-design.jpg', status: 'Not Live' },
     ];
 
     const liveDeviceCount = albums.filter((album) => album.status === 'Live').length;
@@ -41,15 +41,6 @@ function Home() {
                                         className="relative rounded-3xl overflow-hidden shadow-lg"
                                         style={{ height: '200px', backgroundImage: `url(${album.image})`, backgroundSize: 'cover', backgroundPosition: 'center' }}
                                     >
-                                        <div className="absolute inset-0 bg-gray-900 bg-opacity-50 flex p-8 text-white">
-                                            <div className="text-left">
-                                                <h3 className="text-lg font-bold">{album.title}</h3>
-
-                                            </div>
-                                            <div className="absolute right-10 top-9 text-right">
-                                                <h3 className="font-bold">{album.notifCount} </h3>
-                                            </div>
-                                        </div>
                                         <DeviceNotifs title={album.title} count={album.notifCount} />
                                     </div>
                                 ))}
