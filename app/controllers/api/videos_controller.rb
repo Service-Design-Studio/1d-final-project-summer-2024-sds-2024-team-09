@@ -1,15 +1,11 @@
 # app/controllers/api/videos_controller.rb
 module Api
   class VideosController < ApplicationController
-    #protect_from_forgery with: :null_session
     skip_before_action :verify_authenticity_token
-
 
     def index
       videos = Video.all
-      #render json: videos
 
-      #Apply sorting
       case params[:sort_by]
       when 'title'
         videos = videos.order(title: params[:order] == 'desc' ? :desc : :asc)
@@ -19,7 +15,7 @@ module Api
         videos = videos.order(created_at: params[:order] == 'desc' ? :desc : :asc)
       end
 
-      render json: videos.map { |video| video.as_json(only: [:id, :title, :created_at], methods: [:file_path_url]) }
+      render json: videos.map { |video| video.as_json(only: [:id, :title, :created_at, :duration], methods: [:file_path_url]) }
     end
 
     def update
@@ -40,8 +36,7 @@ module Api
     private
 
     def video_params
-      params.require(:video).permit(:title, :file_path)
+      params.require(:video).permit(:title, :file_path, :duration)
     end
-
   end
 end

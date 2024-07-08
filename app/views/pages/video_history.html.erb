@@ -154,11 +154,6 @@
             })
             .then(data => {
                 console.log('Success:', data);
-                // Update the title in the current video list
-                const video = videos.find(v => v.id === videoId);
-                if (video) {
-                    video.title = newTitle;
-                }
             })
             .catch((error) => {
                 console.error('Error:', error);
