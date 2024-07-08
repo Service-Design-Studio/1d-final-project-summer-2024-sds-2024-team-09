@@ -1,5 +1,7 @@
 source "https://rubygems.org"
 
+gem 'google-cloud-storage'
+
 ruby "3.2.4"
 
 # Bundle edge Rails instead: gem "rails", github: "rails/rails", branch: "main"

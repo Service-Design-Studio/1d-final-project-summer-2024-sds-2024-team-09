@@ -1,4 +1,3 @@
-# app/controllers/api/videos_controller.rb
 module Api
   class VideosController < ApplicationController
     skip_before_action :verify_authenticity_token

@@ -17,8 +17,11 @@
             font-size: 1.25rem;
             text-align: center;
         }
-        .edit-button, .delete-button {
+        .edit-button, .delete-button, .save-button {
             cursor: pointer;
+        }
+        .save-button {
+            display: none;
         }
     </style>
 </head>
@@ -86,6 +89,7 @@
                                 </h5>
                             </div>
                             <button class="btn btn-sm btn-primary edit-button ml-2">Edit Title</button>
+                            <button class="btn btn-sm btn-success save-button ml-2" onclick="saveTitle(this)">Save</button>
                             <button class="btn btn-sm btn-danger delete-button ml-2" onclick="deleteVideo(${video.id}, this)">Delete</button>
                         </div>
                         <p class="card-text text-center">Uploaded on: ${new Date(video.created_at).toLocaleDateString()} at ${new Date(video.created_at).toLocaleTimeString()}</p>
@@ -99,8 +103,7 @@
                 });
 
                 document.querySelectorAll('.video-title-input').forEach(input => {
-                    input.addEventListener('blur', () => saveTitle(input, input.dataset.videoId));
-                    input.addEventListener('keydown', (event) => handleKey(event, input, input.dataset.videoId));
+                    input.addEventListener('keydown', (event) => handleKey(event, input));
                 });
             } catch (error) {
                 console.error('Failed to fetch videos:', error);
@@ -121,23 +124,39 @@
         }
 
         function editTitle(button) {
-            const titleElement = button.previousElementSibling.querySelector('.video-title');
-            const input = button.previousElementSibling.querySelector('.video-title-input');
+            const cardBody = button.closest('.card-body');
+            const titleElement = cardBody.querySelector('.video-title');
+            const input = cardBody.querySelector('.video-title-input');
+            const saveButton = cardBody.querySelector('.save-button');
+
             titleElement.style.display = 'none';
             button.style.display = 'none';
             input.style.display = 'inline';
+            saveButton.style.display = 'inline';
             input.focus();
         }
 
-        function saveTitle(input, videoId) {
+        function saveTitle(button) {
+            const cardBody = button.closest('.card-body');
+            const input = cardBody.querySelector('.video-title-input');
+            const titleLink = cardBody.querySelector('.video-title');
+            const editButton = cardBody.querySelector('.edit-button');
+
             const newTitle = input.value;
+            const videoId = input.dataset.videoId;
+
+            if (!titleLink || !editButton) {
+                console.error('Title link or edit button not found');
+                return;
+            }
+
             input.style.display = 'none';
-            const titleLink = input.previousElementSibling;
-            const button = input.parentElement.nextElementSibling;
             titleLink.innerText = newTitle;
             titleLink.style.display = 'inline';
-            button.style.display = 'inline';
+            button.style.display = 'none';
+            editButton.style.display = 'inline';
 
+            console.log(`Saving title: ${newTitle} for video ID: ${videoId}`);
             fetch(`/api/videos/${videoId}`, {
                 method: 'PUT',
                 headers: {
@@ -160,9 +179,9 @@
             });
         }
 
-        function handleKey(event, input, videoId) {
+        function handleKey(event, input) {
             if (event.key === 'Enter') {
-                input.blur();
+                saveTitle(input.closest('.card-body').querySelector('.save-button'));
             }
         }
 
