@@ -10,19 +10,49 @@ const Login = ({ setShowLogin }) => {
         navigate('/user-home');
     };
 
+    const backHome = () => {
+        navigate('/');
+    }
+
     return (
-        <div className="w-full max-w-xs">
-            <h2 className="text-2xl font-bold mb-6">Welcome</h2>
-            <p className="mb-6">Get started right now to grab a discount of 70% on our services</p>
-            <button className="w-full bg-black text-white py-2 px-4 mb-4 rounded" onClick={() => setShowLogin(false)}>
-                Login
+        <div className="font-ubuntu bg-base-100 w-full max-w-md rounded-lg p-6 py-12 justify-center">
+            <button className="text-left mb-4" onClick={() => backHome()}>
+                <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
+                </svg>
             </button>
-            <button className="w-full bg-orange-500 text-white py-2 px-4 rounded" onClick={() => setShowLogin(false)}>
-                Sign-up
-            </button>
-            <button className="w-full bg-orange-500 text-white py-2 px-4 rounded" onClick={() => handleNavigate()}>
-                Go to Home Page
-            </button>
+            <div className="flex justify-center mb-6 py-10">
+                <img src="/public/logo.png" alt="Illustration" className="w-64 h-64" />
+            </div>
+            <h2 className="text-3xl font-bold text-primary text-center mb-4">Welcome Back</h2>
+            <p className="font-lato text-lg text-primary text-center mb-6">Log in to your account</p>
+            <div className="space-y-4 mx-8">
+                <input
+                    type="text"
+                    placeholder="Username"
+                    className="bg-neutral w-full px-6 py-3 rounded-2xl focus:outline-none focus:ring-1 focus:ring-info"
+                />
+                <input
+                    type="password"
+                    placeholder="Password"
+                    className="bg-neutral w-full px-6 py-3 rounded-2xl focus:outline-none focus:ring-1 focus:ring-info"
+                />
+            </div>
+            <div className="flex justify-between items-center mt-4 mx-8">
+                <label className="flex items-center">
+                    <input type="checkbox" className="form-checkbox" />
+                    <span className="ml-2">Remember Me</span>
+                </label>
+                <a href="#" className="text-sm text-indigo-500 hover:underline">Forget Password</a>
+            </div>
+            <div className="space-y-4 mx-8 mt-2">
+                <button
+                    className="w-full bg-info text-white py-2 px-4 rounded mt-6 hover:bg-info-600"
+                    onClick={handleNavigate}
+                >
+                    Login
+                </button>
+            </div>
         </div>
     );
 };

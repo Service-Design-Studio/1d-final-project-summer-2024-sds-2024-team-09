@@ -16,7 +16,7 @@ const App = () => {
     }, []);
 
     return (
-        <div className="flex flex-col items-center justify-center min-h-screen bg-gray-100">
+        <div className="flex items-center flex-col min-h-screen">
             {loading ? <Loading /> : (showLogin ? <Login setShowLogin={setShowLogin} /> : <Signup setShowLogin={setShowLogin} />)}
         </div>
     );
