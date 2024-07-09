@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # class Video < ApplicationRecord
 #     #has_one_attached :file
 #     has_one_attached :my_file
@@ -30,3 +31,8 @@ class Video < ApplicationRecord
     end
   end
   
+=======
+class Video < ApplicationRecord
+  # Add any necessary validations or associations here
+end
+>>>>>>> 38a4c1af772dc2f687f14c47bf0a491d38b15eef

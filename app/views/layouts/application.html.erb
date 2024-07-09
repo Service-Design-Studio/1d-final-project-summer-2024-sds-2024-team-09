@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+<<<<<<< HEAD
 <html>
 <head>
   <title>Crybaby</title>
@@ -11,5 +12,31 @@
 
 <body>
   <%= yield %>
+=======
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title><%= content_for?(:title) ? yield(:title) : "Baymax" %></title>
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
+    <%= javascript_pack_tag "application", "data-turbo-track": "reload" %>
+
+    <!-- Include Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+</head>
+<body>
+    <div class="container mt-5">
+        <% if notice %>
+            <div class="alert alert-success"><%= notice %></div>
+        <% end %>
+        <% if alert %>
+            <div class="alert alert-danger"><%= alert %></div>
+        <% end %>
+        <%= yield %>
+    </div>
+>>>>>>> 38a4c1af772dc2f687f14c47bf0a491d38b15eef
 </body>
 </html>

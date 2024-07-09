@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+<<<<<<< HEAD
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
   # Reveal health status on /up that returns 200 if the app boots with no exceptions, otherwise 500.
@@ -10,10 +11,18 @@ Rails.application.routes.draw do
   # root 'pages#index'
   # root 'videos#index'
   root 'pages#video_history'
+=======
+  root 'pages#index'
+>>>>>>> 38a4c1af772dc2f687f14c47bf0a491d38b15eef
 
-  # get 'home', to: 'pages#home'
+  get 'camera', to: 'pages#camera'
+  get 'camera_broadcast', to: 'pages#camera_broadcast'
+  get 'user', to: 'pages#user'
+  get 'record', to: 'pages#record'
 
+  resources :videos, only: [:index, :edit, :update, :destroy]
 
+<<<<<<< HEAD
   # resources :home
 
 
@@ -45,5 +54,9 @@ Rails.application.routes.draw do
    # API routes for videos
   namespace :api do
     resources :videos, only: [:index, :update, :destroy]
+=======
+  namespace :api, defaults: { format: :json } do
+    resources :videos
+>>>>>>> 38a4c1af772dc2f687f14c47bf0a491d38b15eef
   end
 end

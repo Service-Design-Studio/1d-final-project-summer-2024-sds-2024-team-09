@@ -7,6 +7,7 @@
 #   ["Action", "Comedy", "Drama", "Horror"].each do |genre_name|
 #     MovieGenre.find_or_create_by!(name: genre_name)
 #   end
+<<<<<<< HEAD
 
 # Clear existing videos
 #Video.destroy_all
@@ -33,3 +34,10 @@ Dir.foreach(video_dir) do |filename|
     puts "Failed to import: #{filename}"
   end
 end
+=======
+Video.create([
+  { title: 'Local Video 1', url: '/videos/Local Video 1.mp4', upload_date: DateTime.now },
+  { title: 'Local Video 2', url: '/videos/Local Video 2.mp4', upload_date: DateTime.now },
+  { title: 'Local Video 3', url: '/videos/Local Video 3.mp4', upload_date: DateTime.now }
+])
+>>>>>>> 38a4c1af772dc2f687f14c47bf0a491d38b15eef

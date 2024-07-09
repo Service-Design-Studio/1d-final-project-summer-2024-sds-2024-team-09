@@ -1,5 +1,6 @@
 const { environment } = require('@rails/webpacker')
 
+<<<<<<< HEAD
 // module.exports = environment
 
 
@@ -15,5 +16,8 @@ babelLoader.use[0].options = {
     '@babel/plugin-syntax-dynamic-import'
   ]
 }
+=======
+// Add additional plugins or configuration here
+>>>>>>> 38a4c1af772dc2f687f14c47bf0a491d38b15eef
 
 module.exports = environment

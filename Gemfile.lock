@@ -271,11 +271,14 @@ GEM
       rubyzip (>= 1.2.2, < 3.0)
       websocket (~> 1.0)
     semantic_range (3.0.0)
+<<<<<<< HEAD
     signet (0.19.0)
       addressable (~> 2.8)
       faraday (>= 0.17.5, < 3.a)
       jwt (>= 1.5, < 3.0)
       multi_json (~> 1.10)
+=======
+>>>>>>> 38a4c1af772dc2f687f14c47bf0a491d38b15eef
     sprockets (4.2.1)
       concurrent-ruby (~> 1.0)
       rack (>= 2.2.4, < 4)

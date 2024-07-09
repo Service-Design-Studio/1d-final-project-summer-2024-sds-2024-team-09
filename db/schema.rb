@@ -10,6 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
+<<<<<<< HEAD
 ActiveRecord::Schema[7.1].define(version: 2024_07_08_181753) do
   create_table "user_settings", force: :cascade do |t|
     t.integer "user_id", null: false
@@ -42,4 +43,16 @@ ActiveRecord::Schema[7.1].define(version: 2024_07_08_181753) do
   end
 
   add_foreign_key "user_settings", "users"
+=======
+ActiveRecord::Schema[7.1].define(version: 2024_07_09_092004) do
+  create_table "videos", force: :cascade do |t|
+    t.string "title"
+    t.string "url"
+    t.text "description"
+    t.datetime "upload_date"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+>>>>>>> 38a4c1af772dc2f687f14c47bf0a491d38b15eef
 end

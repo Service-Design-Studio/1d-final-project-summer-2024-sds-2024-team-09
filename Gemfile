@@ -43,9 +43,13 @@ gem "tzinfo-data", platforms: %i[ windows jruby ]
 # Reduces boot times through caching; required in config/boot.rb
 gem "bootsnap", require: false
 
+<<<<<<< HEAD
 gem 'carrierwave', '~> 2.0'
 
 
+=======
+# Webpacker
+>>>>>>> 38a4c1af772dc2f687f14c47bf0a491d38b15eef
 gem 'webpacker'
 
 # Use Active Storage variants [https://guides.rubyonrails.org/active_storage_overview.html#transforming-images]
