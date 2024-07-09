@@ -1,7 +1,5 @@
 source "https://rubygems.org"
 
-gem 'google-cloud-storage'
-
 ruby "3.2.4"
 
 # Bundle edge Rails instead: gem "rails", github: "rails/rails", branch: "main"
@@ -17,7 +15,6 @@ gem "sqlite3", "~> 1.4"
 gem "puma", ">= 5.0"
 gem 'uglifier', '>= 1.3.0'
 gem 'sass-rails', '>= 5'
-gem 'sprockets-rails'
 # gem 'pg', '~> 1.2'
 # gem 'dotenv-rails', groups: [:development, :test]
 

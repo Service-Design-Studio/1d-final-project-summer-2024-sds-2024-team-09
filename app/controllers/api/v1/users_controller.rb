@@ -2,6 +2,8 @@
 module Api
     module V1
       class UsersController < ApplicationController
+        skip_before_action :require_login, only: [:index, :show, :create, :update, :destroy]
+        
         def index
           users = User.all
           render json: users
