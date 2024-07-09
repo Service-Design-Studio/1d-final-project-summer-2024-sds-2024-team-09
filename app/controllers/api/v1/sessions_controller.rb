@@ -1,17 +1,32 @@
+# app/controllers/api/v1/sessions_controller.rb
+
 module Api
     module V1
       class SessionsController < ApplicationController
-        include SessionsHelper
-        skip_before_action :verify_authenticity_token
-
+        skip_before_action :require_login, only: [:create]
+  
         def create
-          user = User.find_by(username: params[:username]) || User.find_by(email: params[:email])
-          if user&.authenticate(params[:password])
+          Rails.logger.debug "Params: #{params[:session]}"
+          user = User.find_by(email: params[:session][:email].downcase) || User.find_by(username: params[:session][:username])
+          if user && user.authenticate(params[:session][:password])
             log_in(user)
-            render json: { status: 'success', user_id: user.id }
+            Rails.logger.debug "User logged in successfully: #{user.email}"
+            render json: { message: 'Login successful', user: user }, status: :ok
           else
-            render json: { status: 'error', message: 'Invalid username/email or password' }, status: :unauthorized
+            Rails.logger.debug "Invalid email/password combination or user not found"
+            render json: { error: 'Invalid email/password combination' }, status: :unauthorized
           end
+        end
+  
+        def destroy
+          log_out
+          render json: { message: 'Logout successful' }, status: :ok
+        end
+  
+        private
+  
+        def session_params
+          params.require(:session).permit(:email, :username, :password)
         end
       end
     end

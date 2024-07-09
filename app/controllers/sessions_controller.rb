@@ -9,9 +9,9 @@ class SessionsController < ApplicationController
 
   def create
     Rails.logger.debug "Params: #{params[:session]}"
-    user = User.find_by(email: params[:session][:email].downcase) || User.find_by(username:params[:session][:username ])
+    user = User.find_by(email: params[:session][:email].downcase) || User.find_by(username: params[:session][:username])
     if user && user.authenticate(params[:session][:password])
-      log_in user
+      log_in(user)
       Rails.logger.debug "User logged in successfully: #{user.email}"
       redirect_to root_path
     else
@@ -29,6 +29,6 @@ class SessionsController < ApplicationController
   private
 
   def session_params
-    params.require(:session).permit(:email, :password)
+    params.require(:session).permit(:email, :username, :password)
   end
 end
