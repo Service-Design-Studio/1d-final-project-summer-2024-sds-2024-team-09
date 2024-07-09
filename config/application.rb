@@ -24,5 +24,8 @@ module Blog
     # config.time_zone = "Central Time (US & Canada)"
     # config.eager_load_paths << Rails.root.join("extras")
     config.assets.paths << Rails.root.join('app', 'assets', 'videos')
+
+    # Set a different tmp directory
+    ENV['TMPDIR'] = 'C:/Users/Asus/T5 - SDS/T5-SDS/Temp/rails_cache'
   end
 end
