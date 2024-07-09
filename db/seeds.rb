@@ -7,3 +7,8 @@
 #   ["Action", "Comedy", "Drama", "Horror"].each do |genre_name|
 #     MovieGenre.find_or_create_by!(name: genre_name)
 #   end
+Video.create([
+  { title: 'Local Video 1', url: '/videos/Local Video 1.mp4', description: 'Description for Local Video 1', upload_date: DateTime.now },
+  { title: 'Local Video 2', url: '/videos/Local Video 2.mp4', description: 'Description for Local Video 2', upload_date: DateTime.now },
+  { title: 'Local Video 3', url: '/videos/Local Video 3.mp4', description: 'Description for Local Video 3', upload_date: DateTime.now }
+])

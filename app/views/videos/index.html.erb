@@ -1,26 +1,41 @@
-<p style="color: green"><%= notice %></p>
-
-<h1>Videos</h1>
-
-<div id="videos">
-  <% @videos.each do |video| %>
-    <%= render video %>
-    <p>
-      <%= link_to "Show this video", video %>
-    </p>
-  <% end %>
+<% content_for :title, "Video History" %>
+<div class="text-center">
+    <h1 class="display-4">Video History</h1>
+    <ul class="list-group mt-4">
+        <% @videos.each do |video| %>
+            <li class="list-group-item">
+                <h2>
+                    <a href="#" class="video-title" data-target="video-<%= video.id %>">
+                        <%= video.title %>
+                    </a>
+                </h2>
+                <p>Uploaded on: <%= video.upload_date.strftime('%B %d, %Y %I:%M %p') %></p>
+                <div id="video-<%= video.id %>" class="video-container" style="display: none;">
+                    <video width="320" height="240" controls>
+                        <source src="<%= video.url %>" type="video/mp4">
+                        Your browser does not support the video tag.
+                    </video>
+                </div>
+            </li>
+        <% end %>
+    </ul>
 </div>
 
-<%= link_to "New video", new_video_path %>
-
-# ########################
-# # Jya's Run - Sprint 2 #
-# ########################
-# #<h1>Video History</h1>
-# <ul>
-#   <% @videos.each do |video| %>
-#     <li>
-#       <%= link_to video.title, video_path(video) %> - <%= video.created_at.strftime("%Y-%m-%d %H:%M:%S") %>
-#     </li>
-#   <% end %>
-# </ul>
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        const titles = document.querySelectorAll(".video-title");
+        
+        titles.forEach(title => {
+            title.addEventListener("click", function(event) {
+                event.preventDefault();
+                const targetId = this.getAttribute("data-target");
+                const videoContainer = document.getElementById(targetId);
+                if (videoContainer.style.display === "none") {
+                    videoContainer.style.display = "block";
+                } else {
+                    videoContainer.style.display = "none";
+                }
+            });
+        });
+    });
+</script>
