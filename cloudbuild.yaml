@@ -31,7 +31,7 @@ steps:
 substitutions:
   _REGION: "asia-southeast1"
   _SERVICE_NAME: "crybabydatabase"
-  _INSTANCE_NAME: "crybabydatabase-db"
+  _INSTANCE_NAME: "crybabydatabase-sql"
 
 images:
   - "gcr.io/${PROJECT_ID}/${_SERVICE_NAME}"

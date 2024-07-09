@@ -8,6 +8,12 @@ default: &default
   adapter: sqlite3
   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
   timeout: 5000
+  # adapter: postgresql
+  # username: dbadmin
+  # password: VJBKLoNwypWjwAMbNGqXagVWmIfHtRQyCnXeHFyEQLlhgTUwgB
+  # database: crybabydatabase-db
+  # pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
+  # timeout: 5000
 
 development:
   <<: *default
