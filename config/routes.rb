@@ -16,20 +16,22 @@ Rails.application.routes.draw do
   get 'user', to: 'pages#user'
   get 'record', to: 'videos#index'
   get 'history', to: 'videos#history'
-  
+  get 'video-history', to: 'pages#video_history'
 
   resources :users, only: [:new, :create, :show, :destroy]
   resources :posts # Example resource for blog posts
   resource :user_settings, only: [:new, :create, :edit, :update]
-  resources :videos, only: [:index, :create, :update, :destroy]
+  resources :videos, only: [:index, :show, :edit, :create, :update, :destroy]
+
   resources :sessions, only: [:new, :create, :destroy]
   get 'api/videos', to: 'videos#api_index'
 
     # Namespaced API routes
     namespace :api do
+      resources :videos, only: [:index, :update, :destroy]
       namespace :v1 do
         resources :users, only: [:create, :show, :update, :destroy]
         resources :sessions, only: [:create]
-      end
+      end      
     end
 end
