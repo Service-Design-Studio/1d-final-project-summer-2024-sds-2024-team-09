@@ -8,7 +8,7 @@ Rails.application.routes.draw do
   get 'user', to: 'pages#user'
   get 'user', to: 'pages#record'
 
-  resources :videos, only: [:index]
+  resources :videos, only: [:index, :update]
 
   namespace :api, defaults: { format: :json } do
     resources :videos
