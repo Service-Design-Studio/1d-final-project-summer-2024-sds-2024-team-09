@@ -38,6 +38,9 @@ ENV RAILS_SERVE_STATIC_FILES=true
 ENV RAILS_LOG_TO_STDOUT=true
 ENV SECRET_KEY_BASE=0f68460d8b6d8a2f728162be2cd457726c5c9c849880121b8fdac3fb5e6317cb1618ee476a1edb1bdf6df6ac27c2bae00592ecefa89cc5f8413a19518c6d6a8d
 
+RUN bundle exec rake db:create
+RUN bundle exec rake db:migrate
+RUN bundle exec rake db:seed
 
 EXPOSE 8080
 CMD ["bin/rails", "server", "-b", "0.0.0.0", "-p", "8080"]
