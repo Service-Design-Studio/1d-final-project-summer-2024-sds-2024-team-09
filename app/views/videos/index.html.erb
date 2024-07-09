@@ -1,14 +1,25 @@
 <% content_for :title, "Video History" %>
 <div class="text-center">
     <h1 class="display-4">Video History</h1>
+    <div class="d-flex justify-content-center mb-4">
+        <label for="month">Sort by Month:</label>
+        <select id="month" class="form-control ml-2" onchange="sortVideosByMonth()">
+            <option value="">Select Month</option>
+            <% Date::MONTHNAMES.each_with_index do |month, index| %>
+                <% next if month.nil? %>
+                <option value="<%= index %>"><%= month %></option>
+            <% end %>
+        </select>
+    </div>
     <ul class="list-group mt-4">
         <% @videos.each do |video| %>
-            <li class="list-group-item">
+            <li class="list-group-item" data-month="<%= video.upload_date.month %>">
                 <h2>
                     <a href="#" class="video-title" data-target="video-<%= video.id %>">
                         <%= video.title %>
                     </a>
                     <button class="btn btn-sm btn-secondary ml-2 edit-btn" data-id="<%= video.id %>">Edit</button>
+                    <%= link_to 'Delete', video_path(video), method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-sm btn-danger ml-2" %>
                 </h2>
                 <p>Uploaded on: <%= video.upload_date.strftime('%B %d, %Y %I:%M %p') %></p>
                 <div id="video-<%= video.id %>" class="video-container" style="display: none;">
@@ -62,4 +73,17 @@
             });
         });
     });
+
+    function sortVideosByMonth() {
+        const month = document.getElementById("month").value;
+        const videos = document.querySelectorAll(".list-group-item");
+        videos.forEach(video => {
+            const videoMonth = video.getAttribute("data-month");
+            if (month === "" || videoMonth == month) {
+                video.style.display = "";
+            } else {
+                video.style.display = "none";
+            }
+        });
+    }
 </script>
