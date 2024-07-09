@@ -14,12 +14,12 @@ const Login = ({ setShowLogin }) => {
 
     return (
         <div className="font-ubuntu bg-base-100 w-full max-w-md rounded-lg p-6 py-12 justify-center">
-            <button aria-label="close" className="text-left mb-4" onClick={() => backHome()}>
+            <button aria-label="close" className="text-left" onClick={() => backHome()}>
                 <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
                 </svg>
             </button>
-            <div className="flex justify-center mb-6 py-10">
+            <div className="flex justify-center">
                 <img src="/public/logo.png" alt="Illustration" className="w-64 h-64" />
             </div>
             <h2 className="text-3xl font-bold text-primary text-center mb-4">Welcome Back</h2>
@@ -45,12 +45,21 @@ const Login = ({ setShowLogin }) => {
             </div>
             <div className="space-y-4 mx-8 mt-2">
                 <button
-                    className="w-full bg-info text-white py-2 px-4 rounded mt-6 hover:bg-info-600"
+                    className="w-full bg-info text-white py-2 px-4 rounded-full font-bold mt-6 hover:bg-info-600 text-lg"
                     onClick={handleNavigate}
                 >
                     Login
                 </button>
             </div>
+            <div className="space-y-4 mx-8 mt-2">
+                <p className="mt-4 font-lato">
+                    Don't have an account yet?{' '}
+                    <button className="text-blue-500" onClick={() => setShowLogin(false)}>
+                        Sign up
+                    </button>
+                </p>
+            </div>
+
         </div>
     );
 };
