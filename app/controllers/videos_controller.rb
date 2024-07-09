@@ -1,3 +1,4 @@
+# app/controllers/videos_controller.rb
 class VideosController < ApplicationController
   before_action :set_video, only: [:show, :edit, :update, :destroy]
 
@@ -6,10 +7,6 @@ class VideosController < ApplicationController
   end
 
   def show
-  end
-
-  def new
-    @video = Video.new
   end
 
   def edit
@@ -26,15 +23,15 @@ class VideosController < ApplicationController
 
   def update
     if @video.update(video_params)
-      redirect_to @video, notice: 'Video was successfully updated.'
+      render json: @video
     else
-      render :edit
+      render json: { errors: @video.errors.full_messages }, status: :unprocessable_entity
     end
   end
 
   def destroy
     @video.destroy
-    redirect_to videos_url, notice: 'Video was successfully destroyed.'
+    head :no_content
   end
 
   private
@@ -44,6 +41,6 @@ class VideosController < ApplicationController
   end
 
   def video_params
-    params.require(:video).permit(:title, :file_path)
+    params.require(:video).permit(:title, :file_path, :duration)
   end
 end

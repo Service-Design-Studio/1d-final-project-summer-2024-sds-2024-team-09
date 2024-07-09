@@ -8,7 +8,8 @@ Rails.application.routes.draw do
   # Defines the root path route ("/")
 
   # root 'pages#index'
-  root 'videos#index'
+  # root 'videos#index'
+  root 'pages#video_history'
 
   # get 'home', to: 'pages#home'
 
