@@ -1,8 +1,6 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
 
-
-
 const Login = ({ setShowLogin }) => {
     const navigate = useNavigate();
 
@@ -16,7 +14,7 @@ const Login = ({ setShowLogin }) => {
 
     return (
         <div className="font-ubuntu bg-base-100 w-full max-w-md rounded-lg p-6 py-12 justify-center">
-            <button className="text-left mb-4" onClick={() => backHome()}>
+            <button aria-label="close" className="text-left mb-4" onClick={() => backHome()}>
                 <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
                 </svg>
