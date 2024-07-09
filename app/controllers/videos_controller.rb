@@ -1,6 +1,16 @@
 class VideosController < ApplicationController
   def index
     @videos = Video.all
+
+    if params[:sort] == 'latest'
+      @videos = @videos.order(upload_date: :desc)
+    elsif params[:sort] == 'earliest'
+      @videos = @videos.order(upload_date: :asc)
+    end
+
+    if params[:month].present? && params[:year].present?
+      @videos = @videos.where('extract(month from upload_date) = ? AND extract(year from upload_date) = ?', params[:month], params[:year])
+    end
   end
 
   def edit
@@ -10,7 +20,7 @@ class VideosController < ApplicationController
   def update
     @video = Video.find(params[:id])
     if @video.update(video_params)
-      redirect_to history_path, notice: 'Video title was successfully updated.'
+      redirect_to videos_path, notice: 'Video title was successfully updated.'
     else
       render :edit
     end
@@ -19,12 +29,12 @@ class VideosController < ApplicationController
   def destroy
     @video = Video.find(params[:id])
     @video.destroy
-    redirect_to history_path, notice: 'Video was successfully deleted.'
+    redirect_to videos_path, notice: 'Video was successfully deleted.'
   end
 
   private
 
   def video_params
-    params.require(:video).permit(:title, :url, :upload_date)
+    params.require(:video).permit(:title)
   end
 end

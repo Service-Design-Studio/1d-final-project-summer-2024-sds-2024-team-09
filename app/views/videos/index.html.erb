@@ -4,18 +4,30 @@
   <div class="text-center">
     <h1 class="display-4">Video History</h1>
     <div class="d-flex justify-content-center mb-4">
-      <label for="month">Sort by Month:</label>
-      <select id="month" class="form-control ml-2" onchange="sortVideosByMonth()">
+      <label for="month" class="mr-2">Filter by Month:</label>
+      <select id="month" class="form-control ml-2" onchange="filterVideos()">
         <option value="">Select Month</option>
         <% Date::MONTHNAMES.each_with_index do |month, index| %>
           <% next if month.nil? %>
           <option value="<%= index %>"><%= month %></option>
         <% end %>
       </select>
+      <label for="year" class="ml-3 mr-2">Filter by Year:</label>
+      <select id="year" class="form-control ml-2" onchange="filterVideos()">
+        <option value="">Select Year</option>
+        <% (2000..Date.today.year).each do |year| %>
+          <option value="<%= year %>"><%= year %></option>
+        <% end %>
+      </select>
+      <label for="sort" class="ml-3 mr-2">Sort by:</label>
+      <select id="sort" class="form-control ml-2" onchange="sortVideos()">
+        <option value="latest">Latest</option>
+        <option value="earliest">Earliest</option>
+      </select>
     </div>
     <div class="list-group mt-4">
       <% @videos.each do |video| %>
-        <div class="list-group-item video-item d-flex align-items-center" data-month="<%= video.upload_date.month %>">
+        <div class="list-group-item video-item d-flex align-items-center" data-month="<%= video.upload_date.month %>" data-year="<%= video.upload_date.year %>">
           <div class="video-thumbnail">
             <%= video_tag video.url, class: 'img-fluid', controls: true %>
           </div>
@@ -36,15 +48,28 @@
 </div>
 
 <script>
-  function sortVideosByMonth() {
-    const selectedMonth = document.getElementById('month').value;
-    document.querySelectorAll('.video-item').forEach(item => {
-      if (!selectedMonth || item.dataset.month === selectedMonth) {
-        item.style.display = 'flex';
-      } else {
-        item.style.display = 'none';
-      }
-    });
+  function filterVideos() {
+    const month = document.getElementById('month').value;
+    const year = document.getElementById('year').value;
+    const url = new URL(window.location.href);
+    if (month) {
+      url.searchParams.set('month', month);
+    } else {
+      url.searchParams.delete('month');
+    }
+    if (year) {
+      url.searchParams.set('year', year);
+    } else {
+      url.searchParams.delete('year');
+    }
+    window.location.href = url.toString();
+  }
+
+  function sortVideos() {
+    const sort = document.getElementById('sort').value;
+    const url = new URL(window.location.href);
+    url.searchParams.set('sort', sort);
+    window.location.href = url.toString();
   }
 </script>
 
