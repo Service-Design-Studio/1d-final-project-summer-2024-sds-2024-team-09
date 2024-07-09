@@ -1,9 +1,7 @@
-const { environment } = require('@rails/webpacker')
+const { environment } = require('@rails/webpacker');
 
-<<<<<<< HEAD
-// module.exports = environment
-
-
+// Get the existing Babel loader
+const babelLoader = environment.loaders.get('babel');
 babelLoader.use[0].options = {
   cacheDirectory: true,
   presets: [
@@ -15,9 +13,9 @@ babelLoader.use[0].options = {
     ['@babel/plugin-proposal-private-property-in-object', { loose: true }],
     '@babel/plugin-syntax-dynamic-import'
   ]
-}
-=======
-// Add additional plugins or configuration here
->>>>>>> 38a4c1af772dc2f687f14c47bf0a491d38b15eef
+};
 
-module.exports = environment
+// Add additional plugins or configuration here if needed
+
+module.exports = environment;
+
