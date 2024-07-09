@@ -1,6 +1,10 @@
 class VideosController < ApplicationController
   def index
-    @videos = Video.all.order(upload_date: :desc)
+    @videos = Video.all
+  end
+
+  def edit
+    @video = Video.find(params[:id])
   end
 
   def update
@@ -8,7 +12,7 @@ class VideosController < ApplicationController
     if @video.update(video_params)
       redirect_to history_path, notice: 'Video title was successfully updated.'
     else
-      render :index
+      render :edit
     end
   end
 
@@ -21,6 +25,6 @@ class VideosController < ApplicationController
   private
 
   def video_params
-    params.require(:video).permit(:title)
+    params.require(:video).permit(:title, :url, :upload_date)
   end
 end

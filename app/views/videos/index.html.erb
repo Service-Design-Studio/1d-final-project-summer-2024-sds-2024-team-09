@@ -1,89 +1,79 @@
 <% content_for :title, "Video History" %>
-<div class="text-center">
+
+<div class="container mt-5">
+  <div class="text-center">
     <h1 class="display-4">Video History</h1>
     <div class="d-flex justify-content-center mb-4">
-        <label for="month">Sort by Month:</label>
-        <select id="month" class="form-control ml-2" onchange="sortVideosByMonth()">
-            <option value="">Select Month</option>
-            <% Date::MONTHNAMES.each_with_index do |month, index| %>
-                <% next if month.nil? %>
-                <option value="<%= index %>"><%= month %></option>
-            <% end %>
-        </select>
-    </div>
-    <ul class="list-group mt-4">
-        <% @videos.each do |video| %>
-            <li class="list-group-item" data-month="<%= video.upload_date.month %>">
-                <h2>
-                    <a href="#" class="video-title" data-target="video-<%= video.id %>">
-                        <%= video.title %>
-                    </a>
-                    <button class="btn btn-sm btn-secondary ml-2 edit-btn" data-id="<%= video.id %>">Edit</button>
-                    <%= link_to 'Delete', video_path(video), method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-sm btn-danger ml-2" %>
-                </h2>
-                <p>Uploaded on: <%= video.upload_date.strftime('%B %d, %Y %I:%M %p') %></p>
-                <div id="video-<%= video.id %>" class="video-container" style="display: none;">
-                    <video width="320" height="240" controls>
-                        <source src="<%= video.url %>" type="video/mp4">
-                        Your browser does not support the video tag.
-                    </video>
-                </div>
-                <div id="edit-form-<%= video.id %>" class="edit-form" style="display: none;">
-                    <%= form_with model: video, url: video_path(video), method: :put, local: true do |form| %>
-                        <div class="form-group">
-                            <%= form.label :title %>
-                            <%= form.text_field :title, class: "form-control" %>
-                        </div>
-                        <%= form.submit "Save", class: "btn btn-primary" %>
-                    <% end %>
-                </div>
-            </li>
+      <label for="month">Sort by Month:</label>
+      <select id="month" class="form-control ml-2" onchange="sortVideosByMonth()">
+        <option value="">Select Month</option>
+        <% Date::MONTHNAMES.each_with_index do |month, index| %>
+          <% next if month.nil? %>
+          <option value="<%= index %>"><%= month %></option>
         <% end %>
-    </ul>
+      </select>
+    </div>
+    <div class="list-group mt-4">
+      <% @videos.each do |video| %>
+        <div class="list-group-item video-item d-flex align-items-center" data-month="<%= video.upload_date.month %>">
+          <div class="video-thumbnail">
+            <%= video_tag video.url, class: 'img-fluid', controls: true %>
+          </div>
+          <div class="video-details ml-3">
+            <h2>
+              <a href="<%= video.url %>" class="video-title" data-target="video-<%= video.id %>">
+                <%= video.title %>
+              </a>
+            </h2>
+            <p>Uploaded on: <%= video.upload_date.strftime("%B %d, %Y %I:%M %p") %></p>
+            <%= link_to 'Edit', edit_video_path(video), class: "btn btn-secondary btn-sm" %>
+            <%= link_to 'Delete', video, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger btn-sm" %>
+          </div>
+        </div>
+      <% end %>
+    </div>
+  </div>
 </div>
 
 <script>
-    document.addEventListener("DOMContentLoaded", function() {
-        const titles = document.querySelectorAll(".video-title");
-        const editButtons = document.querySelectorAll(".edit-btn");
-
-        titles.forEach(title => {
-            title.addEventListener("click", function(event) {
-                event.preventDefault();
-                const targetId = this.getAttribute("data-target");
-                const videoContainer = document.getElementById(targetId);
-                if (videoContainer.style.display === "none") {
-                    videoContainer.style.display = "block";
-                } else {
-                    videoContainer.style.display = "none";
-                }
-            });
-        });
-
-        editButtons.forEach(button => {
-            button.addEventListener("click", function(event) {
-                event.stopPropagation(); // Prevent the click event from bubbling up to the video title link
-                const videoId = this.getAttribute("data-id");
-                const editForm = document.getElementById(`edit-form-${videoId}`);
-                if (editForm.style.display === "none") {
-                    editForm.style.display = "block";
-                } else {
-                    editForm.style.display = "none";
-                }
-            });
-        });
+  function sortVideosByMonth() {
+    const selectedMonth = document.getElementById('month').value;
+    document.querySelectorAll('.video-item').forEach(item => {
+      if (!selectedMonth || item.dataset.month === selectedMonth) {
+        item.style.display = 'flex';
+      } else {
+        item.style.display = 'none';
+      }
     });
-
-    function sortVideosByMonth() {
-        const month = document.getElementById("month").value;
-        const videos = document.querySelectorAll(".list-group-item");
-        videos.forEach(video => {
-            const videoMonth = video.getAttribute("data-month");
-            if (month === "" || videoMonth == month) {
-                video.style.display = "";
-            } else {
-                video.style.display = "none";
-            }
-        });
-    }
+  }
 </script>
+
+<style>
+  .video-thumbnail {
+    width: 200px;
+    height: auto;
+    flex-shrink: 0;
+  }
+
+  .video-details {
+    flex-grow: 1;
+  }
+
+  .video-item {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+    padding: 15px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+  }
+
+  .video-title {
+    font-size: 1.5rem;
+    color: #007bff;
+  }
+
+  .video-title:hover {
+    text-decoration: underline;
+  }
+</style>
