@@ -1,19 +1,6 @@
-const { environment } = require('@rails/webpacker')
+const { environment } = require('@rails/webpacker');
+const NodePolyfillPlugin = require('node-polyfill-webpack-plugin');
 
-// module.exports = environment
+environment.plugins.prepend('NodePolyfill', new NodePolyfillPlugin());
 
-
-babelLoader.use[0].options = {
-  cacheDirectory: true,
-  presets: [
-    ['@babel/preset-env', { modules: false }]
-  ],
-  plugins: [
-    ['@babel/plugin-proposal-class-properties', { loose: true }],
-    ['@babel/plugin-proposal-private-methods', { loose: true }],
-    ['@babel/plugin-proposal-private-property-in-object', { loose: true }],
-    '@babel/plugin-syntax-dynamic-import'
-  ]
-}
-
-module.exports = environment
+module.exports = environment;

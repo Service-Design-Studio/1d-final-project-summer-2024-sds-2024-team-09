@@ -81,7 +81,7 @@
 //   }
 // }
 
-module.exports = function(api) {
+module.exports = function (api) {
   api.cache(true);
 
   const presets = [
@@ -89,12 +89,12 @@ module.exports = function(api) {
       '@babel/preset-env',
       {
         targets: {
-          esmodules: true
+          esmodules: true,
         },
         useBuiltIns: 'entry',
-        corejs: { version: 3, proposals: true }
-      }
-    ]
+        corejs: { version: 3, proposals: true },
+      },
+    ],
   ];
 
   const plugins = [
@@ -102,11 +102,11 @@ module.exports = function(api) {
     '@babel/plugin-syntax-dynamic-import',
     '@babel/plugin-proposal-class-properties',
     '@babel/plugin-proposal-private-methods',
-    '@babel/plugin-proposal-private-property-in-object'
+    '@babel/plugin-proposal-private-property-in-object',
   ];
 
   return {
     presets,
-    plugins
+    plugins,
   };
 };
