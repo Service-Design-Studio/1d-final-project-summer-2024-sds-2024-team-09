@@ -1,5 +1,4 @@
 Rails.application.routes.draw do
-<<<<<<< HEAD
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
   # Reveal health status on /up that returns 200 if the app boots with no exceptions, otherwise 500.
@@ -11,9 +10,6 @@ Rails.application.routes.draw do
   # root 'pages#index'
   # root 'videos#index'
   root 'pages#video_history'
-=======
-  root 'pages#index'
->>>>>>> 38a4c1af772dc2f687f14c47bf0a491d38b15eef
 
   get 'camera', to: 'pages#camera'
   get 'camera_broadcast', to: 'pages#camera_broadcast'
@@ -22,41 +18,32 @@ Rails.application.routes.draw do
 
   resources :videos, only: [:index, :edit, :update, :destroy]
 
-<<<<<<< HEAD
   # resources :home
 
+  # root 'pages#home'
+  # root "pages#index"
 
+  get 'camera', to: 'pages#camera'
+  get 'camera_broadcast', to: 'pages#camera_broadcast'
+  get 'user', to: 'pages#user'
+  get 'user', to: 'pages#record'
+  # Route for video history page
+  get 'video-history', to: 'pages#video_history'
 
-    # root 'pages#home'
-    # root "pages#index"
+  # mount ActionCable.server => '/cable'
+  # resources :videos, only: [:create]
+  # mount ActionCable.server => '/cable'
+  # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
-    get 'camera', to: 'pages#camera'
-    get 'camera_broadcast', to: 'pages#camera_broadcast'
-    get 'user', to: 'pages#user'
-    get 'user', to: 'pages#record'
-    # Route for video history page
-    get 'video-history', to: 'pages#video_history'
-
-
-    # mount ActionCable.server => '/cable'
-    #resources :videos, only: [:create]
-    #mount ActionCable.server => '/cable'
-    # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
-
-    # Reveal health status on /up that returns 200 if the app boots with no exceptions, otherwise 500.
-    # Can be used by load balancers and uptime monitors to verify that the app is live.
-    #get "up" => "rails/health#show", as: :rails_health_check
+  # Reveal health status on /up that returns 200 if the app boots with no exceptions, otherwise 500.
+  # Can be used by load balancers and uptime monitors to verify that the app is live.
+  # get "up" => "rails/health#show", as: :rails_health_check
 
   # Resources for videos
   resources :videos, only: [:index, :show, :edit, :update, :destroy]
 
-
-   # API routes for videos
+  # API routes for videos
   namespace :api do
     resources :videos, only: [:index, :update, :destroy]
-=======
-  namespace :api, defaults: { format: :json } do
-    resources :videos
->>>>>>> 38a4c1af772dc2f687f14c47bf0a491d38b15eef
   end
 end
