@@ -13,6 +13,12 @@ gem "sqlite3", "~> 1.4"
 
 # Use the Puma web server [https://github.com/puma/puma]
 gem "puma", ">= 5.0"
+gem 'uglifier', '>= 1.3.0'
+gem 'sass-rails', '>= 5'
+gem 'sprockets-rails'
+# gem 'pg', '~> 1.2'
+# gem 'dotenv-rails', groups: [:development, :test]
+
 
 # Use JavaScript with ESM import maps [https://github.com/rails/importmap-rails]
 gem "importmap-rails"
@@ -27,6 +33,9 @@ gem "stimulus-rails"
 gem "jbuilder"
 gem 'bcrypt', '~> 3.1.7'
 gem 'bootstrap', '~> 5.0.0'
+
+# for google active storage
+gem "google-cloud-storage", "~> 1.11", require: false
 
 # Use Redis adapter to run Action Cable in production
 # gem "redis", ">= 4.0.1"
