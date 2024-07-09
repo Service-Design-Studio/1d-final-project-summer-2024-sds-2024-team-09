@@ -23,4 +23,11 @@ Rails.application.routes.draw do
   resource :user_settings, only: [:new, :create, :edit, :update]
   resources :videos, only: [:index, :create, :update, :destroy]
   get 'api/videos', to: 'videos#api_index'
+
+    # Namespaced API routes
+    namespace :api do
+      namespace :v1 do
+        resources :users, only: [:create, :show, :update, :destroy]
+      end
+    end
 end

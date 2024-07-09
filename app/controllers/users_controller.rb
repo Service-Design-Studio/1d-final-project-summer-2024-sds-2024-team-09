@@ -11,6 +11,8 @@ class UsersController < ApplicationController
       session[:user_id] = @user.id
       redirect_to @user
     else
+      Rails.logger.debug "User Params: #{user_params.inspect}"
+      Rails.logger.debug "Errors: #{@user.errors.full_messages}"
       render 'new'
     end
   end
@@ -22,6 +24,6 @@ class UsersController < ApplicationController
   private
 
   def user_params
-    params.require(:user).permit(:username, :email, :password, :password_confirmation)
+    params.require(:user).permit(:username, :email, :password)
   end
 end

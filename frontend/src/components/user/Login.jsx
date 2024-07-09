@@ -12,6 +12,12 @@ const Login = ({ setShowLogin }) => {
         navigate('/');
     }
 
+    const handleSignupNavigation = () => {
+        setShowLogin(false);
+    };
+
+
+
     return (
         <div className="font-ubuntu bg-base-100 w-full max-w-md rounded-lg p-6 py-12 justify-center">
             <button aria-label="close" className="text-left mb-4" onClick={() => backHome()}>
@@ -51,6 +57,9 @@ const Login = ({ setShowLogin }) => {
                     Login
                 </button>
             </div>
+            <button>
+                hello
+            </button>
         </div>
     );
 };

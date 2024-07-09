@@ -1,6 +1,9 @@
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
 
 const Signup = ({ setShowLogin }) => {
+
+
     return (
         <div className="w-full max-w-xs">
             <h2 className="text-2xl font-bold mb-6">Sign up</h2>
