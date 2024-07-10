@@ -15,17 +15,16 @@ keras = "^2.13.0"
 librosa = "^0.10.1"
 soundfile = "^0.12.1"
 
-# Platform-specific dependencies
-tensorflow = { version = "^2.13.0", markers = "platform_system == 'Darwin' and platform_machine != 'arm64'" }
-tensorflow-io-gcs-filesystem = { version="^0.34.0", markers = "platform_system == 'Darwin' and platform_machine == 'arm64'" }
-tflite-runtime = { version = "^2.14.0", markers = "platform_system == 'Linux'" }
+tensorflow = { version = "^2.13.0", platform = "darwin", markers = "platform_machine != 'arm64'"}
+tensorflow-io-gcs-filesystem = { version="^0.34.0", platform = "darwin", markers = "platform_machine == 'arm64'"}
 
+tflite-runtime = { version = "^2.14.0", platform = "linux" }
+tensorflow-macos = { version = "^2.13.0", platform = "darwin", markers = "platform_machine == 'arm64'"}
 
 huggingface-hub = "^0.20.1"
-python-dotenv = "^1.0.1"
 
 
-[tool.poetry.dev-dependencies]
+[tool.poetry.group.dev.dependencies]
 pytest = "^7.4.4"
 black = "^23.12.1"
 isort = "^5.13.2"
