@@ -1,49 +1,35 @@
 Rails.application.routes.draw do
-  # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
+  get 'user_settings/new'
+  get 'user_settings/create'
+  get 'user_settings/edit'
+  get 'user_settings/update'
+  root 'pages#index' # Root path for logged-in users
+  get 'signup', to: 'users#new'
+  post 'signup', to: 'users#create'
+  get 'login', to: 'sessions#new'
+  post 'login', to: 'sessions#create'
+  delete 'logout', to: 'sessions#destroy'
 
-  # Reveal health status on /up that returns 200 if the app boots with no exceptions, otherwise 500.
-  # Can be used by load balancers and uptime monitors to verify that the app is live.
-  # get "up" => "rails/health#show", as: :rails_health_check
-
-  # Defines the root path route ("/")
-  root 'pages#index'
-
-  # get 'home', to: 'pages#home'
-
-
-  # resources :home
-
-
-
-    # root 'pages#home'
-    # root "pages#index"
-
-    get 'camera', to: 'pages#camera'
+  # Example additional routes
+  get 'camera', to: 'pages#camera'
+  get 'camera_broadcast', to: 'pages#camera_broadcast'
+  get 'user', to: 'pages#user'
+  get 'record', to: 'videos#index'
+  get 'history', to: 'videos#history'
   
-    get 'camera_broadcast', to: 'pages#camera_broadcast'
-  
-    get 'user', to: 'pages#user'
 
-    get 'user', to: 'pages#record'
-  
-    # mount ActionCable.server => '/cable'
-    #resources :videos, only: [:create]
-    #mount ActionCable.server => '/cable'
-    # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
-  
-    # Reveal health status on /up that returns 200 if the app boots with no exceptions, otherwise 500.
-    # Can be used by load balancers and uptime monitors to verify that the app is live.
-    #get "up" => "rails/health#show", as: :rails_health_check
-  
-    # Defines the root path route ("/")
-    # root "posts#index"
-    #root 'pages#index'
-    #mount ActionCable.server => '/cable'
-  
-  
-    #######################
-    # JYA PART - SPRINT 2 #
-    #######################
-    # resources :videos, only: [:new, :create, :show, :index]
-    # root "videos#index"
+  resources :users, only: [:new, :create, :show, :destroy]
+  resources :posts # Example resource for blog posts
+  resource :user_settings, only: [:new, :create, :edit, :update]
+  resources :videos, only: [:index, :create, :update, :destroy]
+  resources :sessions, only: [:new, :create, :destroy]
+  get 'api/videos', to: 'videos#api_index'
+
+    # Namespaced API routes
+    namespace :api do
+      namespace :v1 do
+        resources :users, only: [:create, :show, :update, :destroy]
+        resources :sessions, only: [:create]
+      end
+    end
 end

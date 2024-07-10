@@ -15,18 +15,23 @@
         <div class="mt-4">
             <h2>Total Streaming Devices: <span id="streaming-count">0</span></h2>
         </div>
+        <button id="start-recording" class="btn btn-success">Start Recording</button>
+        <button id="stop-recording" class="btn btn-danger" disabled>Stop Recording</button>
+        <a id="download-link" class="btn btn-primary" style="display: none;">Download Recording</a>
     </div>
 
     <script>
-        const APP_ID = '<%= @user_setting.app_id %>';
-        const TOKEN = '<%= @user_setting.token %>';
-        const CHANNEL = '<%= @user_setting.channel %>';
+        const APP_ID = 'd543c7c876734c4a82da72a588edd047';
+        const TOKEN = '007eJxTYJAr0Zy7uXetZLnDiSyXov0NZ+eERj3evWZ2lcC7CUaN6q8UGFJMTYyTzZMtzM3MjU2STRItjFISzY0STS0sUlNSDEzMu250pzUEMjJoFPkzMjJAIIjPxpCUWJmbWMHAAACY9yBR';
+        const CHANNEL = 'baymax';
 
         let rtc = {
             client: null,
             remoteUsers: {},
             streamingCount: 0,
-            displayCount: 0
+            displayCount: 0,
+            mediaRecorder: null,
+            recordedChunks: []
         };
 
         const updateStreamingCount = () => {
@@ -75,6 +80,60 @@
                 updateStreamingCount();
             });
         };
+
+        const startRecording = () => {
+            const combinedStream = new MediaStream();
+
+            for (let uid in rtc.remoteUsers) {
+                const user = rtc.remoteUsers[uid];
+                if (user.videoTrack) {
+                    const videoTrack = user.videoTrack.getMediaStreamTrack();
+                    combinedStream.addTrack(videoTrack);
+                }
+            }
+
+            rtc.mediaRecorder = new MediaRecorder(combinedStream, {
+                mimeType: 'video/webm;codecs=vp9'
+            });
+
+            rtc.mediaRecorder.ondataavailable = (event) => {
+                if (event.data.size > 0) {
+                    rtc.recordedChunks.push(event.data);
+                }
+            };
+
+            rtc.mediaRecorder.onstop = () => {
+                const blob = new Blob(rtc.recordedChunks, { type: 'video/webm' });
+                const url = URL.createObjectURL(blob);
+                const downloadLink = document.getElementById('download-link');
+                const date = new Date();
+                const dateString = date.toISOString().split('T')[0];
+                const timeString = date.toTimeString().split(' ')[0].replace(/:/g, '-');
+                const filename = `recording_${dateString}_${timeString}.webm`;
+                downloadLink.href = url;
+                downloadLink.download = filename;
+                downloadLink.style.display = 'block';
+                downloadLink.click();
+
+                // Refresh the page after a short delay
+                setTimeout(() => {
+                    window.location.reload();
+                }, 1000);
+            };
+
+            rtc.mediaRecorder.start();
+            document.getElementById('start-recording').disabled = true;
+            document.getElementById('stop-recording').disabled = false;
+        };
+
+        const stopRecording = () => {
+            rtc.mediaRecorder.stop();
+            document.getElementById('start-recording').disabled = false;
+            document.getElementById('stop-recording').disabled = true;
+        };
+
+        document.getElementById('start-recording').addEventListener('click', startRecording);
+        document.getElementById('stop-recording').addEventListener('click', stopRecording);
 
         joinChannel();
     </script>

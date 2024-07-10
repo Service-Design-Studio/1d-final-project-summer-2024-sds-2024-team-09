@@ -8,12 +8,20 @@ Bundler.require(*Rails.groups)
 
 module Blog
   class Application < Rails::Application
+    config.middleware.insert_before 0, Rack::Cors do
+      allow do
+        origins 'your-frontend-domain.com'  # replace with your frontend domain
+        resource '*',
+          headers: :any,
+          methods: [:get, :post, :put, :patch, :delete, :options, :head]
+      end
+    end
     # Initialize configuration defaults for originally generated Rails version.
     config.load_defaults 7.1
-
     # Please, add to the `ignore` list any other `lib` subdirectories that do
     # not contain `.rb` files, or that should not be reloaded or eager loaded.
     # Common ones are `templates`, `generators`, or `middleware`, for example.
+    config.api_only = true
     config.autoload_lib(ignore: %w(assets tasks))
 
     # Configuration for the application, engines, and railties goes here.

@@ -26,9 +26,9 @@
             client: null,
         };
 
-        const APP_ID = 'd543c7c876734c4a82da72a588edd047';
-        const TOKEN = '007eJxTYAi++WbT7wPuP2boT3zsnyq/qPJXi6PF5qVXpkiX/2vh2nhYgSHF1MQ42TzZwtzM3Ngk2STRwigl0dwo0dTCIjUlxcDEXHRtc1pDICODbNJrVkYGCATx2RiSEitzEysYGABi5yJf';
-        const CHANNEL = 'baymax';
+        const APP_ID = '<%= @user_setting&.app_id || '' %>';
+        const TOKEN = '<%= @user_setting&.token || '' %>';
+        const CHANNEL = '<%= @user_setting&.channel || '' %>';
 
         // Function to generate sequential UID and save it in localStorage
         const getUID = () => {

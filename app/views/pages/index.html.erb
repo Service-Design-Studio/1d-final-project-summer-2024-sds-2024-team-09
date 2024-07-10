@@ -14,9 +14,14 @@
             <div class="d-flex justify-content-center mt-4">
                 <a href="/user" class="btn btn-primary btn-lg mx-2">User Page</a>
                 <a href="/camera" class="btn btn-secondary btn-lg mx-2">Camera Page</a>
+                <a href="/record" class="btn btn-secondary btn-lg mx-2">record</a>
                 <a href="/history" class="btn btn-secondary btn-lg mx-2">History</a>
-                <a href="/record" class="btn btn-secondary btn-lg mx-2">Record</a>
-                <a href="/histories" class="btn btn-secondary btn-lg mx-2">histories</a>
+                <a href="/user_settings/edit" class="btn btn-info btn-lg mx-2">Settings</a>
+                <form action="/logout" method="post" class="mx-2">
+                    <input type="hidden" name="_method" value="delete">
+                    <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+                    <button type="submit" class="btn btn-danger btn-lg">Log Out</button>
+                </form>
             </div>
         </div>
     </div>
