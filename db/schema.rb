@@ -10,7 +10,27 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_07_09_092004) do
+ActiveRecord::Schema[7.1].define(version: 2024_07_10_083446) do
+  create_table "user_settings", force: :cascade do |t|
+    t.integer "user_id", null: false
+    t.string "app_id"
+    t.string "token"
+    t.string "channel"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_user_settings_on_user_id"
+  end
+
+  create_table "users", force: :cascade do |t|
+    t.string "username"
+    t.string "email"
+    t.string "password_digest"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["email"], name: "index_users_on_email", unique: true
+    t.index ["username"], name: "index_users_on_username", unique: true
+  end
+
   create_table "videos", force: :cascade do |t|
     t.string "title"
     t.string "url"
@@ -20,4 +40,5 @@ ActiveRecord::Schema[7.1].define(version: 2024_07_09_092004) do
     t.datetime "updated_at", null: false
   end
 
+  add_foreign_key "user_settings", "users"
 end

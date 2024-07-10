@@ -39,7 +39,11 @@
             </h2>
             <p>Uploaded on: <%= video.upload_date.strftime("%B %d, %Y %I:%M %p") %></p>
             <%= link_to 'Edit', edit_video_path(video), class: "btn btn-secondary btn-sm" %>
-            <%= link_to 'Delete', video, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger btn-sm" %>
+            
+            <!-- Manual form for delete action -->
+            <%= form_with url: video_path(video), method: :delete, local: true do %>
+              <%= submit_tag 'Delete', data: { confirm: 'Are you sure?' }, class: "btn btn-danger btn-sm" %>
+            <% end %>
           </div>
         </div>
       <% end %>
