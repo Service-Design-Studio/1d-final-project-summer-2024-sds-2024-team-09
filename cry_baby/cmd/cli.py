@@ -71,7 +71,7 @@ def main():
         duration_seconds=4,
     )
     recorder = PyaudioRecorder(
-        logger=logger, temp_path=save_audio_dir, settings=settings
+        logger=logger, temp_path=pathlib.Path("/home/mike/cry-baby/records"), settings=settings
     )
     repository = JSONRepo(json_file_path=pathlib.Path("cry_baby.json"))
 
