@@ -1,6 +1,3 @@
-const { environment } = require('@rails/webpacker');
-const NodePolyfillPlugin = require('node-polyfill-webpack-plugin');
+const { environment } = require('@rails/webpacker')
 
-environment.plugins.prepend('NodePolyfill', new NodePolyfillPlugin());
-
-module.exports = environment;
+module.exports = environment

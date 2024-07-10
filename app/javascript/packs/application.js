@@ -1,5 +1,3 @@
-// app/javascript/packs/application.js
-
 console.log('Hello from Webpacker');
 
 // Import Turbo and controllers (if needed for your app)
@@ -20,3 +18,10 @@ ActiveStorage.start();
 
 // Import channels if needed
 import "channels";
+
+// Custom imports
+import { fetchVideos } from '../videos';
+
+document.addEventListener('DOMContentLoaded', () => {
+  fetchVideos();
+});
