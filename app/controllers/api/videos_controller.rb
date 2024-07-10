@@ -20,9 +20,10 @@ module Api
 
     def update
       video = Video.find(params[:id])
-      if video.update(video_params)
+      if video.update_columns(title: video_params[:title])
         render json: video
       else
+        Rails.logger.error(video.errors.full_messages.to_sentence)
         render json: video.errors, status: :unprocessable_entity
       end
     end
@@ -36,7 +37,7 @@ module Api
     private
 
     def video_params
-      params.require(:video).permit(:title, :file_path, :duration)
+      params.require(:video).permit(:title)
     end
   end
 end

@@ -163,7 +163,7 @@
                     'Content-Type': 'application/json',
                     'X-CSRF-Token': document.querySelector('meta[name="csrf-token"]').getAttribute('content')
                 },
-                body: JSON.stringify({ title: newTitle })
+                body: JSON.stringify({ video: { title: newTitle } })
             })
             .then(response => {
                 if (!response.ok) {
@@ -204,6 +204,7 @@
             }
         }
 
+        // Ensure that the fetchVideos function is called initially to load the videos
         fetchVideos(currentSortBy, currentOrder);
     </script>
 </body>

@@ -18,6 +18,7 @@ class Video < ApplicationRecord
   
     def file_path_url
       "#{file_path}"
+      #"/uploads/video/#{file_path}"
     end
   
     private
