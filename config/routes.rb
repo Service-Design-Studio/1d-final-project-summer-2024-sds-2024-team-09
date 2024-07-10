@@ -28,10 +28,11 @@ Rails.application.routes.draw do
 
     # Namespaced API routes
     namespace :api do
-      resources :videos, only: [:index, :update, :destroy]
       namespace :v1 do
         resources :users, only: [:create, :show, :update, :destroy]
         resources :sessions, only: [:create]
+        resources :videos, only: [:index, :update, :destroy]
+
       end      
     end
 end

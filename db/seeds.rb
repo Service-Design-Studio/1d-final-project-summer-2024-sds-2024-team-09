@@ -8,28 +8,38 @@
 #     MovieGenre.find_or_create_by!(name: genre_name)
 #   end
 
+
 # Clear existing videos
-#Video.destroy_all
+Video.destroy_all
 
-# Create new videos
-# Video.create([
-#   { title: 'Sample Video 1', date: Date.parse('2024-07-01'), path: '/videos/sample1.mp4' },
-#   { title: 'Sample Video 2', date: Date.parse('2024-07-02'), path: '/videos/sample2.mp4' },
-#   { title: 'Sample Video 3', date: Date.parse('2024-07-03'), path: '/videos/sample3.mp4' }
-# ])
+puts "Creating videos..."
 
-video_dir = 'C:/Users/Lee Jya Yin/Desktop/Sprint 2 Test Vids' # Change to your directory
-Dir.foreach(video_dir) do |filename|
-  next if filename == '.' || filename == '..'
+# Clear existing videos
+videos = [
+  { title: 'Video 1', date: Date.parse('2024-07-01'), path: '../public/uploads/video/1/IMG_2735.mp4' },
+  { title: 'Video 2', date: Date.parse('2024-07-02'), path: '../public/uploads/video/2/IMG_2739.mp4' },
+  { title: 'Video 3', date: Date.parse('2024-07-03'), path: '../public/uploads/video/3/IMG_2769.mp4' }
+]
 
-  video_path = File.join(video_dir, filename)
-
-  video = Video.new(title: filename)
-  video.file_path = File.open(video_path)
-
-  if video.save
-    puts "Imported: #{filename}"
-  else
-    puts "Failed to import: #{filename}"
-  end
+videos.each do |video|
+  created_video = Video.create!(video)
+  puts "Created video: #{created_video.title}"
 end
+
+puts "Seeded #{Video.count} videos."
+
+# video_dir = 'C:/Users/Lee Jya Yin/Desktop/Sprint 2 Test Vids' # Change to your directory
+# Dir.foreach(video_dir) do |filename|
+#   next if filename == '.' || filename == '..'
+
+#   video_path = File.join(video_dir, filename)
+
+#   video = Video.new(title: filename)
+#   video.file_path = File.open(video_path)
+
+#   if video.save
+#     puts "Imported: #{filename}"
+#   else
+#     puts "Failed to import: #{filename}"
+#   end
+# end
