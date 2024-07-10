@@ -100,7 +100,9 @@
                 console.log('Stream ended successfully!');
             } catch (error) {
                 console.error('Failed to end the stream:', error);
-            }
+            } finally {
+            window.location.href = '/'; // Redirect to the root path
+        }
         };
     </script>
 </body>

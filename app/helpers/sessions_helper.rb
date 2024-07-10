@@ -15,5 +15,13 @@ module SessionsHelper
       session.delete(:user_id)
       @current_user = nil
     end
+
+    def set_message(type, message)
+      @message = { type: type, text: message }
+    end
+  
+    def get_message
+      @message
+    end
   end
   

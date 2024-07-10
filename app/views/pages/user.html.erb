@@ -15,6 +15,7 @@
         <div class="mt-4">
             <h2>Total Streaming Devices: <span id="streaming-count">0</span></h2>
         </div>
+        <a href="/home" class="btn btn-primary btn-lg mx-2">Home</a>
     </div>
 
     <script>
@@ -69,8 +70,10 @@
                     cameraContainer.remove();
                 }
                 delete rtc.remoteUsers[user.uid];
-                rtc.streamingCount--;
-                updateStreamingCount();
+                if (rtc.streamingCount > 0) {
+                    rtc.streamingCount--;
+                    updateStreamingCount();
+                }
             });
         };
 
