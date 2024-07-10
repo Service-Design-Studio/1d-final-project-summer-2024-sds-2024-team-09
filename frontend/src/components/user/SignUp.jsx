@@ -25,7 +25,7 @@ const Signup = ({ setShowLogin }) => {
             </div>
 
             <div className="space-y-4 mx-8 mt-2">
-                <button className="w-full bg-info text-white py-2 px-4 rounded mt-6 hover:bg-info-600">
+                <button className="w-full bg-info text-white py-2 px-4 rounded mt-6 hover:bg-info-600 rounded-full">
                     Create Account
                 </button>
             </div>
