@@ -14,7 +14,6 @@ class PagesController < ApplicationController
   def require_login
     unless logged_in?
       Rails.logger.debug "User not logged in"
-      render json: { error: 'You must be logged in to access this section' }, status: :unauthorized
       redirect_to login_path
     else
       Rails.logger.debug "User logged in"

@@ -1,52 +1,9 @@
-# namespace :videos do
-#     desc "Import videos from a directory"
-#     task import: :environment do
-#       directory = File.join(Dir.home, 'Desktop', 'Sprint 2 Test Vids') # This code assumes that the videos to be displayed are stored in a directory named Sprint 2 Test Vids in Desktop
-#       Dir.glob("#{directory}/*").each do |file_path|
-#         next unless File.file?(file_path) # Skip if it's not a file
-  
-#         file_name = File.basename(file_path)
-#         title = file_name
-  
-#         video = Video.new(title: title)
-#         video.file_path = File.open(file_path) # Assign the file
-#         if video.save
-#           puts "Imported: #{file_name}"
-#         else
-#           puts "Failed to import: #{file_name}"
-#         end
-#       end
-#     end
-#   end  
-
-# namespace :videos do
-#   desc "Import videos from a directory"
-#   task import: :environment do
-#     require 'fileutils'
-
-#     video_dir = 'C:/Users/Lee Jya Yin/Desktop/Sprint 2 Test Vids' # Change to your directory
-#     Dir.foreach(video_dir) do |filename|
-#       next if filename == '.' || filename == '..'
-
-#       video_path = File.join(video_dir, filename)
-
-#       video = Video.new(title: filename)
-#       video.file_path = File.open(video_path)
-
-#       if video.save
-#         puts "Imported: #{filename}"
-#       else
-#         puts "Failed to import: #{filename}"
-#       end
-#     end
-#   end
-# end
-
-# lib/tasks/import_vids.rake
 namespace :videos do
   desc 'Import videos'
   task import: :environment do
-    source_video_dir = 'C:/Users/Lee Jya Yin/Desktop/Sprint 2 Test Vids'
+    require 'fileutils'
+
+    source_video_dir = '/Users/jingkaitan/Downloads/videos'
     dest_video_dir = Rails.root.join('public', 'uploads', 'video')
     assets_video_dir = Rails.root.join('app', 'assets', 'videos')
 
@@ -70,9 +27,11 @@ namespace :videos do
       video = Video.find_or_initialize_by(id: video_id)
       video.title = filename
 
-      # Use the uploader to assign the file_path
-      video.file_path = File.open(file)
-      
+      # Use CarrierWave to assign the path
+      File.open(file) do |f|
+        video.path = f
+      end
+
       if video.save
         puts "Imported: #{filename}"
       else
@@ -81,6 +40,3 @@ namespace :videos do
     end
   end
 end
-
-
-

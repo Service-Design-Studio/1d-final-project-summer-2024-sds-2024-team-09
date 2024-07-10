@@ -10,9 +10,9 @@
 
 class Video < ApplicationRecord
     belongs_to :user
-    has_one_attached :file
+    has_one_attached :file_path
     
-    mount_uploader :file_path, VideoUploader
+    mount_uploader :path, VideoUploader
   
     validates :title, presence: true
     validates :file_path, presence: true
