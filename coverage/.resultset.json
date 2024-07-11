@@ -1,7 +1,7 @@
 {
   "Cucumber Features": {
     "coverage": {
-      "/home/mike/1d-final-project-summer-2024-sds-2024-team-09/config/environment.rb": {
+      "/Users/jingkaitan/Documents/GitHub/1d-final-project-summer-2024-sds-2024-team-09/config/environment.rb": {
         "lines": [
           null,
           1,
@@ -10,7 +10,7 @@
           1
         ]
       },
-      "/home/mike/1d-final-project-summer-2024-sds-2024-team-09/config/application.rb": {
+      "/Users/jingkaitan/Documents/GitHub/1d-final-project-summer-2024-sds-2024-team-09/config/application.rb": {
         "lines": [
           1,
           null,
@@ -42,7 +42,7 @@
           null
         ]
       },
-      "/home/mike/1d-final-project-summer-2024-sds-2024-team-09/config/boot.rb": {
+      "/Users/jingkaitan/Documents/GitHub/1d-final-project-summer-2024-sds-2024-team-09/config/boot.rb": {
         "lines": [
           1,
           null,
@@ -50,7 +50,7 @@
           1
         ]
       },
-      "/home/mike/1d-final-project-summer-2024-sds-2024-team-09/config/environments/test.rb": {
+      "/Users/jingkaitan/Documents/GitHub/1d-final-project-summer-2024-sds-2024-team-09/config/environments/test.rb": {
         "lines": [
           1,
           null,
@@ -118,7 +118,7 @@
           null
         ]
       },
-      "/home/mike/1d-final-project-summer-2024-sds-2024-team-09/config/initializers/assets.rb": {
+      "/Users/jingkaitan/Documents/GitHub/1d-final-project-summer-2024-sds-2024-team-09/config/initializers/assets.rb": {
         "lines": [
           null,
           null,
@@ -134,7 +134,7 @@
           null
         ]
       },
-      "/home/mike/1d-final-project-summer-2024-sds-2024-team-09/config/initializers/content_security_policy.rb": {
+      "/Users/jingkaitan/Documents/GitHub/1d-final-project-summer-2024-sds-2024-team-09/config/initializers/content_security_policy.rb": {
         "lines": [
           null,
           null,
@@ -163,7 +163,7 @@
           null
         ]
       },
-      "/home/mike/1d-final-project-summer-2024-sds-2024-team-09/config/initializers/filter_parameter_logging.rb": {
+      "/Users/jingkaitan/Documents/GitHub/1d-final-project-summer-2024-sds-2024-team-09/config/initializers/filter_parameter_logging.rb": {
         "lines": [
           null,
           null,
@@ -175,7 +175,7 @@
           null
         ]
       },
-      "/home/mike/1d-final-project-summer-2024-sds-2024-team-09/config/initializers/inflections.rb": {
+      "/Users/jingkaitan/Documents/GitHub/1d-final-project-summer-2024-sds-2024-team-09/config/initializers/inflections.rb": {
         "lines": [
           null,
           null,
@@ -195,7 +195,7 @@
           null
         ]
       },
-      "/home/mike/1d-final-project-summer-2024-sds-2024-team-09/config/initializers/permissions_policy.rb": {
+      "/Users/jingkaitan/Documents/GitHub/1d-final-project-summer-2024-sds-2024-team-09/config/initializers/permissions_policy.rb": {
         "lines": [
           null,
           null,
@@ -212,68 +212,68 @@
           null
         ]
       },
-      "/home/mike/1d-final-project-summer-2024-sds-2024-team-09/spec/factories/user.rb": {
+      "/Users/jingkaitan/Documents/GitHub/1d-final-project-summer-2024-sds-2024-team-09/spec/factories/user.rb": {
         "lines": [
           1,
           1,
           7,
           5,
           5,
+          11,
+          null,
+          null
+        ]
+      },
+      "/Users/jingkaitan/Documents/GitHub/1d-final-project-summer-2024-sds-2024-team-09/config/routes.rb": {
+        "lines": [
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          null,
+          null,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          null,
+          null,
+          1,
+          1,
+          1,
+          1,
+          1,
+          null
+        ]
+      },
+      "/Users/jingkaitan/Documents/GitHub/1d-final-project-summer-2024-sds-2024-team-09/app/helpers/application_helper.rb": {
+        "lines": [
+          1,
+          null
+        ]
+      },
+      "/Users/jingkaitan/Documents/GitHub/1d-final-project-summer-2024-sds-2024-team-09/app/helpers/sessions_helper.rb": {
+        "lines": [
+          1,
+          1,
           7,
           null,
-          null
-        ]
-      },
-      "/home/mike/1d-final-project-summer-2024-sds-2024-team-09/config/routes.rb": {
-        "lines": [
+          null,
           1,
-          1,
-          1,
-          1,
-          1,
-          1,
-          1,
-          1,
-          1,
-          1,
-          1,
+          39,
           null,
           null,
           1,
-          1,
-          1,
-          1,
-          1,
-          1,
-          null,
-          null,
-          1,
-          1,
-          1,
-          1,
-          1,
-          null
-        ]
-      },
-      "/home/mike/1d-final-project-summer-2024-sds-2024-team-09/app/helpers/application_helper.rb": {
-        "lines": [
-          1,
-          null
-        ]
-      },
-      "/home/mike/1d-final-project-summer-2024-sds-2024-team-09/app/helpers/sessions_helper.rb": {
-        "lines": [
-          1,
-          1,
-          5,
-          null,
-          null,
-          1,
-          25,
-          null,
-          null,
-          1,
-          21,
+          32,
           null,
           null,
           1,
@@ -286,31 +286,31 @@
           null,
           null,
           1,
-          10,
+          17,
           null,
           null,
           null
         ]
       },
-      "/home/mike/1d-final-project-summer-2024-sds-2024-team-09/app/helpers/user_settings_helper.rb": {
+      "/Users/jingkaitan/Documents/GitHub/1d-final-project-summer-2024-sds-2024-team-09/app/helpers/user_settings_helper.rb": {
         "lines": [
           1,
           null
         ]
       },
-      "/home/mike/1d-final-project-summer-2024-sds-2024-team-09/app/helpers/users_helper.rb": {
+      "/Users/jingkaitan/Documents/GitHub/1d-final-project-summer-2024-sds-2024-team-09/app/helpers/users_helper.rb": {
         "lines": [
           1,
           null
         ]
       },
-      "/home/mike/1d-final-project-summer-2024-sds-2024-team-09/app/helpers/videos_helper.rb": {
+      "/Users/jingkaitan/Documents/GitHub/1d-final-project-summer-2024-sds-2024-team-09/app/helpers/videos_helper.rb": {
         "lines": [
           1,
           null
         ]
       },
-      "/home/mike/1d-final-project-summer-2024-sds-2024-team-09/features/step_definitions/pages_controller_steps.rb": {
+      "/Users/jingkaitan/Documents/GitHub/1d-final-project-summer-2024-sds-2024-team-09/features/step_definitions/pages_controller_steps.rb": {
         "lines": [
           1,
           1,
@@ -342,7 +342,7 @@
           null
         ]
       },
-      "/home/mike/1d-final-project-summer-2024-sds-2024-team-09/features/step_definitions/sessions_controller_steps.rb": {
+      "/Users/jingkaitan/Documents/GitHub/1d-final-project-summer-2024-sds-2024-team-09/features/step_definitions/sessions_controller_steps.rb": {
         "lines": [
           1,
           1,
@@ -398,7 +398,7 @@
           null
         ]
       },
-      "/home/mike/1d-final-project-summer-2024-sds-2024-team-09/features/step_definitions/user_login_and_streaming_steps.rb": {
+      "/Users/jingkaitan/Documents/GitHub/1d-final-project-summer-2024-sds-2024-team-09/features/step_definitions/user_login_and_streaming_steps.rb": {
         "lines": [
           1,
           null,
@@ -408,11 +408,59 @@
           null,
           null,
           null,
+          null,
+          1,
+          2,
+          2,
+          2,
+          2,
+          null,
+          null,
+          1,
+          1,
+          null,
+          null,
+          1,
+          1,
+          1,
+          null,
+          null,
+          1,
+          1,
+          1,
+          1,
+          null,
+          null,
+          1,
+          3,
+          null,
+          null,
+          1,
+          1,
+          1,
+          null,
+          null,
+          null,
+          1,
+          1,
+          1,
           1,
           0,
           0,
           0,
+          null,
+          null,
+          null,
+          1,
           0,
+          null,
+          null,
+          1,
+          1,
+          null,
+          null,
+          1,
+          2,
           null,
           null,
           1,
@@ -421,126 +469,84 @@
           null,
           1,
           0,
-          null,
-          null,
+          null
+        ]
+      },
+      "/Users/jingkaitan/Documents/GitHub/1d-final-project-summer-2024-sds-2024-team-09/app/controllers/pages_controller.rb": {
+        "lines": [
           1,
-          0,
-          null,
-          null,
           1,
-          0,
-          0,
-          0,
-          0,
-          0,
-          null,
-          0,
-          0,
-          null,
-          null,
-          0,
-          null,
-          null,
-          1,
-          0,
-          null,
-          null,
-          1,
-          0,
-          null,
           null,
           1,
           4,
           null,
-          null,
-          1,
-          0,
-          null,
-          null,
-          1,
-          0,
-          null,
-          null,
-          1,
-          0,
           null
         ]
       },
-      "/home/mike/1d-final-project-summer-2024-sds-2024-team-09/app/controllers/pages_controller.rb": {
+      "/Users/jingkaitan/Documents/GitHub/1d-final-project-summer-2024-sds-2024-team-09/app/controllers/application_controller.rb": {
         "lines": [
           1,
           1,
           null,
           1,
+          null,
+          1,
+          null,
+          1,
+          16,
+          2,
           2,
           null,
+          null,
+          null,
           null
         ]
       },
-      "/home/mike/1d-final-project-summer-2024-sds-2024-team-09/app/controllers/application_controller.rb": {
+      "/Users/jingkaitan/Documents/GitHub/1d-final-project-summer-2024-sds-2024-team-09/app/models/user.rb": {
         "lines": [
-          1,
-          1,
-          null,
-          1,
-          null,
-          1,
-          null,
           1,
           11,
-          2,
-          2,
+          1,
           null,
+          1,
+          1,
+          null,
+          1,
+          1,
           null,
           null,
           null
         ]
       },
-      "/home/mike/1d-final-project-summer-2024-sds-2024-team-09/app/models/user.rb": {
+      "/Users/jingkaitan/Documents/GitHub/1d-final-project-summer-2024-sds-2024-team-09/app/models/application_record.rb": {
         "lines": [
           1,
+          1,
+          null
+        ]
+      },
+      "/Users/jingkaitan/Documents/GitHub/1d-final-project-summer-2024-sds-2024-team-09/app/controllers/sessions_controller.rb": {
+        "lines": [
+          1,
+          1,
+          null,
+          1,
+          16,
+          1,
+          null,
+          null,
+          null,
+          1,
+          9,
+          9,
+          9,
           7,
-          1,
+          7,
+          7,
           null,
-          1,
-          1,
-          null,
-          1,
-          1,
-          null,
-          null,
-          null
-        ]
-      },
-      "/home/mike/1d-final-project-summer-2024-sds-2024-team-09/app/models/application_record.rb": {
-        "lines": [
-          1,
-          1,
-          null
-        ]
-      },
-      "/home/mike/1d-final-project-summer-2024-sds-2024-team-09/app/controllers/sessions_controller.rb": {
-        "lines": [
-          1,
-          1,
-          null,
-          1,
-          10,
-          1,
-          null,
-          null,
-          null,
-          1,
-          6,
-          6,
-          6,
-          5,
-          5,
-          5,
-          null,
-          1,
-          1,
-          1,
+          2,
+          2,
+          2,
           null,
           null,
           null,
@@ -557,7 +563,7 @@
           null
         ]
       },
-      "/home/mike/1d-final-project-summer-2024-sds-2024-team-09/app/models/user_setting.rb": {
+      "/Users/jingkaitan/Documents/GitHub/1d-final-project-summer-2024-sds-2024-team-09/app/models/user_setting.rb": {
         "lines": [
           1,
           1,
@@ -565,6 +571,6 @@
         ]
       }
     },
-    "timestamp": 1720683593
+    "timestamp": 1720685211
   }
 }

@@ -1,9 +1,10 @@
 require 'factory_bot'
 
 Given('a user exists') do
-  @user = FactoryBot.build(username: 'hoooo', 
-                            email: 'hooo@example.com', 
-                            password: 'password')
+  @user = FactoryBot.create(:user, 
+                           username: 'hoooo', 
+                           email: 'hooo@example.com', 
+                           password: 'password')
 end
 
 Given('the user is logged in') do
@@ -18,7 +19,14 @@ When('the user visits the camera page') do
 end
 
 When('the user clicks the {string} button') do |button|
+  visit current_url
   click_button button
+end
+
+When('the user clicks the {string} button and waits for {string}') do |button, content|
+  visit current_url
+  click_button button
+  expect(page).to have_content(content, wait: 10)
 end
 
 Then('the user should see {string}') do |content|
@@ -26,17 +34,19 @@ Then('the user should see {string}') do |content|
 end
 
 Given('another user is broadcasting') do
-  other_user = FactoryBot.create(:user, email: 'other@example.com', password: 'password', password_confirmation: 'password')
-  visit login_path
-  fill_in 'Email', with: other_user.email
-  fill_in 'Password', with: other_user.password
-  click_button 'Log In'
-  
-  visit camera_path
-  click_button 'Join as Host'
-
-  # Log out other user
-  click_link 'Log Out'
+  using_session('broadcaster') do
+    @broadcaster = FactoryBot.create(:user, 
+                                     username: 'broadcaster', 
+                                     email: 'broadcaster@gmail.com', 
+                                     password: 'password')
+    visit login_path
+    fill_in 'Email', with: @broadcaster.email
+    fill_in 'Password', with: @broadcaster.password
+    click_button 'Log in'
+    visit camera_broadcast_path
+    click_button 'Join as host'
+    expect(page).to have_content('Broadcasting Live')
+  end
 end
 
 When('the user visits the camera broadcast page') do
@@ -48,7 +58,7 @@ When('the user visits their profile page') do
 end
 
 When('the user visits the login page') do
-  visit new_user_session_path
+  visit login_path
 end
 
 When('the user fills in the {string} field with {string}') do |field, value|
@@ -57,8 +67,4 @@ end
 
 Then('the {string} field should contain {string}') do |field, value|
   expect(find_field(field).value).to eq value
-end
-
-Then('the user should see {string}') do |content|
-  expect(page).to have_content(content)
 end
