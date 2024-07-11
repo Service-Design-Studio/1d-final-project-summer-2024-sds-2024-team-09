@@ -18,6 +18,8 @@ gem 'sass-rails', '>= 5'
 gem 'sprockets-rails'
 # gem 'pg', '~> 1.2'
 # gem 'dotenv-rails', groups: [:development, :test]
+gem 'rspec-rails', '~> 5.0.0'
+
 
 
 # Use JavaScript with ESM import maps [https://github.com/rails/importmap-rails]
@@ -73,6 +75,14 @@ end
 
 group :test do
   # Use system testing [https://guides.rubyonrails.org/testing.html#system-testing]
+  gem 'byebug'
   gem "capybara"
   gem "selenium-webdriver"
+  gem 'rspec-mocks'
+  gem 'webmock'
+  gem 'cucumber-rails', require: false
+  gem 'database_cleaner'
+  gem 'database_cleaner-active_record'
+  gem 'simplecov'
+  gem 'rails-controller-testing'
 end
