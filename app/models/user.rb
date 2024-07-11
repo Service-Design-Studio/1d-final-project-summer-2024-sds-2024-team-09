@@ -6,7 +6,7 @@ class User < ApplicationRecord
     validates :email, presence: true, uniqueness: { case_sensitive: false }
 
     has_one :user_setting, dependent: :destroy
-  has_many :videos, dependent: :destroy
+    has_many :videos, dependent: :destroy
     # accepts_nested_attributes_for :user_setting
   end
   

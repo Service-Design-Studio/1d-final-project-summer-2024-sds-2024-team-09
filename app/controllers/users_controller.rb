@@ -11,7 +11,9 @@ class UsersController < ApplicationController
       session[:user_id] = @user.id
       redirect_to root_path
     else
-      render 'new'
+      Rails.logger.debug "Email already exist or passsword do not match"
+      flash.now[:danger] = 'Email already exist or passsword do not match'
+      render :new, status: :unprocessable_entity
     end
   end
 

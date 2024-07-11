@@ -16,10 +16,8 @@ class SessionsController < ApplicationController
       redirect_to root_path
     else
       Rails.logger.debug "Invalid email/password combination or user not found"
-      # flash.now[:danger] = 'Invalid email/password combination'
-      # Rails.logger.debug "Flash: #{flash.inspect}"
-      set_message(:danger, 'Invalid email/password combination')
-      render 'new'
+      flash.now[:danger] = 'Invalid email/password combination'
+      render :new, status: :unprocessable_entity
     end
   end
 

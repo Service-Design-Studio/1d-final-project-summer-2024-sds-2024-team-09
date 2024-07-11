@@ -13,6 +13,9 @@
   <%= form.password_field :password_confirmation %>
 
   <%= form.submit "Sign Up" %>
+    <% if get_message %>
+      <div class="alert alert-<%= get_message[:danger] %>"><%= get_message[:text] %></div>
+    <% end %>
 <% end %>
 
 <%= link_to "Log In", login_path %>
