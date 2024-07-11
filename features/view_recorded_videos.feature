@@ -9,4 +9,3 @@ Feature: View Recorded Videos of Child Crying
     When recorded videos are stored in the database
     Then the user should be able to view the recorded videos on the Video History Page
 
-

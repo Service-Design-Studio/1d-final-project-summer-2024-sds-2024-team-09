@@ -15,4 +15,3 @@ Feature: Prevent accidental deletion of Recorded Videos of Child Crying
     When the user cancels the deletion
     Then the video should not be deleted
     And the video should still appear on the Video History Page
-
