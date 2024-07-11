@@ -2,7 +2,7 @@ Feature: User Login and Streaming
 
   Scenario: User can broadcast camera stream
     Given a user exists
-    And the user is logged in
+    Given the user is logged in
     When the user visits the camera page
     And the user clicks the "Join as Host" button
     Then the user should see "Local user"

@@ -1,5 +1,9 @@
+require 'factory_bot'
+
 Given('a user exists') do
-  @user = FactoryBot.create(:user)
+  @user = FactoryBot.build(username: 'hoooo', 
+                            email: 'hooo@example.com', 
+                            password: 'password')
 end
 
 Given('the user is logged in') do
