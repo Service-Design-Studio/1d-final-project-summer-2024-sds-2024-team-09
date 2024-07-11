@@ -1,6 +1,6 @@
 Feature: Prevent accidental deletion of Recorded Videos of Child Crying
 
-  As a parent
+  As a guardian
   I want to be prompted for confirmation before deleting a video
   So that I can avoid accidental deletion of important videos
 
