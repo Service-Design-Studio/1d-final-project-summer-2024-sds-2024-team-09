@@ -1,18 +1,38 @@
-<h1>Set Up Your Settings</h1>
+<h1>Edit Camera Credentials</h1>
 <%= form_with(model: @user_setting, local: true) do |form| %>
+  <%= form.label :app_id %>
+  <%= form.text_field :app_id %>
+
+  <%= form.label :token %>
+  <%= form.text_field :token %>
+
+  <%= form.label :channel %>
+  <%= form.text_field :channel %>
+
+  <%= form.submit "Save" %>
+<% end %>
+
+<h2>Authorized Emails</h2>
+<%= form_with url: add_email_user_setting_path(@user_setting), method: :post, local: true do %>
   <div class="form-group">
-    <%= form.label :app_id %>
-    <%= form.text_field :app_id, class: 'form-control' %>
+    <%= label_tag :email %>
+    <%= text_field_tag :email, nil, class: 'form-control' %>
   </div>
-  <div class="form-group">
-    <%= form.label :token %>
-    <%= form.text_field :token, class: 'form-control' %>
-  </div>
-  <div class="form-group">
-    <%= form.label :channel %>
-    <%= form.text_field :channel, class: 'form-control' %>
-  </div>
-  <div class="form-group">
-    <%= form.submit 'Save Settings', class: 'btn btn-primary' %>
-  </div>
+  <%= submit_tag "Add Email", class: "btn btn-primary" %>
+<% end %>
+
+<ul>
+  <% @user_setting.emails.each do |email| %>
+    <li>
+      <%= email %>
+      <%= form_with url: remove_email_user_setting_path(@user_setting), method: :delete, local: true do %>
+        <%= hidden_field_tag :email, email %>
+        <%= submit_tag "Remove", class: "btn btn-danger btn-sm" %>
+      <% end %>
+    </li>
+  <% end %>
+</ul>
+
+<% if @user_setting.emails.empty? %>
+  <p>No emails authorized yet.</p>
 <% end %>
