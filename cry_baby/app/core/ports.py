@@ -42,24 +42,12 @@ class Recorder(ABC):
         ```
         """
 
-    @abstractmethod
-    def setup(self):
-        """
-        Setup the required resources for recording
-        """
-
-    @abstractmethod
-    def tear_down(self):
-        """
-        Tear down the required resources for recording
-        """
-
 
 class Repository(ABC):
     @abstractmethod
     def save(self, audio_file_path: pathlib.Path, prediction: float):
         """
-        Save the audio file, and it's prediction to the repository
+        Save the audio file, and its prediction to the repository
         TODO: Probably should also store which version of the model was used
         """
 
@@ -73,7 +61,7 @@ class Service(ABC):
         """
 
     @abstractmethod
-    def continously_evaluate_from_microphone(self) -> Optional[queue.Queue]:
+    def continuously_evaluate_from_microphone(self) -> Optional[queue.Queue]:
         """
         Continuously record audio and classify it
         return a queue of the probabilities that the audio contains a baby crying

@@ -3,7 +3,7 @@ import os
 import pathlib
 import threading
 
-import pyaudio
+import sounddevice as sd
 from hexalog.adapters.cli_logger import ColorfulCLILogger
 from huggingface_hub import from_pretrained_keras, hf_hub_download, login
 
@@ -46,11 +46,11 @@ def run_continously(
         repository=repository,
         audio_file_client=audio_file_client,
     )
-    logger.info("Starting to continously evaluate from microphone")
+    logger.info("Starting to continuously evaluate from system audio")
     while not SHUTDOWN_EVENT.is_set():
         try:
-            service.continously_evaluate_from_microphone()
-            logger.info("Press ctr+c to stop")
+            service.continuously_evaluate_from_microphone()
+            logger.info("Press ctrl+c to stop")
             SHUTDOWN_EVENT.wait()
         except KeyboardInterrupt:
             logger.info("Stopping CryBabyService")
@@ -64,14 +64,13 @@ def main():
     logger = ColorfulCLILogger()
     save_audio_dir = pathlib.Path(os.getenv("SAVE_AUDIO_DIR", "/tmp"))
     settings = PyaudioRecordingSettings(
-        audio_file_format=pyaudio.paInt16,
         number_of_audio_signals=1,
         frames_per_buffer=1024,
         recording_rate_hz=44100,
         duration_seconds=4,
     )
     recorder = PyaudioRecorder(
-        logger=logger, temp_path=pathlib.Path("/home/mike/cry-baby/records"), settings=settings
+        logger=logger, temp_path=save_audio_dir, settings=settings
     )
     repository = JSONRepo(json_file_path=pathlib.Path("cry_baby.json"))
 
@@ -84,7 +83,6 @@ def main():
         hop_length=512,
     )
 
-    # TODO: it's horrible to import the classifiers here
     if tensorflow_available():
         from cry_baby.app.adapters.classifiers.tensorflow import TensorFlowClassifier
 
