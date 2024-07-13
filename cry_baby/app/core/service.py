@@ -23,10 +23,9 @@ class CryBabyService(ports.Service):
         self.recorder = recorder
         self.repository = repository
         self.audio_file_client = audio_file_client
+        self.thread = None
 
-    def evaluate_from_microphone(
-        self,
-    ) -> float:
+    def evaluate_from_microphone(self) -> float:
         """
         Record audio and classify it
         return the probability that the audio contains a baby crying
@@ -35,7 +34,7 @@ class CryBabyService(ports.Service):
         audio_file = self.recorder.record()
         return self.classifier.classify(audio_file)
 
-    def continously_evaluate_from_microphone(self) -> Optional[queue.Queue]:
+    def continuously_evaluate_from_microphone(self) -> Optional[queue.Queue]:
         file_written_notification_queue = self.recorder.continuously_record()
         signal_thread = threading.Thread(
             target=self._handle_files_written,
@@ -44,7 +43,7 @@ class CryBabyService(ports.Service):
         signal_thread.daemon = True
         signal_thread.start()
         self.logger.info(
-            "Service beginning to continuously evaluate audio from microphone"
+            "Service beginning to continuously evaluate audio from system audio"
         )
         self.thread = signal_thread
 
@@ -68,6 +67,7 @@ class CryBabyService(ports.Service):
             self.repository.save(file_path, prediction)
 
     def stop_continuous_evaluation(self):
-        self.recorder.tear_down()
         self.logger.info("Service stopping continuous evaluation")
-        print(self.thread)
+        if self.thread is not None:
+            self.thread.join()
+            self.thread = None
