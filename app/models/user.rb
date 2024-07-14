@@ -1,5 +1,7 @@
 class User < ApplicationRecord
     before_save { self.email = email.downcase }
+    has_many :cameras, dependent: :destroy
+    
     has_secure_password
   
     validates :username, presence: true, uniqueness: { case_sensitive: false }

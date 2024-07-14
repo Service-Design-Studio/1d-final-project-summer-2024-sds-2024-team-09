@@ -19,7 +19,10 @@ Rails.application.routes.draw do
   get 'home', to: 'pages#index'
   
 
-  resources :users, only: [:new, :create, :show]
+  resources :users, only: [:new, :create, :show, :index] do 
+    resources :cameras, only: [:new, :create, :show, :index]
+  end
+  
   resources :posts # Example resource for blog posts
   resource :user_settings, only: [:new, :create, :edit, :update]
   resources :videos, only: [:index, :create, :update, :destroy]

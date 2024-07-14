@@ -17,6 +17,7 @@
                 <%# <a href="/record" class="btn btn-secondary btn-lg mx-2">record</a>
                 <a href="/history" class="btn btn-secondary btn-lg mx-2">History</a>
                 <a href="/user_settings/edit" class="btn btn-info btn-lg mx-2">Settings</a> %>
+                <a href="/users" class="btn btn-secondary btn-lg mx-2">All Users</a>
                 <form action="/logout" method="post" class="mx-2">
                     <input type="hidden" name="_method" value="delete">
                     <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
