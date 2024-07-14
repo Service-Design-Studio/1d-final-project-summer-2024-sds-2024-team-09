@@ -11,7 +11,7 @@ const DeviceNotifs = ({ title, count }) => {
 
     return (
         <div>
-            <div className="absolute inset-0 flex p-8 text-white">
+            <div className="absolute inset-0 flex p-8 text-black">
                 <div className="text-left">
                     <h3 className="text-lg font-bold">{title}</h3>
 

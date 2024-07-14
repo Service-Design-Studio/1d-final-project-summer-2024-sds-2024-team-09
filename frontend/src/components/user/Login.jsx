@@ -1,14 +1,14 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
-const Login = ({ setShowLogin }) => {
+const Login = () => {
     const navigate = useNavigate();
     const [usernameOrEmail, setUsernameOrEmail] = useState('');
     const [password, setPassword] = useState('');
     const [error, setError] = useState('');
 
-    const handleNavigate = () => {
-        navigate('/user-home');
+    const handleNavigate = (data) => {
+        navigate('/user-home', { state: { userData: data } });
     };
 
     const backHome = () => {
@@ -29,10 +29,11 @@ const Login = ({ setShowLogin }) => {
             });
 
             const data = await response.json();
+            console.log(data);
 
             if (response.ok) {
                 console.log(data);
-                handleNavigate();
+                handleNavigate(data);
             } else {
                 setError(data.message);
             }
