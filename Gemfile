@@ -61,6 +61,7 @@ gem "bootsnap", require: false
 
 gem 'carrierwave', '~> 2.0'
 
+gem 'importmap-rails'
 
 gem 'webpacker'
 

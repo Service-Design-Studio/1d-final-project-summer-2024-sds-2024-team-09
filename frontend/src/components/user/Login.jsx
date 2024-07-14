@@ -15,10 +15,6 @@ const Login = ({ setShowLogin }) => {
         navigate('/');
     }
 
-    const handleSignupNavigation = () => {
-        setShowLogin(false);
-    };
-
     const handleLogin = async (e) => {
         e.preventDefault();
         setError('');
@@ -36,7 +32,7 @@ const Login = ({ setShowLogin }) => {
 
             if (response.ok) {
                 console.log(data);
-                handleNavigate(); // Redirect to user home page;
+                handleNavigate();
             } else {
                 setError(data.message);
             }

@@ -9,7 +9,7 @@ class SessionsController < ApplicationController
 
   def create
     Rails.logger.debug "Params: #{params[:session]}"
-    user = User.find_by(email: params[:session][:email].downcase) || User.find_by(username:params[:session][:username])
+    user = User.find_by(email: params[:session][:email].downcase)
     if user && user.authenticate(params[:session][:password])
       log_in user
       Rails.logger.debug "User logged in successfully: #{user.email}"

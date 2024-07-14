@@ -3,7 +3,7 @@
 module Api
     module V1
       class SessionsController < ApplicationController
-        skip_before_action :require_login, only: [:create]
+        skip_before_action :require_login, :verify_authenticity_token, only: [:create]
   
         def create
           Rails.logger.debug "Params: #{params[:session]}"
