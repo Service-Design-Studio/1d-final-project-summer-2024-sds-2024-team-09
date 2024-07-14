@@ -89,10 +89,7 @@ const CameraPage = () => {
     return (
         <div>
             <h1>Camera Page</h1>
-<<<<<<< Updated upstream
-=======
             <p>This page is the UI page for the camera at home.</p>
->>>>>>> Stashed changes
             <button onClick={handleJoinAsHost}>Join as Host</button>
             <button onClick={endStream}>Leave</button>
         </div>
