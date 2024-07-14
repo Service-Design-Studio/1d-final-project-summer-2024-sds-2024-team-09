@@ -63,7 +63,7 @@
                     `;
 
                     document.getElementById('camera-list').appendChild(cameraContainer);
-                    remoteVideoTrack.play(`camera-${user.uid}-preview`, { fit: "contain", muted: true });
+                    remoteVideoTrack.play(`camera-${user.uid}-preview`, { fit: "contain", muted: false });
                     rtc.remoteUsers[user.uid] = user;
                     rtc.streamingCount++;
                     updateStreamingCount();
