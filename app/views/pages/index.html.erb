@@ -18,6 +18,9 @@
                 <a href="/history" class="btn btn-secondary btn-lg mx-2">History</a>
                 <a href="/user_settings/edit" class="btn btn-info btn-lg mx-2">Settings</a> %>
                 <a href="/users" class="btn btn-secondary btn-lg mx-2">All Users</a>
+                <a href="/user_settings/edit" class="btn btn-info btn-lg mx-2">Settings</a>
+                <a href="/video-history" class="btn btn-primary btn-lg mx-2">Video History</a>
+
                 <form action="/logout" method="post" class="mx-2">
                     <input type="hidden" name="_method" value="delete">
                     <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
@@ -31,3 +34,4 @@
     </script>
 </body>
 </html>
+

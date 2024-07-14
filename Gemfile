@@ -15,7 +15,6 @@ gem "sqlite3", "~> 1.4"
 gem "puma", ">= 5.0"
 gem 'uglifier', '>= 1.3.0'
 gem 'sass-rails', '>= 5'
-gem 'sprockets-rails'
 # gem 'pg', '~> 1.2'
 # gem 'dotenv-rails', groups: [:development, :test]
 gem 'rspec-rails', '~> 5.0.0'
@@ -23,7 +22,7 @@ gem 'rspec-rails', '~> 5.0.0'
 
 
 # Use JavaScript with ESM import maps [https://github.com/rails/importmap-rails]
-gem "importmap-rails"
+# gem "importmap-rails"
 
 # Hotwire's SPA-like page accelerator [https://turbo.hotwired.dev]
 gem "turbo-rails"
@@ -35,6 +34,12 @@ gem "stimulus-rails"
 gem "jbuilder"
 gem 'bcrypt', '~> 3.1.7'
 gem 'bootstrap', '~> 5.0.0'
+
+# Use Redis for caching [
+gem 'active_model_serializers'
+
+gem 'rack-cors'
+
 
 # for google active storage
 gem "google-cloud-storage", "~> 1.11", require: false
@@ -53,6 +58,11 @@ gem "tzinfo-data", platforms: %i[ windows jruby ]
 
 # Reduces boot times through caching; required in config/boot.rb
 gem "bootsnap", require: false
+
+gem 'carrierwave', '~> 2.0'
+
+
+gem 'webpacker'
 
 # Use Active Storage variants [https://guides.rubyonrails.org/active_storage_overview.html#transforming-images]
 # gem "image_processing", "~> 1.2"

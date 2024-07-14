@@ -20,7 +20,6 @@ google:
   project: crybabydatabase
   credentials: <%= Rails.root.join("gcs.keyfile") %>
   bucket: crybabydatabase_bucket-<%= Rails.env %>
-
 # Use bin/rails credentials:edit to set the Azure Storage secret (as azure_storage:storage_access_key)
 # microsoft:
 #   service: AzureStorage

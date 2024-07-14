@@ -27,7 +27,7 @@
 #   end
 
 class VideosController < ApplicationController
-  before_action :require_login
+  before_action :require_login, :set_video, only: [:show, :edit, :update, :destroy]
   
   def user
       @user_setting = current_user.user_setting || current_user.create_user_setting
@@ -38,20 +38,26 @@ class VideosController < ApplicationController
     @videos = Video.all
   end
 
+  def edit
+  end
+
   def create
-    @video = current_user.videos.build(video_params)
+    @video = Video.new(video_params)
     if @video.save
-      redirect_to videos_path, notice: "Video was successfully uploaded."
+      redirect_to @video, notice: 'Video was successfully created.'
     else
-      render :index
+      render :new
     end
+  end
+
+  def show
   end
 
   def update
     if @video.update(video_params)
       render json: @video
     else
-      render json: @video.errors, status: :unprocessable_entity
+      render json: { errors: @video.errors.full_messages }, status: :unprocessable_entity
     end
   end
 
@@ -68,12 +74,23 @@ class VideosController < ApplicationController
   private
 
   def video_params
-    params.require(:video).permit(:title, :file)
+    
+    params.require(:video).permit(:title, :file, :duration)
   end
 
   def set_video
-    @video = current_user.videos.find(params[:id])
+    @video = Video.find(params[:id])
+    #@video = current_user.videos.find(params[:id])
   rescue ActiveRecord::RecordNotFound
     render json: { error: 'Video not found' }, status: :not_found
   end
 end
+
+
+
+# def create
+#   @video = current_user.videos.build(video_params)
+#   if @video.save
+#     redirect_to videos_path, notice: "Video was successfully uploaded."
+#   else
+#     render :index
