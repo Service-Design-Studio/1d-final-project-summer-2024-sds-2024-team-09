@@ -11,7 +11,7 @@ module Api
           if user && user.authenticate(params[:session][:password])
             log_in(user)
             Rails.logger.debug "User logged in successfully: #{user.email}"
-            render json: { message: 'Login successful', user: user }, status: :ok
+            render json: { message: 'Login successful', user: UserSerializer.new(user) }, status: :ok
           else
             Rails.logger.debug "Invalid email/password combination or user not found"
             render json: { error: 'Invalid email/password combination' }, status: :unauthorized

@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
-const Login = () => {
+const Login = ({ setShowLogin }) => {
     const navigate = useNavigate();
     const [usernameOrEmail, setUsernameOrEmail] = useState('');
     const [password, setPassword] = useState('');
@@ -87,18 +87,12 @@ const Login = () => {
                         Login
                     </button>
                 </div>
-                <p className="mt-4 text-center">
-                    New Here?{' '}
-                    <button className="text-blue-500" onClick={() => setShowLogin(false)}>
-                        Sign Up!
-                    </button>
-                </p>
             </form>
-            <div className="space-y-4 mx-8 mt-6">
+            <div className="space-y-4 mx-8 mt-6 text-center">
                 Don't have an account?{'  '}
-                    <button className="text-blue-500" onClick={() => setShowLogin(false)}>
-                        Sign Up
-                    </button>
+                <button className="text-blue-500" onClick={() => setShowLogin(false)}>
+                    Sign Up
+                </button>
             </div>
         </div>
     );

@@ -11,6 +11,7 @@ import ProfilePage from './components/ProfilePage';
 import Particulars from './components/profiles/Particulars';
 import AccSettings from './components/profiles/AccSettings';
 import EditCams from './components/profiles/EditCams';
+import CameraDetails from './components/mobile-app/CameraDetails';
 
 
 function App() {
@@ -20,6 +21,7 @@ function App() {
         <Route path="/" element={<Welcome />} />
         <Route path="/user" element={<UserPage />} />
         <Route path="/camera" element={<CameraPage />} />
+        <Route path="/camera/:id" element={<CameraDetails />} />
         <Route path="/history" element={<HistoryPage />} />
         <Route path="/record" element={<RecordPage />} />
         <Route path="/histories" element={<HistoriesPage />} />
