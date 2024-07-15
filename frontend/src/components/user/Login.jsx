@@ -15,10 +15,6 @@ const Login = ({ setShowLogin }) => {
         navigate('/');
     }
 
-    const handleSignupNavigation = () => {
-        setShowLogin(false);
-    };
-
     const handleLogin = async (e) => {
         e.preventDefault();
         setError('');
@@ -90,6 +86,12 @@ const Login = ({ setShowLogin }) => {
                         Login
                     </button>
                 </div>
+                <p className="mt-4 text-center">
+                    New Here?{' '}
+                    <button className="text-blue-500" onClick={() => setShowLogin(false)}>
+                        Sign Up!
+                    </button>
+                </p>
             </form>
             <div className="space-y-4 mx-8 mt-6">
                 Don't have an account?{'  '}
