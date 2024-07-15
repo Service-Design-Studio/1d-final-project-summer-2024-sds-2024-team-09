@@ -12,7 +12,9 @@
     "react-router-dom": "^6.24.1",
     "react-scripts": "5.0.1",
     "vite": "^5.3.3",
-    "web-vitals": "^2.1.4"
+    "web-vitals": "^2.1.4",
+    "@babel/plugin-transform-runtime": "^7.15.0",
+    "agora-rtc-sdk-ng": "^4.6.0"
   },
   "scripts": {
     "start": "react-scripts start",
