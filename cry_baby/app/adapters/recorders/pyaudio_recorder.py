@@ -2,6 +2,7 @@ import pathlib
 import queue
 import threading
 import wave
+import os
 from dataclasses import dataclass
 from typing import Optional, List
 
@@ -154,7 +155,9 @@ recorder = PyaudioRecorder(
     temp_path=output_dir,
     logger=Logger(),
     settings=settings,
-    
+    app_id=os.getenv("AGORA_APP_ID"),
+    channel=os.getenv("AGORA_CHANNEL"),
+    token=os.getenv("AGORA_TOKEN")
 )
 
 recorder.join_channel()
