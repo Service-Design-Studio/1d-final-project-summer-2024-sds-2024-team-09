@@ -8,6 +8,7 @@ const Login = ({ setShowLogin }) => {
     const [error, setError] = useState('');
 
     const handleNavigate = (data) => {
+        localStorage.setItem('user-data', JSON.stringify(data));
         navigate('/user-home', { state: { userData: data } });
     };
 

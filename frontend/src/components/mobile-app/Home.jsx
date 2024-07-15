@@ -5,17 +5,14 @@ import { useLocation, useNavigate } from 'react-router-dom';
 
 function Home() {
     const location = useLocation();
-    const { userData } = location.state || {};
+    const navigate = useNavigate();
+    const [userData, setUserData] = useState(location.state?.userData || JSON.parse(localStorage.getItem('user-data')));
+
     console.log(userData);
-    console.log(userData.user.cameras);
-
-    const albums = userData.user.cameras;
-
+    const albums = userData?.user?.cameras || [];
     const liveDeviceCount = albums.filter((album) => album.status === 'Live').length;
 
     const [greeting, setGreeting] = useState('');
-
-    const navigate = useNavigate();
 
     useEffect(() => {
         const currentHour = new Date().getHours();
