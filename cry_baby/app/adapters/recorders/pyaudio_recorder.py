@@ -154,9 +154,7 @@ recorder = PyaudioRecorder(
     temp_path=output_dir,
     logger=Logger(),
     settings=settings,
-    app_id="d543c7c876734c4a82da72a588edd047",
-    channel="baymax",
-    token="007eJxTYDj7W+FX7eXEJonak1MtU8Umnj3x+vTJTafcw8NuO59NsndSYEgxNTFONk+2MDczNzZJNkm0MEpJNDdKNLWwSE1JMTAx35fYn9YQyMjwoJiXmZEBAkF8NoakxMrcxAoGBgA/sSIl"
+    
 )
 
 recorder.join_channel()
