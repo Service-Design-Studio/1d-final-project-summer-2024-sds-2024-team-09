@@ -24,7 +24,9 @@ module.exports = {
     themes: ["light", "dark", {
       mytheme: {
         "primary": "#405D72",
+        "primary-content": "#3F5F90",
         "secondary": "#F6D776",
+        "secondary-content": "#EDDBCE",
         "accent": "#e68369",
         "neutral": "#f7e7dc",
         "base-100": "#fff8f3",

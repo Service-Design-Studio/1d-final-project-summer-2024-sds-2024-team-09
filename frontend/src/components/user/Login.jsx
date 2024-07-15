@@ -85,12 +85,18 @@ const Login = ({ setShowLogin }) => {
                 <div className="space-y-4 mx-8 mt-2">
                     <button
                         type="submit"
-                        className="w-full bg-info text-white py-2 px-4 rounded mt-6 hover:bg-info-600"
+                        className="w-full bg-info text-white py-2 px-4 rounded-full mt-6 hover:bg-info-600"
                     >
                         Login
                     </button>
                 </div>
             </form>
+            <div className="space-y-4 mx-8 mt-6">
+                Don't have an account?{'  '}
+                    <button className="text-blue-500" onClick={() => setShowLogin(false)}>
+                        Sign Up
+                    </button>
+            </div>
         </div>
     );
 };
