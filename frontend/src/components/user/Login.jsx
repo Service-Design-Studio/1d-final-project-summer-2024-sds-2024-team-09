@@ -49,7 +49,7 @@ const Login = () => {
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
                 </svg>
             </button>
-            <div className="flex justify-center mb-6 py-10">
+            <div className="flex justify-center">
                 <img src="/public/logo.png" alt="Illustration" className="w-64 h-64" />
             </div>
             <h2 className="text-3xl font-bold text-primary text-center mb-4">Welcome Back</h2>
@@ -82,12 +82,24 @@ const Login = () => {
                 <div className="space-y-4 mx-8 mt-2">
                     <button
                         type="submit"
-                        className="w-full bg-info text-white py-2 px-4 rounded mt-6 hover:bg-info-600"
+                        className="w-full bg-info text-white py-2 px-4 rounded-full mt-6 hover:bg-info-600"
                     >
                         Login
                     </button>
                 </div>
+                <p className="mt-4 text-center">
+                    New Here?{' '}
+                    <button className="text-blue-500" onClick={() => setShowLogin(false)}>
+                        Sign Up!
+                    </button>
+                </p>
             </form>
+            <div className="space-y-4 mx-8 mt-6">
+                Don't have an account?{'  '}
+                    <button className="text-blue-500" onClick={() => setShowLogin(false)}>
+                        Sign Up
+                    </button>
+            </div>
         </div>
     );
 };
