@@ -22,5 +22,10 @@ Rails.application.routes.draw do
   resources :posts # Example resource for blog posts
   resource :user_settings, only: [:new, :create, :edit, :update]
   resources :videos, only: [:index, :create, :update, :destroy]
-  get 'api/videos', to: 'videos#api_index'
+  # get 'api/videos', to: 'videos#api_index'
+
+  namespace :api do
+    resources :videos, only: [:index, :destroy, :update]
+  end
+
 end
