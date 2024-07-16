@@ -72,3 +72,15 @@ class Service(ABC):
         """
         Stop the continuous evaluation
         """
+
+    @abstractmethod
+    def evaluate_from_audio_file(self) -> float:
+        """
+        Classify audio from a file and return the probability that the audio contains a baby crying.
+        """
+
+    @abstractmethod
+    def continuously_evaluate_from_audio_file(self):
+        """
+        Continuously classify audio from the specified file.
+        """
