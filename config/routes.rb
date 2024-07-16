@@ -37,7 +37,7 @@ Rails.application.routes.draw do
         resources :users, only: [:create, :show, :update, :destroy]
         resources :sessions, only: [:create]
         resources :videos, only: [:index, :update, :destroy]
-
       end      
+      resources :videos, only: [:index, :destroy, :update]
     end
 end

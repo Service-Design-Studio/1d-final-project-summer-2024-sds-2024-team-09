@@ -17,49 +17,89 @@
       font-size: 1.25rem;
       text-align: center;
     }
-    .edit-button, .delete-button {
+    .edit-button, .delete-button, .save-button {
       cursor: pointer;
+    }
+    .save-button {
+      display: none;
     }
   </style>
 </head>
 <body>
   <div class="container mt-5">
     <div class="text-center">
-      <h1 class="display-4">Video History</h1>
-      <p>View the recorded videos from the livestreams</p>
-      <div class="sort-options mt-3">
-        <button class="btn btn-secondary" onclick="sortVideos('created_at', 'asc')">Sort by Date Asc</button>
-        <button class="btn btn-secondary" onclick="sortVideos('created_at', 'desc')">Sort by Date Desc</button>
-        <button class="btn btn-secondary" onclick="sortVideos('title', 'asc')">Sort by Title Asc</button>
-        <button class="btn btn-secondary" onclick="sortVideos('title', 'desc')">Sort by Title Desc</button>
-        <button class="btn btn-secondary" onclick="sortVideos('duration', 'asc')">Sort by Duration Asc</button>
-        <button class="btn btn-secondary" onclick="sortVideos('duration', 'desc')">Sort by Duration Desc</button>
-      </div>
-      <div id="video-list" class="mt-4"></div>
+        <h1 class="display-4">Video History</h1>
+        <p>View the recorded videos from the livestreams</p>
+        <div id="flash-messages">
+            <% if flash[:error] %>
+                <div class="card text-white bg-danger">
+                    <div class="card-body">
+                        <p class="card-text"><%= flash[:error] %></p>
+                    </div>
+                </div>
+            <% end %>
+        </div>
+        <div class="sort-options mt-3">
+            <button class="btn btn-secondary" onclick="sortVideos('created_at', 'asc')">Sort by Date Asc</button>
+            <button class="btn btn-secondary" onclick="sortVideos('created_at', 'desc')">Sort by Date Desc</button>
+            <button class="btn btn-secondary" onclick="sortVideos('title', 'asc')">Sort by Title Asc</button>
+            <button class="btn btn-secondary" onclick="sortVideos('title', 'desc')">Sort by Title Desc</button>
+            <button class="btn btn-secondary" onclick="sortVideos('duration', 'asc')">Sort by Duration Asc</button>
+            <button class="btn btn-secondary" onclick="sortVideos('duration', 'desc')">Sort by Duration Desc</button>
+        </div>
+        <div id="video-list" class="mt-4">
+            <% if @videos.empty? %>
+                <div class="card text-white bg-info">
+                    <div class="card-body">
+                        <p class="card-text">No videos available</p>
+                    </div>
+                </div>
+            <% else %>
+                <% @videos.each do |video| %>
+                    <div class="card mb-3">
+                        <div class="card-body d-flex justify-content-center align-items-center">
+                            <div>
+                                <h5 class="card-title">
+                                    <a href="<%= video.file_path %>" class="video-title" data-path="<%= video.file_path %>" data-title="<%= video.title %>" onclick="viewVideo(event, '<%= video.file_path %>', '<%= video.title %>')"><%= video.title %></a>
+                                    <input class="video-title-input" type="text" value="<%= video.title %>" data-video-id="<%= video.id %>">
+                                </h5>
+                            </div>
+                            <button class="btn btn-sm btn-primary edit-button ml-2">Edit Title</button>
+                            <button class="btn btn-sm btn-success save-button ml-2" onclick="saveTitle(this)">Save</button>
+                            <button class="btn btn-sm btn-danger delete-button ml-2" onclick="deleteVideo(<%= video.id %>, this)">Delete</button>
+                        </div>
+                        <p class="card-text text-center">Uploaded on: <%= video.created_at.to_date %> at <%= video.created_at.strftime("%I:%M %p") %></p>
+                        <p class="card-text text-center">Duration: <%= video.duration %> seconds</p>
+                    </div>
+                <% end %>
+            <% end %>
+        </div>
     </div>
   </div>
 
   <!-- Modal for video playback -->
   <div class="modal fade" id="videoModal" tabindex="-1" role="dialog" aria-labelledby="videoModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title" id="videoModalLabel">Video Playback</h5>
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-          </button>
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="videoModalLabel">Video Playback</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <video id="videoPlayer" controls class="w-100"></video>
+                <div id="errorMessage" class="alert alert-warning mt-3" style="display: none;">
+                    Video is unavailable
+                </div>
+            </div>
         </div>
-        <div class="modal-body">
-          <video id="videoPlayer" controls class="w-100"></video>
-        </div>
-      </div>
     </div>
   </div>
 
   <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
-
   <script>
     let currentSortBy = 'created_at';
     let currentOrder = 'asc';
@@ -74,35 +114,54 @@
         const videoList = document.getElementById('video-list');
         videoList.innerHTML = '';
 
-        videos.forEach(video => {
-          const videoItem = document.createElement('div');
-          videoItem.className = 'card mb-3';
-          videoItem.innerHTML = `
-            <div class="card-body d-flex justify-content-center align-items-center">
-              <div>
-                <h5 class="card-title">
-                  <a href="${video.file_path_url}" class="video-title" data-path="${video.file_path_url}" data-title="${video.title}" onclick="viewVideo(event, '${video.file_path_url}', '${video.title}')">${video.title}</a>
-                  <input class="video-title-input" type="text" value="${video.title}" data-video-id="${video.id}">
-                </h5>
+        if (videos.length === 0) {
+          videoList.innerHTML = `
+            <div class="card text-white bg-info">
+              <div class="card-body">
+                <p class="card-text">No videos available</p>
               </div>
-              <button class="btn btn-sm btn-primary edit-button ml-2">Edit Title</button>
-              <button class="btn btn-sm btn-danger delete-button ml-2" onclick="deleteVideo(${video.id}, this)">Delete</button>
             </div>
-            <p class="card-text text-center">Uploaded on: ${new Date(video.created_at).toLocaleDateString()} at ${new Date(video.created_at).toLocaleTimeString()}</p>
-            <p class="card-text text-center">Duration: ${video.duration} seconds</p>
           `;
-          videoList.appendChild(videoItem);
-        });
+        } else {
+          videos.forEach(video => {
+            const videoItem = document.createElement('div');
+            videoItem.className = 'card mb-3';
+            videoItem.innerHTML = `
+              <div class="card-body d-flex justify-content-center align-items-center">
+                <div>
+                  <h5 class="card-title">
+                    <a href="${video.file_path_url}" class="video-title" data-path="${video.file_path_url}" data-title="${video.title}" onclick="viewVideo(event, '${video.file_path_url}', '${video.title}')">${video.title}</a>
+                    <input class="video-title-input" type="text" value="${video.title}" data-video-id="${video.id}">
+                  </h5>
+                </div>
+                <button class="btn btn-sm btn-primary edit-button ml-2">Edit Title</button>
+                <button class="btn btn-sm btn-success save-button ml-2" onclick="saveTitle(this)">Save</button>
+                <button class="btn btn-sm btn-danger delete-button ml-2" onclick="deleteVideo(${video.id}, this)">Delete</button>
+              </div>
+              <p class="card-text text-center">Uploaded on: ${new Date(video.created_at).toLocaleDateString()} at ${new Date(video.created_at).toLocaleTimeString()}</p>
+              <p class="card-text text-center">Duration: ${video.duration} seconds</p>
+            `;
+            videoList.appendChild(videoItem);
+          });
 
-        document.querySelectorAll('.edit-button').forEach(button => {
-          button.addEventListener('click', () => editTitle(button));
-        });
+          document.querySelectorAll('.edit-button').forEach(button => {
+            button.addEventListener('click', () => editTitle(button));
+          });
 
-        document.querySelectorAll('.video-title-input').forEach(input => {
-          input.addEventListener('blur', () => saveTitle(input, input.dataset.videoId));
-          input.addEventListener('keydown', (event) => handleKey(event, input, input.dataset.videoId));
-        });
+          document.querySelectorAll('.video-title-input').forEach(input => {
+            input.addEventListener('blur', () => saveTitle(input, input.dataset.videoId));
+            input.addEventListener('keydown', (event) => handleKey(event, input, input.dataset.videoId));
+          });
+        }
       } catch (error) {
+        const videoList = document.getElementById('video-list');
+        videoList.innerHTML = `
+          <div class="card text-white bg-danger">
+            <div class="card-body">
+              <p class="card-text">Unable to fetch videos. Please try again later.</p>
+            </div>
+          </div>
+        `;
         console.error('Failed to fetch videos:', error);
       }
     }
@@ -115,28 +174,42 @@
 
     function viewVideo(event, path, title) {
       event.preventDefault();
-      document.getElementById('videoPlayer').src = path;
+      const videoPlayer = document.getElementById('videoPlayer');
+      const errorMessage = document.getElementById('errorMessage');
+      if (!path) {
+        document.getElementById('videoPlayer').style.display = 'none';
+        document.getElementById('errorMessage').style.display = 'block';
+      } else {
+        document.getElementById('videoPlayer').src = path;
+        document.getElementById('videoPlayer').style.display = 'block';
+        document.getElementById('errorMessage').style.display = 'none';
+      }
       document.getElementById('videoModalLabel').innerText = title;
       $('#videoModal').modal('show');
     }
 
     function editTitle(button) {
-      const titleElement = button.previousElementSibling.querySelector('.video-title');
-      const input = button.previousElementSibling.querySelector('.video-title-input');
+      const cardBody = button.closest('.card-body');
+      const titleElement = cardBody.querySelector('.video-title');
+      const input = cardBody.querySelector('.video-title-input');
+      const saveButton = cardBody.querySelector('.save-button');
+    
       titleElement.style.display = 'none';
       button.style.display = 'none';
       input.style.display = 'inline';
+      saveButton.style.display = 'inline';
       input.focus();
     }
 
-    function saveTitle(input, videoId) {
+    function saveTitle(button) {
+      const cardBody = button.closest('.card-body');
+      const input = cardBody.querySelector('.video-title-input');
+      const titleLink = cardBody.querySelector('.video-title');
+      const editButton = cardBody.querySelector('.edit-button');
+      const saveButton = cardBody.querySelector('.save-button');
+    
       const newTitle = input.value;
-      input.style.display = 'none';
-      const titleLink = input.previousElementSibling;
-      const button = input.parentElement.nextElementSibling;
-      titleLink.innerText = newTitle;
-      titleLink.style.display = 'inline';
-      button.style.display = 'inline';
+      const videoId = input.dataset.videoId;
 
       fetch(`/api/videos/${videoId}`, {
         method: 'PUT',
@@ -153,12 +226,11 @@
         return response.json();
       })
       .then(data => {
-        console.log('Success:', data);
-        // Update the title in the current video list
-        const video = videos.find(v => v.id === videoId);
-        if (video) {
-          video.title = newTitle;
-        }
+        titleLink.innerText = newTitle;
+        input.style.display = 'none';
+        titleLink.style.display = 'inline';
+        editButton.style.display = 'inline';
+        saveButton.style.display = 'none';
       })
       .catch((error) => {
         console.error('Error:', error);
@@ -167,7 +239,7 @@
 
     function handleKey(event, input, videoId) {
       if (event.key === 'Enter') {
-        input.blur();
+        saveTitle(input.closest('.card-body').querySelector('.save-button'));
       }
     }
 
