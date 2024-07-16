@@ -3,14 +3,9 @@ import os
 import pathlib
 import threading
 
-import sounddevice as sd
 from hexalog.adapters.cli_logger import ColorfulCLILogger
 from huggingface_hub import from_pretrained_keras, hf_hub_download, login
 
-from cry_baby.app.adapters.recorders.pyaudio_recorder import (
-    PyaudioRecorder,
-    PyaudioRecordingSettings,
-)
 from cry_baby.app.adapters.repositories.json_repo import JSONRepo
 from cry_baby.app.core.ports import Repository
 from cry_baby.app.core.service import CryBabyService
@@ -34,44 +29,20 @@ def tflite_runtime_available():
 
 def run_continously(
     logger: ColorfulCLILogger,
-    recorder: PyaudioRecorder,
+    audio_file_path: pathlib.Path,
     classifier,
     repository: Repository,
     audio_file_client: LibrosaClient,
 ):
     service = CryBabyService(
-        logger=logger,
-        classifier=classifier,
-        recorder=recorder,
-        repository=repository,
-        audio_file_client=audio_file_client,
+        logger=logger, classifier=classifier, audio_file_path=audio_file_path, repository=repository
     )
-    logger.info("Starting to continuously evaluate from system audio")
-    while not SHUTDOWN_EVENT.is_set():
-        try:
-            service.continuously_evaluate_from_microphone()
-            logger.info("Press ctrl+c to stop")
-            SHUTDOWN_EVENT.wait()
-        except KeyboardInterrupt:
-            logger.info("Stopping CryBabyService")
-            service.stop_continuous_evaluation()
-            logger.debug("CryBabyService has stopped")
-            SHUTDOWN_EVENT.set()
-            logger.debug("Exiting")
-
+    service.continously_evaluate_from_audio_file()
+    
 
 def main():
     logger = ColorfulCLILogger()
-    save_audio_dir = pathlib.Path(os.getenv("SAVE_AUDIO_DIR", "/tmp"))
-    settings = PyaudioRecordingSettings(
-        number_of_audio_signals=1,
-        frames_per_buffer=1024,
-        recording_rate_hz=44100,
-        duration_seconds=4,
-    )
-    recorder = PyaudioRecorder(
-        logger=logger, temp_path=save_audio_dir, settings=settings
-    )
+    audio_file_path = pathlib.Path("path_to_your_audio_file.wav")
     repository = JSONRepo(json_file_path=pathlib.Path("cry_baby.json"))
 
     librosa_audio_file_client = LibrosaClient()
@@ -114,7 +85,7 @@ def main():
         logger.error("No compatible TensorFlow or TensorFlow Lite installation found.")
         return
 
-    run_continously(logger, recorder, classifier, repository, librosa_audio_file_client)
+    run_continously(logger, audio_file_path, classifier, repository)
 
 
 if __name__ == "__main__":
