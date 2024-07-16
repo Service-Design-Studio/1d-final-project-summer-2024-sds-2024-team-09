@@ -29,20 +29,20 @@ def tflite_runtime_available():
 
 def run_continously(
     logger: ColorfulCLILogger,
-    audio_file_path: pathlib.Path,
+    directory: pathlib.Path,
     classifier,
     repository: Repository,
     audio_file_client: LibrosaClient,
 ):
     service = CryBabyService(
-        logger=logger, classifier=classifier, audio_file_path=audio_file_path, repository=repository
+        logger=logger, classifier=classifier, audio_file_path=None, repository=repository, audio_file_client=audio_file_client
     )
-    service.continously_evaluate_from_audio_file()
-    
+    service.continuously_evaluate_from_directory(directory)
+
 
 def main():
     logger = ColorfulCLILogger()
-    audio_file_path = pathlib.Path("path_to_your_audio_file.wav")
+    audio_directory = pathlib.Path(os.getenv("SAVE_AUDIO_DIR"))
     repository = JSONRepo(json_file_path=pathlib.Path("cry_baby.json"))
 
     librosa_audio_file_client = LibrosaClient()
@@ -85,7 +85,7 @@ def main():
         logger.error("No compatible TensorFlow or TensorFlow Lite installation found.")
         return
 
-    run_continously(logger, audio_file_path, classifier, repository)
+    run_continously(logger, audio_directory, classifier, repository, librosa_audio_file_client)
 
 
 if __name__ == "__main__":
