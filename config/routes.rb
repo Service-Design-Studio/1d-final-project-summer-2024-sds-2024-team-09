@@ -8,7 +8,7 @@ Rails.application.routes.draw do
   post 'signup', to: 'users#create'
   get 'login', to: 'sessions#new'
   post 'login', to: 'sessions#create'
-  delete 'logout', to: 'sessions#destroy'
+  post 'logout', to: 'sessions#destroy'
 
   # Example additional routes
   get 'camera', to: 'pages#camera'
@@ -28,7 +28,7 @@ Rails.application.routes.draw do
   resource :user_settings, only: [:new, :create, :edit, :update]
   resources :videos, only: [:index, :show, :edit, :create, :update, :destroy]
 
-  resources :sessions, only: [:new, :create, :destroy]
+  # resources :sessions, only: [:new, :create, :destroy]
   get 'api/videos', to: 'videos#api_index'
 
     # Namespaced API routes
