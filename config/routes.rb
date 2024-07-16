@@ -16,6 +16,7 @@ Rails.application.routes.draw do
   get 'user', to: 'pages#user'
   get 'record', to: 'videos#index'
   get 'history', to: 'videos#history'
+  get 'home', to: 'pages#index'
   
 
   resources :users, only: [:new, :create, :show]

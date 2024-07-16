@@ -1,5 +1,10 @@
 <h1>Log In</h1>
+
 <%= form_with(url: login_path, local: true) do |form| %>
+  <% if get_message %>
+    <div class="alert alert-<%= get_message[:type] %>"><%= get_message[:text] %></div>
+  <% end %>
+
   <%= form.label :email %>
   <%= form.email_field :email, name: "session[email]" %>
 
