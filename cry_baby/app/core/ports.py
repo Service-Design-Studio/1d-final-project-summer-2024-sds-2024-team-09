@@ -53,19 +53,6 @@ class Repository(ABC):
 
 
 class Service(ABC):
-    @abstractmethod
-    def evaluate_from_microphone(self) -> float:
-        """
-        Record audio and classify it
-        return the probability that the audio contains a baby crying
-        """
-
-    @abstractmethod
-    def continuously_evaluate_from_microphone(self) -> Optional[queue.Queue]:
-        """
-        Continuously record audio and classify it
-        return a queue of the probabilities that the audio contains a baby crying
-        """
 
     @abstractmethod
     def stop_continuous_evaluation(self):

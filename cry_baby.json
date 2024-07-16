@@ -1,1 +1,67 @@
-[]
+[
+    {
+        "timestamp": "2024-07-16T15:15:30.080148",
+        "audio_file_path": "/home/mike/cry-baby-edited/cry-baby/audio/margot.m4a_0.wav",
+        "prediction": 0.9348335862159729
+    },
+    {
+        "timestamp": "2024-07-16T15:15:31.108198",
+        "audio_file_path": "/home/mike/cry-baby-edited/cry-baby/audio/margot.m4a_0.wav",
+        "prediction": 0.9348335862159729
+    },
+    {
+        "timestamp": "2024-07-16T15:15:32.136254",
+        "audio_file_path": "/home/mike/cry-baby-edited/cry-baby/audio/margot.m4a_0.wav",
+        "prediction": 0.9348335862159729
+    },
+    {
+        "timestamp": "2024-07-16T15:15:33.161045",
+        "audio_file_path": "/home/mike/cry-baby-edited/cry-baby/audio/margot.m4a_0.wav",
+        "prediction": 0.9348335862159729
+    },
+    {
+        "timestamp": "2024-07-16T15:15:34.187738",
+        "audio_file_path": "/home/mike/cry-baby-edited/cry-baby/audio/margot.m4a_0.wav",
+        "prediction": 0.9348335862159729
+    },
+    {
+        "timestamp": "2024-07-16T15:20:17.557794",
+        "audio_file_path": "/home/mike/cry-baby-edited/cry-baby/audio/margot.m4a_16.wav",
+        "prediction": 0.9944911599159241
+    },
+    {
+        "timestamp": "2024-07-16T15:20:18.588302",
+        "audio_file_path": "/home/mike/cry-baby-edited/cry-baby/audio/margot.m4a_16.wav",
+        "prediction": 0.9944911599159241
+    },
+    {
+        "timestamp": "2024-07-16T15:20:19.619898",
+        "audio_file_path": "/home/mike/cry-baby-edited/cry-baby/audio/margot.m4a_16.wav",
+        "prediction": 0.9944911599159241
+    },
+    {
+        "timestamp": "2024-07-16T15:47:51.138602",
+        "audio_file_path": "/home/mike/cry-baby-edited/cry-baby/audio/margot.m4a_16.wav",
+        "prediction": 0.9944911599159241
+    },
+    {
+        "timestamp": "2024-07-16T16:00:34.413284",
+        "audio_file_path": "/home/mike/cry-baby-edited/cry-baby/audio/raw/margot.m4a_16.cropped.wav",
+        "prediction": 0.9944911599159241
+    },
+    {
+        "timestamp": "2024-07-16T16:00:34.455942",
+        "audio_file_path": "/home/mike/cry-baby-edited/cry-baby/audio/raw/margot.m4a_0.cropped.wav",
+        "prediction": 0.9348335862159729
+    },
+    {
+        "timestamp": "2024-07-16T16:00:34.535392",
+        "audio_file_path": "/home/mike/cry-baby-edited/cry-baby/audio/raw/margot.m4a_0.wav",
+        "prediction": 0.9348335862159729
+    },
+    {
+        "timestamp": "2024-07-16T16:00:34.588988",
+        "audio_file_path": "/home/mike/cry-baby-edited/cry-baby/audio/raw/margot.m4a_0.cropped.wav",
+        "prediction": 0.9348335862159729
+    }
+]
