@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,6 +8,7 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
     <script src="https://download.agora.io/sdk/release/AgoraRTC_N.js"></script>
 </head>
+
 <body>
     <div class="container mt-5">
         <div id="camera-list" class="row">
@@ -21,8 +23,8 @@
     </div>
 
     <script>
-        const APP_ID = 'd543c7c876734c4a82da72a588edd047';
-        const TOKEN = '007eJxTYDj7W+FX7eXEJonak1MtU8Umnj3x+vTJTafcw8NuO59NsndSYEgxNTFONk+2MDczNzZJNkm0MEpJNDdKNLWwSE1JMTAx35fYn9YQyMjwoJiXmZEBAkF8NoakxMrcxAoGBgA/sSIl';
+        const APP_ID = '1297c1a58c0a4f40a55d1f1f7c52b7cd';
+        const TOKEN = '007eJxTYHB88m0Nsxd7b/6s0K9TZHa/Ya16vWbPaq0jBrW8P5bENZkoMBgaWZonGyaaWiQbJJqkmRgkmpqmGKYZppknmxolmSen7NWentYQyMjA8l2MiZEBAkF8NoakxMrcxAoGBgCyoSB1';
         const CHANNEL = 'baymax';
 
         let rtc = {
@@ -118,7 +120,7 @@
                 // Refresh the page after a short delay
                 setTimeout(() => {
                     window.location.reload();
-                }, 1000);
+                }, 10000);
             };
 
             rtc.mediaRecorder.start();
@@ -138,4 +140,5 @@
         joinChannel();
     </script>
 </body>
+
 </html>

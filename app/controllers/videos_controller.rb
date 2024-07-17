@@ -1,31 +1,3 @@
-# class VideosController < ApplicationController
-#     before_action :require_login
-    
-#     def user
-#         @user_setting = current_user.user_setting || current_user.create_user_setting
-#         @videos = Video.all # Assuming you have a Video model and you want to list all videos
-#       end
-    
-#     def index
-#       @videos = Video.all
-#     end
-  
-#     def create
-#       @video = Video.new(video_params)
-#       if @video.save
-#         redirect_to videos_path, notice: "Video was successfully uploaded."
-#       else
-#         render :index
-#       end
-#     end
-  
-#     private
-  
-#     def video_params
-#       params.require(:video).permit(:title, :file)
-#     end
-#   end
-
 class VideosController < ApplicationController
   before_action :require_login, :set_video, only: [:show, :edit, :update, :destroy]
   
@@ -65,11 +37,8 @@ class VideosController < ApplicationController
   def edit
   end
 
-  def edit
-  end
-
   def create
-    @video = Video.new(video_params)
+    @video = current_user.videos.new(video_params)
     if @video.save
       redirect_to @video, notice: 'Video was successfully created.'
     else
@@ -137,7 +106,7 @@ class VideosController < ApplicationController
   private
 
   def video_params
-    params.require(:video).permit(:title, :file_path, :duration, :user_id, :recorded_at, :file)
+    params.require(:video).permit(:title, :file, :file_path, :duration, :user_id, :recorded_at)
   end
 
   def set_video
