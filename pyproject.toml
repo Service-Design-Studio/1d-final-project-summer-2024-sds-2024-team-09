@@ -24,6 +24,8 @@ tensorflow-macos = { version = "^2.13.0", platform = "darwin", markers = "platfo
 
 huggingface-hub = "^0.20.1"
 sounddevice = "^0.4.7"
+moviepy = "^1.0.3"
+flask = "^3.0.3"
 
 
 [tool.poetry.group.dev.dependencies]

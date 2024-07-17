@@ -35,9 +35,16 @@ def run_continously(
     audio_file_client: LibrosaClient,
 ):
     service = CryBabyService(
-        logger=logger, classifier=classifier, audio_file_path=None, repository=repository, audio_file_client=audio_file_client
+        logger=logger, 
+        classifier=classifier, 
+        video_file_path=directory / "video",
+        raw_audio_file_path=directory / "raw",
+        temp_audio_file_path=directory / "temp",
+        split_audio_file_path=directory / "split", 
+        repository=repository, 
+        audio_file_client=audio_file_client
     )
-    service.continuously_evaluate_from_directory(directory)
+    service.continuously_evaluate_from_directory()
 
 
 def main():
