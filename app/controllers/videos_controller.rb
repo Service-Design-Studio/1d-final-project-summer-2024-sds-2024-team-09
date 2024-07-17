@@ -146,7 +146,7 @@ class VideosController < ApplicationController
     require "google/cloud/storage"
   
     storage = Google::Cloud::Storage.new
-    bucket = storage.bucket("your_bucket_name")
+    bucket = storage.bucket("video-upload-jya")
   
     # Define the object name (path) in GCS
     object_name = "videos/#{current_user.id}/#{video.id}_#{video.recorded_at.strftime('%Y%m%d%H%M%S')}.mp4"
@@ -160,7 +160,7 @@ class VideosController < ApplicationController
   
   def delete_from_gcs(file_path)
     storage = Google::Cloud::Storage.new
-    bucket = storage.bucket("your_bucket_name")
+    bucket = storage.bucket("video-upload-jya")
     file = bucket.file(file_path)
   
     file&.delete if file # Delete the file if it exists
