@@ -1,3 +1,4 @@
+require "google/cloud/storage"
 module Api
   class VideosController < ApplicationController
     before_action :require_login
@@ -26,12 +27,31 @@ module Api
     end
 
     def update
+      old_title = @video.title
+      new_title = video_params[:title]
+
       if @video.update(video_params)
+        rename_gcs_file(@video.file.key, old_title, new_title) if @video.file.attached?
         render json: @video, status: :ok
       else
         render json: @video.errors, status: :unprocessable_entity
       end
     end  
+
+    def update_gcs_metadata(video)
+      # Assuming you have the Google Cloud Storage gem installed and configured
+      require "google/cloud/storage"
+    
+      storage = Google::Cloud::Storage.new
+      bucket = storage.bucket("video-upload-jya")
+      file = bucket.file(video.file_path) # Assuming file_path stores the GCS object name
+    
+      if file
+        file.update_metadata({ "title" => video.title }) # Update metadata with new title
+      else
+        Rails.logger.error("File not found in GCS for video ID #{video.id}")
+      end
+    end
 
     def destroy
       if @video.destroy
@@ -52,6 +72,26 @@ module Api
 
     def video_params
       params.require(:video).permit(:title, :file_path, :duration, :recorded_at, :file)
+    end
+
+    def rename_gcs_file(file_key, old_title, new_title)
+      bucket_name = 'video-upload-jya'
+      old_file_path = "#{old_title}.webm"
+      new_file_path = "#{new_title}.webm"
+    
+      storage = Google::Cloud::Storage.new
+      bucket = storage.bucket(bucket_name)
+      file = bucket.file(file_key)
+    
+      if file
+        file.copy(new_file_path)
+        file.delete
+        @video.update(file_path: new_file_path)
+        Rails.logger.info "File renamed from #{old_file_path} to #{new_file_path} in GCS bucket #{bucket_name}"
+      else
+        Rails.logger.error "File with key #{file_key} not found in GCS bucket #{bucket_name}"
+        false
+      end
     end
   end
 end
