@@ -1,3 +1,4 @@
+
 Rails.application.routes.draw do
   get 'user_settings/new'
   get 'user_settings/create'
@@ -27,7 +28,7 @@ Rails.application.routes.draw do
     end
   end
 
-  resources :users, only: [:new, :create, :show, :index] do 
+  resources :users, only: [:new, :create, :show, :index] do
     resources :cameras, only: [:new, :create, :show, :index]
   end
 
@@ -45,7 +46,7 @@ Rails.application.routes.draw do
       resources :users, only: [:create, :show, :update, :destroy]
       resources :sessions, only: [:create]
       resources :videos, only: [:index, :show, :create, :update, :destroy]
-    end      
+    end
     resources :videos, only: [:index, :create, :destroy, :update]
   end
 end
