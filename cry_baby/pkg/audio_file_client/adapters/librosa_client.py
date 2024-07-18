@@ -40,7 +40,7 @@ class LibrosaClient(ports.AudioFileClient):
                 1,
             )
         ) != round(pre_processing_settings.duration_seconds, 1):
-            audio_file_path=self.pad(audio_file_path, 0, 4)
+            audio_file_path=self.pad(audio_file_path, 4)
             # raise UnexpectedDurationError(
             #     f"Audio file {audio_file_path} has duration {duration} seconds, "
             #     f"but the pre_processing_settings.duration_seconds is {pre_processing_settings.duration_seconds}"

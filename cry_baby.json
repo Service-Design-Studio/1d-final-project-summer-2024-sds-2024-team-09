@@ -6913,5 +6913,390 @@
         "timestamp": "2024-07-17T23:07:25.778209",
         "audio_file_path": "/home/mike/cry-baby/audio/split/Baby Crying Sound - Crying Baby Sound Effect Annoying Sounds [TubeRipper.cc]_1356-1360.wav",
         "prediction": 0.9989492893218994
+    },
+    {
+        "timestamp": "2024-07-18T15:41:26.541595",
+        "audio_file_path": "/home/mike/cry-baby-edited/cry-baby/audio/split/Louise_01.m4a_0_0-4.wav",
+        "prediction": 1.0
+    },
+    {
+        "timestamp": "2024-07-18T15:41:26.638852",
+        "audio_file_path": "/home/mike/cry-baby-edited/cry-baby/audio/split/Louise_01.m4a_13_0-4.wav",
+        "prediction": 0.9227939248085022
+    },
+    {
+        "timestamp": "2024-07-18T15:41:26.732671",
+        "audio_file_path": "/home/mike/cry-baby-edited/cry-baby/audio/split/V_2017-04-01+08_06_22_0_30.mp3_18_0-4.wav",
+        "prediction": 0.975323498249054
+    },
+    {
+        "timestamp": "2024-07-18T15:41:26.889529",
+        "audio_file_path": "/home/mike/cry-baby-edited/cry-baby/audio/split/V_2017-04-01+08_06_22_0_30.mp3_5_0-4.wav",
+        "prediction": 0.8199136853218079
+    },
+    {
+        "timestamp": "2024-07-18T15:41:27.007343",
+        "audio_file_path": "/home/mike/cry-baby-edited/cry-baby/audio/split/margot.m4a_23_0-4.wav",
+        "prediction": 0.8961735963821411
+    },
+    {
+        "timestamp": "2024-07-18T15:41:27.121678",
+        "audio_file_path": "/home/mike/cry-baby-edited/cry-baby/audio/split/Louise_01.m4a_7_0-4.wav",
+        "prediction": 1.0
+    },
+    {
+        "timestamp": "2024-07-18T15:41:27.237192",
+        "audio_file_path": "/home/mike/cry-baby-edited/cry-baby/audio/split/V_2017-04-01+08_06_22_0_30.mp3_1_0-4.wav",
+        "prediction": 0.9934741258621216
+    },
+    {
+        "timestamp": "2024-07-18T15:41:27.364543",
+        "audio_file_path": "/home/mike/cry-baby-edited/cry-baby/audio/split/V_2017-04-01+08_06_22_0_30.mp3_19_0-4.wav",
+        "prediction": 0.9973238110542297
+    },
+    {
+        "timestamp": "2024-07-18T15:41:27.507741",
+        "audio_file_path": "/home/mike/cry-baby-edited/cry-baby/audio/split/V_2017-04-01+08_06_22_0_30.mp3_3_0-4.wav",
+        "prediction": 0.8715708255767822
+    },
+    {
+        "timestamp": "2024-07-18T15:41:27.622749",
+        "audio_file_path": "/home/mike/cry-baby-edited/cry-baby/audio/split/margot.m4a_26_0-4.wav",
+        "prediction": 0.004732791800051928
+    },
+    {
+        "timestamp": "2024-07-18T15:41:27.717558",
+        "audio_file_path": "/home/mike/cry-baby-edited/cry-baby/audio/split/margot.m4a_21_0-4.wav",
+        "prediction": 0.9522515535354614
+    },
+    {
+        "timestamp": "2024-07-18T15:41:27.830420",
+        "audio_file_path": "/home/mike/cry-baby-edited/cry-baby/audio/split/V_2017-04-01+08_06_22_0_30.mp3_15_0-4.wav",
+        "prediction": 0.3325172960758209
+    },
+    {
+        "timestamp": "2024-07-18T15:41:27.952176",
+        "audio_file_path": "/home/mike/cry-baby-edited/cry-baby/audio/split/Louise_01.m4a_12_0-4.wav",
+        "prediction": 0.9999744892120361
+    },
+    {
+        "timestamp": "2024-07-18T15:41:28.072430",
+        "audio_file_path": "/home/mike/cry-baby-edited/cry-baby/audio/split/margot.m4a_12_0-4.wav",
+        "prediction": 0.999737560749054
+    },
+    {
+        "timestamp": "2024-07-18T15:41:28.198666",
+        "audio_file_path": "/home/mike/cry-baby-edited/cry-baby/audio/split/Louise_01.m4a_11_0-4.wav",
+        "prediction": 0.9999631643295288
+    },
+    {
+        "timestamp": "2024-07-18T15:41:28.320702",
+        "audio_file_path": "/home/mike/cry-baby-edited/cry-baby/audio/split/margot.m4a_0_0-4.wav",
+        "prediction": 0.9348335862159729
+    },
+    {
+        "timestamp": "2024-07-18T15:41:28.421817",
+        "audio_file_path": "/home/mike/cry-baby-edited/cry-baby/audio/split/margot.m4a_10_0-4.wav",
+        "prediction": 0.9999597072601318
+    },
+    {
+        "timestamp": "2024-07-18T15:41:28.594296",
+        "audio_file_path": "/home/mike/cry-baby-edited/cry-baby/audio/split/Louise_01.m4a_6_0-4.wav",
+        "prediction": 0.9999998807907104
+    },
+    {
+        "timestamp": "2024-07-18T15:41:28.717390",
+        "audio_file_path": "/home/mike/cry-baby-edited/cry-baby/audio/split/margot.m4a_22_0-4.wav",
+        "prediction": 0.8551454544067383
+    },
+    {
+        "timestamp": "2024-07-18T15:41:28.845239",
+        "audio_file_path": "/home/mike/cry-baby-edited/cry-baby/audio/split/Louise_01.m4a_4_0-4.wav",
+        "prediction": 0.9945370554924011
+    },
+    {
+        "timestamp": "2024-07-18T15:41:28.960063",
+        "audio_file_path": "/home/mike/cry-baby-edited/cry-baby/audio/split/V_2017-04-01+08_06_22_0_30.mp3_9_0-4.wav",
+        "prediction": 0.9935187697410583
+    },
+    {
+        "timestamp": "2024-07-18T15:41:29.056507",
+        "audio_file_path": "/home/mike/cry-baby-edited/cry-baby/audio/split/margot.m4a_19_0-4.wav",
+        "prediction": 0.00392839265987277
+    },
+    {
+        "timestamp": "2024-07-18T15:41:29.187262",
+        "audio_file_path": "/home/mike/cry-baby-edited/cry-baby/audio/split/margot.m4a_16_0-4.wav",
+        "prediction": 0.9944911599159241
+    },
+    {
+        "timestamp": "2024-07-18T15:41:29.331423",
+        "audio_file_path": "/home/mike/cry-baby-edited/cry-baby/audio/split/margot.m4a_24_0-4.wav",
+        "prediction": 0.07496076822280884
+    },
+    {
+        "timestamp": "2024-07-18T15:41:29.441582",
+        "audio_file_path": "/home/mike/cry-baby-edited/cry-baby/audio/split/V_2017-04-01+08_06_22_0_30.mp3_4_0-4.wav",
+        "prediction": 0.9387179613113403
+    },
+    {
+        "timestamp": "2024-07-18T15:41:29.566960",
+        "audio_file_path": "/home/mike/cry-baby-edited/cry-baby/audio/split/margot.m4a_15_0-4.wav",
+        "prediction": 0.8110023140907288
+    },
+    {
+        "timestamp": "2024-07-18T15:41:29.673001",
+        "audio_file_path": "/home/mike/cry-baby-edited/cry-baby/audio/split/margot.m4a_3_0-4.wav",
+        "prediction": 0.9986742734909058
+    },
+    {
+        "timestamp": "2024-07-18T15:41:29.788633",
+        "audio_file_path": "/home/mike/cry-baby-edited/cry-baby/audio/split/V_2017-04-01+08_06_22_0_30.mp3_10_0-4.wav",
+        "prediction": 0.9667753577232361
+    },
+    {
+        "timestamp": "2024-07-18T15:41:29.935684",
+        "audio_file_path": "/home/mike/cry-baby-edited/cry-baby/audio/split/V_2017-04-01+08_06_22_0_30.mp3_25_0-4.wav",
+        "prediction": 0.9627057313919067
+    },
+    {
+        "timestamp": "2024-07-18T15:41:30.074436",
+        "audio_file_path": "/home/mike/cry-baby-edited/cry-baby/audio/split/margot.m4a_11_0-4.wav",
+        "prediction": 0.9999708533287048
+    },
+    {
+        "timestamp": "2024-07-18T15:41:30.198993",
+        "audio_file_path": "/home/mike/cry-baby-edited/cry-baby/audio/split/margot.m4a_6_0-4.wav",
+        "prediction": 0.9999988675117493
+    },
+    {
+        "timestamp": "2024-07-18T15:41:30.293566",
+        "audio_file_path": "/home/mike/cry-baby-edited/cry-baby/audio/split/margot.m4a_4_0-4.wav",
+        "prediction": 0.998961329460144
+    },
+    {
+        "timestamp": "2024-07-18T15:41:30.390047",
+        "audio_file_path": "/home/mike/cry-baby-edited/cry-baby/audio/split/V_2017-04-01+08_06_22_0_30.mp3_12_0-4.wav",
+        "prediction": 0.8901790380477905
+    },
+    {
+        "timestamp": "2024-07-18T15:41:30.513654",
+        "audio_file_path": "/home/mike/cry-baby-edited/cry-baby/audio/split/margot.m4a_5_0-4.wav",
+        "prediction": 1.0
+    },
+    {
+        "timestamp": "2024-07-18T15:41:30.624015",
+        "audio_file_path": "/home/mike/cry-baby-edited/cry-baby/audio/split/V_2017-04-01+08_06_22_0_30.mp3_16_0-4.wav",
+        "prediction": 0.5075699090957642
+    },
+    {
+        "timestamp": "2024-07-18T15:41:30.765089",
+        "audio_file_path": "/home/mike/cry-baby-edited/cry-baby/audio/split/V_2017-04-01+08_06_22_0_30.mp3_14_0-4.wav",
+        "prediction": 0.49093344807624817
+    },
+    {
+        "timestamp": "2024-07-18T15:41:30.891794",
+        "audio_file_path": "/home/mike/cry-baby-edited/cry-baby/audio/split/margot.m4a_1_0-4.wav",
+        "prediction": 0.5017910003662109
+    },
+    {
+        "timestamp": "2024-07-18T15:41:31.001814",
+        "audio_file_path": "/home/mike/cry-baby-edited/cry-baby/audio/split/V_2017-04-01+08_06_22_0_30.mp3_13_0-4.wav",
+        "prediction": 0.7587045431137085
+    },
+    {
+        "timestamp": "2024-07-18T15:41:31.084962",
+        "audio_file_path": "/home/mike/cry-baby-edited/cry-baby/audio/split/V_2017-04-01+08_06_22_0_30.mp3_7_0-4.wav",
+        "prediction": 0.9982187747955322
+    },
+    {
+        "timestamp": "2024-07-18T15:41:31.209540",
+        "audio_file_path": "/home/mike/cry-baby-edited/cry-baby/audio/split/V_2017-04-01+08_06_22_0_30.mp3_17_0-4.wav",
+        "prediction": 0.977073609828949
+    },
+    {
+        "timestamp": "2024-07-18T15:41:31.311826",
+        "audio_file_path": "/home/mike/cry-baby-edited/cry-baby/audio/split/margot.m4a_7_0-4.wav",
+        "prediction": 1.0
+    },
+    {
+        "timestamp": "2024-07-18T15:41:31.409129",
+        "audio_file_path": "/home/mike/cry-baby-edited/cry-baby/audio/split/V_2017-04-01+08_06_22_0_30.mp3_6_0-4.wav",
+        "prediction": 0.9804922938346863
+    },
+    {
+        "timestamp": "2024-07-18T15:41:31.501559",
+        "audio_file_path": "/home/mike/cry-baby-edited/cry-baby/audio/split/margot.m4a_25_0-4.wav",
+        "prediction": 0.0057804277166724205
+    },
+    {
+        "timestamp": "2024-07-18T15:41:31.600248",
+        "audio_file_path": "/home/mike/cry-baby-edited/cry-baby/audio/split/V_2017-04-01+08_06_22_0_30.mp3_2_0-4.wav",
+        "prediction": 0.9948921203613281
+    },
+    {
+        "timestamp": "2024-07-18T15:41:31.776440",
+        "audio_file_path": "/home/mike/cry-baby-edited/cry-baby/audio/split/V_2017-04-01+08_06_22_0_30.mp3_22_0-4.wav",
+        "prediction": 0.9390726685523987
+    },
+    {
+        "timestamp": "2024-07-18T15:41:31.869207",
+        "audio_file_path": "/home/mike/cry-baby-edited/cry-baby/audio/split/margot.m4a_13_0-4.wav",
+        "prediction": 0.9873308539390564
+    },
+    {
+        "timestamp": "2024-07-18T15:41:31.995834",
+        "audio_file_path": "/home/mike/cry-baby-edited/cry-baby/audio/split/margot.m4a_2_0-4.wav",
+        "prediction": 0.5501662492752075
+    },
+    {
+        "timestamp": "2024-07-18T15:41:32.140709",
+        "audio_file_path": "/home/mike/cry-baby-edited/cry-baby/audio/split/V_2017-04-01+08_06_22_0_30.mp3_20_0-4.wav",
+        "prediction": 0.98279869556427
+    },
+    {
+        "timestamp": "2024-07-18T15:41:32.281487",
+        "audio_file_path": "/home/mike/cry-baby-edited/cry-baby/audio/split/V_2017-04-01+08_06_22_0_30.mp3_8_0-4.wav",
+        "prediction": 0.9999759793281555
+    },
+    {
+        "timestamp": "2024-07-18T15:41:32.395453",
+        "audio_file_path": "/home/mike/cry-baby-edited/cry-baby/audio/split/margot.m4a_20_0-4.wav",
+        "prediction": 0.004242515657097101
+    },
+    {
+        "timestamp": "2024-07-18T15:41:32.508425",
+        "audio_file_path": "/home/mike/cry-baby-edited/cry-baby/audio/split/Louise_01.m4a_1_0-4.wav",
+        "prediction": 1.0
+    },
+    {
+        "timestamp": "2024-07-18T15:41:32.625180",
+        "audio_file_path": "/home/mike/cry-baby-edited/cry-baby/audio/split/V_2017-04-01+08_06_22_0_30.mp3_11_0-4.wav",
+        "prediction": 0.8688846230506897
+    },
+    {
+        "timestamp": "2024-07-18T15:41:32.750713",
+        "audio_file_path": "/home/mike/cry-baby-edited/cry-baby/audio/split/margot.m4a_14_0-4.wav",
+        "prediction": 0.9685451984405518
+    },
+    {
+        "timestamp": "2024-07-18T15:41:32.878561",
+        "audio_file_path": "/home/mike/cry-baby-edited/cry-baby/audio/split/margot.m4a_8_0-4.wav",
+        "prediction": 0.9999999403953552
+    },
+    {
+        "timestamp": "2024-07-18T15:41:33.017527",
+        "audio_file_path": "/home/mike/cry-baby-edited/cry-baby/audio/split/V_2017-04-01+08_06_22_0_30.mp3_24_0-4.wav",
+        "prediction": 0.9888339042663574
+    },
+    {
+        "timestamp": "2024-07-18T15:41:33.175022",
+        "audio_file_path": "/home/mike/cry-baby-edited/cry-baby/audio/split/margot.m4a_9_0-4.wav",
+        "prediction": 0.9999998807907104
+    },
+    {
+        "timestamp": "2024-07-18T15:41:33.304236",
+        "audio_file_path": "/home/mike/cry-baby-edited/cry-baby/audio/split/V_2017-04-01+08_06_22_0_30.mp3_0_0-4.wav",
+        "prediction": 0.9983994364738464
+    },
+    {
+        "timestamp": "2024-07-18T15:41:33.414562",
+        "audio_file_path": "/home/mike/cry-baby-edited/cry-baby/audio/split/Louise_01.m4a_3_0-4.wav",
+        "prediction": 0.9937421679496765
+    },
+    {
+        "timestamp": "2024-07-18T15:41:33.549889",
+        "audio_file_path": "/home/mike/cry-baby-edited/cry-baby/audio/split/Louise_01.m4a_9_0-4.wav",
+        "prediction": 0.9999968409538269
+    },
+    {
+        "timestamp": "2024-07-18T15:41:33.663419",
+        "audio_file_path": "/home/mike/cry-baby-edited/cry-baby/audio/split/Louise_01.m4a_2_0-4.wav",
+        "prediction": 0.9999994039535522
+    },
+    {
+        "timestamp": "2024-07-18T15:41:33.783105",
+        "audio_file_path": "/home/mike/cry-baby-edited/cry-baby/audio/split/Louise_01.m4a_8_0-4.wav",
+        "prediction": 0.9999374747276306
+    },
+    {
+        "timestamp": "2024-07-18T15:41:33.912774",
+        "audio_file_path": "/home/mike/cry-baby-edited/cry-baby/audio/split/V_2017-04-01+08_06_22_0_30.mp3_23_0-4.wav",
+        "prediction": 0.9064587354660034
+    },
+    {
+        "timestamp": "2024-07-18T15:41:34.081058",
+        "audio_file_path": "/home/mike/cry-baby-edited/cry-baby/audio/split/margot.m4a_18_0-4.wav",
+        "prediction": 0.19925685226917267
+    },
+    {
+        "timestamp": "2024-07-18T15:41:34.195939",
+        "audio_file_path": "/home/mike/cry-baby-edited/cry-baby/audio/split/V_2017-04-01+08_06_22_0_30.mp3_21_0-4.wav",
+        "prediction": 0.8631887435913086
+    },
+    {
+        "timestamp": "2024-07-18T15:41:34.314703",
+        "audio_file_path": "/home/mike/cry-baby-edited/cry-baby/audio/split/Louise_01.m4a_14_0-4.wav",
+        "prediction": 0.9993104934692383
+    },
+    {
+        "timestamp": "2024-07-18T15:41:34.416547",
+        "audio_file_path": "/home/mike/cry-baby-edited/cry-baby/audio/split/margot.m4a_17_0-4.wav",
+        "prediction": 0.5634887218475342
+    },
+    {
+        "timestamp": "2024-07-18T15:41:34.540697",
+        "audio_file_path": "/home/mike/cry-baby-edited/cry-baby/audio/split/Louise_01.m4a_10_0-4.wav",
+        "prediction": 0.9999989867210388
+    },
+    {
+        "timestamp": "2024-07-18T15:41:34.633199",
+        "audio_file_path": "/home/mike/cry-baby-edited/cry-baby/audio/split/Louise_01.m4a_5_0-4.wav",
+        "prediction": 0.9999446868896484
+    },
+    {
+        "timestamp": "2024-07-18T16:04:03.208270",
+        "audio_file_path": "/home/mike/cry-baby-edited/cry-baby/audio/split/file_example_WEBM_480_900KB_4-8.wav",
+        "prediction": NaN
+    },
+    {
+        "timestamp": "2024-07-18T16:04:03.249687",
+        "audio_file_path": "/home/mike/cry-baby-edited/cry-baby/audio/split/file_example_WEBM_480_900KB_0-4.wav",
+        "prediction": NaN
+    },
+    {
+        "timestamp": "2024-07-18T16:04:03.313216",
+        "audio_file_path": "/home/mike/cry-baby-edited/cry-baby/audio/split/file_example_WEBM_480_900KB_8-12.wav",
+        "prediction": NaN
+    },
+    {
+        "timestamp": "2024-07-18T16:04:03.382860",
+        "audio_file_path": "/home/mike/cry-baby-edited/cry-baby/audio/split/file_example_WEBM_480_900KB_16-20.wav",
+        "prediction": NaN
+    },
+    {
+        "timestamp": "2024-07-18T16:04:03.439437",
+        "audio_file_path": "/home/mike/cry-baby-edited/cry-baby/audio/split/file_example_WEBM_480_900KB_20-24.wav",
+        "prediction": NaN
+    },
+    {
+        "timestamp": "2024-07-18T16:04:03.508024",
+        "audio_file_path": "/home/mike/cry-baby-edited/cry-baby/audio/split/file_example_WEBM_480_900KB_28-30.wav",
+        "prediction": NaN
+    },
+    {
+        "timestamp": "2024-07-18T16:04:03.568181",
+        "audio_file_path": "/home/mike/cry-baby-edited/cry-baby/audio/split/file_example_WEBM_480_900KB_12-16.wav",
+        "prediction": NaN
+    },
+    {
+        "timestamp": "2024-07-18T16:04:03.631591",
+        "audio_file_path": "/home/mike/cry-baby-edited/cry-baby/audio/split/file_example_WEBM_480_900KB_24-28.wav",
+        "prediction": NaN
+    },
+    {
+        "timestamp": "2024-07-18T16:04:03.698558",
+        "audio_file_path": "/home/mike/cry-baby-edited/cry-baby/audio/split/file_example_WEBM_480_900KB_28-30.padded.wav",
+        "prediction": NaN
     }
 ]
