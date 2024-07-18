@@ -19,6 +19,13 @@ Rails.application.routes.draw do
   get 'home', to: 'pages#index'
   get 'video-history', to: 'pages#video_history'
 
+  namespace :api do
+    namespace :v1 do
+      post 'login', to: 'sessions#create'
+      delete 'logout', to: 'sessions#destroy'
+    end
+  end
+
   resources :users, only: [:new, :create, :show, :index] do 
     resources :cameras, only: [:new, :create, :show, :index]
   end
@@ -31,13 +38,13 @@ Rails.application.routes.draw do
   # resources :sessions, only: [:new, :create, :destroy]
   get 'api/videos', to: 'videos#api_index'
 
-    # Namespaced API routes
-    namespace :api do
-      namespace :v1 do
-        resources :users, only: [:create, :show, :update, :destroy]
-        resources :sessions, only: [:create]
-        resources :videos, only: [:index, :update, :destroy]
-      end      
-      resources :videos, only: [:index, :destroy, :update]
-    end
+  # Namespaced API routes
+  namespace :api do
+    namespace :v1 do
+      resources :users, only: [:create, :show, :update, :destroy]
+      resources :sessions, only: [:create]
+      resources :videos, only: [:index]
+    end      
+    resources :videos, only: [:index, :create, :destroy, :update]
+  end
 end

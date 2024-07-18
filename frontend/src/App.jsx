@@ -9,6 +9,8 @@ import Particulars from './components/profiles/Particulars';
 import AccSettings from './components/profiles/AccSettings';
 import EditCams from './components/profiles/EditCams';
 import CameraDetails from './components/mobile-app/CameraDetails';
+import VideoRecording from './components/VideoRecording';
+import HistoriesPage from './components/HistoriesPage';
 
 
 function App() {
@@ -24,6 +26,8 @@ function App() {
         <Route path="/profile/particulars" element={<Particulars />} />
         <Route path="/profile/accsettings" element={<AccSettings />} />
         <Route path="/profile/editcams" element={<EditCams />} />
+        <Route path="/vidrecord" element={<VideoRecording />} />
+        <Route path="/histories" element={<HistoriesPage />} />
       </Routes>
     </Router>
   );

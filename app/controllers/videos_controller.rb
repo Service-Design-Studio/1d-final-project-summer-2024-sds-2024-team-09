@@ -38,8 +38,12 @@ class VideosController < ApplicationController
   end
 
   def create
+    Rails.logger.debug "Video Params: #{video_params.inspect}"
     @video = current_user.videos.new(video_params)
+    @video.file_path = "hello hello"
+    Rails.logger.debug "Video Attributes Before Save: #{@video.attributes.inspect}"
     if @video.save
+      upload_to_gcs(@video)
       redirect_to @video, notice: 'Video was successfully created.'
     else
       render :new
