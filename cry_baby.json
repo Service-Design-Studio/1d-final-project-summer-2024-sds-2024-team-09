@@ -7298,5 +7298,2255 @@
         "timestamp": "2024-07-18T16:04:03.698558",
         "audio_file_path": "/home/mike/cry-baby-edited/cry-baby/audio/split/file_example_WEBM_480_900KB_28-30.padded.wav",
         "prediction": NaN
+    },
+    {
+        "timestamp": "2024-07-18T16:12:00.592171",
+        "audio_file_path": "/home/mike/cry-baby-edited/cry-baby/audio/split/Baby Crying Sound - Crying Baby Sound Effect Annoying Sounds [TubeRipper.cc]_612-616.wav",
+        "prediction": 0.9999992251396179
+    },
+    {
+        "timestamp": "2024-07-18T16:12:00.632622",
+        "audio_file_path": "/home/mike/cry-baby-edited/cry-baby/audio/split/Baby Crying Sound - Crying Baby Sound Effect Annoying Sounds [TubeRipper.cc]_288-292.wav",
+        "prediction": 0.9999949336051941
+    },
+    {
+        "timestamp": "2024-07-18T16:12:00.713777",
+        "audio_file_path": "/home/mike/cry-baby-edited/cry-baby/audio/split/Baby Crying Sound - Crying Baby Sound Effect Annoying Sounds [TubeRipper.cc]_40-44.wav",
+        "prediction": 0.999635636806488
+    },
+    {
+        "timestamp": "2024-07-18T16:12:00.760985",
+        "audio_file_path": "/home/mike/cry-baby-edited/cry-baby/audio/split/Baby Crying Sound - Crying Baby Sound Effect Annoying Sounds [TubeRipper.cc]_116-120.wav",
+        "prediction": 0.9999979734420776
+    },
+    {
+        "timestamp": "2024-07-18T16:12:00.807666",
+        "audio_file_path": "/home/mike/cry-baby-edited/cry-baby/audio/split/Baby Crying Sound - Crying Baby Sound Effect Annoying Sounds [TubeRipper.cc]_676-680.wav",
+        "prediction": 0.9999328255653381
+    },
+    {
+        "timestamp": "2024-07-18T16:12:00.878476",
+        "audio_file_path": "/home/mike/cry-baby-edited/cry-baby/audio/split/Baby Crying Sound - Crying Baby Sound Effect Annoying Sounds [TubeRipper.cc]_324-328.wav",
+        "prediction": 1.0
+    },
+    {
+        "timestamp": "2024-07-18T16:12:00.925306",
+        "audio_file_path": "/home/mike/cry-baby-edited/cry-baby/audio/split/Baby Crying Sound - Crying Baby Sound Effect Annoying Sounds [TubeRipper.cc]_160-164.wav",
+        "prediction": 0.9997451305389404
+    },
+    {
+        "timestamp": "2024-07-18T16:12:00.962562",
+        "audio_file_path": "/home/mike/cry-baby-edited/cry-baby/audio/split/Baby Crying Sound - Crying Baby Sound Effect Annoying Sounds [TubeRipper.cc]_1036-1040.wav",
+        "prediction": 0.9999219179153442
+    },
+    {
+        "timestamp": "2024-07-18T16:12:01.028574",
+        "audio_file_path": "/home/mike/cry-baby-edited/cry-baby/audio/split/Baby Crying Sound - Crying Baby Sound Effect Annoying Sounds [TubeRipper.cc]_1344-1348.wav",
+        "prediction": 0.9999900460243225
+    },
+    {
+        "timestamp": "2024-07-18T16:12:01.071716",
+        "audio_file_path": "/home/mike/cry-baby-edited/cry-baby/audio/split/Baby Crying Sound - Crying Baby Sound Effect Annoying Sounds [TubeRipper.cc]_788-792.wav",
+        "prediction": 0.999995231628418
+    },
+    {
+        "timestamp": "2024-07-18T16:12:01.215243",
+        "audio_file_path": "/home/mike/cry-baby-edited/cry-baby/audio/split/Baby Crying Sound - Crying Baby Sound Effect Annoying Sounds [TubeRipper.cc]_1336-1340.wav",
+        "prediction": 0.9999967217445374
+    },
+    {
+        "timestamp": "2024-07-18T16:12:01.270203",
+        "audio_file_path": "/home/mike/cry-baby-edited/cry-baby/audio/split/Baby Crying Sound - Crying Baby Sound Effect Annoying Sounds [TubeRipper.cc]_828-832.wav",
+        "prediction": 0.9999990463256836
+    },
+    {
+        "timestamp": "2024-07-18T16:12:01.306943",
+        "audio_file_path": "/home/mike/cry-baby-edited/cry-baby/audio/split/Baby Crying Sound - Crying Baby Sound Effect Annoying Sounds [TubeRipper.cc]_216-220.wav",
+        "prediction": 0.9999991655349731
+    },
+    {
+        "timestamp": "2024-07-18T16:12:01.364354",
+        "audio_file_path": "/home/mike/cry-baby-edited/cry-baby/audio/split/Baby Crying Sound - Crying Baby Sound Effect Annoying Sounds [TubeRipper.cc]_1616-1620.wav",
+        "prediction": 0.9999991655349731
+    },
+    {
+        "timestamp": "2024-07-18T16:12:01.409442",
+        "audio_file_path": "/home/mike/cry-baby-edited/cry-baby/audio/split/Baby Crying Sound - Crying Baby Sound Effect Annoying Sounds [TubeRipper.cc]_1428-1432.wav",
+        "prediction": 0.9999915957450867
+    },
+    {
+        "timestamp": "2024-07-18T16:12:01.451946",
+        "audio_file_path": "/home/mike/cry-baby-edited/cry-baby/audio/split/Baby Crying Sound - Crying Baby Sound Effect Annoying Sounds [TubeRipper.cc]_176-180.wav",
+        "prediction": 0.9999996423721313
+    },
+    {
+        "timestamp": "2024-07-18T16:12:01.504491",
+        "audio_file_path": "/home/mike/cry-baby-edited/cry-baby/audio/split/Baby Crying Sound - Crying Baby Sound Effect Annoying Sounds [TubeRipper.cc]_1696-1700.wav",
+        "prediction": 0.9996114373207092
+    },
+    {
+        "timestamp": "2024-07-18T16:12:01.548208",
+        "audio_file_path": "/home/mike/cry-baby-edited/cry-baby/audio/split/Baby Crying Sound - Crying Baby Sound Effect Annoying Sounds [TubeRipper.cc]_636-640.wav",
+        "prediction": 0.9994688034057617
+    },
+    {
+        "timestamp": "2024-07-18T16:12:01.596048",
+        "audio_file_path": "/home/mike/cry-baby-edited/cry-baby/audio/split/Baby Crying Sound - Crying Baby Sound Effect Annoying Sounds [TubeRipper.cc]_1240-1244.wav",
+        "prediction": 0.8674639463424683
+    },
+    {
+        "timestamp": "2024-07-18T16:12:01.641794",
+        "audio_file_path": "/home/mike/cry-baby-edited/cry-baby/audio/split/Baby Crying Sound - Crying Baby Sound Effect Annoying Sounds [TubeRipper.cc]_972-976.wav",
+        "prediction": 0.9692261815071106
+    },
+    {
+        "timestamp": "2024-07-18T16:12:01.683780",
+        "audio_file_path": "/home/mike/cry-baby-edited/cry-baby/audio/split/Baby Crying Sound - Crying Baby Sound Effect Annoying Sounds [TubeRipper.cc]_1412-1416.wav",
+        "prediction": 0.939200758934021
+    },
+    {
+        "timestamp": "2024-07-18T16:12:01.737215",
+        "audio_file_path": "/home/mike/cry-baby-edited/cry-baby/audio/split/Baby Crying Sound - Crying Baby Sound Effect Annoying Sounds [TubeRipper.cc]_516-520.wav",
+        "prediction": 0.9999998211860657
+    },
+    {
+        "timestamp": "2024-07-18T16:12:01.790947",
+        "audio_file_path": "/home/mike/cry-baby-edited/cry-baby/audio/split/Baby Crying Sound - Crying Baby Sound Effect Annoying Sounds [TubeRipper.cc]_948-952.wav",
+        "prediction": 0.9999982714653015
+    },
+    {
+        "timestamp": "2024-07-18T16:12:01.942205",
+        "audio_file_path": "/home/mike/cry-baby-edited/cry-baby/audio/split/Baby Crying Sound - Crying Baby Sound Effect Annoying Sounds [TubeRipper.cc]_1376-1380.wav",
+        "prediction": 0.9999171495437622
+    },
+    {
+        "timestamp": "2024-07-18T16:12:02.011213",
+        "audio_file_path": "/home/mike/cry-baby-edited/cry-baby/audio/split/Baby Crying Sound - Crying Baby Sound Effect Annoying Sounds [TubeRipper.cc]_1636-1640.wav",
+        "prediction": 0.9937710165977478
+    },
+    {
+        "timestamp": "2024-07-18T16:12:02.070778",
+        "audio_file_path": "/home/mike/cry-baby-edited/cry-baby/audio/split/Baby Crying Sound - Crying Baby Sound Effect Annoying Sounds [TubeRipper.cc]_1516-1520.wav",
+        "prediction": 0.9957668781280518
+    },
+    {
+        "timestamp": "2024-07-18T16:12:02.129513",
+        "audio_file_path": "/home/mike/cry-baby-edited/cry-baby/audio/split/Baby Crying Sound - Crying Baby Sound Effect Annoying Sounds [TubeRipper.cc]_912-916.wav",
+        "prediction": 0.9816554188728333
+    },
+    {
+        "timestamp": "2024-07-18T16:12:02.200310",
+        "audio_file_path": "/home/mike/cry-baby-edited/cry-baby/audio/split/Baby Crying Sound - Crying Baby Sound Effect Annoying Sounds [TubeRipper.cc]_484-488.wav",
+        "prediction": 0.9999619126319885
+    },
+    {
+        "timestamp": "2024-07-18T16:12:02.262861",
+        "audio_file_path": "/home/mike/cry-baby-edited/cry-baby/audio/split/Baby Crying Sound - Crying Baby Sound Effect Annoying Sounds [TubeRipper.cc]_268-272.wav",
+        "prediction": 0.9999732375144958
+    },
+    {
+        "timestamp": "2024-07-18T16:12:02.362902",
+        "audio_file_path": "/home/mike/cry-baby-edited/cry-baby/audio/split/Baby Crying Sound - Crying Baby Sound Effect Annoying Sounds [TubeRipper.cc]_1528-1532.wav",
+        "prediction": 0.9999991059303284
+    },
+    {
+        "timestamp": "2024-07-18T16:12:02.441833",
+        "audio_file_path": "/home/mike/cry-baby-edited/cry-baby/audio/split/Baby Crying Sound - Crying Baby Sound Effect Annoying Sounds [TubeRipper.cc]_1060-1064.wav",
+        "prediction": 0.9988976120948792
+    },
+    {
+        "timestamp": "2024-07-18T16:12:02.551087",
+        "audio_file_path": "/home/mike/cry-baby-edited/cry-baby/audio/split/Baby Crying Sound - Crying Baby Sound Effect Annoying Sounds [TubeRipper.cc]_104-108.wav",
+        "prediction": 1.0
+    },
+    {
+        "timestamp": "2024-07-18T16:12:02.699607",
+        "audio_file_path": "/home/mike/cry-baby-edited/cry-baby/audio/split/Baby Crying Sound - Crying Baby Sound Effect Annoying Sounds [TubeRipper.cc]_1320-1324.wav",
+        "prediction": 0.9996917247772217
+    },
+    {
+        "timestamp": "2024-07-18T16:12:02.772520",
+        "audio_file_path": "/home/mike/cry-baby-edited/cry-baby/audio/split/Baby Crying Sound - Crying Baby Sound Effect Annoying Sounds [TubeRipper.cc]_1588-1592.wav",
+        "prediction": 1.0
+    },
+    {
+        "timestamp": "2024-07-18T16:12:02.854579",
+        "audio_file_path": "/home/mike/cry-baby-edited/cry-baby/audio/split/Baby Crying Sound - Crying Baby Sound Effect Annoying Sounds [TubeRipper.cc]_1152-1156.wav",
+        "prediction": 0.9999993443489075
+    },
+    {
+        "timestamp": "2024-07-18T16:12:02.937311",
+        "audio_file_path": "/home/mike/cry-baby-edited/cry-baby/audio/split/Baby Crying Sound - Crying Baby Sound Effect Annoying Sounds [TubeRipper.cc]_1544-1548.wav",
+        "prediction": 1.0
+    },
+    {
+        "timestamp": "2024-07-18T16:12:03.039478",
+        "audio_file_path": "/home/mike/cry-baby-edited/cry-baby/audio/split/Baby Crying Sound - Crying Baby Sound Effect Annoying Sounds [TubeRipper.cc]_1040-1044.wav",
+        "prediction": 1.0
+    },
+    {
+        "timestamp": "2024-07-18T16:12:03.214951",
+        "audio_file_path": "/home/mike/cry-baby-edited/cry-baby/audio/split/Baby Crying Sound - Crying Baby Sound Effect Annoying Sounds [TubeRipper.cc]_464-468.wav",
+        "prediction": 0.9994795322418213
+    },
+    {
+        "timestamp": "2024-07-18T16:12:03.327066",
+        "audio_file_path": "/home/mike/cry-baby-edited/cry-baby/audio/split/Baby Crying Sound - Crying Baby Sound Effect Annoying Sounds [TubeRipper.cc]_304-308.wav",
+        "prediction": 0.9999082684516907
+    },
+    {
+        "timestamp": "2024-07-18T16:12:03.389186",
+        "audio_file_path": "/home/mike/cry-baby-edited/cry-baby/audio/split/Baby Crying Sound - Crying Baby Sound Effect Annoying Sounds [TubeRipper.cc]_1164-1168.wav",
+        "prediction": 0.9995719194412231
+    },
+    {
+        "timestamp": "2024-07-18T16:12:03.451666",
+        "audio_file_path": "/home/mike/cry-baby-edited/cry-baby/audio/split/Baby Crying Sound - Crying Baby Sound Effect Annoying Sounds [TubeRipper.cc]_1668-1672.wav",
+        "prediction": 0.9997873306274414
+    },
+    {
+        "timestamp": "2024-07-18T16:12:03.530273",
+        "audio_file_path": "/home/mike/cry-baby-edited/cry-baby/audio/split/Baby Crying Sound - Crying Baby Sound Effect Annoying Sounds [TubeRipper.cc]_504-508.wav",
+        "prediction": 0.9807906746864319
+    },
+    {
+        "timestamp": "2024-07-18T16:12:03.608484",
+        "audio_file_path": "/home/mike/cry-baby-edited/cry-baby/audio/split/Baby Crying Sound - Crying Baby Sound Effect Annoying Sounds [TubeRipper.cc]_420-424.wav",
+        "prediction": 0.9999997615814209
+    },
+    {
+        "timestamp": "2024-07-18T16:12:03.697015",
+        "audio_file_path": "/home/mike/cry-baby-edited/cry-baby/audio/split/Baby Crying Sound - Crying Baby Sound Effect Annoying Sounds [TubeRipper.cc]_860-864.wav",
+        "prediction": 0.9999991059303284
+    },
+    {
+        "timestamp": "2024-07-18T16:12:03.790138",
+        "audio_file_path": "/home/mike/cry-baby-edited/cry-baby/audio/split/Baby Crying Sound - Crying Baby Sound Effect Annoying Sounds [TubeRipper.cc]_396-400.wav",
+        "prediction": 0.9918011426925659
+    },
+    {
+        "timestamp": "2024-07-18T16:12:03.884889",
+        "audio_file_path": "/home/mike/cry-baby-edited/cry-baby/audio/split/Baby Crying Sound - Crying Baby Sound Effect Annoying Sounds [TubeRipper.cc]_668-672.wav",
+        "prediction": 0.9997678995132446
+    },
+    {
+        "timestamp": "2024-07-18T16:12:03.965761",
+        "audio_file_path": "/home/mike/cry-baby-edited/cry-baby/audio/split/Baby Crying Sound - Crying Baby Sound Effect Annoying Sounds [TubeRipper.cc]_392-396.wav",
+        "prediction": 0.9999999403953552
+    },
+    {
+        "timestamp": "2024-07-18T16:12:04.031072",
+        "audio_file_path": "/home/mike/cry-baby-edited/cry-baby/audio/split/Baby Crying Sound - Crying Baby Sound Effect Annoying Sounds [TubeRipper.cc]_1264-1268.wav",
+        "prediction": 0.9999996423721313
+    },
+    {
+        "timestamp": "2024-07-18T16:12:04.117336",
+        "audio_file_path": "/home/mike/cry-baby-edited/cry-baby/audio/split/Baby Crying Sound - Crying Baby Sound Effect Annoying Sounds [TubeRipper.cc]_1508-1512.wav",
+        "prediction": 0.9760143160820007
+    },
+    {
+        "timestamp": "2024-07-18T16:12:04.201347",
+        "audio_file_path": "/home/mike/cry-baby-edited/cry-baby/audio/split/Baby Crying Sound - Crying Baby Sound Effect Annoying Sounds [TubeRipper.cc]_536-540.wav",
+        "prediction": 0.9936400055885315
+    },
+    {
+        "timestamp": "2024-07-18T16:12:04.280364",
+        "audio_file_path": "/home/mike/cry-baby-edited/cry-baby/audio/split/Baby Crying Sound - Crying Baby Sound Effect Annoying Sounds [TubeRipper.cc]_760-764.wav",
+        "prediction": 0.9999935626983643
+    },
+    {
+        "timestamp": "2024-07-18T16:12:04.385397",
+        "audio_file_path": "/home/mike/cry-baby-edited/cry-baby/audio/split/Baby Crying Sound - Crying Baby Sound Effect Annoying Sounds [TubeRipper.cc]_212-216.wav",
+        "prediction": 0.9998778700828552
+    },
+    {
+        "timestamp": "2024-07-18T16:12:04.460805",
+        "audio_file_path": "/home/mike/cry-baby-edited/cry-baby/audio/split/Baby Crying Sound - Crying Baby Sound Effect Annoying Sounds [TubeRipper.cc]_1176-1180.wav",
+        "prediction": 0.9267969727516174
+    },
+    {
+        "timestamp": "2024-07-18T16:12:04.532633",
+        "audio_file_path": "/home/mike/cry-baby-edited/cry-baby/audio/split/Baby Crying Sound - Crying Baby Sound Effect Annoying Sounds [TubeRipper.cc]_360-364.wav",
+        "prediction": 0.99904865026474
+    },
+    {
+        "timestamp": "2024-07-18T16:12:04.598040",
+        "audio_file_path": "/home/mike/cry-baby-edited/cry-baby/audio/split/Baby Crying Sound - Crying Baby Sound Effect Annoying Sounds [TubeRipper.cc]_920-924.wav",
+        "prediction": 0.9999135136604309
+    },
+    {
+        "timestamp": "2024-07-18T16:12:04.664264",
+        "audio_file_path": "/home/mike/cry-baby-edited/cry-baby/audio/split/Baby Crying Sound - Crying Baby Sound Effect Annoying Sounds [TubeRipper.cc]_296-300.wav",
+        "prediction": 0.9996341466903687
+    },
+    {
+        "timestamp": "2024-07-18T16:12:04.728237",
+        "audio_file_path": "/home/mike/cry-baby-edited/cry-baby/audio/split/Baby Crying Sound - Crying Baby Sound Effect Annoying Sounds [TubeRipper.cc]_88-92.wav",
+        "prediction": 0.9999629259109497
+    },
+    {
+        "timestamp": "2024-07-18T16:12:04.803427",
+        "audio_file_path": "/home/mike/cry-baby-edited/cry-baby/audio/split/Baby Crying Sound - Crying Baby Sound Effect Annoying Sounds [TubeRipper.cc]_960-964.wav",
+        "prediction": 0.999900758266449
+    },
+    {
+        "timestamp": "2024-07-18T16:12:04.893110",
+        "audio_file_path": "/home/mike/cry-baby-edited/cry-baby/audio/split/Baby Crying Sound - Crying Baby Sound Effect Annoying Sounds [TubeRipper.cc]_1024-1028.wav",
+        "prediction": 0.9970085620880127
+    },
+    {
+        "timestamp": "2024-07-18T16:12:05.000066",
+        "audio_file_path": "/home/mike/cry-baby-edited/cry-baby/audio/split/Baby Crying Sound - Crying Baby Sound Effect Annoying Sounds [TubeRipper.cc]_64-68.wav",
+        "prediction": 0.9999996423721313
+    },
+    {
+        "timestamp": "2024-07-18T16:12:05.097020",
+        "audio_file_path": "/home/mike/cry-baby-edited/cry-baby/audio/split/Baby Crying Sound - Crying Baby Sound Effect Annoying Sounds [TubeRipper.cc]_1184-1188.wav",
+        "prediction": 0.9995428323745728
+    },
+    {
+        "timestamp": "2024-07-18T16:12:05.210339",
+        "audio_file_path": "/home/mike/cry-baby-edited/cry-baby/audio/split/Baby Crying Sound - Crying Baby Sound Effect Annoying Sounds [TubeRipper.cc]_796-800.wav",
+        "prediction": 0.9988985657691956
+    },
+    {
+        "timestamp": "2024-07-18T16:12:05.298122",
+        "audio_file_path": "/home/mike/cry-baby-edited/cry-baby/audio/split/Baby Crying Sound - Crying Baby Sound Effect Annoying Sounds [TubeRipper.cc]_820-824.wav",
+        "prediction": 0.9999262690544128
+    },
+    {
+        "timestamp": "2024-07-18T16:12:05.377133",
+        "audio_file_path": "/home/mike/cry-baby-edited/cry-baby/audio/split/Baby Crying Sound - Crying Baby Sound Effect Annoying Sounds [TubeRipper.cc]_1760-1764.wav",
+        "prediction": 0.9999999403953552
+    },
+    {
+        "timestamp": "2024-07-18T16:12:05.485425",
+        "audio_file_path": "/home/mike/cry-baby-edited/cry-baby/audio/split/Baby Crying Sound - Crying Baby Sound Effect Annoying Sounds [TubeRipper.cc]_648-652.wav",
+        "prediction": 0.9997467994689941
+    },
+    {
+        "timestamp": "2024-07-18T16:12:05.567324",
+        "audio_file_path": "/home/mike/cry-baby-edited/cry-baby/audio/split/Baby Crying Sound - Crying Baby Sound Effect Annoying Sounds [TubeRipper.cc]_240-244.wav",
+        "prediction": 0.999997615814209
+    },
+    {
+        "timestamp": "2024-07-18T16:12:05.668012",
+        "audio_file_path": "/home/mike/cry-baby-edited/cry-baby/audio/split/Baby Crying Sound - Crying Baby Sound Effect Annoying Sounds [TubeRipper.cc]_1520-1524.wav",
+        "prediction": 0.9937571287155151
+    },
+    {
+        "timestamp": "2024-07-18T16:12:05.772224",
+        "audio_file_path": "/home/mike/cry-baby-edited/cry-baby/audio/split/Baby Crying Sound - Crying Baby Sound Effect Annoying Sounds [TubeRipper.cc]_96-100.wav",
+        "prediction": 0.9998997449874878
+    },
+    {
+        "timestamp": "2024-07-18T16:12:05.867907",
+        "audio_file_path": "/home/mike/cry-baby-edited/cry-baby/audio/split/Baby Crying Sound - Crying Baby Sound Effect Annoying Sounds [TubeRipper.cc]_1328-1332.wav",
+        "prediction": 0.9999995231628418
+    },
+    {
+        "timestamp": "2024-07-18T16:12:05.938390",
+        "audio_file_path": "/home/mike/cry-baby-edited/cry-baby/audio/split/Baby Crying Sound - Crying Baby Sound Effect Annoying Sounds [TubeRipper.cc]_400-404.wav",
+        "prediction": 0.9999799132347107
+    },
+    {
+        "timestamp": "2024-07-18T16:12:06.014558",
+        "audio_file_path": "/home/mike/cry-baby-edited/cry-baby/audio/split/Baby Crying Sound - Crying Baby Sound Effect Annoying Sounds [TubeRipper.cc]_1708-1712.wav",
+        "prediction": 0.9928129315376282
+    },
+    {
+        "timestamp": "2024-07-18T16:12:06.101831",
+        "audio_file_path": "/home/mike/cry-baby-edited/cry-baby/audio/split/Baby Crying Sound - Crying Baby Sound Effect Annoying Sounds [TubeRipper.cc]_544-548.wav",
+        "prediction": 0.9999933838844299
+    },
+    {
+        "timestamp": "2024-07-18T16:12:06.192653",
+        "audio_file_path": "/home/mike/cry-baby-edited/cry-baby/audio/split/Baby Crying Sound - Crying Baby Sound Effect Annoying Sounds [TubeRipper.cc]_660-664.wav",
+        "prediction": 1.0
+    },
+    {
+        "timestamp": "2024-07-18T16:12:06.261852",
+        "audio_file_path": "/home/mike/cry-baby-edited/cry-baby/audio/split/Baby Crying Sound - Crying Baby Sound Effect Annoying Sounds [TubeRipper.cc]_1004-1008.wav",
+        "prediction": 1.0
+    },
+    {
+        "timestamp": "2024-07-18T16:12:06.345014",
+        "audio_file_path": "/home/mike/cry-baby-edited/cry-baby/audio/split/Baby Crying Sound - Crying Baby Sound Effect Annoying Sounds [TubeRipper.cc]_184-188.wav",
+        "prediction": 1.0
+    },
+    {
+        "timestamp": "2024-07-18T16:12:06.442064",
+        "audio_file_path": "/home/mike/cry-baby-edited/cry-baby/audio/split/Baby Crying Sound - Crying Baby Sound Effect Annoying Sounds [TubeRipper.cc]_1260-1264.wav",
+        "prediction": 0.9999998807907104
+    },
+    {
+        "timestamp": "2024-07-18T16:12:06.522911",
+        "audio_file_path": "/home/mike/cry-baby-edited/cry-baby/audio/split/Baby Crying Sound - Crying Baby Sound Effect Annoying Sounds [TubeRipper.cc]_724-728.wav",
+        "prediction": 0.9999997019767761
+    },
+    {
+        "timestamp": "2024-07-18T16:12:06.593690",
+        "audio_file_path": "/home/mike/cry-baby-edited/cry-baby/audio/split/Baby Crying Sound - Crying Baby Sound Effect Annoying Sounds [TubeRipper.cc]_1408-1412.wav",
+        "prediction": 1.0
+    },
+    {
+        "timestamp": "2024-07-18T16:12:06.670495",
+        "audio_file_path": "/home/mike/cry-baby-edited/cry-baby/audio/split/Baby Crying Sound - Crying Baby Sound Effect Annoying Sounds [TubeRipper.cc]_1052-1056.wav",
+        "prediction": 0.9705990552902222
+    },
+    {
+        "timestamp": "2024-07-18T16:12:06.742592",
+        "audio_file_path": "/home/mike/cry-baby-edited/cry-baby/audio/split/Baby Crying Sound - Crying Baby Sound Effect Annoying Sounds [TubeRipper.cc]_808-812.wav",
+        "prediction": 0.9997518062591553
+    },
+    {
+        "timestamp": "2024-07-18T16:12:06.836513",
+        "audio_file_path": "/home/mike/cry-baby-edited/cry-baby/audio/split/Baby Crying Sound - Crying Baby Sound Effect Annoying Sounds [TubeRipper.cc]_1456-1460.wav",
+        "prediction": 0.5187944173812866
+    },
+    {
+        "timestamp": "2024-07-18T16:12:06.912794",
+        "audio_file_path": "/home/mike/cry-baby-edited/cry-baby/audio/split/Baby Crying Sound - Crying Baby Sound Effect Annoying Sounds [TubeRipper.cc]_1620-1624.wav",
+        "prediction": 0.9999998211860657
+    },
+    {
+        "timestamp": "2024-07-18T16:12:06.982379",
+        "audio_file_path": "/home/mike/cry-baby-edited/cry-baby/audio/split/Baby Crying Sound - Crying Baby Sound Effect Annoying Sounds [TubeRipper.cc]_172-176.wav",
+        "prediction": 1.0
+    },
+    {
+        "timestamp": "2024-07-18T16:12:07.077310",
+        "audio_file_path": "/home/mike/cry-baby-edited/cry-baby/audio/split/Baby Crying Sound - Crying Baby Sound Effect Annoying Sounds [TubeRipper.cc]_684-688.wav",
+        "prediction": 0.9901801943778992
+    },
+    {
+        "timestamp": "2024-07-18T16:12:07.137693",
+        "audio_file_path": "/home/mike/cry-baby-edited/cry-baby/audio/split/Baby Crying Sound - Crying Baby Sound Effect Annoying Sounds [TubeRipper.cc]_1136-1140.wav",
+        "prediction": 0.9999955892562866
+    },
+    {
+        "timestamp": "2024-07-18T16:12:07.196855",
+        "audio_file_path": "/home/mike/cry-baby-edited/cry-baby/audio/split/Baby Crying Sound - Crying Baby Sound Effect Annoying Sounds [TubeRipper.cc]_604-608.wav",
+        "prediction": 0.9999999403953552
+    },
+    {
+        "timestamp": "2024-07-18T16:12:07.283199",
+        "audio_file_path": "/home/mike/cry-baby-edited/cry-baby/audio/split/Baby Crying Sound - Crying Baby Sound Effect Annoying Sounds [TubeRipper.cc]_512-516.wav",
+        "prediction": 0.9927303791046143
+    },
+    {
+        "timestamp": "2024-07-18T16:12:07.354053",
+        "audio_file_path": "/home/mike/cry-baby-edited/cry-baby/audio/split/Baby Crying Sound - Crying Baby Sound Effect Annoying Sounds [TubeRipper.cc]_1600-1604.wav",
+        "prediction": 0.8827952742576599
+    },
+    {
+        "timestamp": "2024-07-18T16:12:07.422423",
+        "audio_file_path": "/home/mike/cry-baby-edited/cry-baby/audio/split/Baby Crying Sound - Crying Baby Sound Effect Annoying Sounds [TubeRipper.cc]_924-928.wav",
+        "prediction": 0.9999991655349731
+    },
+    {
+        "timestamp": "2024-07-18T16:12:07.492009",
+        "audio_file_path": "/home/mike/cry-baby-edited/cry-baby/audio/split/Baby Crying Sound - Crying Baby Sound Effect Annoying Sounds [TubeRipper.cc]_1500-1504.wav",
+        "prediction": 0.9998214840888977
+    },
+    {
+        "timestamp": "2024-07-18T16:12:07.556353",
+        "audio_file_path": "/home/mike/cry-baby-edited/cry-baby/audio/split/Baby Crying Sound - Crying Baby Sound Effect Annoying Sounds [TubeRipper.cc]_696-700.wav",
+        "prediction": 0.9998298287391663
+    },
+    {
+        "timestamp": "2024-07-18T16:12:07.600182",
+        "audio_file_path": "/home/mike/cry-baby-edited/cry-baby/audio/split/Baby Crying Sound - Crying Baby Sound Effect Annoying Sounds [TubeRipper.cc]_1712-1716.wav",
+        "prediction": 0.9998403787612915
+    },
+    {
+        "timestamp": "2024-07-18T16:12:07.650821",
+        "audio_file_path": "/home/mike/cry-baby-edited/cry-baby/audio/split/Baby Crying Sound - Crying Baby Sound Effect Annoying Sounds [TubeRipper.cc]_748-752.wav",
+        "prediction": 0.9994203448295593
+    },
+    {
+        "timestamp": "2024-07-18T16:12:07.700145",
+        "audio_file_path": "/home/mike/cry-baby-edited/cry-baby/audio/split/Baby Crying Sound - Crying Baby Sound Effect Annoying Sounds [TubeRipper.cc]_356-360.wav",
+        "prediction": 0.9995672702789307
+    },
+    {
+        "timestamp": "2024-07-18T16:12:07.743836",
+        "audio_file_path": "/home/mike/cry-baby-edited/cry-baby/audio/split/Baby Crying Sound - Crying Baby Sound Effect Annoying Sounds [TubeRipper.cc]_1460-1464.wav",
+        "prediction": 0.9974767565727234
+    },
+    {
+        "timestamp": "2024-07-18T16:12:07.797708",
+        "audio_file_path": "/home/mike/cry-baby-edited/cry-baby/audio/split/Baby Crying Sound - Crying Baby Sound Effect Annoying Sounds [TubeRipper.cc]_552-556.wav",
+        "prediction": 1.0
+    },
+    {
+        "timestamp": "2024-07-18T16:12:07.847997",
+        "audio_file_path": "/home/mike/cry-baby-edited/cry-baby/audio/split/Baby Crying Sound - Crying Baby Sound Effect Annoying Sounds [TubeRipper.cc]_1744-1748.wav",
+        "prediction": 0.9991500377655029
+    },
+    {
+        "timestamp": "2024-07-18T16:12:07.913362",
+        "audio_file_path": "/home/mike/cry-baby-edited/cry-baby/audio/split/Baby Crying Sound - Crying Baby Sound Effect Annoying Sounds [TubeRipper.cc]_1476-1480.wav",
+        "prediction": 1.0
+    },
+    {
+        "timestamp": "2024-07-18T16:12:07.974472",
+        "audio_file_path": "/home/mike/cry-baby-edited/cry-baby/audio/split/Baby Crying Sound - Crying Baby Sound Effect Annoying Sounds [TubeRipper.cc]_740-744.wav",
+        "prediction": 0.9880715608596802
+    },
+    {
+        "timestamp": "2024-07-18T16:12:08.033667",
+        "audio_file_path": "/home/mike/cry-baby-edited/cry-baby/audio/split/Baby Crying Sound - Crying Baby Sound Effect Annoying Sounds [TubeRipper.cc]_508-512.wav",
+        "prediction": 0.9999970197677612
+    },
+    {
+        "timestamp": "2024-07-18T16:12:08.101701",
+        "audio_file_path": "/home/mike/cry-baby-edited/cry-baby/audio/split/Baby Crying Sound - Crying Baby Sound Effect Annoying Sounds [TubeRipper.cc]_112-116.wav",
+        "prediction": 1.0
+    },
+    {
+        "timestamp": "2024-07-18T16:12:08.173626",
+        "audio_file_path": "/home/mike/cry-baby-edited/cry-baby/audio/split/Baby Crying Sound - Crying Baby Sound Effect Annoying Sounds [TubeRipper.cc]_1324-1328.wav",
+        "prediction": 0.9998775720596313
+    },
+    {
+        "timestamp": "2024-07-18T16:12:08.233800",
+        "audio_file_path": "/home/mike/cry-baby-edited/cry-baby/audio/split/Baby Crying Sound - Crying Baby Sound Effect Annoying Sounds [TubeRipper.cc]_1612-1616.wav",
+        "prediction": 0.9999882578849792
+    },
+    {
+        "timestamp": "2024-07-18T16:12:08.291018",
+        "audio_file_path": "/home/mike/cry-baby-edited/cry-baby/audio/split/Baby Crying Sound - Crying Baby Sound Effect Annoying Sounds [TubeRipper.cc]_1032-1036.wav",
+        "prediction": 0.9999998211860657
+    },
+    {
+        "timestamp": "2024-07-18T16:12:08.362416",
+        "audio_file_path": "/home/mike/cry-baby-edited/cry-baby/audio/split/Baby Crying Sound - Crying Baby Sound Effect Annoying Sounds [TubeRipper.cc]_1140-1144.wav",
+        "prediction": 0.996181070804596
+    },
+    {
+        "timestamp": "2024-07-18T16:12:08.429560",
+        "audio_file_path": "/home/mike/cry-baby-edited/cry-baby/audio/split/Baby Crying Sound - Crying Baby Sound Effect Annoying Sounds [TubeRipper.cc]_1580-1584.wav",
+        "prediction": 0.9999997615814209
+    },
+    {
+        "timestamp": "2024-07-18T16:12:08.497405",
+        "audio_file_path": "/home/mike/cry-baby-edited/cry-baby/audio/split/Baby Crying Sound - Crying Baby Sound Effect Annoying Sounds [TubeRipper.cc]_1016-1020.wav",
+        "prediction": 0.999138355255127
+    },
+    {
+        "timestamp": "2024-07-18T16:12:08.559577",
+        "audio_file_path": "/home/mike/cry-baby-edited/cry-baby/audio/split/Baby Crying Sound - Crying Baby Sound Effect Annoying Sounds [TubeRipper.cc]_236-240.wav",
+        "prediction": 0.9997763633728027
+    },
+    {
+        "timestamp": "2024-07-18T16:12:08.622864",
+        "audio_file_path": "/home/mike/cry-baby-edited/cry-baby/audio/split/Baby Crying Sound - Crying Baby Sound Effect Annoying Sounds [TubeRipper.cc]_1080-1084.wav",
+        "prediction": 0.986466109752655
+    },
+    {
+        "timestamp": "2024-07-18T16:12:08.695332",
+        "audio_file_path": "/home/mike/cry-baby-edited/cry-baby/audio/split/Baby Crying Sound - Crying Baby Sound Effect Annoying Sounds [TubeRipper.cc]_1792-1796.wav",
+        "prediction": 0.966411828994751
+    },
+    {
+        "timestamp": "2024-07-18T16:12:08.753708",
+        "audio_file_path": "/home/mike/cry-baby-edited/cry-baby/audio/split/Baby Crying Sound - Crying Baby Sound Effect Annoying Sounds [TubeRipper.cc]_232-236.wav",
+        "prediction": 0.9999918341636658
+    },
+    {
+        "timestamp": "2024-07-18T16:12:08.828640",
+        "audio_file_path": "/home/mike/cry-baby-edited/cry-baby/audio/split/Baby Crying Sound - Crying Baby Sound Effect Annoying Sounds [TubeRipper.cc]_456-460.wav",
+        "prediction": 1.0
+    },
+    {
+        "timestamp": "2024-07-18T16:12:08.892154",
+        "audio_file_path": "/home/mike/cry-baby-edited/cry-baby/audio/split/Baby Crying Sound - Crying Baby Sound Effect Annoying Sounds [TubeRipper.cc]_1444-1448.wav",
+        "prediction": 0.9999983310699463
+    },
+    {
+        "timestamp": "2024-07-18T16:12:08.958867",
+        "audio_file_path": "/home/mike/cry-baby-edited/cry-baby/audio/split/Baby Crying Sound - Crying Baby Sound Effect Annoying Sounds [TubeRipper.cc]_1548-1552.wav",
+        "prediction": 0.9999825358390808
+    },
+    {
+        "timestamp": "2024-07-18T16:12:09.008481",
+        "audio_file_path": "/home/mike/cry-baby-edited/cry-baby/audio/split/Baby Crying Sound - Crying Baby Sound Effect Annoying Sounds [TubeRipper.cc]_1068-1072.wav",
+        "prediction": 0.9995452761650085
+    },
+    {
+        "timestamp": "2024-07-18T16:12:09.072473",
+        "audio_file_path": "/home/mike/cry-baby-edited/cry-baby/audio/split/Baby Crying Sound - Crying Baby Sound Effect Annoying Sounds [TubeRipper.cc]_164-168.wav",
+        "prediction": 0.999999463558197
+    },
+    {
+        "timestamp": "2024-07-18T16:12:09.141457",
+        "audio_file_path": "/home/mike/cry-baby-edited/cry-baby/audio/split/Baby Crying Sound - Crying Baby Sound Effect Annoying Sounds [TubeRipper.cc]_1352-1356.wav",
+        "prediction": 0.9996833801269531
+    },
+    {
+        "timestamp": "2024-07-18T16:12:09.203737",
+        "audio_file_path": "/home/mike/cry-baby-edited/cry-baby/audio/split/Baby Crying Sound - Crying Baby Sound Effect Annoying Sounds [TubeRipper.cc]_1532-1536.wav",
+        "prediction": 0.999980092048645
+    },
+    {
+        "timestamp": "2024-07-18T16:12:09.259286",
+        "audio_file_path": "/home/mike/cry-baby-edited/cry-baby/audio/split/Baby Crying Sound - Crying Baby Sound Effect Annoying Sounds [TubeRipper.cc]_1108-1112.wav",
+        "prediction": 0.9999950528144836
+    },
+    {
+        "timestamp": "2024-07-18T16:12:09.309275",
+        "audio_file_path": "/home/mike/cry-baby-edited/cry-baby/audio/split/Baby Crying Sound - Crying Baby Sound Effect Annoying Sounds [TubeRipper.cc]_20-24.wav",
+        "prediction": 0.9989106059074402
+    },
+    {
+        "timestamp": "2024-07-18T16:12:09.399940",
+        "audio_file_path": "/home/mike/cry-baby-edited/cry-baby/audio/split/Baby Crying Sound - Crying Baby Sound Effect Annoying Sounds [TubeRipper.cc]_1340-1344.wav",
+        "prediction": 0.9999849200248718
+    },
+    {
+        "timestamp": "2024-07-18T16:12:09.444742",
+        "audio_file_path": "/home/mike/cry-baby-edited/cry-baby/audio/split/Baby Crying Sound - Crying Baby Sound Effect Annoying Sounds [TubeRipper.cc]_1104-1108.wav",
+        "prediction": 1.0
+    },
+    {
+        "timestamp": "2024-07-18T16:12:09.501318",
+        "audio_file_path": "/home/mike/cry-baby-edited/cry-baby/audio/split/Baby Crying Sound - Crying Baby Sound Effect Annoying Sounds [TubeRipper.cc]_68-72.wav",
+        "prediction": 0.9999932646751404
+    },
+    {
+        "timestamp": "2024-07-18T16:12:09.572638",
+        "audio_file_path": "/home/mike/cry-baby-edited/cry-baby/audio/split/Baby Crying Sound - Crying Baby Sound Effect Annoying Sounds [TubeRipper.cc]_1452-1456.wav",
+        "prediction": 0.9999982714653015
+    },
+    {
+        "timestamp": "2024-07-18T16:12:09.630499",
+        "audio_file_path": "/home/mike/cry-baby-edited/cry-baby/audio/split/Baby Crying Sound - Crying Baby Sound Effect Annoying Sounds [TubeRipper.cc]_368-372.wav",
+        "prediction": 0.9997439384460449
+    },
+    {
+        "timestamp": "2024-07-18T16:12:09.696933",
+        "audio_file_path": "/home/mike/cry-baby-edited/cry-baby/audio/split/Baby Crying Sound - Crying Baby Sound Effect Annoying Sounds [TubeRipper.cc]_1076-1080.wav",
+        "prediction": 0.9999822974205017
+    },
+    {
+        "timestamp": "2024-07-18T16:12:09.774146",
+        "audio_file_path": "/home/mike/cry-baby-edited/cry-baby/audio/split/Baby Crying Sound - Crying Baby Sound Effect Annoying Sounds [TubeRipper.cc]_564-568.wav",
+        "prediction": 0.9999988079071045
+    },
+    {
+        "timestamp": "2024-07-18T16:12:09.838554",
+        "audio_file_path": "/home/mike/cry-baby-edited/cry-baby/audio/split/Baby Crying Sound - Crying Baby Sound Effect Annoying Sounds [TubeRipper.cc]_1736-1740.wav",
+        "prediction": 0.9967005848884583
+    },
+    {
+        "timestamp": "2024-07-18T16:12:09.931925",
+        "audio_file_path": "/home/mike/cry-baby-edited/cry-baby/audio/split/Baby Crying Sound - Crying Baby Sound Effect Annoying Sounds [TubeRipper.cc]_1468-1472.wav",
+        "prediction": 0.9996700882911682
+    },
+    {
+        "timestamp": "2024-07-18T16:12:10.000163",
+        "audio_file_path": "/home/mike/cry-baby-edited/cry-baby/audio/split/Baby Crying Sound - Crying Baby Sound Effect Annoying Sounds [TubeRipper.cc]_1572-1576.wav",
+        "prediction": 0.9887308478355408
+    },
+    {
+        "timestamp": "2024-07-18T16:12:10.121874",
+        "audio_file_path": "/home/mike/cry-baby-edited/cry-baby/audio/split/Baby Crying Sound - Crying Baby Sound Effect Annoying Sounds [TubeRipper.cc]_776-780.wav",
+        "prediction": 0.9983963370323181
+    },
+    {
+        "timestamp": "2024-07-18T16:12:10.183196",
+        "audio_file_path": "/home/mike/cry-baby-edited/cry-baby/audio/split/Baby Crying Sound - Crying Baby Sound Effect Annoying Sounds [TubeRipper.cc]_412-416.wav",
+        "prediction": 0.999360978603363
+    },
+    {
+        "timestamp": "2024-07-18T16:12:10.246508",
+        "audio_file_path": "/home/mike/cry-baby-edited/cry-baby/audio/split/Baby Crying Sound - Crying Baby Sound Effect Annoying Sounds [TubeRipper.cc]_1028-1032.wav",
+        "prediction": 0.9927833080291748
+    },
+    {
+        "timestamp": "2024-07-18T16:12:10.316926",
+        "audio_file_path": "/home/mike/cry-baby-edited/cry-baby/audio/split/Baby Crying Sound - Crying Baby Sound Effect Annoying Sounds [TubeRipper.cc]_832-836.wav",
+        "prediction": 1.0
+    },
+    {
+        "timestamp": "2024-07-18T16:12:10.374091",
+        "audio_file_path": "/home/mike/cry-baby-edited/cry-baby/audio/split/Baby Crying Sound - Crying Baby Sound Effect Annoying Sounds [TubeRipper.cc]_1596-1600.wav",
+        "prediction": 0.9620414972305298
+    },
+    {
+        "timestamp": "2024-07-18T16:12:10.451591",
+        "audio_file_path": "/home/mike/cry-baby-edited/cry-baby/audio/split/Baby Crying Sound - Crying Baby Sound Effect Annoying Sounds [TubeRipper.cc]_0-4.wav",
+        "prediction": 1.0
+    },
+    {
+        "timestamp": "2024-07-18T16:12:10.496498",
+        "audio_file_path": "/home/mike/cry-baby-edited/cry-baby/audio/split/Baby Crying Sound - Crying Baby Sound Effect Annoying Sounds [TubeRipper.cc]_632-636.wav",
+        "prediction": 0.3813241422176361
+    },
+    {
+        "timestamp": "2024-07-18T16:12:10.558443",
+        "audio_file_path": "/home/mike/cry-baby-edited/cry-baby/audio/split/Baby Crying Sound - Crying Baby Sound Effect Annoying Sounds [TubeRipper.cc]_12-16.wav",
+        "prediction": 1.0
+    },
+    {
+        "timestamp": "2024-07-18T16:12:10.638873",
+        "audio_file_path": "/home/mike/cry-baby-edited/cry-baby/audio/split/Baby Crying Sound - Crying Baby Sound Effect Annoying Sounds [TubeRipper.cc]_1372-1376.wav",
+        "prediction": 0.9999999403953552
+    },
+    {
+        "timestamp": "2024-07-18T16:12:10.689267",
+        "audio_file_path": "/home/mike/cry-baby-edited/cry-baby/audio/split/Baby Crying Sound - Crying Baby Sound Effect Annoying Sounds [TubeRipper.cc]_280-284.wav",
+        "prediction": 0.999978244304657
+    },
+    {
+        "timestamp": "2024-07-18T16:12:10.735480",
+        "audio_file_path": "/home/mike/cry-baby-edited/cry-baby/audio/split/Baby Crying Sound - Crying Baby Sound Effect Annoying Sounds [TubeRipper.cc]_872-876.wav",
+        "prediction": 1.0
+    },
+    {
+        "timestamp": "2024-07-18T16:12:10.803725",
+        "audio_file_path": "/home/mike/cry-baby-edited/cry-baby/audio/split/Baby Crying Sound - Crying Baby Sound Effect Annoying Sounds [TubeRipper.cc]_1540-1544.wav",
+        "prediction": 0.9989440441131592
+    },
+    {
+        "timestamp": "2024-07-18T16:12:10.852330",
+        "audio_file_path": "/home/mike/cry-baby-edited/cry-baby/audio/split/Baby Crying Sound - Crying Baby Sound Effect Annoying Sounds [TubeRipper.cc]_800-804.wav",
+        "prediction": 0.9999544024467468
+    },
+    {
+        "timestamp": "2024-07-18T16:12:10.907455",
+        "audio_file_path": "/home/mike/cry-baby-edited/cry-baby/audio/split/Baby Crying Sound - Crying Baby Sound Effect Annoying Sounds [TubeRipper.cc]_1212-1216.wav",
+        "prediction": 0.9999940395355225
+    },
+    {
+        "timestamp": "2024-07-18T16:12:10.955079",
+        "audio_file_path": "/home/mike/cry-baby-edited/cry-baby/audio/split/Baby Crying Sound - Crying Baby Sound Effect Annoying Sounds [TubeRipper.cc]_284-288.wav",
+        "prediction": 1.0
+    },
+    {
+        "timestamp": "2024-07-18T16:12:11.016986",
+        "audio_file_path": "/home/mike/cry-baby-edited/cry-baby/audio/split/Baby Crying Sound - Crying Baby Sound Effect Annoying Sounds [TubeRipper.cc]_876-880.wav",
+        "prediction": 0.9991951584815979
+    },
+    {
+        "timestamp": "2024-07-18T16:12:11.066915",
+        "audio_file_path": "/home/mike/cry-baby-edited/cry-baby/audio/split/Baby Crying Sound - Crying Baby Sound Effect Annoying Sounds [TubeRipper.cc]_432-436.wav",
+        "prediction": 0.9999999403953552
+    },
+    {
+        "timestamp": "2024-07-18T16:12:11.111154",
+        "audio_file_path": "/home/mike/cry-baby-edited/cry-baby/audio/split/Baby Crying Sound - Crying Baby Sound Effect Annoying Sounds [TubeRipper.cc]_884-888.wav",
+        "prediction": 0.9991185665130615
+    },
+    {
+        "timestamp": "2024-07-18T16:12:11.169271",
+        "audio_file_path": "/home/mike/cry-baby-edited/cry-baby/audio/split/Baby Crying Sound - Crying Baby Sound Effect Annoying Sounds [TubeRipper.cc]_908-912.wav",
+        "prediction": 0.8984553813934326
+    },
+    {
+        "timestamp": "2024-07-18T16:12:11.220823",
+        "audio_file_path": "/home/mike/cry-baby-edited/cry-baby/audio/split/Baby Crying Sound - Crying Baby Sound Effect Annoying Sounds [TubeRipper.cc]_56-60.wav",
+        "prediction": 0.9999999403953552
+    },
+    {
+        "timestamp": "2024-07-18T16:12:11.284236",
+        "audio_file_path": "/home/mike/cry-baby-edited/cry-baby/audio/split/Baby Crying Sound - Crying Baby Sound Effect Annoying Sounds [TubeRipper.cc]_572-576.wav",
+        "prediction": 0.9832324385643005
+    },
+    {
+        "timestamp": "2024-07-18T16:12:11.344221",
+        "audio_file_path": "/home/mike/cry-baby-edited/cry-baby/audio/split/Baby Crying Sound - Crying Baby Sound Effect Annoying Sounds [TubeRipper.cc]_260-264.wav",
+        "prediction": 0.999790370464325
+    },
+    {
+        "timestamp": "2024-07-18T16:12:11.406669",
+        "audio_file_path": "/home/mike/cry-baby-edited/cry-baby/audio/split/Baby Crying Sound - Crying Baby Sound Effect Annoying Sounds [TubeRipper.cc]_1660-1664.wav",
+        "prediction": 0.9999897480010986
+    },
+    {
+        "timestamp": "2024-07-18T16:12:11.470783",
+        "audio_file_path": "/home/mike/cry-baby-edited/cry-baby/audio/split/Baby Crying Sound - Crying Baby Sound Effect Annoying Sounds [TubeRipper.cc]_200-204.wav",
+        "prediction": 0.9998994469642639
+    },
+    {
+        "timestamp": "2024-07-18T16:12:11.534711",
+        "audio_file_path": "/home/mike/cry-baby-edited/cry-baby/audio/split/Baby Crying Sound - Crying Baby Sound Effect Annoying Sounds [TubeRipper.cc]_1484-1488.wav",
+        "prediction": 0.9999998211860657
+    },
+    {
+        "timestamp": "2024-07-18T16:12:11.586898",
+        "audio_file_path": "/home/mike/cry-baby-edited/cry-baby/audio/split/Baby Crying Sound - Crying Baby Sound Effect Annoying Sounds [TubeRipper.cc]_968-972.wav",
+        "prediction": 0.9999998807907104
+    },
+    {
+        "timestamp": "2024-07-18T16:12:11.640126",
+        "audio_file_path": "/home/mike/cry-baby-edited/cry-baby/audio/split/Baby Crying Sound - Crying Baby Sound Effect Annoying Sounds [TubeRipper.cc]_1524-1528.wav",
+        "prediction": 0.9999814033508301
+    },
+    {
+        "timestamp": "2024-07-18T16:12:11.692974",
+        "audio_file_path": "/home/mike/cry-baby-edited/cry-baby/audio/split/Baby Crying Sound - Crying Baby Sound Effect Annoying Sounds [TubeRipper.cc]_692-696.wav",
+        "prediction": 0.9881147146224976
+    },
+    {
+        "timestamp": "2024-07-18T16:12:11.740690",
+        "audio_file_path": "/home/mike/cry-baby-edited/cry-baby/audio/split/Baby Crying Sound - Crying Baby Sound Effect Annoying Sounds [TubeRipper.cc]_320-324.wav",
+        "prediction": 0.9999030232429504
+    },
+    {
+        "timestamp": "2024-07-18T16:12:11.789770",
+        "audio_file_path": "/home/mike/cry-baby-edited/cry-baby/audio/split/Baby Crying Sound - Crying Baby Sound Effect Annoying Sounds [TubeRipper.cc]_1644-1648.wav",
+        "prediction": 0.9999880790710449
+    },
+    {
+        "timestamp": "2024-07-18T16:12:11.838907",
+        "audio_file_path": "/home/mike/cry-baby-edited/cry-baby/audio/split/Baby Crying Sound - Crying Baby Sound Effect Annoying Sounds [TubeRipper.cc]_680-684.wav",
+        "prediction": 0.9999998211860657
+    },
+    {
+        "timestamp": "2024-07-18T16:12:11.886767",
+        "audio_file_path": "/home/mike/cry-baby-edited/cry-baby/audio/split/Baby Crying Sound - Crying Baby Sound Effect Annoying Sounds [TubeRipper.cc]_1232-1236.wav",
+        "prediction": 0.9052487015724182
+    },
+    {
+        "timestamp": "2024-07-18T16:12:11.948853",
+        "audio_file_path": "/home/mike/cry-baby-edited/cry-baby/audio/split/Baby Crying Sound - Crying Baby Sound Effect Annoying Sounds [TubeRipper.cc]_1560-1564.wav",
+        "prediction": 0.9999630451202393
+    },
+    {
+        "timestamp": "2024-07-18T16:12:12.018751",
+        "audio_file_path": "/home/mike/cry-baby-edited/cry-baby/audio/split/Baby Crying Sound - Crying Baby Sound Effect Annoying Sounds [TubeRipper.cc]_1592-1596.wav",
+        "prediction": 0.8891452550888062
+    },
+    {
+        "timestamp": "2024-07-18T16:12:12.070941",
+        "audio_file_path": "/home/mike/cry-baby-edited/cry-baby/audio/split/Baby Crying Sound - Crying Baby Sound Effect Annoying Sounds [TubeRipper.cc]_1188-1192.wav",
+        "prediction": 0.993058979511261
+    },
+    {
+        "timestamp": "2024-07-18T16:12:12.136145",
+        "audio_file_path": "/home/mike/cry-baby-edited/cry-baby/audio/split/Baby Crying Sound - Crying Baby Sound Effect Annoying Sounds [TubeRipper.cc]_1740-1744.wav",
+        "prediction": 0.9888435006141663
+    },
+    {
+        "timestamp": "2024-07-18T16:12:12.187764",
+        "audio_file_path": "/home/mike/cry-baby-edited/cry-baby/audio/split/Baby Crying Sound - Crying Baby Sound Effect Annoying Sounds [TubeRipper.cc]_780-784.wav",
+        "prediction": 0.9999999403953552
+    },
+    {
+        "timestamp": "2024-07-18T16:12:12.230326",
+        "audio_file_path": "/home/mike/cry-baby-edited/cry-baby/audio/split/Baby Crying Sound - Crying Baby Sound Effect Annoying Sounds [TubeRipper.cc]_816-820.wav",
+        "prediction": 0.9998210668563843
+    },
+    {
+        "timestamp": "2024-07-18T16:12:12.274105",
+        "audio_file_path": "/home/mike/cry-baby-edited/cry-baby/audio/split/Baby Crying Sound - Crying Baby Sound Effect Annoying Sounds [TubeRipper.cc]_1716-1720.wav",
+        "prediction": 0.999999463558197
+    },
+    {
+        "timestamp": "2024-07-18T16:12:12.318312",
+        "audio_file_path": "/home/mike/cry-baby-edited/cry-baby/audio/split/Baby Crying Sound - Crying Baby Sound Effect Annoying Sounds [TubeRipper.cc]_1168-1172.wav",
+        "prediction": 1.0
+    },
+    {
+        "timestamp": "2024-07-18T16:12:12.364457",
+        "audio_file_path": "/home/mike/cry-baby-edited/cry-baby/audio/split/Baby Crying Sound - Crying Baby Sound Effect Annoying Sounds [TubeRipper.cc]_1280-1284.wav",
+        "prediction": 0.9999995827674866
+    },
+    {
+        "timestamp": "2024-07-18T16:12:12.407435",
+        "audio_file_path": "/home/mike/cry-baby-edited/cry-baby/audio/split/Baby Crying Sound - Crying Baby Sound Effect Annoying Sounds [TubeRipper.cc]_488-492.wav",
+        "prediction": 0.9989587068557739
+    },
+    {
+        "timestamp": "2024-07-18T16:12:12.451124",
+        "audio_file_path": "/home/mike/cry-baby-edited/cry-baby/audio/split/Baby Crying Sound - Crying Baby Sound Effect Annoying Sounds [TubeRipper.cc]_1364-1368.wav",
+        "prediction": 0.9977497458457947
+    },
+    {
+        "timestamp": "2024-07-18T16:12:12.523435",
+        "audio_file_path": "/home/mike/cry-baby-edited/cry-baby/audio/split/Baby Crying Sound - Crying Baby Sound Effect Annoying Sounds [TubeRipper.cc]_1296-1300.wav",
+        "prediction": 0.9950547814369202
+    },
+    {
+        "timestamp": "2024-07-18T16:12:12.567244",
+        "audio_file_path": "/home/mike/cry-baby-edited/cry-baby/audio/split/Baby Crying Sound - Crying Baby Sound Effect Annoying Sounds [TubeRipper.cc]_672-676.wav",
+        "prediction": 0.9999972581863403
+    },
+    {
+        "timestamp": "2024-07-18T16:12:12.614126",
+        "audio_file_path": "/home/mike/cry-baby-edited/cry-baby/audio/split/Baby Crying Sound - Crying Baby Sound Effect Annoying Sounds [TubeRipper.cc]_1180-1184.wav",
+        "prediction": 0.7971096634864807
+    },
+    {
+        "timestamp": "2024-07-18T16:12:12.658815",
+        "audio_file_path": "/home/mike/cry-baby-edited/cry-baby/audio/split/Baby Crying Sound - Crying Baby Sound Effect Annoying Sounds [TubeRipper.cc]_752-756.wav",
+        "prediction": 0.999983549118042
+    },
+    {
+        "timestamp": "2024-07-18T16:12:12.705961",
+        "audio_file_path": "/home/mike/cry-baby-edited/cry-baby/audio/split/Baby Crying Sound - Crying Baby Sound Effect Annoying Sounds [TubeRipper.cc]_228-232.wav",
+        "prediction": 0.9858158230781555
+    },
+    {
+        "timestamp": "2024-07-18T16:12:12.749457",
+        "audio_file_path": "/home/mike/cry-baby-edited/cry-baby/audio/split/Baby Crying Sound - Crying Baby Sound Effect Annoying Sounds [TubeRipper.cc]_804-808.wav",
+        "prediction": 0.9998806715011597
+    },
+    {
+        "timestamp": "2024-07-18T16:12:12.792732",
+        "audio_file_path": "/home/mike/cry-baby-edited/cry-baby/audio/split/Baby Crying Sound - Crying Baby Sound Effect Annoying Sounds [TubeRipper.cc]_628-632.wav",
+        "prediction": 0.9737071394920349
+    },
+    {
+        "timestamp": "2024-07-18T16:12:12.838576",
+        "audio_file_path": "/home/mike/cry-baby-edited/cry-baby/audio/split/Baby Crying Sound - Crying Baby Sound Effect Annoying Sounds [TubeRipper.cc]_576-580.wav",
+        "prediction": 0.9965395331382751
+    },
+    {
+        "timestamp": "2024-07-18T16:12:12.881634",
+        "audio_file_path": "/home/mike/cry-baby-edited/cry-baby/audio/split/Baby Crying Sound - Crying Baby Sound Effect Annoying Sounds [TubeRipper.cc]_452-456.wav",
+        "prediction": 0.9999859929084778
+    },
+    {
+        "timestamp": "2024-07-18T16:12:12.931874",
+        "audio_file_path": "/home/mike/cry-baby-edited/cry-baby/audio/split/Baby Crying Sound - Crying Baby Sound Effect Annoying Sounds [TubeRipper.cc]_1348-1352.wav",
+        "prediction": 0.9999985098838806
+    },
+    {
+        "timestamp": "2024-07-18T16:12:12.982886",
+        "audio_file_path": "/home/mike/cry-baby-edited/cry-baby/audio/split/Baby Crying Sound - Crying Baby Sound Effect Annoying Sounds [TubeRipper.cc]_1780-1784.wav",
+        "prediction": 0.7219967842102051
+    },
+    {
+        "timestamp": "2024-07-18T16:12:13.058096",
+        "audio_file_path": "/home/mike/cry-baby-edited/cry-baby/audio/split/Baby Crying Sound - Crying Baby Sound Effect Annoying Sounds [TubeRipper.cc]_1704-1708.wav",
+        "prediction": 0.9999855160713196
+    },
+    {
+        "timestamp": "2024-07-18T16:12:13.103704",
+        "audio_file_path": "/home/mike/cry-baby-edited/cry-baby/audio/split/Baby Crying Sound - Crying Baby Sound Effect Annoying Sounds [TubeRipper.cc]_524-528.wav",
+        "prediction": 0.999999463558197
+    },
+    {
+        "timestamp": "2024-07-18T16:12:13.153913",
+        "audio_file_path": "/home/mike/cry-baby-edited/cry-baby/audio/split/Baby Crying Sound - Crying Baby Sound Effect Annoying Sounds [TubeRipper.cc]_1564-1568.wav",
+        "prediction": 0.9999050498008728
+    },
+    {
+        "timestamp": "2024-07-18T16:12:13.200014",
+        "audio_file_path": "/home/mike/cry-baby-edited/cry-baby/audio/split/Baby Crying Sound - Crying Baby Sound Effect Annoying Sounds [TubeRipper.cc]_328-332.wav",
+        "prediction": 0.9999880194664001
+    },
+    {
+        "timestamp": "2024-07-18T16:12:13.244028",
+        "audio_file_path": "/home/mike/cry-baby-edited/cry-baby/audio/split/Baby Crying Sound - Crying Baby Sound Effect Annoying Sounds [TubeRipper.cc]_1144-1148.wav",
+        "prediction": 0.9999995827674866
+    },
+    {
+        "timestamp": "2024-07-18T16:12:13.288454",
+        "audio_file_path": "/home/mike/cry-baby-edited/cry-baby/audio/split/Baby Crying Sound - Crying Baby Sound Effect Annoying Sounds [TubeRipper.cc]_352-356.wav",
+        "prediction": 0.9994699358940125
+    },
+    {
+        "timestamp": "2024-07-18T16:12:13.339683",
+        "audio_file_path": "/home/mike/cry-baby-edited/cry-baby/audio/split/Baby Crying Sound - Crying Baby Sound Effect Annoying Sounds [TubeRipper.cc]_1496-1500.wav",
+        "prediction": 0.9999998807907104
+    },
+    {
+        "timestamp": "2024-07-18T16:12:13.384842",
+        "audio_file_path": "/home/mike/cry-baby-edited/cry-baby/audio/split/Baby Crying Sound - Crying Baby Sound Effect Annoying Sounds [TubeRipper.cc]_904-908.wav",
+        "prediction": 0.9999879002571106
+    },
+    {
+        "timestamp": "2024-07-18T16:12:13.439389",
+        "audio_file_path": "/home/mike/cry-baby-edited/cry-baby/audio/split/Baby Crying Sound - Crying Baby Sound Effect Annoying Sounds [TubeRipper.cc]_76-80.wav",
+        "prediction": 0.9732751250267029
+    },
+    {
+        "timestamp": "2024-07-18T16:12:13.486597",
+        "audio_file_path": "/home/mike/cry-baby-edited/cry-baby/audio/split/Baby Crying Sound - Crying Baby Sound Effect Annoying Sounds [TubeRipper.cc]_1788-1792.wav",
+        "prediction": 0.846084475517273
+    },
+    {
+        "timestamp": "2024-07-18T16:12:13.545140",
+        "audio_file_path": "/home/mike/cry-baby-edited/cry-baby/audio/split/Baby Crying Sound - Crying Baby Sound Effect Annoying Sounds [TubeRipper.cc]_896-900.wav",
+        "prediction": 0.9998072981834412
+    },
+    {
+        "timestamp": "2024-07-18T16:12:13.589473",
+        "audio_file_path": "/home/mike/cry-baby-edited/cry-baby/audio/split/Baby Crying Sound - Crying Baby Sound Effect Annoying Sounds [TubeRipper.cc]_756-760.wav",
+        "prediction": 0.9999721646308899
+    },
+    {
+        "timestamp": "2024-07-18T16:12:13.633010",
+        "audio_file_path": "/home/mike/cry-baby-edited/cry-baby/audio/split/Baby Crying Sound - Crying Baby Sound Effect Annoying Sounds [TubeRipper.cc]_1316-1320.wav",
+        "prediction": 0.9982962012290955
+    },
+    {
+        "timestamp": "2024-07-18T16:12:13.718125",
+        "audio_file_path": "/home/mike/cry-baby-edited/cry-baby/audio/split/Baby Crying Sound - Crying Baby Sound Effect Annoying Sounds [TubeRipper.cc]_900-904.wav",
+        "prediction": 0.882638692855835
+    },
+    {
+        "timestamp": "2024-07-18T16:12:13.765330",
+        "audio_file_path": "/home/mike/cry-baby-edited/cry-baby/audio/split/Baby Crying Sound - Crying Baby Sound Effect Annoying Sounds [TubeRipper.cc]_1064-1068.wav",
+        "prediction": 0.9999994039535522
+    },
+    {
+        "timestamp": "2024-07-18T16:12:13.823094",
+        "audio_file_path": "/home/mike/cry-baby-edited/cry-baby/audio/split/Baby Crying Sound - Crying Baby Sound Effect Annoying Sounds [TubeRipper.cc]_1416-1420.wav",
+        "prediction": 0.9999976754188538
+    },
+    {
+        "timestamp": "2024-07-18T16:12:13.916727",
+        "audio_file_path": "/home/mike/cry-baby-edited/cry-baby/audio/split/Baby Crying Sound - Crying Baby Sound Effect Annoying Sounds [TubeRipper.cc]_840-844.wav",
+        "prediction": 0.9998812675476074
+    },
+    {
+        "timestamp": "2024-07-18T16:12:13.967519",
+        "audio_file_path": "/home/mike/cry-baby-edited/cry-baby/audio/split/Baby Crying Sound - Crying Baby Sound Effect Annoying Sounds [TubeRipper.cc]_1680-1684.wav",
+        "prediction": 0.9996787309646606
+    },
+    {
+        "timestamp": "2024-07-18T16:12:14.022726",
+        "audio_file_path": "/home/mike/cry-baby-edited/cry-baby/audio/split/Baby Crying Sound - Crying Baby Sound Effect Annoying Sounds [TubeRipper.cc]_460-464.wav",
+        "prediction": 0.9999988675117493
+    },
+    {
+        "timestamp": "2024-07-18T16:12:14.068323",
+        "audio_file_path": "/home/mike/cry-baby-edited/cry-baby/audio/split/Baby Crying Sound - Crying Baby Sound Effect Annoying Sounds [TubeRipper.cc]_1752-1756.wav",
+        "prediction": 0.999998927116394
+    },
+    {
+        "timestamp": "2024-07-18T16:12:14.115976",
+        "audio_file_path": "/home/mike/cry-baby-edited/cry-baby/audio/split/Baby Crying Sound - Crying Baby Sound Effect Annoying Sounds [TubeRipper.cc]_1116-1120.wav",
+        "prediction": 0.5933505296707153
+    },
+    {
+        "timestamp": "2024-07-18T16:12:14.169192",
+        "audio_file_path": "/home/mike/cry-baby-edited/cry-baby/audio/split/Baby Crying Sound - Crying Baby Sound Effect Annoying Sounds [TubeRipper.cc]_1688-1692.wav",
+        "prediction": 0.9991856813430786
+    },
+    {
+        "timestamp": "2024-07-18T16:12:14.219849",
+        "audio_file_path": "/home/mike/cry-baby-edited/cry-baby/audio/split/Baby Crying Sound - Crying Baby Sound Effect Annoying Sounds [TubeRipper.cc]_944-948.wav",
+        "prediction": 0.9989593029022217
+    },
+    {
+        "timestamp": "2024-07-18T16:12:14.262760",
+        "audio_file_path": "/home/mike/cry-baby-edited/cry-baby/audio/split/Baby Crying Sound - Crying Baby Sound Effect Annoying Sounds [TubeRipper.cc]_1300-1304.wav",
+        "prediction": 0.9998851418495178
+    },
+    {
+        "timestamp": "2024-07-18T16:12:14.305419",
+        "audio_file_path": "/home/mike/cry-baby-edited/cry-baby/audio/split/Baby Crying Sound - Crying Baby Sound Effect Annoying Sounds [TubeRipper.cc]_1228-1232.wav",
+        "prediction": 1.0
+    },
+    {
+        "timestamp": "2024-07-18T16:12:14.351720",
+        "audio_file_path": "/home/mike/cry-baby-edited/cry-baby/audio/split/Baby Crying Sound - Crying Baby Sound Effect Annoying Sounds [TubeRipper.cc]_916-920.wav",
+        "prediction": 0.9978618621826172
+    },
+    {
+        "timestamp": "2024-07-18T16:12:14.399732",
+        "audio_file_path": "/home/mike/cry-baby-edited/cry-baby/audio/split/Baby Crying Sound - Crying Baby Sound Effect Annoying Sounds [TubeRipper.cc]_1784-1788.wav",
+        "prediction": 0.9057009220123291
+    },
+    {
+        "timestamp": "2024-07-18T16:12:14.444675",
+        "audio_file_path": "/home/mike/cry-baby-edited/cry-baby/audio/split/Baby Crying Sound - Crying Baby Sound Effect Annoying Sounds [TubeRipper.cc]_1120-1124.wav",
+        "prediction": 0.9987675547599792
+    },
+    {
+        "timestamp": "2024-07-18T16:12:14.488361",
+        "audio_file_path": "/home/mike/cry-baby-edited/cry-baby/audio/split/Baby Crying Sound - Crying Baby Sound Effect Annoying Sounds [TubeRipper.cc]_1672-1676.wav",
+        "prediction": 0.9657156467437744
+    },
+    {
+        "timestamp": "2024-07-18T16:12:14.535395",
+        "audio_file_path": "/home/mike/cry-baby-edited/cry-baby/audio/split/Baby Crying Sound - Crying Baby Sound Effect Annoying Sounds [TubeRipper.cc]_424-428.wav",
+        "prediction": 0.9932534694671631
+    },
+    {
+        "timestamp": "2024-07-18T16:12:14.580953",
+        "audio_file_path": "/home/mike/cry-baby-edited/cry-baby/audio/split/Baby Crying Sound - Crying Baby Sound Effect Annoying Sounds [TubeRipper.cc]_252-256.wav",
+        "prediction": 0.9996630549430847
+    },
+    {
+        "timestamp": "2024-07-18T16:12:14.619924",
+        "audio_file_path": "/home/mike/cry-baby-edited/cry-baby/audio/split/Baby Crying Sound - Crying Baby Sound Effect Annoying Sounds [TubeRipper.cc]_404-408.wav",
+        "prediction": 0.9999807476997375
+    },
+    {
+        "timestamp": "2024-07-18T16:12:14.663897",
+        "audio_file_path": "/home/mike/cry-baby-edited/cry-baby/audio/split/Baby Crying Sound - Crying Baby Sound Effect Annoying Sounds [TubeRipper.cc]_1084-1088.wav",
+        "prediction": 0.9805347919464111
+    },
+    {
+        "timestamp": "2024-07-18T16:12:14.706628",
+        "audio_file_path": "/home/mike/cry-baby-edited/cry-baby/audio/split/Baby Crying Sound - Crying Baby Sound Effect Annoying Sounds [TubeRipper.cc]_4-8.wav",
+        "prediction": 0.9999998211860657
+    },
+    {
+        "timestamp": "2024-07-18T16:12:14.751332",
+        "audio_file_path": "/home/mike/cry-baby-edited/cry-baby/audio/split/Baby Crying Sound - Crying Baby Sound Effect Annoying Sounds [TubeRipper.cc]_376-380.wav",
+        "prediction": 0.9999999403953552
+    },
+    {
+        "timestamp": "2024-07-18T16:12:14.794571",
+        "audio_file_path": "/home/mike/cry-baby-edited/cry-baby/audio/split/Baby Crying Sound - Crying Baby Sound Effect Annoying Sounds [TubeRipper.cc]_1436-1440.wav",
+        "prediction": 0.9973964691162109
+    },
+    {
+        "timestamp": "2024-07-18T16:12:14.837478",
+        "audio_file_path": "/home/mike/cry-baby-edited/cry-baby/audio/split/Baby Crying Sound - Crying Baby Sound Effect Annoying Sounds [TubeRipper.cc]_1464-1468.wav",
+        "prediction": 0.9982480406761169
+    },
+    {
+        "timestamp": "2024-07-18T16:12:14.883106",
+        "audio_file_path": "/home/mike/cry-baby-edited/cry-baby/audio/split/Baby Crying Sound - Crying Baby Sound Effect Annoying Sounds [TubeRipper.cc]_1648-1652.wav",
+        "prediction": 0.9999999403953552
+    },
+    {
+        "timestamp": "2024-07-18T16:12:14.938200",
+        "audio_file_path": "/home/mike/cry-baby-edited/cry-baby/audio/split/Baby Crying Sound - Crying Baby Sound Effect Annoying Sounds [TubeRipper.cc]_964-968.wav",
+        "prediction": 0.9997978806495667
+    },
+    {
+        "timestamp": "2024-07-18T16:12:14.980358",
+        "audio_file_path": "/home/mike/cry-baby-edited/cry-baby/audio/split/Baby Crying Sound - Crying Baby Sound Effect Annoying Sounds [TubeRipper.cc]_892-896.wav",
+        "prediction": 0.9900972247123718
+    },
+    {
+        "timestamp": "2024-07-18T16:12:15.036562",
+        "audio_file_path": "/home/mike/cry-baby-edited/cry-baby/audio/split/Baby Crying Sound - Crying Baby Sound Effect Annoying Sounds [TubeRipper.cc]_1332-1336.wav",
+        "prediction": 0.9841156601905823
+    },
+    {
+        "timestamp": "2024-07-18T16:12:15.082814",
+        "audio_file_path": "/home/mike/cry-baby-edited/cry-baby/audio/split/Baby Crying Sound - Crying Baby Sound Effect Annoying Sounds [TubeRipper.cc]_1772-1776.wav",
+        "prediction": 0.999991238117218
+    },
+    {
+        "timestamp": "2024-07-18T16:12:15.149720",
+        "audio_file_path": "/home/mike/cry-baby-edited/cry-baby/audio/split/Baby Crying Sound - Crying Baby Sound Effect Annoying Sounds [TubeRipper.cc]_1756-1760.wav",
+        "prediction": 0.9999999403953552
+    },
+    {
+        "timestamp": "2024-07-18T16:12:15.196669",
+        "audio_file_path": "/home/mike/cry-baby-edited/cry-baby/audio/split/Baby Crying Sound - Crying Baby Sound Effect Annoying Sounds [TubeRipper.cc]_108-112.wav",
+        "prediction": 0.9999992847442627
+    },
+    {
+        "timestamp": "2024-07-18T16:12:15.240600",
+        "audio_file_path": "/home/mike/cry-baby-edited/cry-baby/audio/split/Baby Crying Sound - Crying Baby Sound Effect Annoying Sounds [TubeRipper.cc]_1124-1128.wav",
+        "prediction": 0.997219443321228
+    },
+    {
+        "timestamp": "2024-07-18T16:12:15.285019",
+        "audio_file_path": "/home/mike/cry-baby-edited/cry-baby/audio/split/Baby Crying Sound - Crying Baby Sound Effect Annoying Sounds [TubeRipper.cc]_1148-1152.wav",
+        "prediction": 0.999330997467041
+    },
+    {
+        "timestamp": "2024-07-18T16:12:15.327983",
+        "audio_file_path": "/home/mike/cry-baby-edited/cry-baby/audio/split/Baby Crying Sound - Crying Baby Sound Effect Annoying Sounds [TubeRipper.cc]_656-660.wav",
+        "prediction": 0.9999914169311523
+    },
+    {
+        "timestamp": "2024-07-18T16:12:15.369538",
+        "audio_file_path": "/home/mike/cry-baby-edited/cry-baby/audio/split/Baby Crying Sound - Crying Baby Sound Effect Annoying Sounds [TubeRipper.cc]_340-344.wav",
+        "prediction": 0.9999991655349731
+    },
+    {
+        "timestamp": "2024-07-18T16:12:15.415296",
+        "audio_file_path": "/home/mike/cry-baby-edited/cry-baby/audio/split/Baby Crying Sound - Crying Baby Sound Effect Annoying Sounds [TubeRipper.cc]_1388-1392.wav",
+        "prediction": 0.9999914169311523
+    },
+    {
+        "timestamp": "2024-07-18T16:12:15.460794",
+        "audio_file_path": "/home/mike/cry-baby-edited/cry-baby/audio/split/Baby Crying Sound - Crying Baby Sound Effect Annoying Sounds [TubeRipper.cc]_520-524.wav",
+        "prediction": 0.9995297789573669
+    },
+    {
+        "timestamp": "2024-07-18T16:12:15.504544",
+        "audio_file_path": "/home/mike/cry-baby-edited/cry-baby/audio/split/Baby Crying Sound - Crying Baby Sound Effect Annoying Sounds [TubeRipper.cc]_316-320.wav",
+        "prediction": 0.9999911189079285
+    },
+    {
+        "timestamp": "2024-07-18T16:12:15.546733",
+        "audio_file_path": "/home/mike/cry-baby-edited/cry-baby/audio/split/Baby Crying Sound - Crying Baby Sound Effect Annoying Sounds [TubeRipper.cc]_1304-1308.wav",
+        "prediction": 0.999925971031189
+    },
+    {
+        "timestamp": "2024-07-18T16:12:15.598091",
+        "audio_file_path": "/home/mike/cry-baby-edited/cry-baby/audio/split/Baby Crying Sound - Crying Baby Sound Effect Annoying Sounds [TubeRipper.cc]_52-56.wav",
+        "prediction": 0.9999766945838928
+    },
+    {
+        "timestamp": "2024-07-18T16:12:15.643625",
+        "audio_file_path": "/home/mike/cry-baby-edited/cry-baby/audio/split/Baby Crying Sound - Crying Baby Sound Effect Annoying Sounds [TubeRipper.cc]_1432-1436.wav",
+        "prediction": 0.9864658713340759
+    },
+    {
+        "timestamp": "2024-07-18T16:12:15.686381",
+        "audio_file_path": "/home/mike/cry-baby-edited/cry-baby/audio/split/Baby Crying Sound - Crying Baby Sound Effect Annoying Sounds [TubeRipper.cc]_940-944.wav",
+        "prediction": 0.9999997615814209
+    },
+    {
+        "timestamp": "2024-07-18T16:12:15.733080",
+        "audio_file_path": "/home/mike/cry-baby-edited/cry-baby/audio/split/Baby Crying Sound - Crying Baby Sound Effect Annoying Sounds [TubeRipper.cc]_644-648.wav",
+        "prediction": 0.9997132420539856
+    },
+    {
+        "timestamp": "2024-07-18T16:12:15.777032",
+        "audio_file_path": "/home/mike/cry-baby-edited/cry-baby/audio/split/Baby Crying Sound - Crying Baby Sound Effect Annoying Sounds [TubeRipper.cc]_48-52.wav",
+        "prediction": 1.0
+    },
+    {
+        "timestamp": "2024-07-18T16:12:15.825202",
+        "audio_file_path": "/home/mike/cry-baby-edited/cry-baby/audio/split/Baby Crying Sound - Crying Baby Sound Effect Annoying Sounds [TubeRipper.cc]_768-772.wav",
+        "prediction": 0.9963652491569519
+    },
+    {
+        "timestamp": "2024-07-18T16:12:15.886161",
+        "audio_file_path": "/home/mike/cry-baby-edited/cry-baby/audio/split/Baby Crying Sound - Crying Baby Sound Effect Annoying Sounds [TubeRipper.cc]_1368-1372.wav",
+        "prediction": 0.9994991421699524
+    },
+    {
+        "timestamp": "2024-07-18T16:12:15.930415",
+        "audio_file_path": "/home/mike/cry-baby-edited/cry-baby/audio/split/Baby Crying Sound - Crying Baby Sound Effect Annoying Sounds [TubeRipper.cc]_1056-1060.wav",
+        "prediction": 0.9998226761817932
+    },
+    {
+        "timestamp": "2024-07-18T16:12:15.972649",
+        "audio_file_path": "/home/mike/cry-baby-edited/cry-baby/audio/split/Baby Crying Sound - Crying Baby Sound Effect Annoying Sounds [TubeRipper.cc]_936-940.wav",
+        "prediction": 0.999980628490448
+    },
+    {
+        "timestamp": "2024-07-18T16:12:16.016031",
+        "audio_file_path": "/home/mike/cry-baby-edited/cry-baby/audio/split/Baby Crying Sound - Crying Baby Sound Effect Annoying Sounds [TubeRipper.cc]_1652-1656.wav",
+        "prediction": 0.9999999403953552
+    },
+    {
+        "timestamp": "2024-07-18T16:12:16.066903",
+        "audio_file_path": "/home/mike/cry-baby-edited/cry-baby/audio/split/Baby Crying Sound - Crying Baby Sound Effect Annoying Sounds [TubeRipper.cc]_220-224.wav",
+        "prediction": 0.9783753156661987
+    },
+    {
+        "timestamp": "2024-07-18T16:12:16.122886",
+        "audio_file_path": "/home/mike/cry-baby-edited/cry-baby/audio/split/Baby Crying Sound - Crying Baby Sound Effect Annoying Sounds [TubeRipper.cc]_1160-1164.wav",
+        "prediction": 0.9999756217002869
+    },
+    {
+        "timestamp": "2024-07-18T16:12:16.167068",
+        "audio_file_path": "/home/mike/cry-baby-edited/cry-baby/audio/split/Baby Crying Sound - Crying Baby Sound Effect Annoying Sounds [TubeRipper.cc]_1748-1752.wav",
+        "prediction": 1.0
+    },
+    {
+        "timestamp": "2024-07-18T16:12:16.215554",
+        "audio_file_path": "/home/mike/cry-baby-edited/cry-baby/audio/split/Baby Crying Sound - Crying Baby Sound Effect Annoying Sounds [TubeRipper.cc]_652-656.wav",
+        "prediction": 0.9999998211860657
+    },
+    {
+        "timestamp": "2024-07-18T16:12:16.263319",
+        "audio_file_path": "/home/mike/cry-baby-edited/cry-baby/audio/split/Baby Crying Sound - Crying Baby Sound Effect Annoying Sounds [TubeRipper.cc]_1536-1540.wav",
+        "prediction": 0.9999999403953552
+    },
+    {
+        "timestamp": "2024-07-18T16:12:16.306576",
+        "audio_file_path": "/home/mike/cry-baby-edited/cry-baby/audio/split/Baby Crying Sound - Crying Baby Sound Effect Annoying Sounds [TubeRipper.cc]_264-268.wav",
+        "prediction": 0.9781870245933533
+    },
+    {
+        "timestamp": "2024-07-18T16:12:16.349500",
+        "audio_file_path": "/home/mike/cry-baby-edited/cry-baby/audio/split/Baby Crying Sound - Crying Baby Sound Effect Annoying Sounds [TubeRipper.cc]_704-708.wav",
+        "prediction": 0.9999974966049194
+    },
+    {
+        "timestamp": "2024-07-18T16:12:16.393338",
+        "audio_file_path": "/home/mike/cry-baby-edited/cry-baby/audio/split/Baby Crying Sound - Crying Baby Sound Effect Annoying Sounds [TubeRipper.cc]_620-624.wav",
+        "prediction": 1.0
+    },
+    {
+        "timestamp": "2024-07-18T16:12:16.438789",
+        "audio_file_path": "/home/mike/cry-baby-edited/cry-baby/audio/split/Baby Crying Sound - Crying Baby Sound Effect Annoying Sounds [TubeRipper.cc]_128-132.wav",
+        "prediction": 0.998266339302063
+    },
+    {
+        "timestamp": "2024-07-18T16:12:16.483924",
+        "audio_file_path": "/home/mike/cry-baby-edited/cry-baby/audio/split/Baby Crying Sound - Crying Baby Sound Effect Annoying Sounds [TubeRipper.cc]_1216-1220.wav",
+        "prediction": 0.9998879432678223
+    },
+    {
+        "timestamp": "2024-07-18T16:12:16.530747",
+        "audio_file_path": "/home/mike/cry-baby-edited/cry-baby/audio/split/Baby Crying Sound - Crying Baby Sound Effect Annoying Sounds [TubeRipper.cc]_1424-1428.wav",
+        "prediction": 0.9994087815284729
+    },
+    {
+        "timestamp": "2024-07-18T16:12:16.580747",
+        "audio_file_path": "/home/mike/cry-baby-edited/cry-baby/audio/split/Baby Crying Sound - Crying Baby Sound Effect Annoying Sounds [TubeRipper.cc]_1512-1516.wav",
+        "prediction": 0.9999071955680847
+    },
+    {
+        "timestamp": "2024-07-18T16:12:16.652301",
+        "audio_file_path": "/home/mike/cry-baby-edited/cry-baby/audio/split/Baby Crying Sound - Crying Baby Sound Effect Annoying Sounds [TubeRipper.cc]_1584-1588.wav",
+        "prediction": 0.9999980330467224
+    },
+    {
+        "timestamp": "2024-07-18T16:12:16.695353",
+        "audio_file_path": "/home/mike/cry-baby-edited/cry-baby/audio/split/Baby Crying Sound - Crying Baby Sound Effect Annoying Sounds [TubeRipper.cc]_1196-1200.wav",
+        "prediction": 0.9971637725830078
+    },
+    {
+        "timestamp": "2024-07-18T16:12:16.739087",
+        "audio_file_path": "/home/mike/cry-baby-edited/cry-baby/audio/split/Baby Crying Sound - Crying Baby Sound Effect Annoying Sounds [TubeRipper.cc]_1628-1632.wav",
+        "prediction": 0.4264587461948395
+    },
+    {
+        "timestamp": "2024-07-18T16:12:16.798858",
+        "audio_file_path": "/home/mike/cry-baby-edited/cry-baby/audio/split/Baby Crying Sound - Crying Baby Sound Effect Annoying Sounds [TubeRipper.cc]_208-212.wav",
+        "prediction": 0.9998262524604797
+    },
+    {
+        "timestamp": "2024-07-18T16:12:16.844209",
+        "audio_file_path": "/home/mike/cry-baby-edited/cry-baby/audio/split/Baby Crying Sound - Crying Baby Sound Effect Annoying Sounds [TubeRipper.cc]_1724-1728.wav",
+        "prediction": 0.9727035760879517
+    },
+    {
+        "timestamp": "2024-07-18T16:12:16.895214",
+        "audio_file_path": "/home/mike/cry-baby-edited/cry-baby/audio/split/Baby Crying Sound - Crying Baby Sound Effect Annoying Sounds [TubeRipper.cc]_1380-1384.wav",
+        "prediction": 1.0
+    },
+    {
+        "timestamp": "2024-07-18T16:12:16.943132",
+        "audio_file_path": "/home/mike/cry-baby-edited/cry-baby/audio/split/Baby Crying Sound - Crying Baby Sound Effect Annoying Sounds [TubeRipper.cc]_388-392.wav",
+        "prediction": 0.9999998211860657
+    },
+    {
+        "timestamp": "2024-07-18T16:12:16.987179",
+        "audio_file_path": "/home/mike/cry-baby-edited/cry-baby/audio/split/Baby Crying Sound - Crying Baby Sound Effect Annoying Sounds [TubeRipper.cc]_380-384.wav",
+        "prediction": 0.9999999403953552
+    },
+    {
+        "timestamp": "2024-07-18T16:12:17.036229",
+        "audio_file_path": "/home/mike/cry-baby-edited/cry-baby/audio/split/Baby Crying Sound - Crying Baby Sound Effect Annoying Sounds [TubeRipper.cc]_300-304.wav",
+        "prediction": 0.9835768938064575
+    },
+    {
+        "timestamp": "2024-07-18T16:12:17.084424",
+        "audio_file_path": "/home/mike/cry-baby-edited/cry-baby/audio/split/Baby Crying Sound - Crying Baby Sound Effect Annoying Sounds [TubeRipper.cc]_1676-1680.wav",
+        "prediction": 0.9999194145202637
+    },
+    {
+        "timestamp": "2024-07-18T16:12:17.137931",
+        "audio_file_path": "/home/mike/cry-baby-edited/cry-baby/audio/split/Baby Crying Sound - Crying Baby Sound Effect Annoying Sounds [TubeRipper.cc]_196-200.wav",
+        "prediction": 0.9912134408950806
+    },
+    {
+        "timestamp": "2024-07-18T16:12:17.182420",
+        "audio_file_path": "/home/mike/cry-baby-edited/cry-baby/audio/split/Baby Crying Sound - Crying Baby Sound Effect Annoying Sounds [TubeRipper.cc]_148-152.wav",
+        "prediction": 0.9999970197677612
+    },
+    {
+        "timestamp": "2024-07-18T16:12:17.228912",
+        "audio_file_path": "/home/mike/cry-baby-edited/cry-baby/audio/split/Baby Crying Sound - Crying Baby Sound Effect Annoying Sounds [TubeRipper.cc]_8-12.wav",
+        "prediction": 1.0
+    },
+    {
+        "timestamp": "2024-07-18T16:12:17.277470",
+        "audio_file_path": "/home/mike/cry-baby-edited/cry-baby/audio/split/Baby Crying Sound - Crying Baby Sound Effect Annoying Sounds [TubeRipper.cc]_1292-1296.wav",
+        "prediction": 0.9974245429039001
+    },
+    {
+        "timestamp": "2024-07-18T16:12:17.364074",
+        "audio_file_path": "/home/mike/cry-baby-edited/cry-baby/audio/split/Baby Crying Sound - Crying Baby Sound Effect Annoying Sounds [TubeRipper.cc]_1728-1732.wav",
+        "prediction": 0.9962620735168457
+    },
+    {
+        "timestamp": "2024-07-18T16:12:17.406696",
+        "audio_file_path": "/home/mike/cry-baby-edited/cry-baby/audio/split/Baby Crying Sound - Crying Baby Sound Effect Annoying Sounds [TubeRipper.cc]_708-712.wav",
+        "prediction": 0.9994983673095703
+    },
+    {
+        "timestamp": "2024-07-18T16:12:17.449607",
+        "audio_file_path": "/home/mike/cry-baby-edited/cry-baby/audio/split/Baby Crying Sound - Crying Baby Sound Effect Annoying Sounds [TubeRipper.cc]_1404-1408.wav",
+        "prediction": 0.9985175728797913
+    },
+    {
+        "timestamp": "2024-07-18T16:12:17.492675",
+        "audio_file_path": "/home/mike/cry-baby-edited/cry-baby/audio/split/Baby Crying Sound - Crying Baby Sound Effect Annoying Sounds [TubeRipper.cc]_348-352.wav",
+        "prediction": 0.9946757555007935
+    },
+    {
+        "timestamp": "2024-07-18T16:12:17.539281",
+        "audio_file_path": "/home/mike/cry-baby-edited/cry-baby/audio/split/Baby Crying Sound - Crying Baby Sound Effect Annoying Sounds [TubeRipper.cc]_364-368.wav",
+        "prediction": 0.9863057732582092
+    },
+    {
+        "timestamp": "2024-07-18T16:12:17.585186",
+        "audio_file_path": "/home/mike/cry-baby-edited/cry-baby/audio/split/Baby Crying Sound - Crying Baby Sound Effect Annoying Sounds [TubeRipper.cc]_168-172.wav",
+        "prediction": 0.9955686330795288
+    },
+    {
+        "timestamp": "2024-07-18T16:12:17.628824",
+        "audio_file_path": "/home/mike/cry-baby-edited/cry-baby/audio/split/Baby Crying Sound - Crying Baby Sound Effect Annoying Sounds [TubeRipper.cc]_448-452.wav",
+        "prediction": 1.0
+    },
+    {
+        "timestamp": "2024-07-18T16:12:17.672343",
+        "audio_file_path": "/home/mike/cry-baby-edited/cry-baby/audio/split/Baby Crying Sound - Crying Baby Sound Effect Annoying Sounds [TubeRipper.cc]_136-140.wav",
+        "prediction": 0.9279460310935974
+    },
+    {
+        "timestamp": "2024-07-18T16:12:17.715937",
+        "audio_file_path": "/home/mike/cry-baby-edited/cry-baby/audio/split/Baby Crying Sound - Crying Baby Sound Effect Annoying Sounds [TubeRipper.cc]_1248-1252.wav",
+        "prediction": 0.9999430179595947
+    },
+    {
+        "timestamp": "2024-07-18T16:12:17.775748",
+        "audio_file_path": "/home/mike/cry-baby-edited/cry-baby/audio/split/Baby Crying Sound - Crying Baby Sound Effect Annoying Sounds [TubeRipper.cc]_1224-1228.wav",
+        "prediction": 0.9999945759773254
+    },
+    {
+        "timestamp": "2024-07-18T16:12:17.833783",
+        "audio_file_path": "/home/mike/cry-baby-edited/cry-baby/audio/split/Baby Crying Sound - Crying Baby Sound Effect Annoying Sounds [TubeRipper.cc]_1000-1004.wav",
+        "prediction": 0.9999983310699463
+    },
+    {
+        "timestamp": "2024-07-18T16:12:17.889969",
+        "audio_file_path": "/home/mike/cry-baby-edited/cry-baby/audio/split/Baby Crying Sound - Crying Baby Sound Effect Annoying Sounds [TubeRipper.cc]_428-432.wav",
+        "prediction": 0.9999979138374329
+    },
+    {
+        "timestamp": "2024-07-18T16:12:17.951139",
+        "audio_file_path": "/home/mike/cry-baby-edited/cry-baby/audio/split/Baby Crying Sound - Crying Baby Sound Effect Annoying Sounds [TubeRipper.cc]_72-76.wav",
+        "prediction": 1.0
+    },
+    {
+        "timestamp": "2024-07-18T16:12:18.002393",
+        "audio_file_path": "/home/mike/cry-baby-edited/cry-baby/audio/split/Baby Crying Sound - Crying Baby Sound Effect Annoying Sounds [TubeRipper.cc]_1112-1116.wav",
+        "prediction": 0.9999998807907104
+    },
+    {
+        "timestamp": "2024-07-18T16:12:18.047333",
+        "audio_file_path": "/home/mike/cry-baby-edited/cry-baby/audio/split/Baby Crying Sound - Crying Baby Sound Effect Annoying Sounds [TubeRipper.cc]_80-84.wav",
+        "prediction": 0.9999513626098633
+    },
+    {
+        "timestamp": "2024-07-18T16:12:18.092415",
+        "audio_file_path": "/home/mike/cry-baby-edited/cry-baby/audio/split/Baby Crying Sound - Crying Baby Sound Effect Annoying Sounds [TubeRipper.cc]_1420-1424.wav",
+        "prediction": 0.9999995231628418
+    },
+    {
+        "timestamp": "2024-07-18T16:12:18.141800",
+        "audio_file_path": "/home/mike/cry-baby-edited/cry-baby/audio/split/Baby Crying Sound - Crying Baby Sound Effect Annoying Sounds [TubeRipper.cc]_276-280.wav",
+        "prediction": 0.9999999403953552
+    },
+    {
+        "timestamp": "2024-07-18T16:12:18.184164",
+        "audio_file_path": "/home/mike/cry-baby-edited/cry-baby/audio/split/Baby Crying Sound - Crying Baby Sound Effect Annoying Sounds [TubeRipper.cc]_1568-1572.wav",
+        "prediction": 0.9894511103630066
+    },
+    {
+        "timestamp": "2024-07-18T16:12:18.230519",
+        "audio_file_path": "/home/mike/cry-baby-edited/cry-baby/audio/split/Baby Crying Sound - Crying Baby Sound Effect Annoying Sounds [TubeRipper.cc]_44-48.wav",
+        "prediction": 0.9974961280822754
+    },
+    {
+        "timestamp": "2024-07-18T16:12:18.278564",
+        "audio_file_path": "/home/mike/cry-baby-edited/cry-baby/audio/split/Baby Crying Sound - Crying Baby Sound Effect Annoying Sounds [TubeRipper.cc]_416-420.wav",
+        "prediction": 0.9962151646614075
+    },
+    {
+        "timestamp": "2024-07-18T16:12:18.335198",
+        "audio_file_path": "/home/mike/cry-baby-edited/cry-baby/audio/split/Baby Crying Sound - Crying Baby Sound Effect Annoying Sounds [TubeRipper.cc]_688-692.wav",
+        "prediction": 0.999995768070221
+    },
+    {
+        "timestamp": "2024-07-18T16:12:18.378574",
+        "audio_file_path": "/home/mike/cry-baby-edited/cry-baby/audio/split/Baby Crying Sound - Crying Baby Sound Effect Annoying Sounds [TubeRipper.cc]_1664-1668.wav",
+        "prediction": 0.7135337591171265
+    },
+    {
+        "timestamp": "2024-07-18T16:12:18.421484",
+        "audio_file_path": "/home/mike/cry-baby-edited/cry-baby/audio/split/Baby Crying Sound - Crying Baby Sound Effect Annoying Sounds [TubeRipper.cc]_764-768.wav",
+        "prediction": 0.9999580979347229
+    },
+    {
+        "timestamp": "2024-07-18T16:12:18.464048",
+        "audio_file_path": "/home/mike/cry-baby-edited/cry-baby/audio/split/Baby Crying Sound - Crying Baby Sound Effect Annoying Sounds [TubeRipper.cc]_880-884.wav",
+        "prediction": 0.9998207092285156
+    },
+    {
+        "timestamp": "2024-07-18T16:12:18.509142",
+        "audio_file_path": "/home/mike/cry-baby-edited/cry-baby/audio/split/Baby Crying Sound - Crying Baby Sound Effect Annoying Sounds [TubeRipper.cc]_224-228.wav",
+        "prediction": 0.9630947709083557
+    },
+    {
+        "timestamp": "2024-07-18T16:12:18.555887",
+        "audio_file_path": "/home/mike/cry-baby-edited/cry-baby/audio/split/Baby Crying Sound - Crying Baby Sound Effect Annoying Sounds [TubeRipper.cc]_624-628.wav",
+        "prediction": 0.7347891330718994
+    },
+    {
+        "timestamp": "2024-07-18T16:12:18.600889",
+        "audio_file_path": "/home/mike/cry-baby-edited/cry-baby/audio/split/Baby Crying Sound - Crying Baby Sound Effect Annoying Sounds [TubeRipper.cc]_1288-1292.wav",
+        "prediction": 0.5258266925811768
+    },
+    {
+        "timestamp": "2024-07-18T16:12:18.645744",
+        "audio_file_path": "/home/mike/cry-baby-edited/cry-baby/audio/split/Baby Crying Sound - Crying Baby Sound Effect Annoying Sounds [TubeRipper.cc]_28-32.wav",
+        "prediction": 0.9995683431625366
+    },
+    {
+        "timestamp": "2024-07-18T16:12:18.690970",
+        "audio_file_path": "/home/mike/cry-baby-edited/cry-baby/audio/split/Baby Crying Sound - Crying Baby Sound Effect Annoying Sounds [TubeRipper.cc]_292-296.wav",
+        "prediction": 0.9996861815452576
+    },
+    {
+        "timestamp": "2024-07-18T16:12:18.736942",
+        "audio_file_path": "/home/mike/cry-baby-edited/cry-baby/audio/split/Baby Crying Sound - Crying Baby Sound Effect Annoying Sounds [TubeRipper.cc]_584-588.wav",
+        "prediction": 0.9992496967315674
+    },
+    {
+        "timestamp": "2024-07-18T16:12:18.784642",
+        "audio_file_path": "/home/mike/cry-baby-edited/cry-baby/audio/split/Baby Crying Sound - Crying Baby Sound Effect Annoying Sounds [TubeRipper.cc]_1252-1256.wav",
+        "prediction": 0.9999940991401672
+    },
+    {
+        "timestamp": "2024-07-18T16:12:18.854726",
+        "audio_file_path": "/home/mike/cry-baby-edited/cry-baby/audio/split/Baby Crying Sound - Crying Baby Sound Effect Annoying Sounds [TubeRipper.cc]_540-544.wav",
+        "prediction": 0.9999043941497803
+    },
+    {
+        "timestamp": "2024-07-18T16:12:18.904805",
+        "audio_file_path": "/home/mike/cry-baby-edited/cry-baby/audio/split/Baby Crying Sound - Crying Baby Sound Effect Annoying Sounds [TubeRipper.cc]_588-592.wav",
+        "prediction": 0.9999949336051941
+    },
+    {
+        "timestamp": "2024-07-18T16:12:18.947066",
+        "audio_file_path": "/home/mike/cry-baby-edited/cry-baby/audio/split/Baby Crying Sound - Crying Baby Sound Effect Annoying Sounds [TubeRipper.cc]_732-736.wav",
+        "prediction": 1.0
+    },
+    {
+        "timestamp": "2024-07-18T16:12:18.992659",
+        "audio_file_path": "/home/mike/cry-baby-edited/cry-baby/audio/split/Baby Crying Sound - Crying Baby Sound Effect Annoying Sounds [TubeRipper.cc]_1244-1248.wav",
+        "prediction": 0.9852020144462585
+    },
+    {
+        "timestamp": "2024-07-18T16:12:19.036945",
+        "audio_file_path": "/home/mike/cry-baby-edited/cry-baby/audio/split/Baby Crying Sound - Crying Baby Sound Effect Annoying Sounds [TubeRipper.cc]_1608-1612.wav",
+        "prediction": 0.9999799728393555
+    },
+    {
+        "timestamp": "2024-07-18T16:12:19.079901",
+        "audio_file_path": "/home/mike/cry-baby-edited/cry-baby/audio/split/Baby Crying Sound - Crying Baby Sound Effect Annoying Sounds [TubeRipper.cc]_204-208.wav",
+        "prediction": 0.9999914765357971
+    },
+    {
+        "timestamp": "2024-07-18T16:12:19.124756",
+        "audio_file_path": "/home/mike/cry-baby-edited/cry-baby/audio/split/Baby Crying Sound - Crying Baby Sound Effect Annoying Sounds [TubeRipper.cc]_1504-1508.wav",
+        "prediction": 0.9991011023521423
+    },
+    {
+        "timestamp": "2024-07-18T16:12:19.168333",
+        "audio_file_path": "/home/mike/cry-baby-edited/cry-baby/audio/split/Baby Crying Sound - Crying Baby Sound Effect Annoying Sounds [TubeRipper.cc]_124-128.wav",
+        "prediction": 0.9999391436576843
+    },
+    {
+        "timestamp": "2024-07-18T16:12:19.211859",
+        "audio_file_path": "/home/mike/cry-baby-edited/cry-baby/audio/split/Baby Crying Sound - Crying Baby Sound Effect Annoying Sounds [TubeRipper.cc]_1720-1724.wav",
+        "prediction": 0.9852238297462463
+    },
+    {
+        "timestamp": "2024-07-18T16:12:19.448671",
+        "audio_file_path": "/home/mike/cry-baby-edited/cry-baby/audio/split/Baby Crying Sound - Crying Baby Sound Effect Annoying Sounds [TubeRipper.cc]_716-720.wav",
+        "prediction": 0.9999772310256958
+    },
+    {
+        "timestamp": "2024-07-18T16:12:19.851327",
+        "audio_file_path": "/home/mike/cry-baby-edited/cry-baby/audio/split/Baby Crying Sound - Crying Baby Sound Effect Annoying Sounds [TubeRipper.cc]_568-572.wav",
+        "prediction": 0.8904499411582947
+    },
+    {
+        "timestamp": "2024-07-18T16:12:20.629891",
+        "audio_file_path": "/home/mike/cry-baby-edited/cry-baby/audio/split/Baby Crying Sound - Crying Baby Sound Effect Annoying Sounds [TubeRipper.cc]_1392-1396.wav",
+        "prediction": 0.9998340606689453
+    },
+    {
+        "timestamp": "2024-07-18T16:12:21.021274",
+        "audio_file_path": "/home/mike/cry-baby-edited/cry-baby/audio/split/Baby Crying Sound - Crying Baby Sound Effect Annoying Sounds [TubeRipper.cc]_1556-1560.wav",
+        "prediction": 0.9999987483024597
+    },
+    {
+        "timestamp": "2024-07-18T16:12:21.283010",
+        "audio_file_path": "/home/mike/cry-baby-edited/cry-baby/audio/split/Baby Crying Sound - Crying Baby Sound Effect Annoying Sounds [TubeRipper.cc]_772-776.wav",
+        "prediction": 0.999673068523407
+    },
+    {
+        "timestamp": "2024-07-18T16:12:21.449147",
+        "audio_file_path": "/home/mike/cry-baby-edited/cry-baby/audio/split/Baby Crying Sound - Crying Baby Sound Effect Annoying Sounds [TubeRipper.cc]_272-276.wav",
+        "prediction": 0.9999980926513672
+    },
+    {
+        "timestamp": "2024-07-18T16:12:21.549015",
+        "audio_file_path": "/home/mike/cry-baby-edited/cry-baby/audio/split/Baby Crying Sound - Crying Baby Sound Effect Annoying Sounds [TubeRipper.cc]_16-20.wav",
+        "prediction": 0.9999673366546631
+    },
+    {
+        "timestamp": "2024-07-18T16:12:21.675887",
+        "audio_file_path": "/home/mike/cry-baby-edited/cry-baby/audio/split/Baby Crying Sound - Crying Baby Sound Effect Annoying Sounds [TubeRipper.cc]_1088-1092.wav",
+        "prediction": 0.9987632036209106
+    },
+    {
+        "timestamp": "2024-07-18T16:12:21.802526",
+        "audio_file_path": "/home/mike/cry-baby-edited/cry-baby/audio/split/Baby Crying Sound - Crying Baby Sound Effect Annoying Sounds [TubeRipper.cc]_312-316.wav",
+        "prediction": 0.9992111325263977
+    },
+    {
+        "timestamp": "2024-07-18T16:12:21.958383",
+        "audio_file_path": "/home/mike/cry-baby-edited/cry-baby/audio/split/Baby Crying Sound - Crying Baby Sound Effect Annoying Sounds [TubeRipper.cc]_408-412.wav",
+        "prediction": 0.998779296875
+    },
+    {
+        "timestamp": "2024-07-18T16:12:22.130310",
+        "audio_file_path": "/home/mike/cry-baby-edited/cry-baby/audio/split/Baby Crying Sound - Crying Baby Sound Effect Annoying Sounds [TubeRipper.cc]_532-536.wav",
+        "prediction": 0.9999606013298035
+    },
+    {
+        "timestamp": "2024-07-18T16:12:22.321996",
+        "audio_file_path": "/home/mike/cry-baby-edited/cry-baby/audio/split/Baby Crying Sound - Crying Baby Sound Effect Annoying Sounds [TubeRipper.cc]_1764-1768.wav",
+        "prediction": 0.9991158246994019
+    },
+    {
+        "timestamp": "2024-07-18T16:12:22.513336",
+        "audio_file_path": "/home/mike/cry-baby-edited/cry-baby/audio/split/Baby Crying Sound - Crying Baby Sound Effect Annoying Sounds [TubeRipper.cc]_1440-1444.wav",
+        "prediction": 0.9984831809997559
+    },
+    {
+        "timestamp": "2024-07-18T16:12:22.618684",
+        "audio_file_path": "/home/mike/cry-baby-edited/cry-baby/audio/split/Baby Crying Sound - Crying Baby Sound Effect Annoying Sounds [TubeRipper.cc]_976-980.wav",
+        "prediction": 0.999993622303009
+    },
+    {
+        "timestamp": "2024-07-18T16:12:22.757018",
+        "audio_file_path": "/home/mike/cry-baby-edited/cry-baby/audio/split/Baby Crying Sound - Crying Baby Sound Effect Annoying Sounds [TubeRipper.cc]_1576-1580.wav",
+        "prediction": 0.9908007979393005
+    },
+    {
+        "timestamp": "2024-07-18T16:12:22.899786",
+        "audio_file_path": "/home/mike/cry-baby-edited/cry-baby/audio/split/Baby Crying Sound - Crying Baby Sound Effect Annoying Sounds [TubeRipper.cc]_888-892.wav",
+        "prediction": 0.9999885559082031
+    },
+    {
+        "timestamp": "2024-07-18T16:12:23.036243",
+        "audio_file_path": "/home/mike/cry-baby-edited/cry-baby/audio/split/Baby Crying Sound - Crying Baby Sound Effect Annoying Sounds [TubeRipper.cc]_1632-1636.wav",
+        "prediction": 0.9975319504737854
+    },
+    {
+        "timestamp": "2024-07-18T16:12:23.136787",
+        "audio_file_path": "/home/mike/cry-baby-edited/cry-baby/audio/split/Baby Crying Sound - Crying Baby Sound Effect Annoying Sounds [TubeRipper.cc]_1096-1100.wav",
+        "prediction": 0.9999996423721313
+    },
+    {
+        "timestamp": "2024-07-18T16:12:23.287050",
+        "audio_file_path": "/home/mike/cry-baby-edited/cry-baby/audio/split/Baby Crying Sound - Crying Baby Sound Effect Annoying Sounds [TubeRipper.cc]_156-160.wav",
+        "prediction": 1.0
+    },
+    {
+        "timestamp": "2024-07-18T16:12:23.414537",
+        "audio_file_path": "/home/mike/cry-baby-edited/cry-baby/audio/split/Baby Crying Sound - Crying Baby Sound Effect Annoying Sounds [TubeRipper.cc]_244-248.wav",
+        "prediction": 1.0
+    },
+    {
+        "timestamp": "2024-07-18T16:12:23.523157",
+        "audio_file_path": "/home/mike/cry-baby-edited/cry-baby/audio/split/Baby Crying Sound - Crying Baby Sound Effect Annoying Sounds [TubeRipper.cc]_180-184.wav",
+        "prediction": 1.0
+    },
+    {
+        "timestamp": "2024-07-18T16:12:23.624672",
+        "audio_file_path": "/home/mike/cry-baby-edited/cry-baby/audio/split/Baby Crying Sound - Crying Baby Sound Effect Annoying Sounds [TubeRipper.cc]_1776-1780.wav",
+        "prediction": 1.0
+    },
+    {
+        "timestamp": "2024-07-18T16:12:23.769532",
+        "audio_file_path": "/home/mike/cry-baby-edited/cry-baby/audio/split/Baby Crying Sound - Crying Baby Sound Effect Annoying Sounds [TubeRipper.cc]_996-1000.wav",
+        "prediction": 1.0
+    },
+    {
+        "timestamp": "2024-07-18T16:12:23.901896",
+        "audio_file_path": "/home/mike/cry-baby-edited/cry-baby/audio/split/Baby Crying Sound - Crying Baby Sound Effect Annoying Sounds [TubeRipper.cc]_496-500.wav",
+        "prediction": 0.9780375361442566
+    },
+    {
+        "timestamp": "2024-07-18T16:12:24.011375",
+        "audio_file_path": "/home/mike/cry-baby-edited/cry-baby/audio/split/Baby Crying Sound - Crying Baby Sound Effect Annoying Sounds [TubeRipper.cc]_468-472.wav",
+        "prediction": 0.9997777342796326
+    },
+    {
+        "timestamp": "2024-07-18T16:12:24.181239",
+        "audio_file_path": "/home/mike/cry-baby-edited/cry-baby/audio/split/Baby Crying Sound - Crying Baby Sound Effect Annoying Sounds [TubeRipper.cc]_132-136.wav",
+        "prediction": 0.9999999403953552
+    },
+    {
+        "timestamp": "2024-07-18T16:12:24.329802",
+        "audio_file_path": "/home/mike/cry-baby-edited/cry-baby/audio/split/Baby Crying Sound - Crying Baby Sound Effect Annoying Sounds [TubeRipper.cc]_144-148.wav",
+        "prediction": 0.9771164655685425
+    },
+    {
+        "timestamp": "2024-07-18T16:12:24.441270",
+        "audio_file_path": "/home/mike/cry-baby-edited/cry-baby/audio/split/Baby Crying Sound - Crying Baby Sound Effect Annoying Sounds [TubeRipper.cc]_1656-1660.wav",
+        "prediction": 0.9999985694885254
+    },
+    {
+        "timestamp": "2024-07-18T16:12:24.562739",
+        "audio_file_path": "/home/mike/cry-baby-edited/cry-baby/audio/split/Baby Crying Sound - Crying Baby Sound Effect Annoying Sounds [TubeRipper.cc]_928-932.wav",
+        "prediction": 1.0
+    },
+    {
+        "timestamp": "2024-07-18T16:12:24.670221",
+        "audio_file_path": "/home/mike/cry-baby-edited/cry-baby/audio/split/Baby Crying Sound - Crying Baby Sound Effect Annoying Sounds [TubeRipper.cc]_720-724.wav",
+        "prediction": 0.9999999403953552
+    },
+    {
+        "timestamp": "2024-07-18T16:12:24.786801",
+        "audio_file_path": "/home/mike/cry-baby-edited/cry-baby/audio/split/Baby Crying Sound - Crying Baby Sound Effect Annoying Sounds [TubeRipper.cc]_664-668.wav",
+        "prediction": 0.9999955892562866
+    },
+    {
+        "timestamp": "2024-07-18T16:12:24.894608",
+        "audio_file_path": "/home/mike/cry-baby-edited/cry-baby/audio/split/Baby Crying Sound - Crying Baby Sound Effect Annoying Sounds [TubeRipper.cc]_1012-1016.wav",
+        "prediction": 0.9997954964637756
+    },
+    {
+        "timestamp": "2024-07-18T16:12:25.037400",
+        "audio_file_path": "/home/mike/cry-baby-edited/cry-baby/audio/split/Baby Crying Sound - Crying Baby Sound Effect Annoying Sounds [TubeRipper.cc]_712-716.wav",
+        "prediction": 0.9999995827674866
+    },
+    {
+        "timestamp": "2024-07-18T16:12:25.155873",
+        "audio_file_path": "/home/mike/cry-baby-edited/cry-baby/audio/split/Baby Crying Sound - Crying Baby Sound Effect Annoying Sounds [TubeRipper.cc]_1448-1452.wav",
+        "prediction": 0.8747373223304749
+    },
+    {
+        "timestamp": "2024-07-18T16:12:25.308015",
+        "audio_file_path": "/home/mike/cry-baby-edited/cry-baby/audio/split/Baby Crying Sound - Crying Baby Sound Effect Annoying Sounds [TubeRipper.cc]_980-984.wav",
+        "prediction": 0.9999802708625793
+    },
+    {
+        "timestamp": "2024-07-18T16:12:25.462708",
+        "audio_file_path": "/home/mike/cry-baby-edited/cry-baby/audio/split/Baby Crying Sound - Crying Baby Sound Effect Annoying Sounds [TubeRipper.cc]_868-872.wav",
+        "prediction": 0.9999974966049194
+    },
+    {
+        "timestamp": "2024-07-18T16:12:25.576298",
+        "audio_file_path": "/home/mike/cry-baby-edited/cry-baby/audio/split/Baby Crying Sound - Crying Baby Sound Effect Annoying Sounds [TubeRipper.cc]_1700-1704.wav",
+        "prediction": 0.9999985694885254
+    },
+    {
+        "timestamp": "2024-07-18T16:12:25.714367",
+        "audio_file_path": "/home/mike/cry-baby-edited/cry-baby/audio/split/Baby Crying Sound - Crying Baby Sound Effect Annoying Sounds [TubeRipper.cc]_1624-1628.wav",
+        "prediction": 0.9999997615814209
+    },
+    {
+        "timestamp": "2024-07-18T16:12:25.831113",
+        "audio_file_path": "/home/mike/cry-baby-edited/cry-baby/audio/split/Baby Crying Sound - Crying Baby Sound Effect Annoying Sounds [TubeRipper.cc]_192-196.wav",
+        "prediction": 0.9999305009841919
+    },
+    {
+        "timestamp": "2024-07-18T16:12:25.947102",
+        "audio_file_path": "/home/mike/cry-baby-edited/cry-baby/audio/split/Baby Crying Sound - Crying Baby Sound Effect Annoying Sounds [TubeRipper.cc]_1796-1800.wav",
+        "prediction": 0.999991774559021
+    },
+    {
+        "timestamp": "2024-07-18T16:12:26.080426",
+        "audio_file_path": "/home/mike/cry-baby-edited/cry-baby/audio/split/Baby Crying Sound - Crying Baby Sound Effect Annoying Sounds [TubeRipper.cc]_580-584.wav",
+        "prediction": 0.9998900890350342
+    },
+    {
+        "timestamp": "2024-07-18T16:12:26.201623",
+        "audio_file_path": "/home/mike/cry-baby-edited/cry-baby/audio/split/Baby Crying Sound - Crying Baby Sound Effect Annoying Sounds [TubeRipper.cc]_1208-1212.wav",
+        "prediction": 1.0
+    },
+    {
+        "timestamp": "2024-07-18T16:12:26.373145",
+        "audio_file_path": "/home/mike/cry-baby-edited/cry-baby/audio/split/Baby Crying Sound - Crying Baby Sound Effect Annoying Sounds [TubeRipper.cc]_556-560.wav",
+        "prediction": 1.0
+    },
+    {
+        "timestamp": "2024-07-18T16:12:26.479646",
+        "audio_file_path": "/home/mike/cry-baby-edited/cry-baby/audio/split/Baby Crying Sound - Crying Baby Sound Effect Annoying Sounds [TubeRipper.cc]_60-64.wav",
+        "prediction": 0.9727447628974915
+    },
+    {
+        "timestamp": "2024-07-18T16:12:26.595055",
+        "audio_file_path": "/home/mike/cry-baby-edited/cry-baby/audio/split/Baby Crying Sound - Crying Baby Sound Effect Annoying Sounds [TubeRipper.cc]_1020-1024.wav",
+        "prediction": 0.9829281568527222
+    },
+    {
+        "timestamp": "2024-07-18T16:12:26.734684",
+        "audio_file_path": "/home/mike/cry-baby-edited/cry-baby/audio/split/Baby Crying Sound - Crying Baby Sound Effect Annoying Sounds [TubeRipper.cc]_1172-1176.wav",
+        "prediction": 0.856617271900177
+    },
+    {
+        "timestamp": "2024-07-18T16:12:26.863627",
+        "audio_file_path": "/home/mike/cry-baby-edited/cry-baby/audio/split/Baby Crying Sound - Crying Baby Sound Effect Annoying Sounds [TubeRipper.cc]_1200-1204.wav",
+        "prediction": 0.9999997019767761
+    },
+    {
+        "timestamp": "2024-07-18T16:12:26.984560",
+        "audio_file_path": "/home/mike/cry-baby-edited/cry-baby/audio/split/Baby Crying Sound - Crying Baby Sound Effect Annoying Sounds [TubeRipper.cc]_1236-1240.wav",
+        "prediction": 0.9963111877441406
+    },
+    {
+        "timestamp": "2024-07-18T16:12:27.114668",
+        "audio_file_path": "/home/mike/cry-baby-edited/cry-baby/audio/split/Baby Crying Sound - Crying Baby Sound Effect Annoying Sounds [TubeRipper.cc]_608-612.wav",
+        "prediction": 0.9835692644119263
+    },
+    {
+        "timestamp": "2024-07-18T16:12:27.234279",
+        "audio_file_path": "/home/mike/cry-baby-edited/cry-baby/audio/split/Baby Crying Sound - Crying Baby Sound Effect Annoying Sounds [TubeRipper.cc]_336-340.wav",
+        "prediction": 0.9964204430580139
+    },
+    {
+        "timestamp": "2024-07-18T16:12:27.374136",
+        "audio_file_path": "/home/mike/cry-baby-edited/cry-baby/audio/split/Baby Crying Sound - Crying Baby Sound Effect Annoying Sounds [TubeRipper.cc]_1356-1360.wav",
+        "prediction": 0.9989492893218994
+    },
+    {
+        "timestamp": "2024-07-18T16:12:27.502970",
+        "audio_file_path": "/home/mike/cry-baby-edited/cry-baby/audio/split/Baby Crying Sound - Crying Baby Sound Effect Annoying Sounds [TubeRipper.cc]_528-532.wav",
+        "prediction": 0.9989051818847656
+    },
+    {
+        "timestamp": "2024-07-18T16:12:27.652314",
+        "audio_file_path": "/home/mike/cry-baby-edited/cry-baby/audio/split/Baby Crying Sound - Crying Baby Sound Effect Annoying Sounds [TubeRipper.cc]_1732-1736.wav",
+        "prediction": 0.999671995639801
+    },
+    {
+        "timestamp": "2024-07-18T16:12:27.760365",
+        "audio_file_path": "/home/mike/cry-baby-edited/cry-baby/audio/split/Baby Crying Sound - Crying Baby Sound Effect Annoying Sounds [TubeRipper.cc]_864-868.wav",
+        "prediction": 0.999017596244812
+    },
+    {
+        "timestamp": "2024-07-18T16:12:27.884980",
+        "audio_file_path": "/home/mike/cry-baby-edited/cry-baby/audio/split/Baby Crying Sound - Crying Baby Sound Effect Annoying Sounds [TubeRipper.cc]_444-448.wav",
+        "prediction": 0.9999994039535522
+    },
+    {
+        "timestamp": "2024-07-18T16:12:28.036485",
+        "audio_file_path": "/home/mike/cry-baby-edited/cry-baby/audio/split/Baby Crying Sound - Crying Baby Sound Effect Annoying Sounds [TubeRipper.cc]_736-740.wav",
+        "prediction": 0.9999906420707703
+    },
+    {
+        "timestamp": "2024-07-18T16:12:28.204384",
+        "audio_file_path": "/home/mike/cry-baby-edited/cry-baby/audio/split/Baby Crying Sound - Crying Baby Sound Effect Annoying Sounds [TubeRipper.cc]_1312-1316.wav",
+        "prediction": 0.9999878406524658
+    },
+    {
+        "timestamp": "2024-07-18T16:12:28.345891",
+        "audio_file_path": "/home/mike/cry-baby-edited/cry-baby/audio/split/Baby Crying Sound - Crying Baby Sound Effect Annoying Sounds [TubeRipper.cc]_140-144.wav",
+        "prediction": 0.9999999403953552
+    },
+    {
+        "timestamp": "2024-07-18T16:12:28.461746",
+        "audio_file_path": "/home/mike/cry-baby-edited/cry-baby/audio/split/Baby Crying Sound - Crying Baby Sound Effect Annoying Sounds [TubeRipper.cc]_188-192.wav",
+        "prediction": 0.9999571442604065
+    },
+    {
+        "timestamp": "2024-07-18T16:12:28.571243",
+        "audio_file_path": "/home/mike/cry-baby-edited/cry-baby/audio/split/Baby Crying Sound - Crying Baby Sound Effect Annoying Sounds [TubeRipper.cc]_700-704.wav",
+        "prediction": 0.9985004663467407
+    },
+    {
+        "timestamp": "2024-07-18T16:12:28.703549",
+        "audio_file_path": "/home/mike/cry-baby-edited/cry-baby/audio/split/Baby Crying Sound - Crying Baby Sound Effect Annoying Sounds [TubeRipper.cc]_596-600.wav",
+        "prediction": 0.9999998807907104
+    },
+    {
+        "timestamp": "2024-07-18T16:12:28.828033",
+        "audio_file_path": "/home/mike/cry-baby-edited/cry-baby/audio/split/Baby Crying Sound - Crying Baby Sound Effect Annoying Sounds [TubeRipper.cc]_836-840.wav",
+        "prediction": 0.9999993443489075
+    },
+    {
+        "timestamp": "2024-07-18T16:12:29.054830",
+        "audio_file_path": "/home/mike/cry-baby-edited/cry-baby/audio/split/Baby Crying Sound - Crying Baby Sound Effect Annoying Sounds [TubeRipper.cc]_120-124.wav",
+        "prediction": 0.9989530444145203
+    },
+    {
+        "timestamp": "2024-07-18T16:12:29.164889",
+        "audio_file_path": "/home/mike/cry-baby-edited/cry-baby/audio/split/Baby Crying Sound - Crying Baby Sound Effect Annoying Sounds [TubeRipper.cc]_480-484.wav",
+        "prediction": 0.8926823139190674
+    },
+    {
+        "timestamp": "2024-07-18T16:12:29.289341",
+        "audio_file_path": "/home/mike/cry-baby-edited/cry-baby/audio/split/Baby Crying Sound - Crying Baby Sound Effect Annoying Sounds [TubeRipper.cc]_1100-1104.wav",
+        "prediction": 1.0
+    },
+    {
+        "timestamp": "2024-07-18T16:12:29.385142",
+        "audio_file_path": "/home/mike/cry-baby-edited/cry-baby/audio/split/Baby Crying Sound - Crying Baby Sound Effect Annoying Sounds [TubeRipper.cc]_848-852.wav",
+        "prediction": 0.9868018627166748
+    },
+    {
+        "timestamp": "2024-07-18T16:12:29.504879",
+        "audio_file_path": "/home/mike/cry-baby-edited/cry-baby/audio/split/Baby Crying Sound - Crying Baby Sound Effect Annoying Sounds [TubeRipper.cc]_476-480.wav",
+        "prediction": 0.9999266266822815
+    },
+    {
+        "timestamp": "2024-07-18T16:12:29.627596",
+        "audio_file_path": "/home/mike/cry-baby-edited/cry-baby/audio/split/Baby Crying Sound - Crying Baby Sound Effect Annoying Sounds [TubeRipper.cc]_1492-1496.wav",
+        "prediction": 0.9997603893280029
+    },
+    {
+        "timestamp": "2024-07-18T16:12:29.858425",
+        "audio_file_path": "/home/mike/cry-baby-edited/cry-baby/audio/split/Baby Crying Sound - Crying Baby Sound Effect Annoying Sounds [TubeRipper.cc]_1192-1196.wav",
+        "prediction": 0.9903853535652161
+    },
+    {
+        "timestamp": "2024-07-18T16:12:29.966957",
+        "audio_file_path": "/home/mike/cry-baby-edited/cry-baby/audio/split/Baby Crying Sound - Crying Baby Sound Effect Annoying Sounds [TubeRipper.cc]_384-388.wav",
+        "prediction": 1.0
+    },
+    {
+        "timestamp": "2024-07-18T16:12:30.099714",
+        "audio_file_path": "/home/mike/cry-baby-edited/cry-baby/audio/split/Baby Crying Sound - Crying Baby Sound Effect Annoying Sounds [TubeRipper.cc]_640-644.wav",
+        "prediction": 0.9758077263832092
+    },
+    {
+        "timestamp": "2024-07-18T16:12:30.226050",
+        "audio_file_path": "/home/mike/cry-baby-edited/cry-baby/audio/split/Baby Crying Sound - Crying Baby Sound Effect Annoying Sounds [TubeRipper.cc]_1396-1400.wav",
+        "prediction": 0.9981213212013245
+    },
+    {
+        "timestamp": "2024-07-18T16:12:30.359653",
+        "audio_file_path": "/home/mike/cry-baby-edited/cry-baby/audio/split/Baby Crying Sound - Crying Baby Sound Effect Annoying Sounds [TubeRipper.cc]_548-552.wav",
+        "prediction": 1.0
+    },
+    {
+        "timestamp": "2024-07-18T16:12:30.463254",
+        "audio_file_path": "/home/mike/cry-baby-edited/cry-baby/audio/split/Baby Crying Sound - Crying Baby Sound Effect Annoying Sounds [TubeRipper.cc]_592-596.wav",
+        "prediction": 0.9936140179634094
+    },
+    {
+        "timestamp": "2024-07-18T16:12:30.560813",
+        "audio_file_path": "/home/mike/cry-baby-edited/cry-baby/audio/split/Baby Crying Sound - Crying Baby Sound Effect Annoying Sounds [TubeRipper.cc]_852-856.wav",
+        "prediction": 0.9834305644035339
+    },
+    {
+        "timestamp": "2024-07-18T16:12:30.666389",
+        "audio_file_path": "/home/mike/cry-baby-edited/cry-baby/audio/split/Baby Crying Sound - Crying Baby Sound Effect Annoying Sounds [TubeRipper.cc]_932-936.wav",
+        "prediction": 1.0
+    },
+    {
+        "timestamp": "2024-07-18T16:12:30.794420",
+        "audio_file_path": "/home/mike/cry-baby-edited/cry-baby/audio/split/Baby Crying Sound - Crying Baby Sound Effect Annoying Sounds [TubeRipper.cc]_100-104.wav",
+        "prediction": 0.9999977350234985
+    },
+    {
+        "timestamp": "2024-07-18T16:12:30.892567",
+        "audio_file_path": "/home/mike/cry-baby-edited/cry-baby/audio/split/Baby Crying Sound - Crying Baby Sound Effect Annoying Sounds [TubeRipper.cc]_372-376.wav",
+        "prediction": 0.9999897480010986
+    },
+    {
+        "timestamp": "2024-07-18T16:12:31.013682",
+        "audio_file_path": "/home/mike/cry-baby-edited/cry-baby/audio/split/Baby Crying Sound - Crying Baby Sound Effect Annoying Sounds [TubeRipper.cc]_1092-1096.wav",
+        "prediction": 0.9999865293502808
+    },
+    {
+        "timestamp": "2024-07-18T16:12:31.128430",
+        "audio_file_path": "/home/mike/cry-baby-edited/cry-baby/audio/split/Baby Crying Sound - Crying Baby Sound Effect Annoying Sounds [TubeRipper.cc]_744-748.wav",
+        "prediction": 0.9693117141723633
+    },
+    {
+        "timestamp": "2024-07-18T16:12:31.271855",
+        "audio_file_path": "/home/mike/cry-baby-edited/cry-baby/audio/split/Baby Crying Sound - Crying Baby Sound Effect Annoying Sounds [TubeRipper.cc]_1268-1272.wav",
+        "prediction": 0.9999765753746033
+    },
+    {
+        "timestamp": "2024-07-18T16:12:31.402001",
+        "audio_file_path": "/home/mike/cry-baby-edited/cry-baby/audio/split/Baby Crying Sound - Crying Baby Sound Effect Annoying Sounds [TubeRipper.cc]_1640-1644.wav",
+        "prediction": 0.9998012781143188
+    },
+    {
+        "timestamp": "2024-07-18T16:12:31.529952",
+        "audio_file_path": "/home/mike/cry-baby-edited/cry-baby/audio/split/Baby Crying Sound - Crying Baby Sound Effect Annoying Sounds [TubeRipper.cc]_1204-1208.wav",
+        "prediction": 0.9999372959136963
+    },
+    {
+        "timestamp": "2024-07-18T16:12:31.688382",
+        "audio_file_path": "/home/mike/cry-baby-edited/cry-baby/audio/split/Baby Crying Sound - Crying Baby Sound Effect Annoying Sounds [TubeRipper.cc]_500-504.wav",
+        "prediction": 0.9999999403953552
+    },
+    {
+        "timestamp": "2024-07-18T16:12:31.813047",
+        "audio_file_path": "/home/mike/cry-baby-edited/cry-baby/audio/split/Baby Crying Sound - Crying Baby Sound Effect Annoying Sounds [TubeRipper.cc]_792-796.wav",
+        "prediction": 0.9999997615814209
+    },
+    {
+        "timestamp": "2024-07-18T16:12:31.932264",
+        "audio_file_path": "/home/mike/cry-baby-edited/cry-baby/audio/split/Baby Crying Sound - Crying Baby Sound Effect Annoying Sounds [TubeRipper.cc]_984-988.wav",
+        "prediction": 0.9999120831489563
+    },
+    {
+        "timestamp": "2024-07-18T16:12:32.031587",
+        "audio_file_path": "/home/mike/cry-baby-edited/cry-baby/audio/split/Baby Crying Sound - Crying Baby Sound Effect Annoying Sounds [TubeRipper.cc]_600-604.wav",
+        "prediction": 0.9999679327011108
+    },
+    {
+        "timestamp": "2024-07-18T16:12:32.132241",
+        "audio_file_path": "/home/mike/cry-baby-edited/cry-baby/audio/split/Baby Crying Sound - Crying Baby Sound Effect Annoying Sounds [TubeRipper.cc]_1044-1048.wav",
+        "prediction": 0.9590108394622803
+    },
+    {
+        "timestamp": "2024-07-18T16:12:32.280891",
+        "audio_file_path": "/home/mike/cry-baby-edited/cry-baby/audio/split/Baby Crying Sound - Crying Baby Sound Effect Annoying Sounds [TubeRipper.cc]_440-444.wav",
+        "prediction": 0.999792218208313
+    },
+    {
+        "timestamp": "2024-07-18T16:12:32.390501",
+        "audio_file_path": "/home/mike/cry-baby-edited/cry-baby/audio/split/Baby Crying Sound - Crying Baby Sound Effect Annoying Sounds [TubeRipper.cc]_1008-1012.wav",
+        "prediction": 0.9999989867210388
+    },
+    {
+        "timestamp": "2024-07-18T16:12:32.489680",
+        "audio_file_path": "/home/mike/cry-baby-edited/cry-baby/audio/split/Baby Crying Sound - Crying Baby Sound Effect Annoying Sounds [TubeRipper.cc]_36-40.wav",
+        "prediction": 0.9979937672615051
+    },
+    {
+        "timestamp": "2024-07-18T16:12:32.609354",
+        "audio_file_path": "/home/mike/cry-baby-edited/cry-baby/audio/split/Baby Crying Sound - Crying Baby Sound Effect Annoying Sounds [TubeRipper.cc]_1308-1312.wav",
+        "prediction": 0.9999988675117493
+    },
+    {
+        "timestamp": "2024-07-18T16:12:32.749110",
+        "audio_file_path": "/home/mike/cry-baby-edited/cry-baby/audio/split/Baby Crying Sound - Crying Baby Sound Effect Annoying Sounds [TubeRipper.cc]_1256-1260.wav",
+        "prediction": 0.9999769926071167
+    },
+    {
+        "timestamp": "2024-07-18T16:12:32.855220",
+        "audio_file_path": "/home/mike/cry-baby-edited/cry-baby/audio/split/Baby Crying Sound - Crying Baby Sound Effect Annoying Sounds [TubeRipper.cc]_1400-1404.wav",
+        "prediction": 0.9971270561218262
+    },
+    {
+        "timestamp": "2024-07-18T16:12:32.968294",
+        "audio_file_path": "/home/mike/cry-baby-edited/cry-baby/audio/split/Baby Crying Sound - Crying Baby Sound Effect Annoying Sounds [TubeRipper.cc]_1156-1160.wav",
+        "prediction": 0.9998571872711182
+    },
+    {
+        "timestamp": "2024-07-18T16:12:33.096341",
+        "audio_file_path": "/home/mike/cry-baby-edited/cry-baby/audio/split/Baby Crying Sound - Crying Baby Sound Effect Annoying Sounds [TubeRipper.cc]_1072-1076.wav",
+        "prediction": 0.9999979138374329
+    },
+    {
+        "timestamp": "2024-07-18T16:12:33.233950",
+        "audio_file_path": "/home/mike/cry-baby-edited/cry-baby/audio/split/Baby Crying Sound - Crying Baby Sound Effect Annoying Sounds [TubeRipper.cc]_1128-1132.wav",
+        "prediction": 0.9997886419296265
+    },
+    {
+        "timestamp": "2024-07-18T16:12:33.354256",
+        "audio_file_path": "/home/mike/cry-baby-edited/cry-baby/audio/split/Baby Crying Sound - Crying Baby Sound Effect Annoying Sounds [TubeRipper.cc]_1276-1280.wav",
+        "prediction": 1.0
+    },
+    {
+        "timestamp": "2024-07-18T16:12:33.450403",
+        "audio_file_path": "/home/mike/cry-baby-edited/cry-baby/audio/split/Baby Crying Sound - Crying Baby Sound Effect Annoying Sounds [TubeRipper.cc]_844-848.wav",
+        "prediction": 0.9998041391372681
+    },
+    {
+        "timestamp": "2024-07-18T16:12:33.550890",
+        "audio_file_path": "/home/mike/cry-baby-edited/cry-baby/audio/split/Baby Crying Sound - Crying Baby Sound Effect Annoying Sounds [TubeRipper.cc]_992-996.wav",
+        "prediction": 0.9999967217445374
+    },
+    {
+        "timestamp": "2024-07-18T16:12:33.686784",
+        "audio_file_path": "/home/mike/cry-baby-edited/cry-baby/audio/split/Baby Crying Sound - Crying Baby Sound Effect Annoying Sounds [TubeRipper.cc]_856-860.wav",
+        "prediction": 0.9873184561729431
+    },
+    {
+        "timestamp": "2024-07-18T16:12:33.785852",
+        "audio_file_path": "/home/mike/cry-baby-edited/cry-baby/audio/split/Baby Crying Sound - Crying Baby Sound Effect Annoying Sounds [TubeRipper.cc]_1684-1688.wav",
+        "prediction": 0.9996866583824158
+    },
+    {
+        "timestamp": "2024-07-18T16:12:33.883342",
+        "audio_file_path": "/home/mike/cry-baby-edited/cry-baby/audio/split/Baby Crying Sound - Crying Baby Sound Effect Annoying Sounds [TubeRipper.cc]_1480-1484.wav",
+        "prediction": 0.9999992847442627
+    },
+    {
+        "timestamp": "2024-07-18T16:12:33.978649",
+        "audio_file_path": "/home/mike/cry-baby-edited/cry-baby/audio/split/Baby Crying Sound - Crying Baby Sound Effect Annoying Sounds [TubeRipper.cc]_1384-1388.wav",
+        "prediction": 0.9999937415122986
+    },
+    {
+        "timestamp": "2024-07-18T16:12:34.075977",
+        "audio_file_path": "/home/mike/cry-baby-edited/cry-baby/audio/split/Baby Crying Sound - Crying Baby Sound Effect Annoying Sounds [TubeRipper.cc]_344-348.wav",
+        "prediction": 0.9999759793281555
+    },
+    {
+        "timestamp": "2024-07-18T16:12:34.178630",
+        "audio_file_path": "/home/mike/cry-baby-edited/cry-baby/audio/split/Baby Crying Sound - Crying Baby Sound Effect Annoying Sounds [TubeRipper.cc]_1692-1696.wav",
+        "prediction": 0.9999988079071045
+    },
+    {
+        "timestamp": "2024-07-18T16:12:34.293531",
+        "audio_file_path": "/home/mike/cry-baby-edited/cry-baby/audio/split/Baby Crying Sound - Crying Baby Sound Effect Annoying Sounds [TubeRipper.cc]_492-496.wav",
+        "prediction": 0.9999997615814209
+    },
+    {
+        "timestamp": "2024-07-18T16:12:34.448408",
+        "audio_file_path": "/home/mike/cry-baby-edited/cry-baby/audio/split/Baby Crying Sound - Crying Baby Sound Effect Annoying Sounds [TubeRipper.cc]_1472-1476.wav",
+        "prediction": 0.9999440312385559
+    },
+    {
+        "timestamp": "2024-07-18T16:12:34.537678",
+        "audio_file_path": "/home/mike/cry-baby-edited/cry-baby/audio/split/Baby Crying Sound - Crying Baby Sound Effect Annoying Sounds [TubeRipper.cc]_1132-1136.wav",
+        "prediction": 0.9998743534088135
+    },
+    {
+        "timestamp": "2024-07-18T16:12:34.695881",
+        "audio_file_path": "/home/mike/cry-baby-edited/cry-baby/audio/split/Baby Crying Sound - Crying Baby Sound Effect Annoying Sounds [TubeRipper.cc]_728-732.wav",
+        "prediction": 1.0
+    },
+    {
+        "timestamp": "2024-07-18T16:12:34.793492",
+        "audio_file_path": "/home/mike/cry-baby-edited/cry-baby/audio/split/Baby Crying Sound - Crying Baby Sound Effect Annoying Sounds [TubeRipper.cc]_952-956.wav",
+        "prediction": 0.9999857544898987
+    },
+    {
+        "timestamp": "2024-07-18T16:12:34.896602",
+        "audio_file_path": "/home/mike/cry-baby-edited/cry-baby/audio/split/Baby Crying Sound - Crying Baby Sound Effect Annoying Sounds [TubeRipper.cc]_956-960.wav",
+        "prediction": 0.9954920411109924
+    },
+    {
+        "timestamp": "2024-07-18T16:12:35.011171",
+        "audio_file_path": "/home/mike/cry-baby-edited/cry-baby/audio/split/Baby Crying Sound - Crying Baby Sound Effect Annoying Sounds [TubeRipper.cc]_1552-1556.wav",
+        "prediction": 1.0
+    },
+    {
+        "timestamp": "2024-07-18T16:12:35.116179",
+        "audio_file_path": "/home/mike/cry-baby-edited/cry-baby/audio/split/Baby Crying Sound - Crying Baby Sound Effect Annoying Sounds [TubeRipper.cc]_308-312.wav",
+        "prediction": 0.9876724481582642
+    },
+    {
+        "timestamp": "2024-07-18T16:12:35.219508",
+        "audio_file_path": "/home/mike/cry-baby-edited/cry-baby/audio/split/Baby Crying Sound - Crying Baby Sound Effect Annoying Sounds [TubeRipper.cc]_332-336.wav",
+        "prediction": 0.9999979138374329
+    },
+    {
+        "timestamp": "2024-07-18T16:12:35.333199",
+        "audio_file_path": "/home/mike/cry-baby-edited/cry-baby/audio/split/Baby Crying Sound - Crying Baby Sound Effect Annoying Sounds [TubeRipper.cc]_616-620.wav",
+        "prediction": 0.9999785423278809
+    },
+    {
+        "timestamp": "2024-07-18T16:12:35.452778",
+        "audio_file_path": "/home/mike/cry-baby-edited/cry-baby/audio/split/Baby Crying Sound - Crying Baby Sound Effect Annoying Sounds [TubeRipper.cc]_812-816.wav",
+        "prediction": 0.9771420359611511
+    },
+    {
+        "timestamp": "2024-07-18T16:12:35.594240",
+        "audio_file_path": "/home/mike/cry-baby-edited/cry-baby/audio/split/Baby Crying Sound - Crying Baby Sound Effect Annoying Sounds [TubeRipper.cc]_24-28.wav",
+        "prediction": 0.9811962842941284
+    },
+    {
+        "timestamp": "2024-07-18T16:12:35.703593",
+        "audio_file_path": "/home/mike/cry-baby-edited/cry-baby/audio/split/Baby Crying Sound - Crying Baby Sound Effect Annoying Sounds [TubeRipper.cc]_784-788.wav",
+        "prediction": 0.9809482097625732
+    },
+    {
+        "timestamp": "2024-07-18T16:12:35.807624",
+        "audio_file_path": "/home/mike/cry-baby-edited/cry-baby/audio/split/Baby Crying Sound - Crying Baby Sound Effect Annoying Sounds [TubeRipper.cc]_92-96.wav",
+        "prediction": 0.9822992086410522
+    },
+    {
+        "timestamp": "2024-07-18T16:12:35.901094",
+        "audio_file_path": "/home/mike/cry-baby-edited/cry-baby/audio/split/Baby Crying Sound - Crying Baby Sound Effect Annoying Sounds [TubeRipper.cc]_1360-1364.wav",
+        "prediction": 0.9864251017570496
+    },
+    {
+        "timestamp": "2024-07-18T16:12:36.015048",
+        "audio_file_path": "/home/mike/cry-baby-edited/cry-baby/audio/split/Baby Crying Sound - Crying Baby Sound Effect Annoying Sounds [TubeRipper.cc]_1272-1276.wav",
+        "prediction": 0.9999998211860657
+    },
+    {
+        "timestamp": "2024-07-18T16:12:36.107161",
+        "audio_file_path": "/home/mike/cry-baby-edited/cry-baby/audio/split/Baby Crying Sound - Crying Baby Sound Effect Annoying Sounds [TubeRipper.cc]_824-828.wav",
+        "prediction": 1.0
+    },
+    {
+        "timestamp": "2024-07-18T16:12:36.268052",
+        "audio_file_path": "/home/mike/cry-baby-edited/cry-baby/audio/split/Baby Crying Sound - Crying Baby Sound Effect Annoying Sounds [TubeRipper.cc]_32-36.wav",
+        "prediction": 0.9999949932098389
+    },
+    {
+        "timestamp": "2024-07-18T16:12:36.368677",
+        "audio_file_path": "/home/mike/cry-baby-edited/cry-baby/audio/split/Baby Crying Sound - Crying Baby Sound Effect Annoying Sounds [TubeRipper.cc]_1488-1492.wav",
+        "prediction": 0.9999921917915344
+    },
+    {
+        "timestamp": "2024-07-18T16:12:36.496108",
+        "audio_file_path": "/home/mike/cry-baby-edited/cry-baby/audio/split/Baby Crying Sound - Crying Baby Sound Effect Annoying Sounds [TubeRipper.cc]_436-440.wav",
+        "prediction": 0.9992626905441284
+    },
+    {
+        "timestamp": "2024-07-18T16:12:36.617145",
+        "audio_file_path": "/home/mike/cry-baby-edited/cry-baby/audio/split/Baby Crying Sound - Crying Baby Sound Effect Annoying Sounds [TubeRipper.cc]_248-252.wav",
+        "prediction": 0.9997679591178894
+    },
+    {
+        "timestamp": "2024-07-18T16:12:36.711231",
+        "audio_file_path": "/home/mike/cry-baby-edited/cry-baby/audio/split/Baby Crying Sound - Crying Baby Sound Effect Annoying Sounds [TubeRipper.cc]_84-88.wav",
+        "prediction": 0.23820947110652924
+    },
+    {
+        "timestamp": "2024-07-18T16:12:36.868198",
+        "audio_file_path": "/home/mike/cry-baby-edited/cry-baby/audio/split/Baby Crying Sound - Crying Baby Sound Effect Annoying Sounds [TubeRipper.cc]_560-564.wav",
+        "prediction": 1.0
+    },
+    {
+        "timestamp": "2024-07-18T16:12:36.971308",
+        "audio_file_path": "/home/mike/cry-baby-edited/cry-baby/audio/split/Baby Crying Sound - Crying Baby Sound Effect Annoying Sounds [TubeRipper.cc]_472-476.wav",
+        "prediction": 0.9785382151603699
+    },
+    {
+        "timestamp": "2024-07-18T16:12:37.085978",
+        "audio_file_path": "/home/mike/cry-baby-edited/cry-baby/audio/split/Baby Crying Sound - Crying Baby Sound Effect Annoying Sounds [TubeRipper.cc]_988-992.wav",
+        "prediction": 0.9999971985816956
+    },
+    {
+        "timestamp": "2024-07-18T16:12:37.200669",
+        "audio_file_path": "/home/mike/cry-baby-edited/cry-baby/audio/split/Baby Crying Sound - Crying Baby Sound Effect Annoying Sounds [TubeRipper.cc]_256-260.wav",
+        "prediction": 0.9989403486251831
+    },
+    {
+        "timestamp": "2024-07-18T16:12:37.353236",
+        "audio_file_path": "/home/mike/cry-baby-edited/cry-baby/audio/split/Baby Crying Sound - Crying Baby Sound Effect Annoying Sounds [TubeRipper.cc]_152-156.wav",
+        "prediction": 0.9891285300254822
+    },
+    {
+        "timestamp": "2024-07-18T16:12:37.475844",
+        "audio_file_path": "/home/mike/cry-baby-edited/cry-baby/audio/split/Baby Crying Sound - Crying Baby Sound Effect Annoying Sounds [TubeRipper.cc]_1604-1608.wav",
+        "prediction": 0.9334098696708679
+    },
+    {
+        "timestamp": "2024-07-18T16:12:37.578817",
+        "audio_file_path": "/home/mike/cry-baby-edited/cry-baby/audio/split/Baby Crying Sound - Crying Baby Sound Effect Annoying Sounds [TubeRipper.cc]_1768-1772.wav",
+        "prediction": 0.9999967217445374
+    },
+    {
+        "timestamp": "2024-07-18T16:12:37.690782",
+        "audio_file_path": "/home/mike/cry-baby-edited/cry-baby/audio/split/Baby Crying Sound - Crying Baby Sound Effect Annoying Sounds [TubeRipper.cc]_1048-1052.wav",
+        "prediction": 0.9999944567680359
+    },
+    {
+        "timestamp": "2024-07-18T16:12:37.824866",
+        "audio_file_path": "/home/mike/cry-baby-edited/cry-baby/audio/split/Baby Crying Sound - Crying Baby Sound Effect Annoying Sounds [TubeRipper.cc]_1220-1224.wav",
+        "prediction": 0.9999995827674866
+    },
+    {
+        "timestamp": "2024-07-18T16:12:37.946748",
+        "audio_file_path": "/home/mike/cry-baby-edited/cry-baby/audio/split/Baby Crying Sound - Crying Baby Sound Effect Annoying Sounds [TubeRipper.cc]_1284-1288.wav",
+        "prediction": 0.9999998211860657
     }
 ]
