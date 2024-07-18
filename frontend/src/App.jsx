@@ -11,6 +11,7 @@ import EditCams from './components/profiles/EditCams';
 import CameraDetails from './components/mobile-app/CameraDetails';
 import VideoRecording from './components/VideoRecording';
 import HistoriesPage from './components/HistoriesPage';
+import VideoPlayer from './components/mobile-app/VideoPlayer';
 
 
 function App() {
@@ -28,6 +29,7 @@ function App() {
         <Route path="/profile/editcams" element={<EditCams />} />
         <Route path="/vidrecord" element={<VideoRecording />} />
         <Route path="/histories" element={<HistoriesPage />} />
+        <Route path="/video/:title/:filePath" element={<VideoPlayer />} />
       </Routes>
     </Router>
   );
