@@ -22,7 +22,7 @@
     "build": "react-scripts build",
     "test": "jest",
     "eject": "react-scripts eject",
-    "dev": "vite",
+    "dev": "vite --host",
     "vite-build": "vite build",
     "serve": "vite preview"
   },

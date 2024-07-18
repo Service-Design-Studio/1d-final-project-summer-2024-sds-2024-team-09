@@ -15,6 +15,7 @@ Rails.application.routes.draw do
   get 'camera_broadcast', to: 'pages#camera_broadcast'
   get 'user', to: 'pages#user'
   get 'record', to: 'videos#index'
+  get 'video', to: 'videos#list'
   get 'history', to: 'videos#history'
   get 'home', to: 'pages#index'
   get 'video-history', to: 'pages#video_history'

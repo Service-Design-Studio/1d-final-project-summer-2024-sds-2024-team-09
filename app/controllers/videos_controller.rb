@@ -76,6 +76,11 @@ class VideosController < ApplicationController
     @videos = current_user.videos.order(created_at: :desc)
   end
 
+  def list
+    @videos = Video.all
+    @headers = Video.column_names
+  end
+
   def api_index
     # @videos = current_user.videos.order(created_at: :desc)
     # render json: @videos.map { |video| video.as_json.merge(file_path_url: url_for(video.file)) }
