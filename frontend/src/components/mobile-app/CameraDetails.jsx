@@ -12,13 +12,77 @@ const CameraDetails = () => {
     localAudioTrack: null,
     localVideoTrack: null,
     client: null,
+    remoteUsers: {},
+    mediaRecorder: null,
+    recordedChunks: [],
   });
+
+  const videoContainerRef = useRef(null);
+
+  const startRecording = () => {
+    const combinedStream = new MediaStream();
+
+    for (let uid in rtc.remoteUsers) {
+      const user = rtc.remoteUsers[uid];
+      if (user.videoTrack) {
+        const videoTrack = user.videoTrack.getMediaStreamTrack();
+        combinedStream.addTrack(videoTrack);
+      }
+      if (user.audioTrack) {
+        const audioTrack = user.audioTrack.getMediaStreamTrack();
+        combinedStream.addTrack(audioTrack);
+      }
+    }
+
+    const mediaRecorder = new MediaRecorder(combinedStream, {
+      mimeType: 'video/webm;codecs=vp9,opus'
+    });
+
+    mediaRecorder.ondataavailable = (event) => {
+      if (event.data.size > 0) {
+        setRtc((prevRtc) => ({
+          ...prevRtc,
+          recordedChunks: [...prevRtc.recordedChunks, event.data],
+        }));
+      }
+    };
+
+    mediaRecorder.onstop = () => {
+      const blob = new Blob(rtc.recordedChunks, { type: 'video/webm' });
+      const url = URL.createObjectURL(blob);
+      const downloadLink = document.getElementById('download-link');
+      const date = new Date();
+      const dateString = date.toISOString().split('T')[0];
+      const timeString = date.toTimeString().split(' ')[0].replace(/:/g, '-');
+      const filename = `recording_${dateString}_${timeString}.webm`;
+      downloadLink.href = url;
+      downloadLink.download = filename;
+      downloadLink.style.display = 'block';
+      downloadLink.click();
+
+      // Refresh the page after a short delay
+      setTimeout(() => {
+        window.location.reload();
+      }, 10000);
+    };
+
+    mediaRecorder.start();
+    setRtc((prevRtc) => ({ ...prevRtc, mediaRecorder }));
+    document.getElementById('start-recording').disabled = true;
+    document.getElementById('stop-recording').disabled = false;
+  };
+
+  const stopRecording = () => {
+    if (rtc.mediaRecorder) {
+      rtc.mediaRecorder.stop();
+      document.getElementById('start-recording').disabled = false;
+      document.getElementById('stop-recording').disabled = true;
+    }
+  };
 
   const backUser = () => {
     navigate('/user-home');
-  }
-
-  const videoContainerRef = useRef(null);
+  };
 
   useEffect(() => {
     const APP_ID = cameraData?.app_id;
@@ -62,6 +126,14 @@ const CameraDetails = () => {
             const remoteAudioTrack = user.audioTrack;
             remoteAudioTrack.play();
           }
+
+          setRtc((prevRtc) => ({
+            ...prevRtc,
+            remoteUsers: {
+              ...prevRtc.remoteUsers,
+              [user.uid]: user,
+            },
+          }));
         });
 
         client.on("user-unpublished", (user) => {
@@ -69,9 +141,15 @@ const CameraDetails = () => {
           if (videoContainerRef.current && videoContainerRef.current.id === user.uid.toString()) {
             videoContainerRef.current.innerHTML = 'Video Player Here';
           }
+
+          setRtc((prevRtc) => {
+            const updatedUsers = { ...prevRtc.remoteUsers };
+            delete updatedUsers[user.uid];
+            return { ...prevRtc, remoteUsers: updatedUsers };
+          });
         });
 
-        setRtc({ ...rtc, client });
+        setRtc((prevRtc) => ({ ...prevRtc, client }));
       } catch (error) {
         console.error('Failed to join as audience:', error);
       }
@@ -87,8 +165,7 @@ const CameraDetails = () => {
           videoContainerRef.current.innerHTML = 'Video Player Here';
         }
 
-        setRtc({ ...rtc, client: null });
-
+        setRtc((prevRtc) => ({ ...prevRtc, client: null }));
         console.log("Left the channel successfully");
       }
     };
@@ -96,7 +173,19 @@ const CameraDetails = () => {
     // Ensure the functions are available in the component scope
     window.joinChannel = joinChannel;
     window.leaveChannel = leaveChannel;
-  }, [rtc]);
+
+    // Attach event listeners
+    document.getElementById('start-recording').addEventListener('click', startRecording);
+    document.getElementById('stop-recording').addEventListener('click', stopRecording);
+
+    // Cleanup event listeners
+    return () => {
+      const startButton = document.getElementById('start-recording');
+      const stopButton = document.getElementById('stop-recording');
+      if (startButton) startButton.removeEventListener('click', startRecording);
+      if (stopButton) stopButton.removeEventListener('click', stopRecording);
+    };
+  }, [rtc, cameraData]);
 
   return (
     <div className="flex flex-col items-center">
@@ -124,6 +213,11 @@ const CameraDetails = () => {
           <p className="font-medium">Currently:</p>
           <p className="text-gray-600">Status: {cameraData.status}</p>
           <p className="text-gray-600">Noise Level: xxx db</p>
+        </div>
+        <div className="flex justify-center pb-4">
+          <button id="start-recording" className="btn btn-success">Start Recording</button>
+          <button id="stop-recording" className="btn btn-danger" disabled>Stop Recording</button>
+          <a id="download-link" className="btn btn-primary" style={{ display: 'none' }}>Download Recording</a>
         </div>
         <div>
           <h2 className="text-lg font-semibold mb-2">History:</h2>
@@ -157,7 +251,6 @@ const CameraDetails = () => {
           )}
         </div> */}
       </div>
-
     </div>
   );
 };

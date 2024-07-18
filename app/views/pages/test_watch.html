@@ -24,7 +24,7 @@
 
     <script>
         const APP_ID = 'fa3a10495b62421c8f7179b868b65feb';
-        const TOKEN = '007eJxTYDii68Yo/GZNqgNP3QEmnqiVakVaE0QTDfqrq690Zb/6FaDAkJZonGhoYGJpmmRmZGJkmGyRZm5obplkYWaRZGaalpo0dcKMtIZARobFXY8YGRkgEMRnY0hKrMxNrGBgAADBcB6b';
+        const TOKEN = '007eJxTYFi5If3AnlPhTIW/p928WHz9+qRwVrPVvbm6X+sL/u0+NL9OgSEt0TjR0MDE0jTJzMjEyDDZIs3c0NwyycLMIsnMNC01yXrWjLSGQEYGw4MbGBkZIBDEZ2NISqzMTaxgYAAAgDgjHw==';
         const CHANNEL = 'baymax';
 
         let rtc = {
@@ -92,10 +92,14 @@
                     const videoTrack = user.videoTrack.getMediaStreamTrack();
                     combinedStream.addTrack(videoTrack);
                 }
+                if (user.audioTrack) {
+                    const audioTrack = user.audioTrack.getMediaStreamTrack();
+                    combinedStream.addTrack(audioTrack);
+                }
             }
 
             rtc.mediaRecorder = new MediaRecorder(combinedStream, {
-                mimeType: 'video/webm;codecs=vp9'
+                mimeType: 'video/webm;codecs=vp9, opus'
             });
 
             rtc.mediaRecorder.ondataavailable = (event) => {
