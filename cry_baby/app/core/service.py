@@ -94,7 +94,7 @@ class CryBabyService(ports.Service):
         self.logger.info(f"Starting continuous evaluation in directory: {self.video_file_path}")
         while not SHUTDOWN_EVENT.is_set():
             try:
-                video_files = list(self.video_file_path.glob('*.mp4')) # adjust to webm
+                video_files = list(self.video_file_path.glob('*.webm')) # adjust to webm
                 if video_files:
                     for video in video_files:
                         self.convert_webm_to_wav(video)
