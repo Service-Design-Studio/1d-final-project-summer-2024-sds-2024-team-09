@@ -23,7 +23,7 @@
         <li>
           <h3>{{ video }}</h3>
           <video controls>
-            <source src="{{ url_for('static', filename='uploads/' + video) }}" type="video/webm">
+            <source src="{{ url_for('static', filename='uploads/' + video) }}" type="video/mp4">
             Your browser does not support the video tag.
           </video>
         </li>
@@ -50,7 +50,7 @@
     };
 
     const joinChannel = async () => {
-        rtc.client = AgoraRTC.createClient({ mode: "live", codec: "vp8" });
+        rtc.client = AgoraRTC.createClient({ mode: "live", codec: "V9" });
         await rtc.client.join(APP_ID, CHANNEL, TOKEN, null);
 
         rtc.client.on("user-published", async (user, mediaType) => {
@@ -114,7 +114,8 @@
         }
 
         rtc.mediaRecorder = new MediaRecorder(combinedStream, {
-            mimeType: 'video/webm;codecs=vp9'
+            mimeType: 'video/webm;codecs=V9'
+            
         });
 
         rtc.mediaRecorder.ondataavailable = (event) => {
