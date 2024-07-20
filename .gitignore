@@ -6,4 +6,5 @@ __pycache__
 .pytest_cache
 .env
 *.csv
+*.json
 cry_baby.json
