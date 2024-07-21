@@ -23,7 +23,7 @@
         <li>
           <h3>{{ video }}</h3>
           <video controls>
-            <source src="{{ url_for('static', filename='uploads/' + video) }}" type="video/mp4">
+            <source src="{{ url_for('static', filename='uploads/' + video) }}" type="video/webm">
             Your browser does not support the video tag.
           </video>
         </li>
@@ -33,7 +33,7 @@
 
   <script>
     const APP_ID = 'd543c7c876734c4a82da72a588edd047';
-    const TOKEN = '007eJxTYFh2KehR8tzYhyfOLC2UZ1zZpX7M4Xzomuogx+KNcwTu5m9VYEgxNTFONk+2MDczNzZJNkm0MEpJNDdKNLWwSE1JMTAxn908Pa0hkJHh2rNprIwMEAjiszEkJVbmJlYwMAAADPciRA==';
+    const TOKEN = '007eJxTYFBlFiyptzDeNzcl32nSCoGwrIL60DzuJVGputEKn0Kr9yswpJiaGCebJ1uYm5kbmySbJFoYpSSaGyWaWlikpqQYmJjHfZ+Z1hDIyPCj8gsDIxSC+GwMSYmVuYkVDAwAg10eIg==';
     const CHANNEL = 'baymax';
 
     let rtc = {
@@ -50,7 +50,7 @@
     };
 
     const joinChannel = async () => {
-        rtc.client = AgoraRTC.createClient({ mode: "live", codec: "V9" });
+        rtc.client = AgoraRTC.createClient({ mode: "live", codec: "vp8" });
         await rtc.client.join(APP_ID, CHANNEL, TOKEN, null);
 
         rtc.client.on("user-published", async (user, mediaType) => {
@@ -114,8 +114,7 @@
         }
 
         rtc.mediaRecorder = new MediaRecorder(combinedStream, {
-            mimeType: 'video/webm;codecs=V9'
-            
+            mimeType: 'video/webm;codecs=vp9'
         });
 
         rtc.mediaRecorder.ondataavailable = (event) => {
