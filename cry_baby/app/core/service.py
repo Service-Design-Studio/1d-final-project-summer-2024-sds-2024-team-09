@@ -1,3 +1,4 @@
+import asyncio
 import pathlib
 import pdb
 import shutil
@@ -9,10 +10,13 @@ import soundfile as sf
 from moviepy.editor import VideoFileClip, concatenate_videoclips
 from pydub import AudioSegment
 import hexalog.ports
+from telegram import Bot
+from telegram.error import TelegramError
 
 from cry_baby.app.core import ports
 from cry_baby.pkg.audio_file_client.core.ports import AudioFileClient
 from cry_baby.pkg.upload_video.upload_video import UploadVideo
+from cry_baby.pkg.telegram.telegram_bot import send_message
 
 SHUTDOWN_EVENT = threading.Event()
 
@@ -28,6 +32,8 @@ class CryBabyService(ports.Service):
         cry_video_file_path: pathlib.Path,
         repository: ports.Repository,
         audio_file_client: AudioFileClient,
+        telegram_bot_token: str,
+        telegram_chat_id: str,
     ):
         self.logger = logger
         self.classifier = classifier
@@ -41,6 +47,8 @@ class CryBabyService(ports.Service):
         self.cry_idle_counter = 0
         self.start_video = ""
         self.end_video = ""
+        self.cry_detection_bot = Bot(token=telegram_bot_token)
+        self.telegram_chat_id = telegram_chat_id
 
     def convert_webm_to_wav(self, webm_file: pathlib.Path):
         try:
@@ -154,6 +162,7 @@ class CryBabyService(ports.Service):
                                 os.remove(video)
                             if prediction > 0.8:
                                 if self.cry_idle_counter == 0:
+                                    asyncio.run(send_message(self.cry_detection_bot, self.telegram_chat_id, "Cry Detected!"))
                                     self.start_video = video.name
                                     self.end_video = video.name
                                 else:
