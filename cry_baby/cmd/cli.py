@@ -43,7 +43,9 @@ def run_continously(
         split_audio_file_path=directory / "split", 
         cry_video_file_path=directory / "cry_videos",
         repository=repository, 
-        audio_file_client=audio_file_client
+        audio_file_client=audio_file_client,
+        telegram_bot_token=os.getenv("TELEGRAM_BOT_TOKEN"),
+        telegram_chat_id=os.getenv("TELEGRAM_CHAT_ID")
     )
     service.continuously_evaluate_from_directory()
 
