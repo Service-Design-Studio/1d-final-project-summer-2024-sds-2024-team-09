@@ -41,6 +41,7 @@ def run_continously(
         raw_audio_file_path=directory / "raw",
         temp_audio_file_path=directory / "temp",
         split_audio_file_path=directory / "split", 
+        cry_video_file_path=directory / "cry_videos",
         repository=repository, 
         audio_file_client=audio_file_client
     )
