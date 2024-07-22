@@ -136,12 +136,14 @@ class CryBabyService(ports.Service):
     def upload_to_gcs_service(self, combined_video_name):
         combined_video_path_str = str(self.cry_video_file_path / combined_video_name)
         upload = UploadVideo('video-upload-jya', combined_video_path_str, 'AItest_upload/ai_classifier_uploads/' + str(pathlib.Path(combined_video_name).stem) + ".mp4")
-        upload.upload_to_gcs()
+        # upload.upload_to_gcs()
+        self.logger.info(f"Uploading {combined_video_name} to GCS")
         self.cry_idle_counter = 0
         self.start_video = ""
         self.end_video = ""
         for file in self.cry_video_file_path.iterdir():
-            os.remove(file)
+            if file.suffix == ".mp4":
+                os.remove(file)
 
     def continuously_evaluate_from_directory(self):
         """
@@ -158,24 +160,24 @@ class CryBabyService(ports.Service):
                         for audio in raw_audio_files:
                             prediction = self.evaluate_from_audio_file(audio)
                             audio.unlink()
-                            if prediction < 0.8 and self.cry_idle_counter == 0:
+                        if prediction < 0.8:
+                            if self.start_video == "":
                                 os.remove(video)
-                            if prediction > 0.8:
-                                if self.cry_idle_counter == 0:
-                                    asyncio.run(send_message(self.cry_detection_bot, self.telegram_chat_id, "Cry Detected!"))
-                                    self.start_video = video.name
-                                    self.end_video = video.name
-                                else:
-                                    self.end_video = video.name
-                                shutil.move(str(video), str(self.cry_video_file_path / video.name))
-                                self.cry_idle_counter += 1
                             elif self.cry_idle_counter < 10:
                                 shutil.move(str(video), str(self.cry_video_file_path / video.name))
-                            if self.cry_idle_counter == 10:
-                                combined_video_name = self.combine_video(self.cry_video_file_path, self.start_video, self.end_video)
-                                self.logger.info("10 reached")
-                                if combined_video_name:
-                                    self.upload_to_gcs_service(combined_video_name)
+                                self.cry_idle_counter += 1
+                        if prediction > 0.8:
+                            self.cry_idle_counter = 0
+                            if self.start_video == "":
+                                asyncio.run(send_message(self.cry_detection_bot, self.telegram_chat_id, "Cry Detected!"))
+                                self.start_video = video.name
+                            self.end_video = video.name
+                            shutil.move(str(video), str(self.cry_video_file_path / video.name))
+                        if self.cry_idle_counter == 10:
+                            combined_video_name = self.combine_video(self.cry_video_file_path, self.start_video, self.end_video)
+                            self.logger.info("10 in a row no cries reached")
+                            if combined_video_name:
+                                self.upload_to_gcs_service(combined_video_name)
                                 
                 if not video_files:
                     if self.cry_idle_counter != 0:
