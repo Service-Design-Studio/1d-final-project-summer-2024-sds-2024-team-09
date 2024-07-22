@@ -1,10 +1,11 @@
+#app\controllers\api\videos_controller.rb
 require "google/cloud/storage"
 
 module Api
   class VideosController < ApplicationController
     skip_before_action :verify_authenticity_token, only: [:index, :create, :update, :destroy]
-    before_action :require_login, 
-    before_action:set_video, only: [:update, :destroy]
+    before_action :require_login 
+    before_action :set_video, only: [:update, :destroy]
 
     def index
       sort_by = params[:sort_by] || 'created_at'
