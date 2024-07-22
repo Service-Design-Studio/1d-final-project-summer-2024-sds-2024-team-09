@@ -19,6 +19,8 @@ def upload_to_gcs(bucket_name, source_file_name, destination_blob_name):
         f"File {source_file_name} uploaded to {destination_blob_name}."
     )
 
+    # send to sql if true
+
 # Usage example:
 bucket_name = 'video-upload-jya'  # Replace with your bucket name
 source_file_name = 'videos/IMG_2735.mp4'  # Replace with the path to your video file
