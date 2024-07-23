@@ -160,6 +160,8 @@ class CryBabyService(ports.Service):
                         for audio in raw_audio_files:
                             prediction = self.evaluate_from_audio_file(audio)
                             audio.unlink()
+                        if type(prediction)!=float:
+                            prediction = 0
                         if prediction < 0.8:
                             if self.start_video == "":
                                 os.remove(video)
