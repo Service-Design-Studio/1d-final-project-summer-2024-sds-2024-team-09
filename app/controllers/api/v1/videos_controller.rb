@@ -1,3 +1,4 @@
+#app\controllers\api\v1\videos_controller.rb
 class Api::V1::VideosController < ApplicationController
   skip_before_action :require_login
   def index

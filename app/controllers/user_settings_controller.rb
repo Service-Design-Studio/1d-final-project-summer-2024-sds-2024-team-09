@@ -1,3 +1,4 @@
+#app\controllers\user_settings_controller.rb
 class UserSettingsController < ApplicationController
   before_action :require_login
 

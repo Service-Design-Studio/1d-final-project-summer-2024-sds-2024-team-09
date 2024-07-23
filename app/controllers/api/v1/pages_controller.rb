@@ -1,5 +1,4 @@
 # app/controllers/api/v1/pages_controller.rb
-
 module Api
     module V1
       class PagesController < ApplicationController

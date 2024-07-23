@@ -1,3 +1,4 @@
+#app\controllers\home_controller.rb
 class HomeController < ActionController::Base
     before_action :set_post, only: %i[ show edit update destroy ]
 

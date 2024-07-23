@@ -1,3 +1,4 @@
+#app\controllers\videos_controller.rb
 class VideosController < ApplicationController
   before_action :require_login, :set_video, only: [:show, :edit, :update, :destroy]
   

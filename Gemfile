@@ -15,7 +15,7 @@ gem "sqlite3", "~> 1.4"
 gem "puma", ">= 5.0"
 gem 'uglifier', '>= 1.3.0'
 gem 'sass-rails', '>= 5'
-# gem 'pg', '~> 1.2'
+gem 'pg', '~> 1.2'
 # gem 'dotenv-rails', groups: [:development, :test]
 gem 'rspec-rails', '~> 5.0.0'
 
