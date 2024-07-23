@@ -1,0 +1,24 @@
+runtime: nodejs18
+service: crybaby-uiux
+
+handlers:
+  - url: /static/(.*)
+    static_files: dist/static/\1
+    upload: dist/static/(.*)
+    secure: always
+  - url: /assets/(.*)
+    static_files: dist/assets/\1
+    upload: dist/assets/(.*)
+    secure: always
+  - url: /(.*\.(json|ico|png|jpg|svg))$
+    static_files: dist/\1
+    upload: dist/.*\.(json|ico|png|jpg|svg)$
+    secure: always
+  - url: /
+    static_files: dist/index.html
+    upload: dist/index.html
+    secure: always
+  - url: /.*
+    static_files: dist/index.html
+    upload: dist/index.html
+    secure: always
