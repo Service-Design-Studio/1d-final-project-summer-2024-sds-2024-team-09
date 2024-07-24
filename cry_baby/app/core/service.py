@@ -54,7 +54,7 @@ class CryBabyService(ports.Service):
         try:
             # Load the video file
             video = VideoFileClip(str(webm_file))
-            
+            self.logger.debug(f"Video duration is: {video.duration}")
             # Extract audio and save it as a temporary file
             audio_temp_file = self.temp_audio_file_path / f"{webm_file.stem}.mp3"
             video.audio.write_audiofile(str(audio_temp_file))
@@ -152,7 +152,7 @@ class CryBabyService(ports.Service):
         self.logger.info(f"Starting continuous evaluation in directory: {self.video_file_path}")
         while not SHUTDOWN_EVENT.is_set():
             try:
-                video_files = list(sorted(self.video_file_path.glob('*.mp4')))
+                video_files = list(sorted(self.video_file_path.glob('*.webm')))
                 if video_files:
                     for video in video_files:
                         self.convert_webm_to_wav(video)

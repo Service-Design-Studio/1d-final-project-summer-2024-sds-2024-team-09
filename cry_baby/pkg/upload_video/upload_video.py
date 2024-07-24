@@ -6,7 +6,7 @@ class UploadVideo:
         self.source_file_path = source_file_path
         self.destination_blob_name = destination_blob_name
         
-        self.storage_client = storage.Client.from_service_account_json("/home/mike/cry-baby/jya-keyfile.json")
+        self.storage_client = storage.Client.from_service_account_json("/home/g1006632/Desktop/cry-baby/jya-keyfile.json")
         self.bucket = self.storage_client.bucket(self.bucket_name)
         self.blob = self.bucket.blob(self.destination_blob_name)
 
