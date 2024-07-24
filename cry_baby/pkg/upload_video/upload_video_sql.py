@@ -1,8 +1,8 @@
 # upload_video.py
 from google.cloud import storage
 from sqlalchemy.orm import Session
-from database import SessionLocal, Video
-from datetime import datetime
+from cry_baby.pkg.upload_video.database import SessionLocal, Video
+from datetime import datetime, timezone, timedelta
 
 def upload_to_gcs(bucket_name, source_file_name, destination_blob_name, video_metadata):
     """Uploads a file to the bucket and records metadata in the database."""
@@ -28,10 +28,10 @@ def upload_to_gcs(bucket_name, source_file_name, destination_blob_name, video_me
             file_path=destination_blob_name,
             duration=video_metadata["duration"],
             user_id=video_metadata["user_id"],
-            recorded_at=video_metadata["recorded_at"],
+            recorded_at=datetime.now(timezone.tzname('Asia/Singapore'))+ timedelta(hours=8),
             is_critical=video_metadata.get("is_critical", False),
-            created_at=datetime.utcnow(),
-            updated_at=datetime.utcnow()
+            created_at=datetime.now(timezone.tzname('Asia/Singapore'))+ timedelta(hours=8),
+            updated_at=datetime.now(timezone.tzname('Asia/Singapore'))+ timedelta(hours=8)
         )
         session.add(video)
         session.commit()
@@ -43,17 +43,16 @@ def upload_to_gcs(bucket_name, source_file_name, destination_blob_name, video_me
         session.close()
 
 # Usage example:
-bucket_name = 'video-upload-jya'  # Replace with your bucket name
-source_file_name = '/home/mike/cry-baby/audio/samples/recording_2024-07-23T07-24-44-438Z.webm'  # Replace with the path to your video file
-destination_blob_name = 'AItest_upload/hello.webm'  # Replace with the destination path in the bucket
+# bucket_name = 'video-upload-jya'  # Replace with your bucket name
+# source_file_name = '/home/mike/cry-baby/audio/samples/recording_2024-07-23T07-24-44-438Z.webm'  # Replace with the path to your video file
+# destination_blob_name = 'AItest_upload/hello.webm'  # Replace with the destination path in the bucket
 
-# Video metadata
-video_metadata = {
-    "title": "Test Video",
-    "duration": 120,  # Duration in seconds
-    "user_id": 1,
-    "recorded_at": datetime(2023, 7, 23, 10, 0, 0),
-    "is_critical": False
-}
+# # Video metadata
+# video_metadata = {
+#     "title": "Test Video",
+#     "duration": 120,  # Duration in seconds
+#     "user_id": 1,
+#     "is_critical": False
+# }
 
-upload_to_gcs(bucket_name, source_file_name, destination_blob_name, video_metadata)
+# upload_to_gcs(bucket_name, source_file_name, destination_blob_name, video_metadata)
