@@ -8,7 +8,7 @@ import os
 from datetime import datetime
 
 app = Flask(__name__)
-app.config['UPLOAD_FOLDER'] = os.path.join('../../audio', 'video')
+app.config['UPLOAD_FOLDER'] = os.path.join('../../audio', 'video_temp')
 app.config['MAX_CONTENT_LENGTH'] = 100 * 1024 * 1024  # 100 MB limit
 
 if not os.path.exists(app.config['UPLOAD_FOLDER']):
@@ -33,6 +33,7 @@ def convert_to_mp4(webm_path, mp4_path):
     command = [
         'ffmpeg',
         '-i', webm_path,
+
         '-c:v', 'libx264',
         '-c:a', 'aac',
         '-strict', 'experimental',
@@ -53,11 +54,14 @@ def upload_video():
         webm_path = os.path.join(app.config['UPLOAD_FOLDER'], file.filename)
         file.save(webm_path)
 
-        mp4_path = webm_path.replace('.webm', '.mp4')
-        convert_to_mp4(webm_path, mp4_path)
-        os.remove(webm_path)  # Remove the original WebM file
+        # mp4_path = webm_path.replace('.webm', '.webm')
+        # convert_to_mp4(webm_path, mp4_path)
+        # os.remove(webm_path)  # Remove the original WebM file
+        command = f"ffmpeg -i {str(webm_path)} -c copy {str(os.path.join('../../audio/video', file.filename))}"
+        subprocess.run(command, shell=True, check=True)
+        os.remove(webm_path)
 
-        return jsonify({'message': 'File uploaded and converted successfully', 'path': mp4_path}), 200
+        return jsonify({'message': 'File uploaded and converted successfully', 'path': webm_path}), 200
 
 
 # def run():

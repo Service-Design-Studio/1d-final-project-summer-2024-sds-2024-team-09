@@ -137,7 +137,7 @@
             // Optionally, refresh the page after a short delay
             setTimeout(() => {
                 window.location.reload();
-            }, 1000);
+            }, 500);
         };
 
         rtc.mediaRecorder.start();
@@ -153,7 +153,7 @@
                 stopRecording();
             }
             startRecording();
-        }, 5000);  // 10 seconds interval
+        }, 4000);  // 10 seconds interval
     };
 
     document.addEventListener('DOMContentLoaded', (event) => {
