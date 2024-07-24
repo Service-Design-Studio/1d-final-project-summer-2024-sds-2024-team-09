@@ -43,7 +43,7 @@ def step_then_telegram_message_sent(context):
 @then('the first cry is logged as the start video and saved for video synthesis')
 def step_then_log_start_video(context):
     # Verify the start video is logged and saved
-    context.start_video_path = "/home/mike/cry-baby-edited/cry-baby/audio/cry_videos"
+    context.start_video_path = "audio/cry_videos"
     assert os.path.exists(context.start_video_path)
 
 

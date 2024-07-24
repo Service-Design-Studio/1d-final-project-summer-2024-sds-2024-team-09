@@ -136,7 +136,7 @@ class CryBabyService(ports.Service):
     def upload_to_gcs_service(self, combined_video_name):
         combined_video_path_str = str(self.cry_video_file_path / combined_video_name)
         upload = UploadVideo('video-upload-jya', combined_video_path_str, 'AItest_upload/ai_classifier_uploads/' + str(pathlib.Path(combined_video_name).stem) + ".mp4")
-        # upload.upload_to_gcs()
+        upload.upload_to_gcs()
         self.logger.info(f"Uploading {combined_video_name} to GCS")
         self.cry_idle_counter = 0
         self.start_video = ""
