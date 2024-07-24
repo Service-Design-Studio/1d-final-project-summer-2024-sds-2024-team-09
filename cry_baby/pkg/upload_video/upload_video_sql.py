@@ -1,7 +1,7 @@
 # upload_video.py
 from google.cloud import storage
-from databases import Database
-# from database import SessionLocal, Video
+from sqlalchemy.orm import Session
+from database import SessionLocal, Video
 from datetime import datetime
 
 def upload_to_gcs(bucket_name, source_file_name, destination_blob_name, video_metadata):
@@ -21,25 +21,30 @@ def upload_to_gcs(bucket_name, source_file_name, destination_blob_name, video_me
     print(f"File {source_file_name} uploaded to {destination_blob_name}.")
 
     # Record metadata in the database
-    session = Database.SessionLocal()
-    video = Database.Video(
-        title=video_metadata["title"],
-        file_path=destination_blob_name,
-        duration=video_metadata["duration"],
-        user_id=video_metadata["user_id"],
-        recorded_at=video_metadata["recorded_at"],
-        is_critical=video_metadata.get("is_critical", False),
-        created_at=datetime.utcnow(),
-        updated_at=datetime.utcnow()
-    )
-    session.add(video)
-    session.commit()
-    session.close()
-    print(f"Metadata for {source_file_name} recorded in the database.")
+    session = SessionLocal()
+    try:
+        video = Video(
+            title=video_metadata["title"],
+            file_path=destination_blob_name,
+            duration=video_metadata["duration"],
+            user_id=video_metadata["user_id"],
+            recorded_at=video_metadata["recorded_at"],
+            is_critical=video_metadata.get("is_critical", False),
+            created_at=datetime.utcnow(),
+            updated_at=datetime.utcnow()
+        )
+        session.add(video)
+        session.commit()
+        print(f"Metadata for {source_file_name} recorded in the database.")
+    except Exception as e:
+        session.rollback()
+        print(f"Failed to record metadata: {e}")
+    finally:
+        session.close()
 
 # Usage example:
 bucket_name = 'video-upload-jya'  # Replace with your bucket name
-source_file_name = '/home/mike/cry-baby-edited/cry-baby/audio/samples/recording_2024-07-23T07-24-44-438Z.webm'  # Replace with the path to your video file
+source_file_name = '/home/mike/cry-baby/audio/samples/recording_2024-07-23T07-24-44-438Z.webm'  # Replace with the path to your video file
 destination_blob_name = 'AItest_upload/hello.webm'  # Replace with the destination path in the bucket
 
 # Video metadata
