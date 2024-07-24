@@ -35,7 +35,7 @@ Rails.application.routes.draw do
   resources :users, only: [:new, :create, :show, :destroy]
   resources :posts # Example resource for blog posts
   resource :user_settings, only: [:new, :create, :edit, :update]
-  resources :videos, only: [:index, :show, :edit, :create, :update, :destroy]
+  resources :videos, param: :uuid, only: [:index, :show, :edit, :create, :update, :destroy]
 
   # resources :sessions, only: [:new, :create, :destroy]
   get 'api/videos', to: 'videos#api_index'
@@ -45,9 +45,9 @@ Rails.application.routes.draw do
     namespace :v1 do
       resources :users, only: [:index, :create, :show, :update, :destroy]
       resources :sessions, only: [:create]
-      resources :videos, only: [:index, :show, :create, :update, :destroy]
+      resources :videos, param: :uuid, only: [:index, :show, :create, :update, :destroy]
       resources :cameras, only: [:index, :show, :create, :update, :destroy]
     end      
-    resources :videos, only: [:index, :create, :destroy, :update]
+    resources :videos, param: :uuid, only: [:index, :create, :destroy, :update]
   end
 end
