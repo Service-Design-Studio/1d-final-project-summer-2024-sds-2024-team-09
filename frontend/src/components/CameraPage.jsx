@@ -1,16 +1,33 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
+import { useLocation, useNavigate } from 'react-router-dom';
 import AgoraRTC from 'agora-rtc-sdk-ng';
 
 const CameraPage = () => {
+    const location = useLocation();
+    const { cameraData } = location.state || {};
+    const navigate = useNavigate();
+    console.log('Camera:', cameraData);
+    console.log('Camera ID:', cameraData.id);
+
     const [rtc, setRtc] = useState({
         localAudioTrack: null,
         localVideoTrack: null,
         client: null,
     });
 
-    const APP_ID = 'fa3a10495b62421c8f7179b868b65feb';
-    const TOKEN = '007eJxTYNAyvby/T2n2nseXrlQyrolY+Tnx7N3qX4zBiwJOsnuGihsoMKQlGicaGphYmiaZGZkYGSZbpJkbmlsmWZhZJJmZpqUmeb6aktYQyMiwP8CCkZEBAkF8NoakxMrcxAoGBgDC9yCW';
-    const CHANNEL = 'baymax';
+    const videoContainerRef = useRef(null);
+
+    const APP_ID = "fa3a10495b62421c8f7179b868b65feb";
+    const TOKEN = "007eJxTYDhbFWx+TO/u7KX/3y5KPtm5QfHIs21Kqtx6i91fsy1UmvVWgSEt0TjR0MDE0jTJzMjEyDDZIs3c0NwyycLMIsnMNC016ab/wrSGQEaGRd8XMjBCIYjPxpCUWJmbWMHAAAAfUyJv";
+    const CHANNEL = "baymax";
+
+    // const APP_ID = cameraData.app_id;
+    // const TOKEN = cameraData.token;
+    // const CHANNEL = cameraData.channel;
+
+    console.log('APP_ID:', APP_ID)
+    console.log('TOKEN:', TOKEN)
+    console.log('CHANNEL:', CHANNEL)
 
     const getUID = () => {
         let uid = localStorage.getItem('uid');
@@ -42,13 +59,12 @@ const CameraPage = () => {
             const localAudioTrack = await AgoraRTC.createMicrophoneAudioTrack();
             const localVideoTrack = await AgoraRTC.createCameraVideoTrack();
             await client.publish([localAudioTrack, localVideoTrack]);
-            const localPlayerContainer = document.createElement('div');
-            localPlayerContainer.id = UID;
-            localPlayerContainer.textContent = 'Local user ' + UID;
-            localPlayerContainer.style.width = '640px';
-            localPlayerContainer.style.height = '480px';
-            document.body.append(localPlayerContainer);
-            localVideoTrack.play(localPlayerContainer);
+
+            if (videoContainerRef.current) {
+                videoContainerRef.current.innerHTML = '';
+            }
+            localVideoTrack.play(videoContainerRef.current);
+            remoteAudioTrack.play();
             console.log('Host joined successfully with UID:', UID);
 
             setRtc({ client, localAudioTrack, localVideoTrack });
@@ -85,24 +101,55 @@ const CameraPage = () => {
         } catch (error) {
             console.error('Failed to end the stream:', error);
         } finally {
-            window.location.href = '/'; // Redirect to the root path
+            window.location.href = '/camera-home';
         }
     };
 
     return (
-        <div className="container mx-auto mt-10 p-6 max-w-lg bg-white rounded-lg shadow-lg">
-            <div className="text-center">
-                <h1 className="text-4xl font-bold mb-6">Camera Page</h1>
-                <p className="text-gray-700 mb-6">This page is the UI page for the camera at home.</p>
-                <div className="flex justify-center space-x-4">
+        <div className="min-h-screen flex flex-col items-center justify-center bg-base-100 font-ubuntu">
+            <div className="relative w-full max-w-4xl p-8 bg-white rounded-lg shadow-lg">
+                <button
+                    className="absolute top-4 left-4 text-gray-700 p-4"
+                    onClick={() => navigate('/camera-home')}
+                >
+                    <svg
+                        className="h-6 w-6"
+                        fill="none"
+                        stroke="currentColor"
+                        viewBox="0 0 24 24"
+                        xmlns="http://www.w3.org/2000/svg"
+                    >
+                        <path
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                            strokeWidth="2"
+                            d="M15 19l-7-7 7-7"
+                        />
+                    </svg>
+                </button>
+                <div className="text-center">
+                    <img
+                        className="mx-auto h-24 w-auto"
+                        src="/public/logo.png"
+                        alt="Logo"
+                    />
+                    <h2 className="mt-6 text-2xl font-extrabold text-gray-900">{cameraData.camera_name || 'Main Door Camera'}</h2>
+                </div>
+                <div
+                    className="mt-8 bg-gray-200 rounded-lg w-full aspect-video flex items-center justify-center"
+                    ref={videoContainerRef}>
+                    {/* This will be replaced by the actual video player */}
+                    <p className="text-gray-500">Video Player</p>
+                </div>
+                <div className="mt-8 flex justify-between">
                     <button
-                        className="px-6 py-2 bg-blue-500 text-white font-semibold rounded-lg shadow-md hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-400 focus:ring-opacity-75"
+                        className="px-10 py-2 bg-blue-500 text-white font-semibold rounded-lg shadow-md hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-400 focus:ring-opacity-75"
                         onClick={handleJoinAsHost}
                     >
-                        Join as Host
+                        Watch Live
                     </button>
                     <button
-                        className="px-6 py-2 bg-red-500 text-white font-semibold rounded-lg shadow-md hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-red-400 focus:ring-opacity-75"
+                        className="px-10 py-2 bg-red-500 text-white font-semibold rounded-lg shadow-md hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-red-400 focus:ring-opacity-75"
                         onClick={endStream}
                     >
                         Leave

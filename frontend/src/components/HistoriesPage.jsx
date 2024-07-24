@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import Modal from 'react-modal';
 import Navbar from './Navbar';
-import HistoryItem from './histories/HistoryItem'; // Ensure the path is correct based on your folder structure
+import HistoryItem from './histories/HistoryItem';
 import config from '../../config';
 
 const HistoriesPage = () => {
