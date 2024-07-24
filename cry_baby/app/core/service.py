@@ -160,8 +160,6 @@ class CryBabyService(ports.Service):
                         for audio in raw_audio_files:
                             prediction = self.evaluate_from_audio_file(audio)
                             audio.unlink()
-                        if type(prediction)!=float:
-                            prediction = 0
                         if prediction < 0.8:
                             if self.start_video == "":
                                 os.remove(video)
@@ -182,12 +180,12 @@ class CryBabyService(ports.Service):
                                 self.upload_to_gcs_service(combined_video_name)
                                 
                 if not video_files:
-                    if self.cry_idle_counter != 0:
-                        self.logger.info(f"Combining videos from {self.start_video} to {self.end_video}")
-                        combined_video_name = self.combine_video(self.cry_video_file_path, self.start_video, self.end_video)
-                        self.logger.info("less than 10 reached")
-                        if combined_video_name:
-                            self.upload_to_gcs_service(combined_video_name)
+                    # if self.cry_idle_counter != 0:
+                    #     self.logger.info(f"Combining videos from {self.start_video} to {self.end_video}")
+                    #     combined_video_name = self.combine_video(self.cry_video_file_path, self.start_video, self.end_video)
+                    #     self.logger.info("less than 10 reached")
+                    #     if combined_video_name:
+                    #         self.upload_to_gcs_service(combined_video_name)
                     self.logger.info("No audio files to process. Waiting for new files...")
                     SHUTDOWN_EVENT.wait(5)  # Wait before checking the directory again
             except KeyboardInterrupt:
