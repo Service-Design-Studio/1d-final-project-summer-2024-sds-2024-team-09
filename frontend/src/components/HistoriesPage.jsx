@@ -3,6 +3,7 @@ import axios from 'axios';
 import Modal from 'react-modal';
 import Navbar from './Navbar';
 import HistoryItem from './histories/HistoryItem'; // Ensure the path is correct based on your folder structure
+import config from '../../config';
 
 const HistoriesPage = () => {
     const [videos, setVideos] = useState([]);
@@ -11,8 +12,10 @@ const HistoriesPage = () => {
     const [currentVideo, setCurrentVideo] = useState(null);
     const [editedDetails, setEditedDetails] = useState({ title: '', file_path: '', duration: '', is_critical: false, user_id: '' });
 
+    console.log(localStorage.getItem('user-data'));
+
     useEffect(() => {
-        axios.get('http://localhost:3000/api/v1/videos')
+        axios.get(`${config.API_BASE_URL}/api/v1/videos`)
             .then(response => {
                 setVideos(response.data);
             })
@@ -46,7 +49,7 @@ const HistoriesPage = () => {
     };
 
     const handleDelete = (id) => {
-        axios.delete(`http://localhost:3000/api/v1/videos/${id}`)
+        axios.delete(`${config.API_BASE_URL}/api/v1/videos/${id}`)
             .then(response => {
                 setVideos(videos.filter(video => video.id !== id));
             })

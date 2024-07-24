@@ -10,9 +10,9 @@ handlers:
     static_files: dist/assets/\1
     upload: dist/assets/(.*)
     secure: always
-  - url: /(.*\.(json|ico|png|jpg|svg))$
+  - url: /(.*\.(json|ico|png|jpg|svg|gif))$
     static_files: dist/\1
-    upload: dist/.*\.(json|ico|png|jpg|svg)$
+    upload: dist/.*\.(json|ico|png|jpg|svg|gif)$
     secure: always
   - url: /
     static_files: dist/index.html

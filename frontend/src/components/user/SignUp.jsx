@@ -49,7 +49,7 @@ const Signup = ({ setShowLogin }) => {
         }
 
         try {
-            const response = await fetch(`http://localhost:3000/api/v1/sessions`, {
+            const response = await fetch(`${config.API_BASE_URL}/api/v1/sessions`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',

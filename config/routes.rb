@@ -24,6 +24,7 @@ Rails.application.routes.draw do
     namespace :v1 do
       post 'login', to: 'sessions#create'
       delete 'logout', to: 'sessions#destroy'
+      post 'signup', to: 'users#create'
     end
   end
 
@@ -46,7 +47,6 @@ Rails.application.routes.draw do
       resources :sessions, only: [:create]
       resources :videos, only: [:index, :show, :create, :update, :destroy]
       resources :cameras, only: [:index, :show, :create, :update, :destroy]
-      post 'signup', to: 'users#create'
     end      
     resources :videos, only: [:index, :create, :destroy, :update]
   end

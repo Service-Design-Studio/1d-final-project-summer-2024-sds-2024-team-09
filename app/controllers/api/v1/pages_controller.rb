@@ -3,6 +3,7 @@ module Api
     module V1
       class PagesController < ApplicationController
         before_action :require_login
+        skip_before_action :verify_authenticity_token
   
         def index
           # Your code for index action

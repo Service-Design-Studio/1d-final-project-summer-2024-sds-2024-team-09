@@ -2,9 +2,6 @@ import React from 'react';
 import { FaHome, FaHistory, FaChartBar, FaUser } from 'react-icons/fa';
 import { Link } from 'react-router-dom';
 import Navbar from './Navbar';
-import Particulars from './profiles/Particulars';
-import AccSettings from './profiles/AccSettings';
-import EditCams from './profiles/EditCams';
 import { useNavigate } from 'react-router-dom';
 
 const ProfilePage = () => {

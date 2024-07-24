@@ -90,15 +90,21 @@ const CameraPage = () => {
     };
 
     return (
-        <div className="container mt-5">
+        <div className="container mx-auto mt-10 p-6 max-w-lg bg-white rounded-lg shadow-lg">
             <div className="text-center">
-                <h1 className="display-4 mb-4">Camera Page</h1>
-                <p>This page is the UI page for the camera at home.</p>
-                <div className="btn-group" role="group">
-                    <button className="btn btn-primary" onClick={handleJoinAsHost}>
+                <h1 className="text-4xl font-bold mb-6">Camera Page</h1>
+                <p className="text-gray-700 mb-6">This page is the UI page for the camera at home.</p>
+                <div className="flex justify-center space-x-4">
+                    <button
+                        className="px-6 py-2 bg-blue-500 text-white font-semibold rounded-lg shadow-md hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-400 focus:ring-opacity-75"
+                        onClick={handleJoinAsHost}
+                    >
                         Join as Host
                     </button>
-                    <button className="btn btn-danger" onClick={endStream}>
+                    <button
+                        className="px-6 py-2 bg-red-500 text-white font-semibold rounded-lg shadow-md hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-red-400 focus:ring-opacity-75"
+                        onClick={endStream}
+                    >
                         Leave
                     </button>
                 </div>

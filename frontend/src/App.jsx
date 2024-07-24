@@ -12,6 +12,7 @@ import CameraDetails from './components/mobile-app/CameraDetails';
 import VideoRecording from './components/VideoRecording';
 import HistoriesPage from './components/HistoriesPage';
 import VideoPlayer from './components/mobile-app/VideoPlayer';
+import CamLoginPage from './components/camera_pages/CamLoginPage';
 
 
 function App() {
@@ -30,6 +31,7 @@ function App() {
         <Route path="/vidrecord" element={<VideoRecording />} />
         <Route path="/histories" element={<HistoriesPage />} />
         <Route path="/video/:title/:filePath" element={<VideoPlayer />} />
+        <Route path="/camlogin" element={<CamLoginPage />} />
       </Routes>
     </Router>
   );

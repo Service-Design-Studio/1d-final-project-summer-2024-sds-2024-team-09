@@ -1,6 +1,7 @@
 class Api::V1::CamerasController < ApplicationController
   
   skip_before_action :require_login
+  skip_before_action :verify_authenticity_token
 
   # GET /cameras
   def index
