@@ -16,6 +16,7 @@ from telegram.error import TelegramError
 from cry_baby.app.core import ports
 from cry_baby.pkg.audio_file_client.core.ports import AudioFileClient
 from cry_baby.pkg.upload_video.upload_video import UploadVideo
+from cry_baby.pkg.upload_video.upload_video_sql import upload_to_gcs
 from cry_baby.pkg.telegram.telegram_bot import send_message
 
 SHUTDOWN_EVENT = threading.Event()
@@ -135,8 +136,17 @@ class CryBabyService(ports.Service):
 
     def upload_to_gcs_service(self, combined_video_name):
         combined_video_path_str = str(self.cry_video_file_path / combined_video_name)
-        upload = UploadVideo('video-upload-jya', combined_video_path_str, 'AItest_upload/ai_classifier_uploads/' + str(pathlib.Path(combined_video_name).stem) + ".mp4")
-        upload.upload_to_gcs()
+        duration = VideoFileClip(combined_video_path_str).duration
+        video_metadata = {
+            "title": combined_video_name,
+            "duration": duration,  # Duration in seconds
+            "user_id": 1,
+            "is_critical": False
+        }
+        upload_to_gcs('video-upload-jya', 
+                      combined_video_path_str, 
+                      'AItest_upload/ai_classifier_uploads/' + str(pathlib.Path(combined_video_name).stem) + ".mp4", 
+                      video_metadata)
         self.logger.info(f"Uploading {combined_video_name} to GCS")
         self.cry_idle_counter = 0
         self.start_video = ""
@@ -152,7 +162,7 @@ class CryBabyService(ports.Service):
         self.logger.info(f"Starting continuous evaluation in directory: {self.video_file_path}")
         while not SHUTDOWN_EVENT.is_set():
             try:
-                video_files = list(sorted(self.video_file_path.glob('*.webm')))
+                video_files = list(sorted(self.video_file_path.glob('*.webm')) + sorted(self.video_file_path.glob('*.mp4')))
                 if video_files:
                     for video in video_files:
                         self.convert_webm_to_wav(video)
