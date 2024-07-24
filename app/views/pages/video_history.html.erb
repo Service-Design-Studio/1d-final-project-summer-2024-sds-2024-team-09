@@ -71,29 +71,38 @@
             try {
                 const response = await fetch(`/api/videos?sort_by=${sortBy}&order=${order}`);
                 if (!response.ok) {
-                    throw new Error(`HTTP error! status: ${response.status}`);
+                throw new Error(`HTTP error! status: ${response.status}`);
                 }
                 const videos = await response.json();
                 const videoList = document.getElementById('video-list');
                 videoList.innerHTML = '';
 
+                if (videos.length === 0) {
+                videoList.innerHTML = `
+                    <div class="card text-white bg-info">
+                    <div class="card-body">
+                        <p class="card-text">No videos available</p>
+                    </div>
+                    </div>
+                `;
+                } else {
                 videos.forEach(video => {
                     const videoItem = document.createElement('div');
                     videoItem.className = 'card mb-3';
                     videoItem.innerHTML = `
-                        <div class="card-body d-flex justify-content-center align-items-center">
-                            <div>
-                                <h5 class="card-title">
-                                    <a href="${video.file_path_url}" class="video-title" data-path="${video.file_path_url}" data-title="${video.title}" onclick="viewVideo(event, '${video.file_path_url}', '${video.title}')">${video.title}</a>
-                                    <input class="video-title-input" type="text" value="${video.title}" data-video-id="${video.id}">
-                                </h5>
-                            </div>
-                            <button class="btn btn-sm btn-primary edit-button ml-2">Edit Title</button>
-                            <button class="btn btn-sm btn-success save-button ml-2" onclick="saveTitle(this)">Save</button>
-                            <button class="btn btn-sm btn-danger delete-button ml-2" onclick="deleteVideo(${video.id}, this)">Delete</button>
+                    <div class="card-body d-flex justify-content-center align-items-center">
+                        <div>
+                        <h5 class="card-title">
+                            <a href="${video.file_path_url}" class="video-title" data-path="${video.file_path_url}" data-title="${video.title}" data-uuid="${video.uuid}" onclick="viewVideo(event, '${video.file_path_url}', '${video.title}', '${video.uuid}')">${video.title}</a>
+                            <input class="video-title-input" type="text" value="${video.title}" data-video-id="${video.uuid || video.id}">
+                        </h5>
                         </div>
-                        <p class="card-text text-center">Uploaded on: ${new Date(video.created_at).toLocaleDateString()} at ${new Date(video.created_at).toLocaleTimeString()}</p>
-                        <p class="card-text text-center">Duration: ${video.duration} seconds</p>
+                        <button class="btn btn-sm btn-primary edit-button ml-2">Edit Title</button>
+                        <button class="btn btn-sm btn-success save-button ml-2" onclick="saveTitle(this)">Save</button>
+                        <button class="btn btn-sm btn-danger delete-button ml-2" onclick="deleteVideo('${video.uuid || video.id}', this)">Delete</button>
+                    </div>
+                    <p class="card-text text-center">Uploaded on: ${new Date(video.created_at).toLocaleDateString()} at ${new Date(video.created_at).toLocaleTimeString()}</p>
+                    <p class="card-text text-center">Duration: ${video.duration} seconds</p>
                     `;
                     videoList.appendChild(videoItem);
                 });
@@ -103,12 +112,22 @@
                 });
 
                 document.querySelectorAll('.video-title-input').forEach(input => {
-                    input.addEventListener('keydown', (event) => handleKey(event, input));
+                    input.addEventListener('blur', () => saveTitle(input, input.dataset.videoId));
+                    input.addEventListener('keydown', (event) => handleKey(event, input, input.dataset.videoId));
                 });
+                }
             } catch (error) {
+                const videoList = document.getElementById('video-list');
+                videoList.innerHTML = `
+                <div class="card text-white bg-danger">
+                    <div class="card-body">
+                    <p class="card-text">Unable to fetch videos. Please try again later.</p>
+                    </div>
+                </div>
+                `;
                 console.error('Failed to fetch videos:', error);
             }
-        }
+            }
 
         function sortVideos(sortBy, order) {
             currentSortBy = sortBy;
@@ -141,6 +160,7 @@
             const input = cardBody.querySelector('.video-title-input');
             const titleLink = cardBody.querySelector('.video-title');
             const editButton = cardBody.querySelector('.edit-button');
+            const saveButton = cardBody.querySelector('.save-button');
 
             const newTitle = input.value;
             const videoId = input.dataset.videoId;
@@ -150,24 +170,25 @@
                 return;
             }
 
+            console.log(`Saving title: ${newTitle} for video ID: ${videoId}`);
+
             input.style.display = 'none';
             titleLink.innerText = newTitle;
             titleLink.style.display = 'inline';
             button.style.display = 'none';
             editButton.style.display = 'inline';
 
-            console.log(`Saving title: ${newTitle} for video ID: ${videoId}`);
             fetch(`/api/videos/${videoId}`, {
                 method: 'PUT',
                 headers: {
-                    'Content-Type': 'application/json',
-                    'X-CSRF-Token': document.querySelector('meta[name="csrf-token"]').getAttribute('content')
+                'Content-Type': 'application/json',
+                'X-CSRF-Token': document.querySelector('meta[name="csrf-token"]').getAttribute('content')
                 },
                 body: JSON.stringify({ title: newTitle })
             })
             .then(response => {
                 if (!response.ok) {
-                    throw new Error('Network response was not ok');
+                throw new Error('Network response was not ok');
                 }
                 return response.json();
             })
@@ -188,13 +209,13 @@
         async function deleteVideo(videoId, button) {
             try {
                 const response = await fetch(`/api/videos/${videoId}`, {
-                    method: 'DELETE',
-                    headers: {
-                        'X-CSRF-Token': document.querySelector('meta[name="csrf-token"]').getAttribute('content')
-                    }
+                method: 'DELETE',
+                headers: {
+                    'X-CSRF-Token': document.querySelector('meta[name="csrf-token"]').getAttribute('content')
+                }
                 });
                 if (!response.ok) {
-                    throw new Error(`HTTP error! status: ${response.status}`);
+                throw new Error(`HTTP error! status: ${response.status}`);
                 }
                 const videoCard = button.closest('.card');
                 videoCard.remove();
