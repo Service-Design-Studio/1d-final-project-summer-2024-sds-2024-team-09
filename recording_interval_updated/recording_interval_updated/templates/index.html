@@ -23,7 +23,7 @@
         <li>
           <h3>{{ video }}</h3>
           <video controls>
-            <source src="{{ url_for('static', filename='uploads/' + video) }}" type="video/webm">
+            <source src="{{ url_for('static', filename='uploads/' + video) }}" type="video/mp4">
             Your browser does not support the video tag.
           </video>
         </li>
@@ -33,7 +33,7 @@
 
   <script>
     const APP_ID = 'd543c7c876734c4a82da72a588edd047';
-    const TOKEN = '007eJxTYFBlFiyptzDeNzcl32nSCoGwrIL60DzuJVGputEKn0Kr9yswpJiaGCebJ1uYm5kbmySbJFoYpSSaGyWaWlikpqQYmJjHfZ+Z1hDIyPCj8gsDIxSC+GwMSYmVuYkVDAwAg10eIg==';
+    const TOKEN = '007eJxTYFAq+uSts0tt3SbfBdUnN66MfLDJNpLx0/9/UteckgKMMuQVGFJMTYyTzZMtzM3MjU2STRItjFISzY0STS0sUlNSDEzMD+9dkNYQyMjQ+OoMEyMDBIL4bAxJiZW5iRUMDADFCiGk';
     const CHANNEL = 'baymax';
 
     let rtc = {
@@ -153,7 +153,7 @@
                 stopRecording();
             }
             startRecording();
-        }, 10000);  // 10 seconds interval
+        }, 5000);  // 10 seconds interval
     };
 
     document.addEventListener('DOMContentLoaded', (event) => {
