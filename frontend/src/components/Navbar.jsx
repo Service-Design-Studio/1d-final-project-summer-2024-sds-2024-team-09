@@ -8,7 +8,7 @@ const Navbar = () => {
             <NavItem icon={<FaHome />} label="Home" to="/user-home" />
             <NavItem icon={<FaHistory />} label="History" to="/histories" />
             <NavItem icon={<FaChartBar />} label="Statistics" />
-            <NavItem icon={<FaUser />} label="Profile" to="/profile"/>
+            <NavItem icon={<FaUser />} label="Profile" to="/profile" />
         </div>
     );
 };

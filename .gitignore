@@ -33,7 +33,7 @@ gcs.keyfile
 !/tmp/storage/.keep
 /node_modules
 /public/assets
-google-cloud-sdk/
+frontend/google-cloud-sdk/
 
 # Ignore master key for decrypting credentials and more.
 /config/master.key

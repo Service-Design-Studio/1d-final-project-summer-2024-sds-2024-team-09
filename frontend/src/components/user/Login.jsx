@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import config from '../../../config';
 
 const Login = ({ setShowLogin }) => {
     const navigate = useNavigate();
@@ -21,7 +22,7 @@ const Login = ({ setShowLogin }) => {
         setError('');
 
         try {
-            const response = await fetch('http://localhost:3000/api/v1/sessions', {
+            const response = await fetch(`${config.API_BASE_URL}/api/v1/sessions`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
@@ -33,7 +34,7 @@ const Login = ({ setShowLogin }) => {
             console.log(data);
 
             if (response.ok) {
-                console.log(data);
+                console.log('User logged in successfully:', data);
                 handleNavigate(data);
             } else {
                 setError(data.message);
