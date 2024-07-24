@@ -1,6 +1,6 @@
 import pathlib
 from typing import Optional
-
+import os
 import librosa
 import numpy as np
 import soundfile as sf
@@ -122,6 +122,7 @@ class LibrosaClient(ports.AudioFileClient):
 
             padded_file_path = path.with_suffix(".padded" + path.suffix)
             sf.write(padded_file_path, padded_audio, sr)
+            os.remove(path)
             return padded_file_path
         else:
             # If the audio is already longer than the specified duration, return the original path
