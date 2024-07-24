@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_07_24_173939) do
+ActiveRecord::Schema[7.1].define(version: 2024_07_18_022755) do
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
     t.string "record_type", null: false
@@ -80,7 +80,6 @@ ActiveRecord::Schema[7.1].define(version: 2024_07_24_173939) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.boolean "is_critical", default: false
-    t.string "uuid", default: -> { "gen_random_uuid()" }, null: false
     t.index ["user_id"], name: "index_videos_on_user_id"
   end
 

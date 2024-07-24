@@ -1,8 +1,6 @@
 #app\controllers\user_settings_controller.rb
 class UserSettingsController < ApplicationController
   before_action :require_login
-  skip_before_action :verify_authenticity_token, only: [:create]
-
 
   def new
     @user_setting = current_user.build_user_setting

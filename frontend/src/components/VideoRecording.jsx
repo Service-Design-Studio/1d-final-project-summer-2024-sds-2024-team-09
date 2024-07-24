@@ -5,7 +5,7 @@ import AgoraRTC from 'agora-rtc-sdk-ng';
 import VideoTable from './VideoTable';
 
 const APP_ID = '1297c1a58c0a4f40a55d1f1f7c52b7cd';
-const TOKEN = '007eJxTYEg/ri4k+nW6eEZt6PHK+pJD7j7LJ+tmTTer9Z/g2t44L1uBwdDI0jzZMNHUItkg0STNxCDR1DTFMM0wzTzZ1CjJPDlFznRhWkMgI4P6/5esjAwQCOKzMSQlVuYmVjAwAAALex71';
+const TOKEN = '007eJxTYHB88m0Nsxd7b/6s0K9TZHa/Ya16vWbPaq0jBrW8P5bENZkoMBgaWZonGyaaWiQbJJqkmRgkmpqmGKYZppknmxolmSen7NWentYQyMjA8l2MiZEBAkF8NoakxMrcxAoGBgCyoSB1';
 const CHANNEL = 'baymax';
 
 const VideoRecording = ({ videos }) => {

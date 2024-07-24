@@ -27,7 +27,6 @@ class VideosController < ApplicationController
     if @video.file_path.blank?
       render :unavailable
     else
-      @video_url = @video.gcs_public_url
       render :show
     end
   end
@@ -40,43 +39,32 @@ class VideosController < ApplicationController
   end
 
   def create
+    Rails.logger.debug "Video Params: #{video_params.inspect}"
     @video = current_user.videos.new(video_params)
+    @video.file_path = "hello hello"
+    Rails.logger.debug "Video Attributes Before Save: #{@video.attributes.inspect}"
     if @video.save
       upload_to_gcs(@video)
-      Rails.logger.debug "Video Path after Upload: #{@video.file_path}"
       redirect_to @video, notice: 'Video was successfully created.'
     else
       render :new
     end
   end
 
-  def update
-    @video = current_user.videos.find_by(uuid: params[:id]) || current_user.videos.find(params[:id])
-  
-    # Preserve the original file path unless explicitly changed
-    original_file_path = @video.file_path
-    Rails.logger.debug "Original file path: #{original_file_path}"
+  def show
+  end
 
-    if @video.update(video_params.except(:file_path))
-      if video_params[:file_path].blank?
-        @video.update(file_path: original_file_path)
-        Rails.logger.debug "File path preserved: #{original_file_path}"
-      end
-      respond_to do |format|
-        format.json { render json: @video, status: :ok }
-        format.html { redirect_to @video, notice: 'Video was successfully updated.' }
-      end
+  def update
+    if @video.update(video_params)
+      redirect_to @video, notice: 'Video was successfully updated.'
     else
-      Rails.logger.error "Failed to update video: #{@video.errors.full_messages.join(', ')}"
-      respond_to do |format|
-        format.json { render json: @video.errors, status: :unprocessable_entity }
-        format.html { render :edit }
-      end
+      # render json: { errors: @video.errors.full_messages }, status: :unprocessable_entity
+      # render json: @video.errors, status: :unprocessable_entity
+      render :edit
     end
   end
 
   def destroy
-    @video = current_user.videos.find_by(uuid: params[:id]) || current_user.videos.find(params[:id])
     if @video.destroy
       delete_from_gcs(@video.file_path)
       head :no_content
@@ -108,13 +96,18 @@ class VideosController < ApplicationController
       attachment = video.file_attachment
       file_path_url = attachment&.persisted? ? url_for(attachment) : nil
 
+      # if attachment&.persisted?
+      #   file_path_url = url_for(attachment)
+      # else
+      #   file_path_url = nil
+      # end
+
       {
         id: video.id,
         title: video.title,
         created_at: video.created_at,
         duration: video.duration,
-        file_path_url: file_path_url,
-        uuid: video.uuid
+        file_path_url: file_path_url
       }
     end
     render json: videos_with_urls
@@ -123,13 +116,11 @@ class VideosController < ApplicationController
   private
 
   def video_params
-    params.require(:video).permit(:title, :file,  :file_path, :duration, :user_id, :recorded_at)
+    params.require(:video).permit(:title, :file, :file_path, :duration, :user_id, :recorded_at)
   end
 
   def set_video
-    # @video = Video.find(params[:id])
-    # @video = Video.find_by(uuid: params[:id]) || Video.find_by(params[:id])
-    @video = current_user.videos.find_by(uuid: params[:id]) || current_user.videos.find(params[:id])
+    @video = Video.find(params[:id])
     #@video = current_user.videos.find(params[:id])
   rescue ActiveRecord::RecordNotFound
     render json: { error: 'Video not found' }, status: :not_found
@@ -143,17 +134,13 @@ class VideosController < ApplicationController
     bucket = storage.bucket("video-upload-jya")
   
     # Define the object name (path) in GCS
-    # object_name = "videos/#{current_user.id}/#{video.id}_#{video.recorded_at.strftime('%Y%m%d%H%M%S')}.mp4"
-
-    # Define the object name (path) in GCS using the UUID
-    object_name = "videos/#{current_user.id}/#{video.uuid}/#{video.recorded_at.strftime('%Y%m%d%H%M%S')}.webm"
+    object_name = "videos/#{current_user.id}/#{video.id}_#{video.recorded_at.strftime('%Y%m%d%H%M%S')}.mp4"
   
     # Upload the video file to GCS
     file = bucket.create_file(video.file_path, object_name)
   
     # Save the GCS path in the database
-    # video.update(file_path: file.name)
-    video.update_columns(file_path: object_name, signed_url: signed_url)
+    video.update(file_path: file.name)
   end
   
   def delete_from_gcs(file_path)
