@@ -3,7 +3,7 @@ from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.orm import sessionmaker
 
 # DATABASE_URL = "postgresql://<user>:<password>@/<database>?host=/cloudsql/<instance_connection_name>"
-DATABASE_URL = "postgresql://crying-babies:wehhwehhwehh@/crying-babies-db?host=/cloudsql/video-upload-429504:asia-southeast1:crybabydatabase-sql"
+DATABASE_URL = "postgresql://crying-babies:wehhwehhwehh@127.0.0.1:5432/crying-babies-db"
 
 
 engine = create_engine(DATABASE_URL)
