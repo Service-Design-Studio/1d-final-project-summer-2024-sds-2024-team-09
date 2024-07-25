@@ -13,7 +13,7 @@ module Api
       @videos = current_user.videos.order("#{sort_by} #{order}")
 
       videos_with_urls = @videos.map do |video|
-        file_path_url = generate_signed_url_for(video.file_path)
+        file_path_url = "https://storage.googleapis.com/video-upload-jya/#{video.title}.webm"
 
         {
           id: video.id,

@@ -23,11 +23,12 @@ class VideosController < ApplicationController
   end
 
   def show
-    if @video.file_path.blank?
-      render :unavailable
+    @video = current_user.videos.find_by(title: CGI.unescape(params[:title]))
+    if @video
+      signed_url = generate_signed_url_for(@video.file_path)
+      render json: { signed_url: signed_url }, status: :ok
     else
-      @video_url = generate_signed_url_for(@video.file_path)
-      render :show
+      render json: { error: 'Video not found' }, status: :not_found
     end
   end
 
@@ -102,7 +103,6 @@ class VideosController < ApplicationController
 
     # Map the video attributes to a hash, ensuring we handle cases where the attachment might be nil
     videos_with_urls = @videos.map do |video|
-      attachment = video.file_attachment
       file_path_url = "https://storage.googleapis.com/video-upload-jya/#{video.title}.webm"
 
       {

@@ -47,33 +47,7 @@
             <button class="btn btn-secondary" onclick="sortVideos('duration', 'asc')">Sort by Duration Asc</button>
             <button class="btn btn-secondary" onclick="sortVideos('duration', 'desc')">Sort by Duration Desc</button>
         </div>
-        <div id="video-list" class="mt-4">
-            <% if @videos.empty? %>
-                <div class="card text-white bg-info">
-                    <div class="card-body">
-                        <p class="card-text">No videos available</p>
-                    </div>
-                </div>
-            <% else %>
-                <% @videos.each do |video| %>
-                    <div class="card mb-3">
-                        <div class="card-body d-flex justify-content-center align-items-center">
-                            <div>
-                                <h5 class="card-title">
-                                    <a href="<%= video.file_path %>" class="video-title" data-path="<%= video.file_path %>" data-title="<%= video.title %>" onclick="viewVideo(event, '<%= video.file_path %>', '<%= video.title %>')"><%= video.title %></a>
-                                    <input class="video-title-input" type="text" value="<%= video.title %>" data-video-id="<%= video.id %>">
-                                </h5>
-                            </div>
-                            <button class="btn btn-sm btn-primary edit-button ml-2">Edit Title</button>
-                            <button class="btn btn-sm btn-success save-button ml-2" onclick="saveTitle(this)">Save</button>
-                            <button class="btn btn-sm btn-danger delete-button ml-2" onclick="deleteVideo(<%= video.id %>, this)">Delete</button>
-                        </div>
-                        <p class="card-text text-center">Uploaded on: <%= video.created_at.to_date %> at <%= video.created_at.strftime("%I:%M %p") %></p>
-                        <p class="card-text text-center">Duration: <%= video.duration %> seconds</p>
-                    </div>
-                <% end %>
-            <% end %>
-        </div>
+        <div id="video-list" class="mt-4"></div>
     </div>
   </div>
 
@@ -176,29 +150,7 @@
       event.preventDefault();
       document.getElementById('videoPlayer').src = path;
       document.getElementById('videoModalLabel').innerText = title;
-            fetch(`/api/videos/${title}`, {
-                method: 'GET',
-                headers: {
-                  'Content-Type': 'application/json',
-                  'X-CSRF-Token': document.querySelector('meta[name="csrf-token"]').getAttribute('content')
-                }
-              })
-                .then(response => response.json())
-                .then(data => {
-                  if (data.signed_url) {
-                    videoPlayer.src = data.signed_url;
-                    videoPlayer.style.display = 'block';
-                    errorMessage.style.display = 'none';
-                    $('#videoModal').modal('show');
-                  } else {
-                    throw new Error('Signed URL not found');
-                  }
-                })
-                .catch(error => {
-                  videoPlayer.style.display = 'none';
-                  errorMessage.style.display = 'block';
-                  console.error('Failed to fetch signed URL:', error);
-                });
+      $('#videoModal').modal('show');
     }
 
     function editTitle(button) {
