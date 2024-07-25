@@ -90,6 +90,7 @@ group :test do
   gem 'byebug'
   gem "capybara"
   gem "selenium-webdriver"
+  gem 'webdrivers'
   gem 'rspec-mocks'
   gem 'webmock'
   gem 'cucumber-rails', require: false

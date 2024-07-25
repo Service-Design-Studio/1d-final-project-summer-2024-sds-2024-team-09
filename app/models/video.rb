@@ -12,17 +12,18 @@ class Video < ApplicationRecord
     belongs_to :user
     has_one_attached :file
 
+    validates :title, presence: { message: 'Video Unavailable for Viewing' }
     # mount_uploader :path, VideoUploader
-  
+
     # validates :title, presence: true
     # validates :file_path, presence: true
-  
+
     # before_destroy :remove_file_path!
-  
+
     # def file_path_url
     #   "#{file_path}"
     # end
-  
+
     # private
 
     # def remove_file_path!
@@ -32,4 +33,3 @@ class Video < ApplicationRecord
     #   Rails.logger.error "Failed to remove file: #{e.message}"
     # end
   end
-  

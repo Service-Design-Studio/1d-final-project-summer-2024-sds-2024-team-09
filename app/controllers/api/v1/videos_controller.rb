@@ -9,7 +9,7 @@ class Api::V1::VideosController < ApplicationController
   def show
     @video = Video.find(params[:id])
     render json: @video
-  end 
+  end
 
   def update
     @video = Video.find(params[:id])
@@ -25,7 +25,8 @@ class Api::V1::VideosController < ApplicationController
     if @video.save
       render json: @video
     else
-      render json: @video.errors
+      # Include custom error message
+      render json: { error: 'Video Unavailable for Viewing' }, status: :unprocessable_entity
     end
   end
 
