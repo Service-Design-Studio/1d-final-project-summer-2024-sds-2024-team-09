@@ -1,9 +1,12 @@
 import React, { useState } from 'react';
 import config from '../../../config';
+import { useNavigate } from 'react-router-dom';
+
 
 function CamLoginPage() {
   const [formData, setFormData] = useState({ username: '', password: '' });
   const [error, setError] = useState('');
+  const navigate = useNavigate();
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -11,6 +14,11 @@ function CamLoginPage() {
       ...formData,
       [name]: value,
     });
+  };
+
+  const handleNavigate = (data) => {
+    localStorage.setItem('camera-data', JSON.stringify(data));
+    navigate('/camera-home', { state: { cameraData: data } });
   };
 
 
@@ -35,7 +43,7 @@ function CamLoginPage() {
 
       if (response.ok) {
         console.log('User logged in successfully:', data);
-        // handleNavigate(data);
+        handleNavigate(data)
       } else {
         setError(data.message);
       }
