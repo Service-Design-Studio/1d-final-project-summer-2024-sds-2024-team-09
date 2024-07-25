@@ -110,8 +110,9 @@ class CryBabyService(ports.Service):
     
     def combine_video(self, directory: pathlib.Path, start_video: str, end_video: str) -> str:
         clips = []
+        video_files = sorted(directory.glob('*.webm')) + sorted(directory.glob('*.mp4'))
         # Iterate over sorted files in the directory
-        for file_name in sorted(directory.glob('*.mp4')):
+        for file_name in video_files:
             # Check if the file is within the specified range
             if start_video <= file_name.name <= end_video:
                 # Load the video file
@@ -122,7 +123,7 @@ class CryBabyService(ports.Service):
 
         # Check if there are any clips to concatenate
         if not clips:
-            self.logger.info("No MP4 videos found in the specified range.")
+            self.logger.info("No MP4/WEBM videos found in the specified range.")
             return ""
 
         # Concatenate the video clips
@@ -147,7 +148,7 @@ class CryBabyService(ports.Service):
         } # 'AItest_upload/ai_classifier_uploads/' + 
         upload_to_gcs('video-upload-jya', 
                       combined_video_path_str, 
-                      str(pathlib.Path(combined_video_name).stem) + ".mp4", 
+                      str(pathlib.Path(combined_video_name).stem), 
                       video_metadata)
         self.logger.info(f"Uploading {combined_video_name} to GCS")
         self.cry_idle_counter = 0
@@ -191,7 +192,7 @@ class CryBabyService(ports.Service):
                             shutil.move(str(video), str(self.cry_video_file_path / video.name))
                         if self.cry_idle_counter == 5:
                             combined_video_name = self.combine_video(self.cry_video_file_path, self.start_video, self.end_video)
-                            self.logger.info("10 in a row no cries reached")
+                            self.logger.info("5 in a row no cries reached")
                             if combined_video_name:
                                 self.upload_to_gcs_service(combined_video_name)
                                 

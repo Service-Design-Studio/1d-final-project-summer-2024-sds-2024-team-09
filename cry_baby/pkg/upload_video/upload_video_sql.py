@@ -44,8 +44,8 @@ def upload_to_gcs(bucket_name, source_file_name, destination_blob_name, video_me
 
 # # Usage example:
 # bucket_name = 'video-upload-jya'  # Replace with your bucket name
-# source_file_name = '/home/g1006632/Desktop/cry-baby/audio/samples/Baby_Cry_00-4_no_cry.mp4'  # Replace with the path to your video file
-# destination_blob_name = 'Tiger_cry_try.mp4'  # Replace with the destination path in the bucket AItest_upload/
+# source_file_name = '/home/g1006632/Desktop/cry-baby/audio/video/recording_2024-07-25T07-44-10-841Z.webm_to_recording_2024-07-25T07-44-30-358Z.webm_combined.mp4'  # Replace with the path to your video file
+# destination_blob_name = 'Tiger_cry_try'  # Replace with the destination path in the bucket AItest_upload/
 
 # # Video metadata
 # video_metadata = {
