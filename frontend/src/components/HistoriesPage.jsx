@@ -85,99 +85,101 @@ const HistoriesPage = () => {
     };
 
     return (
-        <div className="font-ubuntu p-4 py-8 flex flex-col h-screen">
-            <div className="flex-grow overflow-auto p-4">
-                <h1 className="text-2xl text-primary font-bold mb-4">History</h1>
-                <div className="flex justify-between items-center pt-2 mb-4">
-                    <span className="text-gray-600">All</span>
-                    <button onClick={toggleSortOrder} className="text-gray-600">
-                        Sort By: Date ({sortOrder === 'asc' ? 'Ascending' : 'Descending'})
-                    </button>
+        <div className="flex flex-col items-center">
+            <div className="items-center rounded-lg p-6">
+                <div className="flex-grow overflow-auto p-4">
+                    <h1 className="text-2xl text-primary font-bold mb-4">History</h1>
+                    <div className="flex justify-between items-center pt-2 mb-4">
+                        <span className="text-gray-600">All</span>
+                        <button onClick={toggleSortOrder} className="text-gray-600">
+                            Sort By: Date ({sortOrder === 'asc' ? 'Ascending' : 'Descending'})
+                        </button>
+                    </div>
+                    {sortVideos.map(video => (
+                        <div key={video.id} className="mb-4">
+                            <HistoryItem
+                                id={video.id}
+                                title={video.title}
+                                time={new Date(video.created_at).toLocaleString()} // Adjust time format as needed
+                                isCritical={video.is_critical}
+                                file_path={video.file_path}
+                                onEdit={handleEdit}
+                                onDelete={handleDelete}
+                            />
+                        </div>
+                    ))}
                 </div>
-                {sortVideos.map(video => (
-                    <div key={video.id} className="mb-4">
-                        <HistoryItem
-                            id={video.id}
-                            title={video.title}
-                            time={new Date(video.created_at).toLocaleString()} // Adjust time format as needed
-                            isCritical={video.is_critical}
-                            file_path={video.file_path}
-                            onEdit={handleEdit}
-                            onDelete={handleDelete}
-                        />
-                    </div>
-                ))}
-            </div>
-            <Navbar />
-            <Modal
-                isOpen={modalIsOpen}
-                onRequestClose={closeModal}
-                contentLabel="Edit Video"
-                className="modal"
-                overlayClassName="overlay"
-                ariaHideApp={false}
-            >
-                {currentVideo && (
-                    <div>
-                        <h2>Edit Video</h2>
-                        <form onSubmit={handleFormSubmit}>
-                            <div>
-                                <label>Title:</label>
-                                <input
-                                    type="text"
-                                    name="title"
-                                    value={editedDetails.title}
-                                    onChange={handleInputChange}
-                                    className="border p-1"
-                                />
-                            </div>
-                            <div>
-                                <label>File Path:</label>
-                                <input
-                                    type="text"
-                                    name="file_path"
-                                    value={editedDetails.file_path}
-                                    onChange={handleInputChange}
-                                    className="border p-1"
-                                />
-                            </div>
-                            <div>
-                                <label>Duration:</label>
-                                <input
-                                    type="number"
-                                    name="duration"
-                                    value={editedDetails.duration}
-                                    onChange={handleInputChange}
-                                    className="border p-1"
-                                />
-                            </div>
-                            <div>
-                                <label>
+                <Navbar />
+                <Modal
+                    isOpen={modalIsOpen}
+                    onRequestClose={closeModal}
+                    contentLabel="Edit Video"
+                    className="modal"
+                    overlayClassName="overlay"
+                    ariaHideApp={false}
+                >
+                    {currentVideo && (
+                        <div>
+                            <h2>Edit Video</h2>
+                            <form onSubmit={handleFormSubmit}>
+                                <div>
+                                    <label>Title:</label>
                                     <input
-                                        type="checkbox"
-                                        name="is_critical"
-                                        checked={editedDetails.is_critical}
+                                        type="text"
+                                        name="title"
+                                        value={editedDetails.title}
                                         onChange={handleInputChange}
+                                        className="border p-1"
                                     />
-                                    Critical
-                                </label>
-                            </div>
-                            <div>
-                                <label>User ID:</label>
-                                <input
-                                    type="text"
-                                    name="user_id"
-                                    value={editedDetails.user_id}
-                                    onChange={handleInputChange}
-                                    className="border p-1"
-                                />
-                            </div>
-                            <button type="submit" className="bg-blue-500 text-white p-2 mt-2">Save</button>
-                            <button onClick={closeModal} className="bg-gray-500 text-white p-2 mt-2 ml-2">Cancel</button>
-                        </form>
-                    </div>
-                )}
-            </Modal>
+                                </div>
+                                <div>
+                                    <label>File Path:</label>
+                                    <input
+                                        type="text"
+                                        name="file_path"
+                                        value={editedDetails.file_path}
+                                        onChange={handleInputChange}
+                                        className="border p-1"
+                                    />
+                                </div>
+                                <div>
+                                    <label>Duration:</label>
+                                    <input
+                                        type="number"
+                                        name="duration"
+                                        value={editedDetails.duration}
+                                        onChange={handleInputChange}
+                                        className="border p-1"
+                                    />
+                                </div>
+                                <div>
+                                    <label>
+                                        <input
+                                            type="checkbox"
+                                            name="is_critical"
+                                            checked={editedDetails.is_critical}
+                                            onChange={handleInputChange}
+                                        />
+                                        Critical
+                                    </label>
+                                </div>
+                                <div>
+                                    <label>User ID:</label>
+                                    <input
+                                        type="text"
+                                        name="user_id"
+                                        value={editedDetails.user_id}
+                                        onChange={handleInputChange}
+                                        className="border p-1"
+                                    />
+                                </div>
+                                <button type="submit" className="bg-blue-500 text-white p-2 mt-2">Save</button>
+                                <button onClick={closeModal} className="bg-gray-500 text-white p-2 mt-2 ml-2">Cancel</button>
+                            </form>
+                        </div>
+                    )}
+                </Modal>
+            </div>
         </div>
     );
 };

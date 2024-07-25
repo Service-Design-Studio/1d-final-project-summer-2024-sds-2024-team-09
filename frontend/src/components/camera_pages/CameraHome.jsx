@@ -20,7 +20,7 @@ function CameraSelectionPage() {
             <div className="text-center mb-8">
                 <img
                     className="mx-auto h-36 w-auto"
-                    src="/public/logo.png"
+                    src="/logo.png"
                     alt="Crybaby"
                 />
                 <h2 className="mt-6 text-2xl font-extrabold text-gray-900">Your Available Cameras</h2>

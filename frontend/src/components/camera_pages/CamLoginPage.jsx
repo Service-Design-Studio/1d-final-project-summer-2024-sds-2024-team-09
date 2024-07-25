@@ -58,7 +58,7 @@ function CamLoginPage() {
         <div className="text-center">
           <img
             className="mx-auto h-48 w-auto"
-            src="/public/logo.png"
+            src="/logo.png"
             alt="Crybaby"
           />
           <h2 className="mt-6 text-3xl font-extrabold text-gray-900">crybaby</h2>

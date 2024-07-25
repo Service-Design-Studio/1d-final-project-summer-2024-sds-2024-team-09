@@ -52,7 +52,7 @@ const Login = ({ setShowLogin }) => {
                 </svg>
             </button>
             <div className="flex justify-center">
-                <img src="/public/logo.png" alt="Illustration" className="w-64 h-64" />
+                <img src="/logo.png" alt="Illustration" className="w-64 h-64" />
             </div>
             <h2 className="text-3xl font-bold text-primary text-center mb-4">Welcome Back</h2>
             <p className="font-lato text-lg text-primary text-center mb-6">Log in to your account</p>

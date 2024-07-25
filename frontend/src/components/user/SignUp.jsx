@@ -83,7 +83,7 @@ const Signup = ({ setShowLogin }) => {
                 </svg>
             </button>
             <div className="flex justify-center mb-4">
-                <img src="/public/others/crybaby.png" alt="Illustration" className="w-48 h-48" />
+                <img src="/others/crybaby.png" alt="Illustration" className="w-48 h-48" />
             </div>
 
             <h2 className="text-3xl font-bold text-primary text-center mb-3">Sign Up</h2>
