@@ -6,6 +6,7 @@ import threading
 from typing import List
 import os
 import librosa
+import requests
 import soundfile as sf
 from moviepy.editor import VideoFileClip, concatenate_videoclips
 from pydub import AudioSegment
@@ -48,6 +49,7 @@ class CryBabyService(ports.Service):
         self.cry_idle_counter = 0
         self.start_video = ""
         self.end_video = ""
+        self.telegram_bot_token = telegram_bot_token
         self.cry_detection_bot = Bot(token=telegram_bot_token)
         self.telegram_chat_id = telegram_chat_id
 
@@ -142,18 +144,22 @@ class CryBabyService(ports.Service):
             "duration": duration,  # Duration in seconds
             "user_id": 1,
             "is_critical": False
-        }
+        } # 'AItest_upload/ai_classifier_uploads/' + 
         upload_to_gcs('video-upload-jya', 
                       combined_video_path_str, 
-                      'AItest_upload/ai_classifier_uploads/' + str(pathlib.Path(combined_video_name).stem) + ".mp4", 
+                      str(pathlib.Path(combined_video_name).stem) + ".mp4", 
                       video_metadata)
         self.logger.info(f"Uploading {combined_video_name} to GCS")
         self.cry_idle_counter = 0
         self.start_video = ""
         self.end_video = ""
         for file in self.cry_video_file_path.iterdir():
-            if file.suffix == ".mp4":
+            if file.suffix == ".webm" or file.suffix == ".mp4":
                 os.remove(file)
+
+    def send_telegram_message(self, bot, chat_id, message):
+        url = f"https://api.telegram.org/bot{bot}/sendMessage?chat_id={chat_id}&text={message}"
+        print(requests.get(url).json())
 
     def continuously_evaluate_from_directory(self):
         """
@@ -173,17 +179,17 @@ class CryBabyService(ports.Service):
                         if prediction < 0.8:
                             if self.start_video == "":
                                 os.remove(video)
-                            elif self.cry_idle_counter < 10:
+                            elif self.cry_idle_counter < 5:
                                 shutil.move(str(video), str(self.cry_video_file_path / video.name))
                                 self.cry_idle_counter += 1
                         if prediction > 0.8:
                             self.cry_idle_counter = 0
                             if self.start_video == "":
-                                asyncio.run(send_message(self.cry_detection_bot, self.telegram_chat_id, "Cry Detected!"))
+                                self.send_telegram_message(self.telegram_bot_token, self.telegram_chat_id, "Cry Detected!")
                                 self.start_video = video.name
                             self.end_video = video.name
                             shutil.move(str(video), str(self.cry_video_file_path / video.name))
-                        if self.cry_idle_counter == 10:
+                        if self.cry_idle_counter == 5:
                             combined_video_name = self.combine_video(self.cry_video_file_path, self.start_video, self.end_video)
                             self.logger.info("10 in a row no cries reached")
                             if combined_video_name:
