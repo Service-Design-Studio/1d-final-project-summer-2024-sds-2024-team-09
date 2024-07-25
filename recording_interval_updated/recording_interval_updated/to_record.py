@@ -8,7 +8,7 @@ import os
 from datetime import datetime
 
 app = Flask(__name__)
-app.config['UPLOAD_FOLDER'] = os.path.join('../../audio', 'video_temp')
+app.config['UPLOAD_FOLDER'] = os.path.join('audio', 'video_temp')
 app.config['MAX_CONTENT_LENGTH'] = 100 * 1024 * 1024  # 100 MB limit
 
 if not os.path.exists(app.config['UPLOAD_FOLDER']):
