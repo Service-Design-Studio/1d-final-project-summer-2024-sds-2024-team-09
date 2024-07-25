@@ -48,6 +48,6 @@ Rails.application.routes.draw do
       resources :videos, only: [:index, :show, :create, :update, :destroy]
       resources :cameras, only: [:index, :show, :create, :update, :destroy]
     end      
-    resources :videos, only: [:index, :create, :destroy, :update]
+    resources :videos, only: [:index, :create, :destroy, :update], param: :uuid
   end
 end

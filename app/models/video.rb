@@ -12,6 +12,13 @@ class Video < ApplicationRecord
     belongs_to :user
     has_one_attached :file
 
+    before_create :set_uuid
+
+    private
+
+    def set_uuid
+      self.uuid ||= SecureRandom.uuid
+    end
     # mount_uploader :path, VideoUploader
   
     # validates :title, presence: true

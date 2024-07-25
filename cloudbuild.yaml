@@ -33,6 +33,15 @@ steps:
         "--add-cloudsql-instances", "${PROJECT_ID}:${_REGION}:${_INSTANCE_NAME}",
         "--update-secrets=RAILS_MASTER_KEY=${_SECRET_NAME}:latest"
       ]
+  
+  - id: "run CORB"
+    name: 'gcr.io/google.com/cloudsdktool/cloud-sdk'
+    entrypoint: 'bash'
+    args:
+      - '-c'
+      - |
+        echo 'Setting CORS configuration for the GCS bucket'
+        gsutil cors set cors.json gs://video-upload-jya
 
 substitutions:
   _REGION: "asia-southeast1"

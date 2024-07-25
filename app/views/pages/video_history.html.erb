@@ -80,12 +80,13 @@
                 videos.forEach(video => {
                     const videoItem = document.createElement('div');
                     videoItem.className = 'card mb-3';
+                    const filePathUrl = `https://storage.googleapis.com/video-upload-jya/${encodeURIComponent(video.title)}.webm`;
                     videoItem.innerHTML = `
                         <div class="card-body d-flex justify-content-center align-items-center">
                             <div>
                                 <h5 class="card-title">
-                                    <a href="${video.file_path_url}" class="video-title" data-path="${video.file_path_url}" data-title="${video.title}" onclick="viewVideo(event, '${video.file_path_url}', '${video.title}')">${video.title}</a>
-                                    <input class="video-title-input" type="text" value="${video.title}" data-video-id="${video.id}">
+                                <a href="${filePathUrl}" class="video-title" data-path="${filePathUrl}" data-title="${video.title}" onclick="viewVideo(event, '${filePathUrl}', '${video.title}')">${video.title}</a>                                    <input class="video-title-input" type="text" value="${video.title}" data-video-id="${video.uuid || video.id}">
+                                <input class="video-title-input" type="text" value="${video.title}" data-video-id="${video.id}">
                                 </h5>
                             </div>
                             <button class="btn btn-sm btn-primary edit-button ml-2">Edit Title</button>

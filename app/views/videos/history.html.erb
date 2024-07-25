@@ -131,7 +131,7 @@
                 <div>
                   <h5 class="card-title">
                     <a href="${video.file_path_url}" class="video-title" data-path="${video.file_path_url}" data-title="${video.title}" onclick="viewVideo(event, '${video.file_path_url}', '${video.title}')">${video.title}</a>
-                    <input class="video-title-input" type="text" value="${video.title}" data-video-id="${video.id}">
+                    <input class="video-title-input" type="text" value="${video.title}" data-video-id="${video.uuid || video.id}">
                   </h5>
                 </div>
                 <button class="btn btn-sm btn-primary edit-button ml-2">Edit Title</button>
@@ -174,18 +174,31 @@
 
     function viewVideo(event, path, title) {
       event.preventDefault();
-      const videoPlayer = document.getElementById('videoPlayer');
-      const errorMessage = document.getElementById('errorMessage');
-      if (!path) {
-        document.getElementById('videoPlayer').style.display = 'none';
-        document.getElementById('errorMessage').style.display = 'block';
-      } else {
-        document.getElementById('videoPlayer').src = path;
-        document.getElementById('videoPlayer').style.display = 'block';
-        document.getElementById('errorMessage').style.display = 'none';
-      }
+      document.getElementById('videoPlayer').src = path;
       document.getElementById('videoModalLabel').innerText = title;
-      $('#videoModal').modal('show');
+            fetch(`/api/videos/${title}`, {
+                method: 'GET',
+                headers: {
+                  'Content-Type': 'application/json',
+                  'X-CSRF-Token': document.querySelector('meta[name="csrf-token"]').getAttribute('content')
+                }
+              })
+                .then(response => response.json())
+                .then(data => {
+                  if (data.signed_url) {
+                    videoPlayer.src = data.signed_url;
+                    videoPlayer.style.display = 'block';
+                    errorMessage.style.display = 'none';
+                    $('#videoModal').modal('show');
+                  } else {
+                    throw new Error('Signed URL not found');
+                  }
+                })
+                .catch(error => {
+                  videoPlayer.style.display = 'none';
+                  errorMessage.style.display = 'block';
+                  console.error('Failed to fetch signed URL:', error);
+                });
     }
 
     function editTitle(button) {
@@ -209,9 +222,21 @@
       const saveButton = cardBody.querySelector('.save-button');
     
       const newTitle = input.value;
-      const videoId = input.dataset.videoId;
+      const videoIdOrUuid = input.dataset.videoId;
+     
+      if (!titleLink || !editButton) {
+        console.error('Title link or edit button not found');
+        return;
+      }
+      console.log(`Saving title: ${newTitle} for video ID/UUID: ${videoIdOrUuid}`);
 
-      fetch(`/api/videos/${videoId}`, {
+      input.style.display = 'none';
+      titleLink.innerText = newTitle;
+      titleLink.style.display = 'inline';
+      button.style.display = 'none';
+      editButton.style.display = 'inline';
+
+      fetch(`/api/videos/${videoIdOrUuid}`, {
         method: 'PUT',
         headers: {
           'Content-Type': 'application/json',
@@ -226,11 +251,7 @@
         return response.json();
       })
       .then(data => {
-        titleLink.innerText = newTitle;
-        input.style.display = 'none';
-        titleLink.style.display = 'inline';
-        editButton.style.display = 'inline';
-        saveButton.style.display = 'none';
+        console.log('Success:', data);
       })
       .catch((error) => {
         console.error('Error:', error);
