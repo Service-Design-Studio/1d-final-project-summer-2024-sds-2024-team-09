@@ -130,7 +130,7 @@ const CameraPage = () => {
                 <div className="text-center">
                     <img
                         className="mx-auto h-24 w-auto"
-                        src="/public/logo.png"
+                        src="/logo.png"
                         alt="Logo"
                     />
                     <h2 className="mt-6 text-2xl font-extrabold text-gray-900">{cameraData.camera_name || 'Main Door Camera'}</h2>

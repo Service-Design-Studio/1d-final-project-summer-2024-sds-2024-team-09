@@ -120,28 +120,30 @@ function Home() {
     }, []);
 
     return (
-        <div className="font-ubuntu p-8 py-16">
-            <h1 className="text-2xl text-primary font-bold mb-4">{greeting}</h1>
-            <p className="text-lg text-gray-600 mb-6">{liveDeviceCount} Active Device</p>
-            <div>
-                {['Live', 'Not Live'].map((status) => (
-                    <div key={status} className="mb-8">
-                        <h2 className="text-xl font-semibold mb-4">{status}</h2>
-                        <div className="grid grid-cols-1 gap-4">
-                            {albums
-                                .filter((album) => album.status === status)
-                                .map((album) => (
-                                    <div
-                                        key={album.id}
-                                        className={`relative rounded-3xl overflow-hidden shadow-lg cursor-pointer`}
-                                        style={{ height: '200px', backgroundImage: `url(${album.image})`, backgroundSize: 'cover', backgroundPosition: 'center' }}
-                                    >
-                                        <DeviceNotifs title={album.camera_name} camera={album} />
-                                    </div>
-                                ))}
+        <div className="flex flex-col items-center">
+            <div className="items-center rounded-lg p-6">
+                <h1 className="text-2xl text-primary font-bold mb-4">{greeting}</h1>
+                <p className="text-lg text-gray-600 mb-6">{liveDeviceCount} Active Device</p>
+                <div>
+                    {['Live', 'Not Live'].map((status) => (
+                        <div key={status} className="mb-8">
+                            <h2 className="text-xl font-semibold mb-4 w-96">{status}</h2>
+                            <div className="grid grid-cols-1 gap-4">
+                                {albums
+                                    .filter((album) => album.status === status)
+                                    .map((album) => (
+                                        <div
+                                            key={album.id}
+                                            className={`relative rounded-3xl overflow-hidden shadow-lg cursor-pointer`}
+                                            style={{ height: '200px', backgroundImage: `url(${album.image})`, backgroundSize: 'cover', backgroundPosition: 'center' }}
+                                        >
+                                            <DeviceNotifs title={album.camera_name} camera={album} />
+                                        </div>
+                                    ))}
+                            </div>
                         </div>
-                    </div>
-                ))}
+                    ))}
+                </div>
             </div>
             {editingCamera && (
                 <CameraSettingsForm

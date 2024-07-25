@@ -4,7 +4,7 @@ import { FaHome, FaHistory, FaChartBar, FaUser } from 'react-icons/fa'; // Impor
 
 const Navbar = () => {
     return (
-        <div className="fixed bottom-0 left-0 right-0 bg-base-100 shadow-lg p-4 flex justify-around items-center rounded-t-lg">
+        <div className="w-full fixed bottom-0 left-0 right-0 bg-base-100 shadow-lg p-4 flex justify-around rounded-t-lg">
             <NavItem icon={<FaHome />} label="Home" to="/user-home" />
             <NavItem icon={<FaHistory />} label="History" to="/histories" />
             <NavItem icon={<FaChartBar />} label="Statistics" />

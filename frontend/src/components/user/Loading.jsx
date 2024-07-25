@@ -47,7 +47,7 @@ const Loading = () => {
         <div className="my-40">
           <div className="text-center items-center">
             <img
-              src="/public/others/crybaby.gif"
+              src="/others/crybaby.gif"
               alt="Loading"
               className="mx-auto mb-4"
             />
