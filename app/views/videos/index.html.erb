@@ -37,9 +37,9 @@
   </div>
 
  <script>
-    const APP_ID = 'd543c7c876734c4a82da72a588edd047';
-    const TOKEN = '007eJxTYOD9eYL3wvkS80+bZJ9X/P1Ve/93Z5TyFFcd/iz/mxK/LjxRYEgxNTFONk+2MDczNzZJNkm0MEpJNDdKNLWwSE1JMTAxz/vUk9YQyMjQYHKShZEBAkF8VoakxKTESgYGADxvImM=';
-    const CHANNEL = 'babay';
+    const APP_ID = '1297c1a58c0a4f40a55d1f1f7c52b7cd';
+    const TOKEN = '007eJxTYFi5If3AnlPhTIW/p928WHz9+qRwVrPVvbm6X+sL/u0+NL9OgSEt0TjR0MDE0jTJzMjEyDDZIs3c0NwyycLMIsnMNC01yXrWjLSGQEYGw4MbGBkZIBDEZ2NISqzMTaxgYAAAgDgjHw==';
+    const CHANNEL = 'baymax';
 
     let rtc = {
         client: null,
@@ -79,7 +79,7 @@
                 `;
 
                 document.getElementById('camera-list').appendChild(cameraContainer);
-                remoteVideoTrack.play(`camera-${user.uid}-preview`, { fit: "contain", muted: true });
+                remoteVideoTrack.play(`camera-${user.uid}-preview`, { fit: "contain", muted: false });
                 rtc.remoteUsers[user.uid] = user;
                 rtc.streamingCount++;
                 updateStreamingCount();
@@ -124,6 +124,11 @@
             formData.append('video[title]', `Recording ${new Date().toLocaleString()}`);
             formData.append('video[file]', blob, `recording_${new Date().toISOString().replace(/[:.]/g, '-')}.webm`);
 
+                // Print formData contents
+            for (let [key, value] of formData.entries()) {
+                console.log(`${key}: ${value}`);
+            }
+
             // Get CSRF token
             const token = document.querySelector('meta[name="csrf-token"]').getAttribute('content');
             
@@ -138,8 +143,9 @@
             // Refresh the page after a short delay
             setTimeout(() => {
                 window.location.reload();
-            }, 1000);
-        };
+            }, 50000);
+        }; 
+
 
         rtc.mediaRecorder.start();
         document.getElementById('start-recording').disabled = true;

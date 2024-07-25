@@ -1,3 +1,4 @@
+#app\controllers\users_controller.rb
 class UsersController < ApplicationController
   skip_before_action :require_login, only: [:new, :create]
 
@@ -16,7 +17,7 @@ class UsersController < ApplicationController
       redirect_to root_path
     else
       Rails.logger.debug "Email already exist or passsword do not match"
-      flash.now[:danger] = 'Email already exist or passsword do not match'
+      # flash.now[:danger] = 'Email already exist or passsword do not match'
       render :new, status: :unprocessable_entity
     end
   end

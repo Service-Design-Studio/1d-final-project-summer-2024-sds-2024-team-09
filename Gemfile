@@ -15,7 +15,7 @@ gem "sqlite3", "~> 1.4"
 gem "puma", ">= 5.0"
 gem 'uglifier', '>= 1.3.0'
 gem 'sass-rails', '>= 5'
-# gem 'pg', '~> 1.2'
+gem 'pg', '~> 1.2'
 # gem 'dotenv-rails', groups: [:development, :test]
 gem 'rspec-rails', '~> 5.0.0'
 
@@ -38,7 +38,7 @@ gem 'bootstrap', '~> 5.0.0'
 # Use Redis for caching [
 gem 'active_model_serializers'
 
-gem 'rack-cors'
+# gem 'rack-cors'
 
 
 # for google active storage
@@ -64,6 +64,9 @@ gem 'carrierwave', '~> 2.0'
 gem 'importmap-rails'
 
 gem 'webpacker'
+
+gem 'rack-cors', :require => 'rack/cors'
+
 
 # Use Active Storage variants [https://guides.rubyonrails.org/active_storage_overview.html#transforming-images]
 # gem "image_processing", "~> 1.2"

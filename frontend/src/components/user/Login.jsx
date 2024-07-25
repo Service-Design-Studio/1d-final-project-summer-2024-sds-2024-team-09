@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import config from '../../../config';
 
 const Login = ({ setShowLogin }) => {
     const navigate = useNavigate();
@@ -8,6 +9,7 @@ const Login = ({ setShowLogin }) => {
     const [error, setError] = useState('');
 
     const handleNavigate = (data) => {
+        localStorage.setItem('user-data', JSON.stringify(data));
         navigate('/user-home', { state: { userData: data } });
     };
 
@@ -20,7 +22,7 @@ const Login = ({ setShowLogin }) => {
         setError('');
 
         try {
-            const response = await fetch('http://localhost:3000/api/v1/sessions', {
+            const response = await fetch(`${config.API_BASE_URL}/api/v1/sessions`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
@@ -32,7 +34,7 @@ const Login = ({ setShowLogin }) => {
             console.log(data);
 
             if (response.ok) {
-                console.log(data);
+                console.log('User logged in successfully:', data);
                 handleNavigate(data);
             } else {
                 setError(data.message);
@@ -50,7 +52,7 @@ const Login = ({ setShowLogin }) => {
                 </svg>
             </button>
             <div className="flex justify-center">
-                <img src="/public/logo.png" alt="Illustration" className="w-64 h-64" />
+                <img src="/logo.png" alt="Illustration" className="w-64 h-64" />
             </div>
             <h2 className="text-3xl font-bold text-primary text-center mb-4">Welcome Back</h2>
             <p className="font-lato text-lg text-primary text-center mb-6">Log in to your account</p>

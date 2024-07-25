@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,6 +8,7 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
     <script src="https://download.agora.io/sdk/release/AgoraRTC_N.js"></script>
 </head>
+
 <body>
     <div class="container mt-5">
         <div id="camera-list" class="row">
@@ -21,8 +23,8 @@
     </div>
 
     <script>
-        const APP_ID = 'd543c7c876734c4a82da72a588edd047';
-        const TOKEN = '007eJxTYDj7W+FX7eXEJonak1MtU8Umnj3x+vTJTafcw8NuO59NsndSYEgxNTFONk+2MDczNzZJNkm0MEpJNDdKNLWwSE1JMTAx35fYn9YQyMjwoJiXmZEBAkF8NoakxMrcxAoGBgA/sSIl';
+        const APP_ID = 'fa3a10495b62421c8f7179b868b65feb';
+        const TOKEN = '007eJxTYFi5If3AnlPhTIW/p928WHz9+qRwVrPVvbm6X+sL/u0+NL9OgSEt0TjR0MDE0jTJzMjEyDDZIs3c0NwyycLMIsnMNC01yXrWjLSGQEYGw4MbGBkZIBDEZ2NISqzMTaxgYAAAgDgjHw==';
         const CHANNEL = 'baymax';
 
         let rtc = {
@@ -63,7 +65,7 @@
                     `;
 
                     document.getElementById('camera-list').appendChild(cameraContainer);
-                    remoteVideoTrack.play(`camera-${user.uid}-preview`, { fit: "contain", muted: true });
+                    remoteVideoTrack.play(`camera-${user.uid}-preview`, { fit: "contain", muted: false });
                     rtc.remoteUsers[user.uid] = user;
                     rtc.streamingCount++;
                     updateStreamingCount();
@@ -90,10 +92,14 @@
                     const videoTrack = user.videoTrack.getMediaStreamTrack();
                     combinedStream.addTrack(videoTrack);
                 }
+                if (user.audioTrack) {
+                    const audioTrack = user.audioTrack.getMediaStreamTrack();
+                    combinedStream.addTrack(audioTrack);
+                }
             }
 
             rtc.mediaRecorder = new MediaRecorder(combinedStream, {
-                mimeType: 'video/webm;codecs=vp9'
+                mimeType: 'video/webm;codecs=vp9, opus'
             });
 
             rtc.mediaRecorder.ondataavailable = (event) => {
@@ -118,7 +124,7 @@
                 // Refresh the page after a short delay
                 setTimeout(() => {
                     window.location.reload();
-                }, 1000);
+                }, 10000);
             };
 
             rtc.mediaRecorder.start();
@@ -138,4 +144,5 @@
         joinChannel();
     </script>
 </body>
+
 </html>

@@ -10,16 +10,24 @@ RUN (curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | apt-key add -) && \
     echo "deb https://dl.yarnpkg.com/debian/ stable main" | tee /etc/apt/sources.list.d/yarn.list && \
     apt-get update && apt-get install -y yarn
 
+ARG MASTER_KEY
+ENV RAILS_MASTER_KEY=${MASTER_KEY}
+
 # Install production dependencies.
+RUN apt-get update -qq && apt-get install -y nodejs postgresql-client
+
 WORKDIR /app
 COPY Gemfile Gemfile.lock ./
 # ENV BUNDLE_FROZEN=true
 # RUN gem install bundler -v 2.3.26
 # RUN bundle config set --local without 'test'
 # RUN bundle install 
+# Copy the Gemfile and Gemfile.lock
 
 RUN apt-get update && apt-get install -y libpq-dev python3-distutils
+
 RUN gem install bundler -v 2.4.22 && \
+    bundle install && \
     bundle config set --local deployment 'true' && \
     bundle config set --local without 'development test' && \
     bundle install
@@ -28,6 +36,9 @@ RUN gem install bundler -v 2.4.22 && \
 
 # Copy local code to the container image.
 COPY . /app
+
+# Copy the rest of the application code
+# COPY . .
 
 RUN chmod +x ./app/*
 RUN chmod +x /app/bin/*
@@ -40,9 +51,9 @@ ENV SECRET_KEY_BASE=0f68460d8b6d8a2f728162be2cd457726c5c9c849880121b8fdac3fb5e63
 
 ENV RAILS_ENV=production
 
-RUN bundle exec rake db:create
-RUN bundle exec rake db:migrate
-RUN bundle exec rake db:seed
+# RUN bundle exec rake db:create
+# RUN bundle exec rake db:migrate
+# RUN bundle exec rake db:seed
 
 EXPOSE 8080
 CMD ["bin/rails", "server", "-b", "0.0.0.0", "-p", "8080"]

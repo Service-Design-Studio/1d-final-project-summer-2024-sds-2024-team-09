@@ -1,3 +1,4 @@
+# app\controllers\cameras_controller.rb
 class CamerasController < ApplicationController
   before_action :set_user
 
