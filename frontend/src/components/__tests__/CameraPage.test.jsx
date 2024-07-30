@@ -1,8 +1,8 @@
 import React from 'react';
-import { render, screen } from '@testing-library/react';
+import { render, screen, fireEvent, waitFor } from '@testing-library/react';
 import '@testing-library/jest-dom/extend-expect';
 import { BrowserRouter as Router } from 'react-router-dom';
-import CameraPage from '../CameraPage.jsx';
+import CameraPage from '../CameraPage';
 import AgoraRTC from 'agora-rtc-sdk-ng';
 
 // Mock AgoraRTC functions
@@ -27,7 +27,7 @@ beforeEach(() => {
 });
 
 test('renders CameraPage component', () => {
-    const { getByText } = render(<CameraPage />);
+    const { getByText } = render(<Router><CameraPage /></Router>);
     expect(getByText('Camera Page')).toBeInTheDocument();
     expect(getByText('This page is the UI page for the camera at home.')).toBeInTheDocument();
     expect(getByText('Join as Host')).toBeInTheDocument();
@@ -43,7 +43,7 @@ test('handles join as host successfully', async () => {
     AgoraRTC.createMicrophoneAudioTrack.mockResolvedValue(mockAudioTrack);
     AgoraRTC.createCameraVideoTrack.mockResolvedValue(mockVideoTrack);
 
-    const { getByText } = render(<CameraPage />);
+    const { getByText } = render(<Router><CameraPage /></Router>);
 
     fireEvent.click(getByText('Join as Host'));
 
@@ -60,7 +60,7 @@ test('handles end stream successfully', async () => {
     AgoraRTC.createMicrophoneAudioTrack.mockResolvedValue(mockAudioTrack);
     AgoraRTC.createCameraVideoTrack.mockResolvedValue(mockVideoTrack);
 
-    const { getByText } = render(<CameraPage />);
+    const { getByText } = render(<Router><CameraPage /></Router>);
 
     // Simulate joining as host
     fireEvent.click(getByText('Join as Host'));

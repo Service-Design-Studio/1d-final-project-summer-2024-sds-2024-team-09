@@ -1,110 +1,76 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
+import { render, screen, fireEvent, waitFor } from '@testing-library/react';
+import '@testing-library/jest-dom/extend-expect';
+import { BrowserRouter as Router } from 'react-router-dom';
+import CameraPage from '../CameraPage';
 import AgoraRTC from 'agora-rtc-sdk-ng';
 
-const CameraPage = () => {
-    const [rtc, setRtc] = useState({
-        localAudioTrack: null,
-        localVideoTrack: null,
-        client: null,
-    });
-
-    const APP_ID = 'fa3a10495b62421c8f7179b868b65feb';
-    const TOKEN = '007eJxTYNAyvby/T2n2nseXrlQyrolY+Tnx7N3qX4zBiwJOsnuGihsoMKQlGicaGphYmiaZGZkYGSZbpJkbmlsmWZhZJJmZpqUmeb6aktYQyMiwP8CCkZEBAkF8NoakxMrcxAoGBgDC9yCW';
-    const CHANNEL = 'baymax';
-
-    const getUID = () => {
-        let uid = localStorage.getItem('uid');
-        if (!uid) {
-            let lastUID = localStorage.getItem('lastUID');
-            lastUID = lastUID ? parseInt(lastUID) + 1 : 1;
-            uid = lastUID.toString().padStart(5, '0');
-            localStorage.setItem('uid', uid);
-            localStorage.setItem('lastUID', lastUID);
-        }
-        return uid;
+// Mock AgoraRTC functions
+jest.mock('agora-rtc-sdk-ng', () => {
+    return {
+        createClient: jest.fn(() => ({
+            setClientRole: jest.fn(),
+            join: jest.fn(),
+            publish: jest.fn(),
+            leave: jest.fn(),
+            remoteUsers: [],
+        })),
+        createMicrophoneAudioTrack: jest.fn(),
+        createCameraVideoTrack: jest.fn(),
+        AudienceLatencyLevelType: { AUDIENCE_LEVEL_LOW_LATENCY: 'low' },
     };
+});
 
-    const handleJoinAsHost = async () => {
-        const UID = getUID();
+beforeEach(() => {
+    // Clear local storage before each test
+    localStorage.clear();
+});
 
-        const client = AgoraRTC.createClient({
-            mode: 'live',
-            codec: 'vp8',
-            clientRoleOptions: {
-                level: AgoraRTC.AudienceLatencyLevelType.AUDIENCE_LEVEL_LOW_LATENCY,
-            },
-        });
+test('renders CameraPage component', () => {
+    const { getByText } = render(<Router><CameraPage /></Router>);
+    expect(getByText('Camera Page')).toBeInTheDocument();
+    expect(getByText('This page is the UI page for the camera at home.')).toBeInTheDocument();
+    expect(getByText('Join as Host')).toBeInTheDocument();
+    expect(getByText('Leave')).toBeInTheDocument();
+});
 
-        try {
-            client.setClientRole('host');
-            console.log('APP_ID', APP_ID, 'CHANNEL', CHANNEL);
-            await client.join(APP_ID, CHANNEL, TOKEN, UID);
-            const localAudioTrack = await AgoraRTC.createMicrophoneAudioTrack();
-            const localVideoTrack = await AgoraRTC.createCameraVideoTrack();
-            await client.publish([localAudioTrack, localVideoTrack]);
-            const localPlayerContainer = document.createElement('div');
-            localPlayerContainer.id = UID;
-            localPlayerContainer.textContent = 'Local user ' + UID;
-            localPlayerContainer.style.width = '640px';
-            localPlayerContainer.style.height = '480px';
-            document.body.append(localPlayerContainer);
-            localVideoTrack.play(localPlayerContainer);
-            console.log('Host joined successfully with UID:', UID);
-
-            setRtc({ client, localAudioTrack, localVideoTrack });
-        } catch (error) {
-            console.error('Failed to join as host:', error);
-        }
+test('handles join as host successfully', async () => {
+    const mockClient = AgoraRTC.createClient();
+    const mockAudioTrack = {};
+    const mockVideoTrack = {
+        play: jest.fn(),
     };
+    AgoraRTC.createMicrophoneAudioTrack.mockResolvedValue(mockAudioTrack);
+    AgoraRTC.createCameraVideoTrack.mockResolvedValue(mockVideoTrack);
 
-    const endStream = async () => {
-        const { client, localAudioTrack, localVideoTrack } = rtc;
-        try {
-            if (localAudioTrack) {
-                localAudioTrack.close();
-            }
-            if (localVideoTrack) {
-                localVideoTrack.close();
-            }
-            const localPlayerContainer = document.getElementById(getUID());
-            if (localPlayerContainer) {
-                localPlayerContainer.remove();
-            }
-            if (client && client.remoteUsers) {
-                client.remoteUsers.forEach((user) => {
-                    const playerContainer = document.getElementById(user.uid);
-                    if (playerContainer) {
-                        playerContainer.remove();
-                    }
-                });
-            }
-            if (client) {
-                await client.leave();
-            }
-            console.log('Stream ended successfully!');
-        } catch (error) {
-            console.error('Failed to end the stream:', error);
-        } finally {
-            window.location.href = '/'; // Redirect to the root path
-        }
-    };
+    const { getByText } = render(<Router><CameraPage /></Router>);
 
-    return (
-        <div className="container mt-5">
-            <div className="text-center">
-                <h1 className="display-4 mb-4">Camera Page</h1>
-                <p>This page is the UI page for the camera at home.</p>
-                <div className="btn-group" role="group">
-                    <button className="btn btn-primary" onClick={handleJoinAsHost}>
-                        Join as Host
-                    </button>
-                    <button className="btn btn-danger" onClick={endStream}>
-                        Leave
-                    </button>
-                </div>
-            </div>
-        </div>
-    );
-};
+    fireEvent.click(getByText('Join as Host'));
 
-export default CameraPage;
+    await waitFor(() => expect(mockClient.join).toHaveBeenCalled());
+    await waitFor(() => expect(mockClient.publish).toHaveBeenCalledWith([mockAudioTrack, mockVideoTrack]));
+    expect(document.body.querySelector('div#00001')).toBeInTheDocument();
+    expect(mockVideoTrack.play).toHaveBeenCalled();
+});
+
+test('handles end stream successfully', async () => {
+    const mockClient = AgoraRTC.createClient();
+    const mockAudioTrack = { close: jest.fn() };
+    const mockVideoTrack = { close: jest.fn() };
+    AgoraRTC.createMicrophoneAudioTrack.mockResolvedValue(mockAudioTrack);
+    AgoraRTC.createCameraVideoTrack.mockResolvedValue(mockVideoTrack);
+
+    const { getByText } = render(<Router><CameraPage /></Router>);
+
+    // Simulate joining as host
+    fireEvent.click(getByText('Join as Host'));
+    await waitFor(() => expect(mockClient.join).toHaveBeenCalled());
+
+    // Simulate ending the stream
+    fireEvent.click(getByText('Leave'));
+    await waitFor(() => expect(mockAudioTrack.close).toHaveBeenCalled());
+    await waitFor(() => expect(mockVideoTrack.close).toHaveBeenCalled());
+    await waitFor(() => expect(mockClient.leave).toHaveBeenCalled());
+
+    expect(document.body.querySelector('div#00001')).not.toBeInTheDocument();
+});
