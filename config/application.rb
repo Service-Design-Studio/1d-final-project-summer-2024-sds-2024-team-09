@@ -10,7 +10,7 @@ module Blog
   class Application < Rails::Application
     config.middleware.insert_before 0, Rack::Cors do
       allow do
-        origins 'your-frontend-domain.com'  # replace with your frontend domain
+        origins 'https://crybaby-uiux-tkzaqm6e7a-as.a.run.app'
         resource '*',
           headers: :any,
           methods: [:get, :post, :put, :patch, :delete, :options, :head]
@@ -37,5 +37,15 @@ module Blog
     # config.time_zone = "Central Time (US & Canada)"
     # config.eager_load_paths << Rails.root.join("extras")
     config.assets.paths << Rails.root.join('app', 'assets', 'videos')
+
+    config.middleware.insert_before 0, Rack::Cors do
+      allow do
+        origins '*'
+        resource '*',
+          headers: :any,
+          methods: [:get, :post, :put, :patch, :delete, :options, :head],
+          expose: ['Access-Control-Allow-Origin']
+      end
+    end
   end
 end

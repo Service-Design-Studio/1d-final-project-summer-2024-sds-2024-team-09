@@ -1,6 +1,8 @@
 #app\controllers\api\v1\videos_controller.rb
 class Api::V1::VideosController < ApplicationController
   skip_before_action :require_login
+  skip_before_action :verify_authenticity_token
+
   def index
     @videos = Video.all
     render json: @videos

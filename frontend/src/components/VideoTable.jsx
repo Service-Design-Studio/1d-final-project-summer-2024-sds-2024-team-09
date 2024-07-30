@@ -1,11 +1,12 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
+import config from '../../config';
 
 const VideoTable = () => {
     const [videos, setVideos] = useState([]);
 
     useEffect(() => {
-        axios.get('http://localhost:3000/api/v1/videos')
+        axios.get(`${config.API_BASE_URL}/api/v1/videos`)
             .then(response => {
                 setVideos(response.data);
             })

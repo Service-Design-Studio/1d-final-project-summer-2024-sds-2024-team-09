@@ -179,6 +179,7 @@ GEM
       logger
     faraday-net_http (3.1.0)
       net-http
+    ffi (1.17.0-arm64-darwin)
     ffi (1.17.0-x64-mingw-ucrt)
     ffi (1.17.0-x86_64-linux-gnu)
     globalid (1.2.1)
@@ -274,6 +275,8 @@ GEM
     net-smtp (0.5.0)
       net-protocol
     nio4r (2.7.3)
+    nokogiri (1.16.6-arm64-darwin)
+      racc (~> 1.4)
     nokogiri (1.16.6-x64-mingw-ucrt)
       racc (~> 1.4)
     nokogiri (1.16.6-x86_64-linux)
@@ -284,7 +287,7 @@ GEM
     popper_js (2.11.8)
     psych (5.1.2)
       stringio
-    public_suffix (6.0.0)
+    public_suffix (6.0.1)
     puma (6.4.2)
       nio4r (~> 2.0)
     racc (1.8.0)
@@ -402,6 +405,7 @@ GEM
       actionpack (>= 6.1)
       activesupport (>= 6.1)
       sprockets (>= 3.0.0)
+    sqlite3 (1.7.3-arm64-darwin)
     sqlite3 (1.7.3-x64-mingw-ucrt)
     sqlite3 (1.7.3-x86_64-linux)
     ssrf_filter (1.1.2)
@@ -455,6 +459,7 @@ GEM
     zeitwerk (2.6.16)
 
 PLATFORMS
+  arm64-darwin-23
   x64-mingw-ucrt
   x86_64-linux
 

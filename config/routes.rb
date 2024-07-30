@@ -25,6 +25,7 @@ Rails.application.routes.draw do
     namespace :v1 do
       post 'login', to: 'sessions#create'
       delete 'logout', to: 'sessions#destroy'
+      post 'signup', to: 'users#create'
     end
   end
 
@@ -43,10 +44,11 @@ Rails.application.routes.draw do
   # Namespaced API routes
   namespace :api do
     namespace :v1 do
-      resources :users, only: [:create, :show, :update, :destroy]
+      resources :users, only: [:index, :create, :show, :update, :destroy]
       resources :sessions, only: [:create]
       resources :videos, only: [:index, :show, :create, :update, :destroy]
-    end
-    resources :videos, only: [:index, :create, :destroy, :update]
+      resources :cameras, only: [:index, :show, :create, :update, :destroy]
+    end      
+    resources :videos, only: [:index, :create, :destroy, :update], param: :uuid
   end
 end
