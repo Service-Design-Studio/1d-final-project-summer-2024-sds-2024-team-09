@@ -19,11 +19,11 @@ const ProfilePage = () => {
 
                     <div className="flex justify-center avatar">
                         <div className="ring-primary ring-offset-base-100 w-24 rounded-full w-36 h-36">
-                            <img src="https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.jpg" />
+                            <img src="/bubbles.png" />
                         </div>
                     </div>
 
-                    <h2 className='text-2xl text-primary font-bold flex justify-center p-5'>Username</h2>
+                    <h2 className='text-2xl text-primary font-bold flex justify-center p-5'>username</h2>
 
                     <div className='flex justify-center py-2'>
                         <div class="card w-96 h-24 rounded-xl bg-white shadow rounded-badge">

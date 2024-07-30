@@ -85,9 +85,14 @@ const CameraDetails = () => {
   };
 
   useEffect(() => {
-    const APP_ID = cameraData?.app_id;
-    const TOKEN = cameraData?.token;
-    const CHANNEL = cameraData?.channel;
+
+    const APP_ID = "d543c7c876734c4a82da72a588edd047";
+    const TOKEN = "007eJxTYOCt4YssUczu3sR24HHbnzPy32/Nm93+9YHfwvyX55eomZkqMKSYmhgnmydbmJuZG5skmyRaGKUkmhslmlpYpKakGJiYL/i9MK0hkJFh2htJRkYGCATx2RiSEitzEysYGAD+UiJB";
+    const CHANNEL = "baymax";
+
+    // const APP_ID = cameraData?.app_id;
+    // const TOKEN = cameraData?.token;
+    // const CHANNEL = cameraData?.channel;
 
     const joinChannel = async () => {
       const client = AgoraRTC.createClient({
@@ -223,9 +228,9 @@ const CameraDetails = () => {
           <h2 className="text-lg font-semibold mb-2">History:</h2>
           <div className="flex items-center mb-4">
             <img
-              src="./images/crybaby.png"
+              src="/blossom.png"
               alt="cry icon"
-              className="w-10 h-10 mr-4"
+              className="w-16 h-16 mr-4"
             />
             <div>
               <p className="font-medium">Cry Detected at 7pm!</p>

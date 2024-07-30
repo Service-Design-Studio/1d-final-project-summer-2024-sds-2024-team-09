@@ -3,6 +3,15 @@ import { useParams, useNavigate } from 'react-router-dom';
 
 const VideoPlayer = () => {
     const { filePath, title } = useParams();
+    console.log('filePath:', filePath);
+    console.log('title:', title);
+
+    const extension = "webm";
+    // const extension = filePath.split('.').pop();
+    const file_path_url = `https://storage.googleapis.com/video-upload-jya/${title}.${extension}`;
+
+    console.log('file_path_url:', file_path_url);
+
     const navigate = useNavigate();
 
     return (
@@ -31,16 +40,15 @@ const VideoPlayer = () => {
                     <h2 className="mt-4 text-xl font-extrabold text-gray-900">{title}</h2>
                 </div>
                 <div className="mt-16 bg-gray-100 rounded-lg w-full h-40 flex items-center justify-center">
-                    {/* This will be replaced by the actual video player */}
                     <div className="video-player flex items-center justify-center mt-4">
                         <video controls>
-                            <source src={filePath} type="video/mp4" />
+                            <source src={file_path_url} type="video/mp4" />
+                            <source src={file_path_url} type="video/webm" />
                             Your browser does not support the video tag.
                         </video>
                     </div>
                 </div>
                 <div className="mt-20 bg-gray-100 rounded-lg w-full h-12 flex items-center justify-center">
-                    {/* Like and Dislike Buttons */}
                     <button className="mx-2">
                         <svg
                             className="h-6 w-6 text-gray-700"
@@ -76,13 +84,6 @@ const VideoPlayer = () => {
                 </div>
             </div>
         </div>
-        // </div>
-        //     <div className="video-player">
-        //     <h1>{title}</h1>
-        //     <video controls>
-        // <source src={filePath} type="video/mp4" />
-        //         Your browser does not support the video tag.
-        //     </video>
     );
 };
 

@@ -17,8 +17,8 @@ const CameraPage = () => {
 
     const videoContainerRef = useRef(null);
 
-    const APP_ID = "fa3a10495b62421c8f7179b868b65feb";
-    const TOKEN = "007eJxTYDhbFWx+TO/u7KX/3y5KPtm5QfHIs21Kqtx6i91fsy1UmvVWgSEt0TjR0MDE0jTJzMjEyDDZIs3c0NwyycLMIsnMNC016ab/wrSGQEaGRd8XMjBCIYjPxpCUWJmbWMHAAAAfUyJv";
+    const APP_ID = "d543c7c876734c4a82da72a588edd047";
+    const TOKEN = "007eJxTYOCt4YssUczu3sR24HHbnzPy32/Nm93+9YHfwvyX55eomZkqMKSYmhgnmydbmJuZG5skmyRaGKUkmhslmlpYpKakGJiYL/i9MK0hkJFh2htJRkYGCATx2RiSEitzEysYGAD+UiJB";
     const CHANNEL = "baymax";
 
     // const APP_ID = cameraData.app_id;
