@@ -1,0 +1,21 @@
+<h1>Sign Up</h1>
+<%= form_with(model: @user, local: true) do |form| %>
+  <%= form.label :username %>
+  <%= form.text_field :username %>
+
+  <%= form.label :email %>
+  <%= form.email_field :email %>
+
+  <%= form.label :password %>
+  <%= form.password_field :password %>
+
+  <%= form.label :password_confirmation %>
+  <%= form.password_field :password_confirmation %>
+
+  <%= form.submit "Sign Up" %>
+    <% if get_message %>
+      <div class="alert alert-<%= get_message[:danger] %>"><%= get_message[:text] %></div>
+    <% end %>
+<% end %>
+
+<%= link_to "Log In", login_path %>

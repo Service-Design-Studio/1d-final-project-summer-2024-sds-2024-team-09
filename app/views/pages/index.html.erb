@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Welcome to Baymax</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+</head>
+<body>
+    <div class="container mt-5">
+        <div class="text-center">
+            <h1 class="display-4">Welcome to Baymax</h1>
+            <p class="lead">Monitor and manage your devices seamlessly.</p>
+            <div class="d-flex justify-content-center mt-4">
+                <a href="/user" class="btn btn-primary btn-lg mx-2">User Page</a>
+                <a href="/camera" class="btn btn-secondary btn-lg mx-2">Camera Page</a>
+                <a href="/record" class="btn btn-secondary btn-lg mx-2">record</a>
+                <a href="/history" class="btn btn-secondary btn-lg mx-2">History</a>
+                <a href="/users" class="btn btn-secondary btn-lg mx-2">All Users</a>
+                <a href="/user_settings/edit" class="btn btn-info btn-lg mx-2">Settings</a>
+                <a href="/video-history" class="btn btn-primary btn-lg mx-2">Video History</a>
+
+                <form action="/logout" method="POST" class="mx-2">
+                    <input type="hidden" name="_method" value="delete">
+                    <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+                    <button type="submit" class="btn btn-danger btn-lg">Log Out</button>
+                </form>
+            </div>
+        </div>
+    </div>
+    <script>
+        // You can add any JavaScript here if needed
+    </script>
+</body>
+</html>
+

@@ -1,0 +1,20 @@
+<h1>All Videos</h1>
+
+<table>
+  <thead>
+    <tr>
+      <% @headers.each do |header| %>
+        <th><%= header.humanize %></th>
+      <% end %>
+    </tr>
+  </thead>
+  <tbody>
+    <% @videos.each do |video| %>
+      <tr>
+        <% @headers.each do |header| %>
+          <td><%= video[header] %></td>
+        <% end %>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

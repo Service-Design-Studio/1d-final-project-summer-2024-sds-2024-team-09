@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Page</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+    <script src="https://download.agora.io/sdk/release/AgoraRTC_N.js"></script>
+</head>
+
+<body>
+    <div class="container mt-5">
+        <div id="camera-list" class="row">
+            <!-- Camera previews will be dynamically added here -->
+        </div>
+        <div class="mt-4">
+            <h2>Total Streaming Devices: <span id="streaming-count">0</span></h2>
+        </div>
+        <button id="start-recording" class="btn btn-success">Start Recording</button>
+        <button id="stop-recording" class="btn btn-danger" disabled>Stop Recording</button>
+        <a id="download-link" class="btn btn-primary" style="display: none;">Download Recording</a>
+    </div>
+
+    <script>
+        const APP_ID = 'fa3a10495b62421c8f7179b868b65feb';
+        const TOKEN = '007eJxTYFi5If3AnlPhTIW/p928WHz9+qRwVrPVvbm6X+sL/u0+NL9OgSEt0TjR0MDE0jTJzMjEyDDZIs3c0NwyycLMIsnMNC01yXrWjLSGQEYGw4MbGBkZIBDEZ2NISqzMTaxgYAAAgDgjHw==';
+        const CHANNEL = 'baymax';
+
+        let rtc = {
+            client: null,
+            remoteUsers: {},
+            streamingCount: 0,
+            displayCount: 0,
+            mediaRecorder: null,
+            recordedChunks: []
+        };
+
+        const updateStreamingCount = () => {
+            document.getElementById('streaming-count').innerText = rtc.streamingCount;
+        };
+
+        const joinChannel = async () => {
+            rtc.client = AgoraRTC.createClient({ mode: "live", codec: "vp8" });
+            await rtc.client.join(APP_ID, CHANNEL, TOKEN, null);
+
+            rtc.client.on("user-published", async (user, mediaType) => {
+                if (mediaType === "video") {
+                    await rtc.client.subscribe(user, mediaType);
+                    const remoteVideoTrack = user.videoTrack;
+
+                    rtc.displayCount++;
+                    const cameraContainer = document.createElement('div');
+                    cameraContainer.classList.add('card', 'mt-4', 'col-md-6');
+                    cameraContainer.id = `camera-${user.uid}`;
+                    cameraContainer.innerHTML = `
+                        <div class="card-body text-center">
+                            <h1 class="card-title">Camera ${rtc.displayCount}</h1>
+                            <div id="camera-${user.uid}-preview" style="width: 320px; height: 240px;"></div>
+                            <p class="card-text">UID: ${user.uid}</p>
+                            <a href="/camera_broadcast" class="btn btn-primary btn-lg">
+                                Watch Live
+                            </a>
+                        </div>
+                    `;
+
+                    document.getElementById('camera-list').appendChild(cameraContainer);
+                    remoteVideoTrack.play(`camera-${user.uid}-preview`, { fit: "contain", muted: false });
+                    rtc.remoteUsers[user.uid] = user;
+                    rtc.streamingCount++;
+                    updateStreamingCount();
+                }
+            });
+
+            rtc.client.on("user-unpublished", (user) => {
+                const cameraContainer = document.getElementById(`camera-${user.uid}`);
+                if (cameraContainer) {
+                    cameraContainer.remove();
+                }
+                delete rtc.remoteUsers[user.uid];
+                rtc.streamingCount--;
+                updateStreamingCount();
+            });
+        };
+
+        const startRecording = () => {
+            const combinedStream = new MediaStream();
+
+            for (let uid in rtc.remoteUsers) {
+                const user = rtc.remoteUsers[uid];
+                if (user.videoTrack) {
+                    const videoTrack = user.videoTrack.getMediaStreamTrack();
+                    combinedStream.addTrack(videoTrack);
+                }
+                if (user.audioTrack) {
+                    const audioTrack = user.audioTrack.getMediaStreamTrack();
+                    combinedStream.addTrack(audioTrack);
+                }
+            }
+
+            rtc.mediaRecorder = new MediaRecorder(combinedStream, {
+                mimeType: 'video/webm;codecs=vp9, opus'
+            });
+
+            rtc.mediaRecorder.ondataavailable = (event) => {
+                if (event.data.size > 0) {
+                    rtc.recordedChunks.push(event.data);
+                }
+            };
+
+            rtc.mediaRecorder.onstop = () => {
+                const blob = new Blob(rtc.recordedChunks, { type: 'video/webm' });
+                const url = URL.createObjectURL(blob);
+                const downloadLink = document.getElementById('download-link');
+                const date = new Date();
+                const dateString = date.toISOString().split('T')[0];
+                const timeString = date.toTimeString().split(' ')[0].replace(/:/g, '-');
+                const filename = `recording_${dateString}_${timeString}.webm`;
+                downloadLink.href = url;
+                downloadLink.download = filename;
+                downloadLink.style.display = 'block';
+                downloadLink.click();
+
+                // Refresh the page after a short delay
+                setTimeout(() => {
+                    window.location.reload();
+                }, 10000);
+            };
+
+            rtc.mediaRecorder.start();
+            document.getElementById('start-recording').disabled = true;
+            document.getElementById('stop-recording').disabled = false;
+        };
+
+        const stopRecording = () => {
+            rtc.mediaRecorder.stop();
+            document.getElementById('start-recording').disabled = false;
+            document.getElementById('stop-recording').disabled = true;
+        };
+
+        document.getElementById('start-recording').addEventListener('click', startRecording);
+        document.getElementById('stop-recording').addEventListener('click', stopRecording);
+
+        joinChannel();
+    </script>
+</body>
+
+</html>

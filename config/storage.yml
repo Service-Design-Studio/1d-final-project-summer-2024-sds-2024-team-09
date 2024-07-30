@@ -14,13 +14,20 @@ local:
 #   region: us-east-1
 #   bucket: your_own_bucket-<%= Rails.env %>
 
-# Remember not to checkin your GCS keyfile to a repository
+# Remember not to checkin your GCS keyfile to a repository: Tiger one
 # google:
 #   service: GCS
-#   project: your_project
-#   credentials: <%= Rails.root.join("path/to/gcs.keyfile") %>
-#   bucket: your_own_bucket-<%= Rails.env %>
+#   project: crybabydatabase
+#   credentials: <%= Rails.root.join("gcs.keyfile") %>
+#   bucket: crybabydatabase_bucket-<%= Rails.env %>
 
+# Remember not to checkin your GCS keyfile to a repository: Jya one
+
+google:
+  service: GCS
+  project: "video-upload-429504"
+  keyfile: <%= Rails.root.join('config/jya-keyfile.json') %>
+  bucket: "video-upload-jya"
 # Use bin/rails credentials:edit to set the Azure Storage secret (as azure_storage:storage_access_key)
 # microsoft:
 #   service: AzureStorage

@@ -1,12 +1,19 @@
-const { environment } = require('@rails/webpacker');
-const webpack = require('webpack');
-const dotenv = require('dotenv');
+const { environment } = require('@rails/webpacker')
 
-dotenv.config();
+// module.exports = environment
 
-environment.plugins.append(
-    'Environment',
-    new webpack.EnvironmentPlugin(process.env)
-);
 
-module.exports = environment;
+babelLoader.use[0].options = {
+  cacheDirectory: true,
+  presets: [
+    ['@babel/preset-env', { modules: false }]
+  ],
+  plugins: [
+    ['@babel/plugin-proposal-class-properties', { loose: true }],
+    ['@babel/plugin-proposal-private-methods', { loose: true }],
+    ['@babel/plugin-proposal-private-property-in-object', { loose: true }],
+    '@babel/plugin-syntax-dynamic-import'
+  ]
+}
+
+module.exports = environment

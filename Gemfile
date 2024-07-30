@@ -5,23 +5,24 @@ ruby "3.2.4"
 # Bundle edge Rails instead: gem "rails", github: "rails/rails", branch: "main"
 gem "rails", "~> 7.1.3", ">= 7.1.3.4"
 
-# Gemfile
-gem 'rack-cors'
-
-
 # The original asset pipeline for Rails [https://github.com/rails/sprockets-rails]
 gem "sprockets-rails"
 
 # Use sqlite3 as the database for Active Record
 gem "sqlite3", "~> 1.4"
 
-gem 'webpacker'
-
 # Use the Puma web server [https://github.com/puma/puma]
 gem "puma", ">= 5.0"
+gem 'uglifier', '>= 1.3.0'
+gem 'sass-rails', '>= 5'
+gem 'pg', '~> 1.2'
+# gem 'dotenv-rails', groups: [:development, :test]
+gem 'rspec-rails', '~> 5.0.0'
+
+
 
 # Use JavaScript with ESM import maps [https://github.com/rails/importmap-rails]
-gem "importmap-rails"
+# gem "importmap-rails"
 
 # Hotwire's SPA-like page accelerator [https://turbo.hotwired.dev]
 gem "turbo-rails"
@@ -31,9 +32,17 @@ gem "stimulus-rails"
 
 # Build JSON APIs with ease [https://github.com/rails/jbuilder]
 gem "jbuilder"
+gem 'bcrypt', '~> 3.1.7'
+gem 'bootstrap', '~> 5.0.0'
 
-gem 'dotenv-rails', groups: [:development, :test]
+# Use Redis for caching [
+gem 'active_model_serializers'
 
+# gem 'rack-cors'
+
+
+# for google active storage
+gem "google-cloud-storage", "~> 1.11", require: false
 
 # Use Redis adapter to run Action Cable in production
 # gem "redis", ">= 4.0.1"
@@ -50,14 +59,22 @@ gem "tzinfo-data", platforms: %i[ windows jruby ]
 # Reduces boot times through caching; required in config/boot.rb
 gem "bootsnap", require: false
 
+gem 'carrierwave', '~> 2.0'
+
+gem 'importmap-rails'
+
+gem 'webpacker'
+
+gem 'rack-cors', :require => 'rack/cors'
+
+
 # Use Active Storage variants [https://guides.rubyonrails.org/active_storage_overview.html#transforming-images]
 # gem "image_processing", "~> 1.2"
 
 group :development, :test do
+  gem 'factory_bot_rails'
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
   gem "debug", platforms: %i[ mri windows ]
-  gem 'rspec-rails'
-  gem 'cucumber'
 end
 
 group :development do
@@ -73,9 +90,14 @@ end
 
 group :test do
   # Use system testing [https://guides.rubyonrails.org/testing.html#system-testing]
+  gem 'byebug'
   gem "capybara"
   gem "selenium-webdriver"
-  gem 'webdrivers'
-  gem 'database_cleaner-active_record'
+  gem 'rspec-mocks'
+  gem 'webmock'
   gem 'cucumber-rails', require: false
+  gem 'database_cleaner'
+  gem 'database_cleaner-active_record'
+  gem 'simplecov'
+  gem 'rails-controller-testing'
 end

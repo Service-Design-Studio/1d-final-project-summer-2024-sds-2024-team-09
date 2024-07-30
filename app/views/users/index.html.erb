@@ -1,0 +1,37 @@
+<h1>All Users</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>ID</th>
+      <th>Name</th>
+      <th>Email</th>
+      <th>Created At</th>
+      <th>Cameras</th>
+      <th>Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @users.each do |user| %>
+      <tr>
+        <td><%= user.id %></td>
+        <td><%= user.username %></td>
+        <td><%= user.email %></td>
+        <td><%= user.created_at %></td>
+        <td>
+            <%= user.cameras.each do |camera| %>
+            <p>
+                Camera Name: <%= camera.camera_name %><br>
+                APP_ID: <%= camera.app_id %><br>
+                TOKEN: <%= camera.token %><br>
+                CHANNEL: <%= camera.channel %><br>
+            </p>
+            <% end %>
+        </td>
+        <td>
+            <%= link_to 'Add Camera', new_user_camera_path(user) %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

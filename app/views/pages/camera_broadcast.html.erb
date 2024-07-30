@@ -1,2 +1,87 @@
-<div id="root"></div>
-<%= javascript_pack_tag 'application' %>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Page</title>
+    <script src="https://download.agora.io/sdk/release/AgoraRTC_N.js"></script>
+</head>
+<body>
+    <div class="container mt-5">
+        <div id="camera-list" class="row">
+            <!-- Camera previews will be dynamically added here -->
+        </div>
+        <div class="mt-4">
+            <h2>Total Streaming Devices: <span id="streaming-count">0</span></h2>
+        </div>
+        
+    </div>
+
+    <script>
+        //const APP_ID = '<%= @user_setting&.app_id || '' %>';
+        //const TOKEN = '<%= @user_setting&.token || '' %>';
+        //const CHANNEL = '<%= @user_setting&.channel || '' %>';
+
+
+        const APP_ID = 'fa3a10495b62421c8f7179b868b65feb';
+        const TOKEN = '007eJxTYFi5If3AnlPhTIW/p928WHz9+qRwVrPVvbm6X+sL/u0+NL9OgSEt0TjR0MDE0jTJzMjEyDDZIs3c0NwyycLMIsnMNC01yXrWjLSGQEYGw4MbGBkZIBDEZ2NISqzMTaxgYAAAgDgjHw==';
+        const CHANNEL = 'baymax';
+
+        let rtc = {
+            client: null,
+            remoteUsers: {},
+            streamingCount: 0,
+            displayCount: 0
+        };
+
+        const updateStreamingCount = () => {
+            document.getElementById('streaming-count').innerText = rtc.streamingCount;
+        };
+
+        const joinChannel = async () => {
+            rtc.client = AgoraRTC.createClient({ mode: "live", codec: "vp8" });
+            await rtc.client.join(APP_ID, CHANNEL, TOKEN, null);
+
+            rtc.client.on("user-published", async (user, mediaType) => {
+                if (mediaType === "video") {
+                    await rtc.client.subscribe(user, mediaType);
+                    const remoteVideoTrack = user.videoTrack;
+
+                    rtc.displayCount++;
+                    const cameraContainer = document.createElement('div');
+                    cameraContainer.classList.add('card', 'mt-4', 'col-md-6');
+                    cameraContainer.id = `camera-${user.uid}`;
+                    cameraContainer.innerHTML = `
+                        <div class="card-body text-center">
+                            <h1 class="card-title">Camera ${rtc.displayCount}</h1>
+                            <div id="camera-${user.uid}-preview" style="width: 320px; height: 240px;"></div>
+                            <p class="card-text">UID: ${user.uid}</p>
+                            <a href="/camera_broadcast" class="btn btn-primary btn-lg">
+                                Watch Live
+                            </a>
+                        </div>
+                    `;
+
+                    document.getElementById('camera-list').appendChild(cameraContainer);
+                    remoteVideoTrack.play(`camera-${user.uid}-preview`, { fit: "contain", muted: false });
+                    rtc.remoteUsers[user.uid] = user;
+                    rtc.streamingCount++;
+                    updateStreamingCount();
+                }
+            });
+
+            rtc.client.on("user-unpublished", (user) => {
+                const cameraContainer = document.getElementById(`camera-${user.uid}`);
+                if (cameraContainer) {
+                    cameraContainer.remove();
+                }
+                delete rtc.remoteUsers[user.uid];
+                rtc.streamingCount--;
+                updateStreamingCount();
+            });
+        };
+
+        joinChannel();
+    </script>
+</body>
+</html>
