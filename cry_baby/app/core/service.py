@@ -159,6 +159,10 @@ class CryBabyService(ports.Service):
                     SHUTDOWN_EVENT.wait(5)  # Wait before checking the directory again
             except KeyboardInterrupt:
                 self.logger.info("Stopping CryBabyService")
+                self.logger.info("Cleaning cry_videos directory")
+                for file in self.cry_video_file_path.iterdir():
+                    if file.suffix == ".webm" or file.suffix == ".mp4":
+                        os.remove(file)
                 self.stop_continuous_evaluation()
                 self.logger.debug("CryBabyService has stopped")
                 SHUTDOWN_EVENT.set()
