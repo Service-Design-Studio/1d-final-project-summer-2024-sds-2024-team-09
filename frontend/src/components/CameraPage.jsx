@@ -1,13 +1,16 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 import AgoraRTC from 'agora-rtc-sdk-ng';
+// import API_BASE_URL from '../../config';
 
+const API_BASE_URL = 'http://localhost:3000';
 const CameraPage = () => {
     const location = useLocation();
     const { cameraData } = location.state || {};
     const navigate = useNavigate();
     console.log('Camera:', cameraData);
     console.log('Camera ID:', cameraData.id);
+    const id = cameraData.id;
 
     const [rtc, setRtc] = useState({
         localAudioTrack: null,
@@ -15,15 +18,36 @@ const CameraPage = () => {
         client: null,
     });
 
+    const [cameraStatus, setCameraStatus] = useState(cameraData?.status || 'Unknown');
     const videoContainerRef = useRef(null);
 
-    // const APP_ID = "fa3a10495b62421c8f7179b868b65feb";
-    // const TOKEN = "007eJxTYDh81K/0eKXgHf/y7pMOZWvb80y/Pb8rpWtT2RoXGzNjjbQCQ1qicaKhgYmlaZKZkYmRYbJFmrmhuWWShZlFkplpWmrS86RVaQ2BjAynmWYzMTJAIIjPxpCUWJmbWMHAAACuxiCe";
-    // const CHANNEL = "baymax";
+    const fetchCameraDetails = async () => {
+        try {
+            const response = await fetch(`${API_BASE_URL}/api/v1/cameras/${id}`);
+            if (response.ok) {
+                const data = await response.json();
+                setCameraStatus(data.status);
+            } else {
+                console.error('Failed to fetch camera details');
+            }
+        } catch (error) {
+            console.error('Error fetching camera details:', error);
+        }
+    };
 
-    const APP_ID = cameraData.app_id;
-    const TOKEN = cameraData.token;
-    const CHANNEL = cameraData.channel;
+    useEffect(() => {
+        const interval = setInterval(fetchCameraDetails, 5000); // Fetch every 5 seconds
+
+        return () => clearInterval(interval); // Cleanup interval on component unmount
+    }, []);
+
+    const APP_ID = "fa3a10495b62421c8f7179b868b65feb";
+    const TOKEN = "007eJxTYFBpFQnaybMr6lRHjW6AyQH17TdNe9b8bv6tMH/pQWYBv5sKDGmJxomGBiaWpklmRiZGhskWaeaG5pZJFmYWSWamaalJbfNXpTUEMjLc/7yciZEBAkF8NoakxMrcxAoGBgBs2CDe";
+    const CHANNEL = "baymax";
+
+    // const APP_ID = cameraData.app_id;
+    // const TOKEN = cameraData.token;
+    // const CHANNEL = cameraData.channel;
 
     console.log('APP_ID:', APP_ID)
     console.log('TOKEN:', TOKEN)
@@ -64,7 +88,32 @@ const CameraPage = () => {
                 videoContainerRef.current.innerHTML = '';
             }
             localVideoTrack.play(videoContainerRef.current);
-            remoteAudioTrack.play();
+            localAudioTrack.play();
+
+            // Camera Go Live!
+            console.log("My ID = ", id);
+            try {
+                const response = await fetch(`${API_BASE_URL}/api/v1/cameras/${id}/go_live`, {
+                    method: 'PATCH',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'Accept': 'application/json',
+                    },
+                });
+
+                if (!response.ok) {
+                    const errorData = await response.json();
+                    setError(errorData.error || 'An error occurred');
+                } else {
+                    const data = await response.json();
+                    console.log("Successful go live")
+                    setStatus(data.status);
+                    setError(null);
+                }
+            } catch (err) {
+                setError('Camera failed to go live');
+            }
+
             console.log('Host joined successfully with UID:', UID);
             setRtc({ client, localAudioTrack, localVideoTrack });
         } catch (error) {
@@ -95,6 +144,28 @@ const CameraPage = () => {
             }
             if (client) {
                 await client.leave();
+            }
+            // Camera Stop Live!
+            try {
+                const response = await fetch(`/api/v1/cameras/${id}/go_not_live`, {
+                    method: 'PATCH',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'Accept': 'application/json',
+                    },
+                });
+
+                if (!response.ok) {
+                    const errorData = await response.json();
+                    setError(errorData.error || 'An error occurred');
+                } else {
+                    const data = await response.json();
+                    console.log("Successful go unlive")
+                    setStatus(data.status);
+                    setError(null);
+                }
+            } catch (err) {
+                setError('An unexpected error occurred');
             }
             console.log('Stream ended successfully!');
         } catch (error) {

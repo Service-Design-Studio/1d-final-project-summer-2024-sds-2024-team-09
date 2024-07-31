@@ -35,6 +35,26 @@ class Api::V1::CamerasController < ApplicationController
     end
   end
 
+  # PATCH/PUT /cameras/:id/go_live
+  def go_live
+    @camera = Camera.find(params[:id])
+    if @camera.go_live!
+      render json: @camera, status: :ok
+    else
+      render json: @camera.errors, status: :unprocessable_entity
+    end
+  end
+
+  # PATCH/PUT /cameras/:id/go_not_live
+  def go_not_live
+    @camera = Camera.find(params[:id])
+    if @camera.go_not_live!
+      render json: @camera, status: :ok
+    else
+      render json: @camera.errors, status: :unprocessable_entity
+    end
+  end
+
   # DELETE /cameras/1
   def destroy
     @camera = Camera.find(params[:id])

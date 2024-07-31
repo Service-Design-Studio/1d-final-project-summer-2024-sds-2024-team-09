@@ -88,7 +88,7 @@ const CameraDetails = () => {
     // const CHANNEL = "baymax";
 
     const APP_ID = cameraData?.app_id;
-    console.log('APP_ID:', APP_ID);
+    console.log('ID:', id);
     const TOKEN = cameraData?.token;
     const CHANNEL = cameraData?.channel;
 
