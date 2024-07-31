@@ -60,6 +60,47 @@ const DeviceNotifs = ({ title, count, camera, onHoverChange }) => {
             if (response.ok) {
                 console.log('Camera Details updated successfully:', data);
                 setShowForm(false);
+
+                // Retrieve the existing data from localStorage
+                const existingData = localStorage.getItem('user-data');
+                console.log('Existing Data:', existingData);
+                let parsedData;
+
+                try {
+                    parsedData = existingData ? JSON.parse(existingData) : null;
+                    console.log("parsedData: ", parsedData);
+                } catch (error) {
+                    console.error('Failed to parse localStorage data:', error);
+                    parsedData = null;
+                }
+
+                // Update the camera details in the parsed data
+                if (parsedData && parsedData.user) {
+                    const cameras = parsedData.user.cameras || [];
+                    console.log("cameras", cameras);
+                    const cameraIndex = cameras.findIndex(c => c.id === camera.id);
+                    console.log("cameraIndex", cameraIndex);
+
+                    if (cameraIndex !== -1) {
+                        console.log("data", data);
+                        let updatedCamera = cameras[cameraIndex];
+                        console.log("camera", updatedCamera);
+                        updatedCamera["camera_name"] = data["camera_name"];
+                        updatedCamera["channel"] = data["channel"];
+                        updatedCamera["app_id"] = data["app_id"];
+                        updatedCamera["token"] = data["token"];
+                        console.log("Updated data", updatedCamera);
+                    } else {
+                        cameras.push(data.camera);
+                    }
+                    console.log("Updated camera information", cameras[cameraIndex]);
+
+                    parsedData.user.cameras = cameras;
+
+                    // Save the updated data back to localStorage
+                    localStorage.setItem('user-data', JSON.stringify(parsedData));
+                    console.log(localStorage.getItem('user-data'));
+                }
             } else {
                 setError(data.errors || 'An error occurred');
             }
@@ -67,6 +108,7 @@ const DeviceNotifs = ({ title, count, camera, onHoverChange }) => {
         } catch (error) {
             setError('Camera Details update failed. Please try again.');
         }
+        location.reload();
 
         console.log({
             name,
@@ -74,6 +116,7 @@ const DeviceNotifs = ({ title, count, camera, onHoverChange }) => {
             channel,
             token,
         });
+
     };
 
     return (

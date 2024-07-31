@@ -86,13 +86,14 @@ const CameraDetails = () => {
 
   useEffect(() => {
 
-    const APP_ID = "d543c7c876734c4a82da72a588edd047";
-    const TOKEN = "007eJxTYOCt4YssUczu3sR24HHbnzPy32/Nm93+9YHfwvyX55eomZkqMKSYmhgnmydbmJuZG5skmyRaGKUkmhslmlpYpKakGJiYL/i9MK0hkJFh2htJRkYGCATx2RiSEitzEysYGAD+UiJB";
-    const CHANNEL = "baymax";
+    // const APP_ID = "fa3a10495b62421c8f7179b868b65feb";
+    // const TOKEN = "007eJxTYDh81K/0eKXgHf/y7pMOZWvb80y/Pb8rpWtT2RoXGzNjjbQCQ1qicaKhgYmlaZKZkYmRYbJFmrmhuWWShZlFkplpWmrS86RVaQ2BjAynmWYzMTJAIIjPxpCUWJmbWMHAAACuxiCe";
+    // const CHANNEL = "baymax";
 
-    // const APP_ID = cameraData?.app_id;
-    // const TOKEN = cameraData?.token;
-    // const CHANNEL = cameraData?.channel;
+    const APP_ID = cameraData?.app_id;
+    console.log('APP_ID:', APP_ID);
+    const TOKEN = cameraData?.token;
+    const CHANNEL = cameraData?.channel;
 
     const joinChannel = async () => {
       const client = AgoraRTC.createClient({
