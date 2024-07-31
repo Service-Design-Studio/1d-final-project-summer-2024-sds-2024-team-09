@@ -55,7 +55,7 @@ def evaluate_from_audio_file(audio_file_path: pathlib.Path, classifier, reposito
 def combine_video(directory: pathlib.Path, start_video: str, end_video: str, logger):
     logger.debug(f"Combining videos from {start_video} to {end_video} in directory {directory}")
     clips = []
-    video_files = sorted(directory.glob('*.webm')) + sorted(directory.glob('*.mp4'))
+    video_files = sorted(directory.glob('*.webm'))
     for file_name in video_files:
         logger.debug(f"Checking file {file_name}")
         if start_video <= file_name.name <= end_video:
@@ -75,15 +75,27 @@ def combine_video(directory: pathlib.Path, start_video: str, end_video: str, log
     return str(output_path)
 
 def send_telegram_message(bot_token: str, chat_id: str, message: str):
-    url = f"https://api.telegram.org/bot{bot_token}/sendMessage?chat_id={chat_id}&text={message}"
-    response = requests.get(url)
+    url = f"https://api.telegram.org/bot{bot_token}/sendMessage"
+    params = {
+        'chat_id': chat_id,
+        'text': message
+    }
+    response = requests.get(url, params=params)
     return response.json()
 
 def send_telegram_video(bot_token: str, chat_id: str, video_path: str, caption: str = ""):
     url = f"https://api.telegram.org/bot{bot_token}/sendVideo"
+    params = {
+        'chat_id': chat_id,
+        'caption': caption
+    }
     with open(video_path, 'rb') as video_file:
-        response = requests.post(url, data={'chat_id': chat_id, 'caption': caption}, files={'video': video_file})
+        response = requests.post(url, data=params, files={'video': video_file})
     return response.json()
 
-send_telegram_message(os.getenv("TELEGRAM_BOT_TOKEN"), os.getenv("TELEGRAM_CHAT_ID"), "Hello from Cry Baby!")
-send_telegram_video(os.getenv("TELEGRAM_BOT_TOKEN"), os.getenv("TELEGRAM_CHAT_ID"), "audio/samples/Baby_Cry_00-4_no_cry.mp4", "Cry detected!")
+
+duration = 10
+start_video = "Baby_Cry_60-64.mp4"
+end_video = "Baby_Cry_60-64.mp4"
+# send_telegram_message(os.getenv("TELEGRAM_BOT_TOKEN"), os.getenv("TELEGRAM_CHAT_ID"), "Hello from Cry Baby!")
+#send_telegram_video(os.getenv("TELEGRAM_BOT_TOKEN"), os.getenv("TELEGRAM_CHAT_ID"), "/home/mike/cry-baby/audio/cry_videos/Baby_Cry_60-64.mp4_to_Baby_Cry_60-64.mp4_combined.mp4",f"Cry Detected 👶🏻 for {duration}secs from {start_video} to {end_video}")
