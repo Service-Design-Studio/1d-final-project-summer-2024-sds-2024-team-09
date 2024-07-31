@@ -1,4 +1,4 @@
-# upload_video.py
+# upload_video_sql.py
 from google.cloud import storage
 from sqlalchemy.orm import Session
 from cry_baby.pkg.upload_video.database import SessionLocal, Video
