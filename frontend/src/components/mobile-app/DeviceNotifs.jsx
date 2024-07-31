@@ -121,22 +121,22 @@ const DeviceNotifs = ({ title, count, camera, onHoverChange }) => {
 
     return (
         <div className="relative">
-            <div className="absolute inset-0 flex p-8 text-black">
+            <div className="absolute inset-0 font-ubuntu flex p-8 text-black">
                 <div className="text-left">
                     <button
                         onClick={() => handleNavigate(camera)}
                     >
-                        <h3 className="text-lg font-bold">{title}</h3>
+                        <h3 className="text-lg font-bold text-white">{title}</h3>
                     </button>
                 </div>
-                <div className={`absolute right-10 mr-12 text-right w-10 h-10 rounded-full ${getCircleStyle(count)}`}>
+                {/* <div className={`absolute right-10 mr-12 text-right w-10 h-10 rounded-full ${getCircleStyle(count)}`}>
                     <div className={" absolute right-3.5 top-1"}>
                         <h3 className="font-bold text-xl">{count} </h3>
                     </div>
-                </div>
+                </div> */}
                 <div className="absolute right-10 top-7 text-right w-10 h-10 rounded-full z-10 mt-1">
                     <button
-                        className="p-2 text-xl text-gray-600 rounded-full hover:bg-gray-200 z-11"
+                        className="p-2 text-xl text-white rounded-full hover:bg-gray-200 z-11"
                         onMouseEnter={() => onHoverChange(true)}
                         onMouseLeave={() => onHoverChange(false)}
                         onClick={handleEditClick}

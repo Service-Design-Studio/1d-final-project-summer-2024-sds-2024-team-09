@@ -9,6 +9,7 @@ function Home() {
 
     const albums = userData?.user?.cameras || [];
     const liveDeviceCount = albums.filter((album) => album.status === 'Live').length;
+    console.log('Albums:', albums);
 
     const [greeting, setGreeting] = useState('');
     const [editingCamera, setEditingCamera] = useState(null);
@@ -121,7 +122,7 @@ function Home() {
 
     return (
         <div className="flex flex-col items-center">
-            <div className="items-center rounded-lg p-6">
+            <div className="items-center rounded-lg p-6 font-ubuntu">
                 <h1 className="text-2xl text-primary font-bold mb-4">{greeting}</h1>
                 <p className="text-lg text-gray-600 mb-6">{liveDeviceCount} Active Device</p>
                 <div>
@@ -135,7 +136,12 @@ function Home() {
                                         <div
                                             key={album.id}
                                             className={`relative rounded-3xl overflow-hidden shadow-lg cursor-pointer`}
-                                            style={{ height: '200px', backgroundImage: `url(${album.image})`, backgroundSize: 'cover', backgroundPosition: 'center' }}
+                                            style={{
+                                                height: '200px',
+                                                backgroundImage: `linear-gradient(to bottom, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url(${album.image_url})`,
+                                                backgroundSize: 'cover',
+                                                backgroundPosition: 'center'
+                                            }}
                                         >
                                             <DeviceNotifs title={album.camera_name} camera={album} />
                                         </div>

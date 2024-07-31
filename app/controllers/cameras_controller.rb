@@ -21,6 +21,6 @@ class CamerasController < ApplicationController
   end
 
   def camera_params
-    params.require(:camera).permit(:camera_name, :app_id, :token, :channel)
+    params.require(:camera).permit(:camera_name, :app_id, :token, :channel, :image_url)
   end
 end

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_07_24_230107) do
+ActiveRecord::Schema[7.1].define(version: 2024_07_31_185555) do
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
     t.string "record_type", null: false
@@ -48,6 +48,7 @@ ActiveRecord::Schema[7.1].define(version: 2024_07_24_230107) do
     t.datetime "updated_at", null: false
     t.string "camera_name"
     t.string "status", default: "Not Live", null: false
+    t.string "image_url"
     t.index ["user_id"], name: "index_cameras_on_user_id"
   end
 

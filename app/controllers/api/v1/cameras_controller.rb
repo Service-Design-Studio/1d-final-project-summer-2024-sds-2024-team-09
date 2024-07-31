@@ -50,6 +50,6 @@ class Api::V1::CamerasController < ApplicationController
 
   # Only allow a list of trusted parameters through.
   def camera_params
-    params.require(:camera).permit(:app_id, :channel, :token, :user_id, :camera_name, :status)
+    params.require(:camera).permit(:app_id, :channel, :token, :user_id, :camera_name, :status, :image_url)
   end
 end
