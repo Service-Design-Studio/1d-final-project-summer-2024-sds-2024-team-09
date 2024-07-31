@@ -40,10 +40,7 @@ const CameraDetails = () => {
 
     mediaRecorder.ondataavailable = (event) => {
       if (event.data.size > 0) {
-        setRtc((prevRtc) => ({
-          ...prevRtc,
-          recordedChunks: [...prevRtc.recordedChunks, event.data],
-        }));
+        rtc.recordedChunks.push(event.data);
       }
     };
 
