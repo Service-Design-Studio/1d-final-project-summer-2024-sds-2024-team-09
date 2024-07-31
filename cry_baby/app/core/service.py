@@ -12,6 +12,7 @@ from moviepy.editor import VideoFileClip, concatenate_videoclips
 from pydub import AudioSegment
 import hexalog.ports
 from telegram import Bot
+from datetime import datetime, timezone, timedelta
 
 from cry_baby.app.core import ports
 from cry_baby.pkg.audio_file_client.core.ports import AudioFileClient
@@ -48,6 +49,8 @@ class CryBabyService(ports.Service):
         self.cry_idle_counter = 0
         self.start_video = ""
         self.end_video = ""
+        self.start_time = ""
+        self.end_time = ""
         self.telegram_bot_token = telegram_bot_token
         self.cry_detection_bot = Bot(token=telegram_bot_token)
         self.telegram_chat_id = telegram_chat_id
@@ -67,8 +70,14 @@ class CryBabyService(ports.Service):
         return combine_video(directory, start_video, end_video, self.logger)
 
     def upload_to_gcs_service(self, combined_video_name):
+        #pdb.set_trace()
         combined_video_path_str = str(self.cry_video_file_path / combined_video_name)
         duration = VideoFileClip(combined_video_path_str).duration
+        
+        self.send_telegram_video(self.telegram_bot_token, 
+                                 self.telegram_chat_id, 
+                                 combined_video_path_str, 
+                                 f"Cry Detected 👶🏻 for {duration}secs from {self.start_time} to {self.end_time}")
         video_metadata = {
             "title": combined_video_name,
             "duration": duration,  # Duration in seconds
@@ -83,6 +92,8 @@ class CryBabyService(ports.Service):
         self.cry_idle_counter = 0
         self.start_video = ""
         self.end_video = ""
+        self.start_time = ""
+        self.end_time = ""
         for file in self.cry_video_file_path.iterdir():
             if file.suffix == ".webm" or file.suffix == ".mp4":
                 os.remove(file)
@@ -91,7 +102,19 @@ class CryBabyService(ports.Service):
         return send_telegram_message(bot, chat_id, message)
     
     def send_telegram_video(self, bot, chat_id, video_path:str, caption:str):
-        return send_telegram_video(bot, chat_id, video_path, caption)
+        if not os.path.exists(video_path):
+            self.logger.error(f"Video file {video_path} does not exist")
+            return {"ok": False, "error": "Video file does not exist"}
+        
+        self.logger.info(f"Sending video {video_path} to Telegram")
+        response = send_telegram_video(bot, chat_id, video_path, caption)
+        
+        # if not response.get('ok'):
+        #     self.logger.error(f"Failed to send video: {response}")
+        # else:
+        #     self.logger.info(f"Video sent successfully: {response}")
+        
+        return response
 
     def continuously_evaluate_from_directory(self):
         """
@@ -100,7 +123,7 @@ class CryBabyService(ports.Service):
         self.logger.info(f"Starting continuous evaluation in directory: {self.video_file_path}")
         while not SHUTDOWN_EVENT.is_set():
             try:
-                video_files = list(sorted(self.video_file_path.glob('*.webm')) + sorted(self.video_file_path.glob('*.mp4')))
+                video_files = list(sorted(self.video_file_path.glob('*.webm')))
                 if video_files:
                     for video in video_files:
                         self.convert_webm_to_wav(video,self.temp_audio_file_path,self.raw_audio_file_path)
@@ -117,9 +140,13 @@ class CryBabyService(ports.Service):
                         if prediction > 0.8:
                             self.cry_idle_counter = 0
                             if self.start_video == "":
-                                self.send_telegram_message(self.telegram_bot_token, self.telegram_chat_id, "Cry Detected!👶🏻")
+                                self.send_telegram_message(self.telegram_bot_token, 
+                                                           self.telegram_chat_id, 
+                                                           "Oh no! 🥲 A cry has been detected at Living Room Camera. Check the crybaby app now to see what's going on!\nhttps://crybaby-uiux-tkzaqm6e7a-as.a.run.app/user")
                                 self.start_video = video.name
+                                self.start_time = datetime.now(timezone.utc)+ timedelta(hours=8)
                             self.end_video = video.name
+                            self.end_time = datetime.now(timezone.utc)+ timedelta(hours=8)
                             shutil.move(str(video), str(self.cry_video_file_path / video.name))
                         if self.cry_idle_counter == 5:
                             combined_video_name = self.combine_video(self.cry_video_file_path, self.start_video, self.end_video)
