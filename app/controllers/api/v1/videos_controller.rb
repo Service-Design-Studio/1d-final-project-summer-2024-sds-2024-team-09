@@ -42,6 +42,7 @@ class Api::V1::VideosController < ApplicationController
 
   # Strong parameters to permit only allowed attributes
   def video_params
+    
     params.require(:video).permit(:title, :file_path, :duration, :is_critical, :user_id)
   end
 end

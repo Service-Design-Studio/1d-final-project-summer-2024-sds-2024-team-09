@@ -41,8 +41,8 @@ const CameraPage = () => {
         return () => clearInterval(interval); // Cleanup interval on component unmount
     }, []);
 
-    const APP_ID = "fa3a10495b62421c8f7179b868b65feb";
-    const TOKEN = "007eJxTYFBpFQnaybMr6lRHjW6AyQH17TdNe9b8bv6tMH/pQWYBv5sKDGmJxomGBiaWpklmRiZGhskWaeaG5pZJFmYWSWamaalJbfNXpTUEMjLc/7yciZEBAkF8NoakxMrcxAoGBgBs2CDe";
+    const APP_ID = "d543c7c876734c4a82da72a588edd047";
+    const TOKEN = '007eJxTYPh3hEHfN8WN6f/kfcrz/V+LP0orM/TRfHjf6+m91G3nL65WYEgxNTFONk+2MDczNzZJNkm0MEpJNDdKNLWwSE1JMTAxr9JfndYQyMigJa/HwsgAgSA+G0NSYmVuYgUDAwC4GiAo';
     const CHANNEL = "baymax";
 
     // const APP_ID = cameraData.app_id;
