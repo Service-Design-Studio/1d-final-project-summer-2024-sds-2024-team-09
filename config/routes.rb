@@ -1,3 +1,4 @@
+
 Rails.application.routes.draw do
   get 'user_settings/new'
   get 'user_settings/create'
@@ -15,10 +16,10 @@ Rails.application.routes.draw do
   get 'camera_broadcast', to: 'pages#camera_broadcast'
   get 'user', to: 'pages#user'
   get 'record', to: 'videos#index'
-  get 'video', to: 'videos#list'
+  get 'video', to: 'videos#list', as: 'video_list'
   get 'history', to: 'videos#history'
   get 'home', to: 'pages#index'
-  get 'video-history', to: 'pages#video_history'
+  get 'video-history', to: 'pages#video_history', as: 'video_history'
 
   namespace :api do
     namespace :v1 do
@@ -28,7 +29,7 @@ Rails.application.routes.draw do
     end
   end
 
-  resources :users, only: [:new, :create, :show, :index] do 
+  resources :users, only: [:new, :create, :show, :index] do
     resources :cameras, only: [:new, :create, :show, :index]
   end
 

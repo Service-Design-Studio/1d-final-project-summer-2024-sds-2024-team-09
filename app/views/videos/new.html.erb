@@ -1,0 +1,12 @@
+<!-- app/views/videos/new.html.erb -->
+
+<% if local_assigns[:error] %>
+  <div class="alert alert-danger">
+    <%= local_assigns[:error] %>
+  </div>
+<% end %>
+
+<!-- Form for creating a new video -->
+<%= form_with model: @video, local: true do |form| %>
+  <!-- form fields here -->
+<% end %>
