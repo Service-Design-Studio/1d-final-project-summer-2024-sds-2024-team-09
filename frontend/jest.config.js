@@ -1,4 +1,3 @@
-// Used to configure Jest
 module.exports = {
     testEnvironment: 'jsdom',
     testEnvironmentOptions: {
@@ -11,5 +10,6 @@ module.exports = {
     transform: {
         '^.+\\.jsx?$': 'babel-jest',
     },
-    moduleFileExtensions: ['js', 'jsx']
+    moduleFileExtensions: ['js', 'jsx'],
+    setupFilesAfterEnv: ['<rootDir>/src/setupTests.js'], // Correctly pointing to setupTests.js
 };
