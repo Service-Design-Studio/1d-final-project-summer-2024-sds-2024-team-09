@@ -17,6 +17,34 @@ const CameraDetails = () => {
     recordedChunks: [],
   });
 
+  const handleUpload = async () => {
+    const videoData = {
+      title: title,
+      file_path: filePath,
+      duration: duration,
+      is_critical: isCritical
+    };
+
+    try {
+      const response = await fetch('http://localhost:3000/api/v1/videos', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({ video: videoData })
+      });
+
+      const result = await response.json();
+      if (response.ok) {
+        console.log('Video uploaded successfully:', result);
+      } else {
+        console.error('Error uploading video:', result);
+      }
+    } catch (error) {
+      console.error('Error:', error);
+    }
+  };
+
   const videoContainerRef = useRef(null);
 
   const startRecording = () => {
@@ -52,15 +80,17 @@ const CameraDetails = () => {
       const dateString = date.toISOString().split('T')[0];
       const timeString = date.toTimeString().split(' ')[0].replace(/:/g, '-');
       const filename = `recording_${dateString}_${timeString}.webm`;
+      console.log("filename ", filename);
+      console.log("url: ", url);
       downloadLink.href = url;
       downloadLink.download = filename;
-      downloadLink.style.display = 'block';
+      console.log(downloadLink);
       downloadLink.click();
 
       // Refresh the page after a short delay
       setTimeout(() => {
         window.location.reload();
-      }, 10000);
+      }, 50000);
     };
 
     mediaRecorder.start();
