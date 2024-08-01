@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_07_31_185555) do
+ActiveRecord::Schema[7.1].define(version: 2024_08_01_070141) do
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
     t.string "record_type", null: false
@@ -52,20 +52,6 @@ ActiveRecord::Schema[7.1].define(version: 2024_07_31_185555) do
     t.index ["user_id"], name: "index_cameras_on_user_id"
   end
 
-  create_table "signal_data", force: :cascade do |t|
-    t.string "room"
-    t.text "data"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
-  create_table "signaling_messages", force: :cascade do |t|
-    t.string "message_type"
-    t.text "data"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
   create_table "user_settings", force: :cascade do |t|
     t.integer "user_id", null: false
     t.string "app_id"
@@ -96,6 +82,7 @@ ActiveRecord::Schema[7.1].define(version: 2024_07_31_185555) do
     t.datetime "updated_at", null: false
     t.boolean "is_critical", default: false
     t.string "uuid", default: -> { "gen_random_uuid()" }, null: false
+    t.string "thumbnail_url"
     t.index ["user_id"], name: "index_videos_on_user_id"
   end
 

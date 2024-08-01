@@ -53,6 +53,6 @@ Rails.application.routes.draw do
         end
       end
     end      
-    resources :videos, only: [:index, :create, :destroy, :update], param: :uuid
+    resources :videos, only: [:index, :create, :destroy, :update], param: :id
   end
 end
