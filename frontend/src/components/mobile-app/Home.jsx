@@ -2,16 +2,36 @@ import React, { useState, useEffect } from 'react';
 import Navbar from '../Navbar';
 import DeviceNotifs from './DeviceNotifs';
 import { useLocation } from 'react-router-dom';
+import AddCameraForm from './AddCameraForm';
 
 function Home() {
     const location = useLocation();
     const [userData, setUserData] = useState(location.state?.userData || JSON.parse(localStorage.getItem('user-data')));
 
+    useEffect(() => {
+        // Define an async function to fetch user data
+        const fetchUserData = async () => {
+            try {
+                const response = await axios.get('/api/v1/users/2'); // Replace with the correct endpoint and ID
+                const fetchedData = response.data;
+                setUserData(fetchedData);
+                localStorage.setItem('user-data', JSON.stringify(fetchedData)); // Store user data in localStorage
+            } catch (error) {
+                console.error('Error fetching user data:', error);
+            }
+        };
+
+        fetchUserData();
+    }, []); // Empty dependency array ensures this effect runs only once on mount
+
+
     const albums = userData?.user?.cameras || [];
     const liveDeviceCount = albums.filter((album) => album.status === 'Live').length;
+    console.log('Albums:', albums);
 
     const [greeting, setGreeting] = useState('');
     const [editingCamera, setEditingCamera] = useState(null);
+    const [isAddingCamera, setIsAddingCamera] = useState(false);
 
     const handleSave = (updatedCamera) => {
         const updatedAlbums = albums.map((camera) =>
@@ -29,6 +49,11 @@ function Home() {
 
     const handleCancel = () => {
         setEditingCamera(null);
+        setIsAddingCamera(false);
+    };
+
+    const openAddCameraForm = () => {
+        setIsAddingCamera(true);
     };
 
     const CameraSettingsForm = ({ camera, onSave, onCancel }) => {
@@ -36,6 +61,7 @@ function Home() {
         const [appId, setAppId] = useState(camera.app_id || '');
         const [channel, setChannel] = useState(camera.channel || '');
         const [token, setToken] = useState(camera.token || '');
+        const [imageLink, setImageLink] = useState(camera.image_url || '');
         const [isOnline, setIsOnline] = useState(camera.status === 'Live');
 
         const handleSubmit = (e) => {
@@ -86,6 +112,15 @@ function Home() {
                                 onChange={(e) => setToken(e.target.value)}
                             />
                         </div>
+
+                        <div>
+                            <label>Image Link</label>
+                            <input
+                                type="text"
+                                value={imageLink}
+                                onChange={(e) => setImageLink(e.target.value)}
+                            />
+                        </div>
                         <div>
                             <label>Status</label>
                             <label className="toggle-switch">
@@ -97,7 +132,6 @@ function Home() {
                                 <span className="slider"></span>
                             </label>
                         </div>
-
                         <div className="form-buttons">
                             <button type="submit">Save</button>
                             <button type="button" onClick={onCancel}>Cancel</button>
@@ -121,9 +155,17 @@ function Home() {
 
     return (
         <div className="flex flex-col items-center">
-            <div className="items-center rounded-lg p-6">
+            <div className="items-center rounded-lg p-6 font-ubuntu">
                 <h1 className="text-2xl text-primary font-bold mb-4">{greeting}</h1>
-                <p className="text-lg text-gray-600 mb-6">{liveDeviceCount} Active Device</p>
+                <div className="flex items-center mb-6 justify-between">
+                    <p className="text-lg text-gray-600 mr-4">{liveDeviceCount} Active Device</p>
+                    <button
+                        onClick={openAddCameraForm}
+                        className="btn btn-primary text-white font-semibold rounded-lg shadow-md hover:bg-primary-700 focus:outline-none focus:ring-2 focus:ring-blue-400 focus:ring-opacity-75"
+                    >
+                        Add Camera
+                    </button>
+                </div>
                 <div>
                     {['Live', 'Not Live'].map((status) => (
                         <div key={status} className="mb-8">
@@ -135,7 +177,12 @@ function Home() {
                                         <div
                                             key={album.id}
                                             className={`relative rounded-3xl overflow-hidden shadow-lg cursor-pointer`}
-                                            style={{ height: '200px', backgroundImage: `url(${album.image})`, backgroundSize: 'cover', backgroundPosition: 'center' }}
+                                            style={{
+                                                height: '200px',
+                                                backgroundImage: `linear-gradient(to bottom, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url(${album.image_url})`,
+                                                backgroundSize: 'cover',
+                                                backgroundPosition: 'center'
+                                            }}
                                         >
                                             <DeviceNotifs title={album.camera_name} camera={album} />
                                         </div>
@@ -148,6 +195,13 @@ function Home() {
             {editingCamera && (
                 <CameraSettingsForm
                     camera={editingCamera}
+                    onSave={handleSave}
+                    onCancel={handleCancel}
+                    className="z-10"
+                />
+            )}
+            {isAddingCamera && (
+                <AddCameraForm
                     onSave={handleSave}
                     onCancel={handleCancel}
                     className="z-10"

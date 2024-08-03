@@ -1,13 +1,16 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 import AgoraRTC from 'agora-rtc-sdk-ng';
+// import API_BASE_URL from '../../config';
 
+const API_BASE_URL = 'http://localhost:3000';
 const CameraPage = () => {
     const location = useLocation();
     const { cameraData } = location.state || {};
     const navigate = useNavigate();
     console.log('Camera:', cameraData);
     console.log('Camera ID:', cameraData.id);
+    const id = cameraData.id;
 
     const [rtc, setRtc] = useState({
         localAudioTrack: null,
@@ -15,10 +18,31 @@ const CameraPage = () => {
         client: null,
     });
 
+    const [cameraStatus, setCameraStatus] = useState(cameraData?.status || 'Unknown');
     const videoContainerRef = useRef(null);
 
+    const fetchCameraDetails = async () => {
+        try {
+            const response = await fetch(`${API_BASE_URL}/api/v1/cameras/${id}`);
+            if (response.ok) {
+                const data = await response.json();
+                setCameraStatus(data.status);
+            } else {
+                console.error('Failed to fetch camera details');
+            }
+        } catch (error) {
+            console.error('Error fetching camera details:', error);
+        }
+    };
+
+    useEffect(() => {
+        const interval = setInterval(fetchCameraDetails, 5000); // Fetch every 5 seconds
+
+        return () => clearInterval(interval); // Cleanup interval on component unmount
+    }, []);
+
     const APP_ID = "d543c7c876734c4a82da72a588edd047";
-    const TOKEN = "007eJxTYOCt4YssUczu3sR24HHbnzPy32/Nm93+9YHfwvyX55eomZkqMKSYmhgnmydbmJuZG5skmyRaGKUkmhslmlpYpKakGJiYL/i9MK0hkJFh2htJRkYGCATx2RiSEitzEysYGAD+UiJB";
+    const TOKEN = '007eJxTYDgn6XW/bEH6yZVbzil8W7L/iUB2YuWmNuPr99atfhz4zOGFAkOKqYlxsnmyhbmZubFJskmihVFKorlRoqmFRWpKioGJuezkNWkNgYwMv0wLWBgZIBDEZ2NISqzMTaxgYAAAkagjYg==';
     const CHANNEL = "baymax";
 
     // const APP_ID = cameraData.app_id;
@@ -64,9 +88,33 @@ const CameraPage = () => {
                 videoContainerRef.current.innerHTML = '';
             }
             localVideoTrack.play(videoContainerRef.current);
-            remoteAudioTrack.play();
-            console.log('Host joined successfully with UID:', UID);
+            localAudioTrack.play();
 
+            // Camera Go Live!
+            console.log("My ID = ", id);
+            try {
+                const response = await fetch(`${API_BASE_URL}/api/v1/cameras/${id}/go_live`, {
+                    method: 'PATCH',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'Accept': 'application/json',
+                    },
+                });
+
+                if (!response.ok) {
+                    const errorData = await response.json();
+                    setError(errorData.error || 'An error occurred');
+                } else {
+                    const data = await response.json();
+                    console.log("Successful go live")
+                    setStatus(data.status);
+                    setError(null);
+                }
+            } catch (err) {
+                setError('Camera failed to go live');
+            }
+
+            console.log('Host joined successfully with UID:', UID);
             setRtc({ client, localAudioTrack, localVideoTrack });
         } catch (error) {
             console.error('Failed to join as host:', error);
@@ -96,6 +144,28 @@ const CameraPage = () => {
             }
             if (client) {
                 await client.leave();
+            }
+            // Camera Stop Live!
+            try {
+                const response = await fetch(`/api/v1/cameras/${id}/go_not_live`, {
+                    method: 'PATCH',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'Accept': 'application/json',
+                    },
+                });
+
+                if (!response.ok) {
+                    const errorData = await response.json();
+                    setError(errorData.error || 'An error occurred');
+                } else {
+                    const data = await response.json();
+                    console.log("Successful go unlive")
+                    setStatus(data.status);
+                    setError(null);
+                }
+            } catch (err) {
+                setError('An unexpected error occurred');
             }
             console.log('Stream ended successfully!');
         } catch (error) {
@@ -141,15 +211,15 @@ const CameraPage = () => {
                     {/* This will be replaced by the actual video player */}
                     <p className="text-gray-500">Video Player</p>
                 </div>
-                <div className="mt-8 flex justify-between">
+                <div className="mt-8 px-32 flex justify-between">
                     <button
-                        className="px-10 py-2 bg-blue-500 text-white font-semibold rounded-lg shadow-md hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-400 focus:ring-opacity-75"
+                        className="px-10 py-2 btn btn-primary text-white font-semibold rounded-lg shadow-md hover:bg-primary-700 focus:outline-none focus:ring-2 focus:ring-blue-400 focus:ring-opacity-75"
                         onClick={handleJoinAsHost}
                     >
                         Watch Live
                     </button>
                     <button
-                        className="px-10 py-2 bg-red-500 text-white font-semibold rounded-lg shadow-md hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-red-400 focus:ring-opacity-75"
+                        className="px-10 py-2 btn-secondary btn text-white font-semibold rounded-lg shadow-md hover:bg-secondary-700 focus:outline-none focus:ring-2 focus:ring-red-400 focus:ring-opacity-75"
                         onClick={endStream}
                     >
                         Leave

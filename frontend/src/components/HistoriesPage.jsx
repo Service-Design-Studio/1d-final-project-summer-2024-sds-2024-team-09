@@ -95,6 +95,16 @@ const HistoriesPage = () => {
                             Sort By: Date ({sortOrder === 'asc' ? 'Ascending' : 'Descending'})
                         </button>
                     </div>
+
+                    {/* Notification Bar for No Videos */}
+                    {videos.length === 0 && (
+                        <div className="bg-yellow-100 border border-yellow-400 text-yellow-700 px-4 py-3 rounded mb-4">
+                            <strong className="font-bold">No videos available.</strong>
+                            <span className="block sm:inline"> Try setting up the camera and use it for a little bit.</span>
+                        </div>
+                    )}
+
+
                     {sortVideos.map(video => (
                         <div key={video.id} className="mb-4">
                             <HistoryItem

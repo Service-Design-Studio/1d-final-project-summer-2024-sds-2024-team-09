@@ -30,7 +30,7 @@ function CameraSelectionPage() {
                 {cameras.map((camera) => (
                     <div key={camera.id} className="text-center carousel-item grid grid-cols-1 mx-4">
                         <img
-                            src="https://i.pinimg.com/736x/cb/b8/59/cbb859fac53e70d017e42d4b54e06861.jpg"
+                            src={camera.image_url}
                             alt={camera.camera_name}
                             className="h-64 w-64 object-cover rounded-lg shadow-md cursor-pointer "
                             onClick={() => handleClick(camera)}

@@ -11,6 +11,19 @@ const ProfilePage = () => {
         localStorage.removeItem('user-data');
         navigate('/user');
     };
+
+    console.log("this is ", localStorage.getItem('user-data'));
+    const jsonString = localStorage.getItem('user-data');
+
+    let dataObject;
+    try {
+        dataObject = JSON.parse(jsonString);
+        console.log(dataObject["user"]["username"]);
+        console.log(typeof dataObject);
+    } catch (error) {
+        console.error("Error parsing JSON:", error);
+    }
+
     return (
         <div className="flex flex-col items-center">
             <div className="items-center rounded-lg p-6">
@@ -23,7 +36,7 @@ const ProfilePage = () => {
                         </div>
                     </div>
 
-                    <h2 className='text-2xl text-primary font-bold flex justify-center p-5'>username</h2>
+                    <h2 className='text-2xl text-primary font-bold flex justify-center p-5'>{dataObject["user"]["username"]}</h2>
 
                     <div className='flex justify-center py-2'>
                         <div class="card w-96 h-24 rounded-xl bg-white shadow rounded-badge">
