@@ -54,6 +54,7 @@ function CameraForm({ onSave, onCancel }) {
                 const data = await response.json();
                 console.log('Success:', data);
                 onSave(data);
+                window.location.reload();
             } else {
                 console.error('Unexpected content type:', response.headers.get('content-type'));
                 throw new Error('Unexpected content type');

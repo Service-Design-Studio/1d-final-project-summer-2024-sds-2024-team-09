@@ -3,16 +3,19 @@ import Navbar from '../Navbar';
 import DeviceNotifs from './DeviceNotifs';
 import { useLocation } from 'react-router-dom';
 import AddCameraForm from './AddCameraForm';
+import config from '../../../config';
+import axios from 'axios';
 
 function Home() {
     const location = useLocation();
     const [userData, setUserData] = useState(location.state?.userData || JSON.parse(localStorage.getItem('user-data')));
+    console.log('User Data:', userData["id"]);
 
     useEffect(() => {
         // Define an async function to fetch user data
         const fetchUserData = async () => {
             try {
-                const response = await axios.get('/api/v1/users/2'); // Replace with the correct endpoint and ID
+                const response = await axios.get(`${config.API_BASE_URL}/api/v1/users/${userData["id"]}`); // Replace with the correct endpoint and ID
                 const fetchedData = response.data;
                 setUserData(fetchedData);
                 localStorage.setItem('user-data', JSON.stringify(fetchedData)); // Store user data in localStorage
