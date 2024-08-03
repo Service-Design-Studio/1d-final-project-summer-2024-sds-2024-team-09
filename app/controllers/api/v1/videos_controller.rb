@@ -10,6 +10,7 @@ class Api::V1::VideosController < ApplicationController
 
   def show
     @video = Video.find(params[:id])
+
     render json: @video
   end 
 
@@ -40,9 +41,12 @@ class Api::V1::VideosController < ApplicationController
     end
   end
 
+  private
+
+  def get_thumbnail
+
   # Strong parameters to permit only allowed attributes
   def video_params
-    
     params.require(:video).permit(:title, :file_path, :duration, :is_critical, :user_id)
   end
 end

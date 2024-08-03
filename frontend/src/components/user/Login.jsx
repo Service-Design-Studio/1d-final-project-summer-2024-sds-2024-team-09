@@ -37,13 +37,18 @@ const Login = ({ setShowLogin }) => {
                 console.log('User logged in successfully:', data);
                 handleNavigate(data);
             } else {
-                setError(data.message);
+                if (response.status === 401) {
+                    setError('Incorrect username or password. Please try again.');
+                } else if (response.status === 404) {
+                    setError('User not found. Please check your credentials and try again.');
+                } else {
+                    setError(data.message || 'An unknown error occurred. Please try again.');
+                }
             }
         } catch (error) {
-            setError('An error occurred. Please try again.');
+            setError('Network error. Please check your connection and try again.');
         }
     }
-
     return (
         <div className="font-ubuntu bg-base-100 w-full max-w-md rounded-lg p-6 py-12 justify-center">
             <button aria-label="close" className="text-left mb-4" onClick={backHome}>
@@ -55,9 +60,9 @@ const Login = ({ setShowLogin }) => {
                 <img src="/logo.png" alt="Illustration" className="w-64 h-64" />
             </div>
             <h2 className="text-3xl font-bold text-primary text-center mb-4">Welcome Back</h2>
-            <p className="font-lato text-lg text-primary text-center mb-6">Log in to your account</p>
+            <p className="font-lato text-lg text-primary text-center mb-3">Log in to your account</p>
             {error && <p className="text-red-500 text-center">{error}</p>}
-            <form onSubmit={handleLogin}>
+            <form onSubmit={handleLogin} className="mt-3">
                 <div className="space-y-4 mx-8">
                     <input
                         type="text"

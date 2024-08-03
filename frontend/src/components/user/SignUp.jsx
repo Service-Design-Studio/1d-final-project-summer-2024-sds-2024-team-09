@@ -17,10 +17,20 @@ const Signup = ({ setShowLogin }) => {
 
     const handleSignup = async (e) => {
         e.preventDefault();
-        if (password !== confirmPassword) {
-            setError('Passwords do not match');
+        setError(null); // Reset any existing error messages
+
+        // Validate that all fields are filled
+        if (!username || !email || !password || !confirmPassword) {
+            setError('All fields are required.');
             return;
         }
+
+        // Validate that passwords match
+        if (password !== confirmPassword) {
+            setError('Passwords do not match.');
+            return;
+        }
+
         try {
             const response = await fetch(`${config.API_BASE_URL}/api/v1/signup`, {
                 method: 'POST',
@@ -48,6 +58,7 @@ const Signup = ({ setShowLogin }) => {
             setError('Sign up failed. Please try again.');
         }
 
+        // Attempt to log in the new user
         try {
             const response = await fetch(`${config.API_BASE_URL}/api/v1/sessions`, {
                 method: 'POST',
@@ -62,10 +73,9 @@ const Signup = ({ setShowLogin }) => {
             });
 
             const data = await response.json();
-            console.log(data);
 
             if (response.ok) {
-                console.log(data);
+                console.log('User logged in successfully:', data);
                 handleNavigate(data);
             } else {
                 setError(data.message);
@@ -87,11 +97,11 @@ const Signup = ({ setShowLogin }) => {
             </div>
 
             <h2 className="text-3xl font-bold text-primary text-center mb-3">Sign Up</h2>
-            <h3 className="text-md text-primary text-center mb-6">Create an account</h3>
+            <h3 className="text-md text-primary text-center mb-3">Create an account</h3>
 
             {error && <p className="text-red-500 text-center">{error}</p>}
 
-            <form onSubmit={handleSignup} className="space-y-4 mx-8">
+            <form onSubmit={handleSignup} className="space-y-4 mx-8 mt-3">
                 <input
                     type="text"
                     placeholder="Username"

@@ -15,7 +15,6 @@ module Api
       videos_with_urls = @videos.map do |video|
         file_path_url = "https://storage.googleapis.com/video-upload-jya/#{video.file_path}"
         thumbnail_url = video.thumbnail_url.present? ? video.thumbnail_url : "https://storage.googleapis.com/video-upload-jya/default_thumbnail.jpg"
-
         {
           id: video.id,
           uuid: video.uuid,
