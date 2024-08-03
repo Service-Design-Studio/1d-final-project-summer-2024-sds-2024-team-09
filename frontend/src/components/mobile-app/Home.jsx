@@ -124,7 +124,15 @@ function Home() {
         <div className="flex flex-col items-center">
             <div className="items-center rounded-lg p-6 font-ubuntu">
                 <h1 className="text-2xl text-primary font-bold mb-4">{greeting}</h1>
-                <p className="text-lg text-gray-600 mb-6">{liveDeviceCount} Active Device</p>
+                <div className="flex items-center mb-6 justify-between">
+                    <p className="text-lg text-gray-600 mr-4">{liveDeviceCount} Active Device</p>
+                    <button
+                        // onClick={handleAddCamera}
+                        className="btn btn-primary text-white font-semibold rounded-lg shadow-md hover:bg-primary-700 focus:outline-none focus:ring-2 focus:ring-blue-400 focus:ring-opacity-75"
+                    >
+                        Add Camera
+                    </button>
+                </div>
                 <div>
                     {['Live', 'Not Live'].map((status) => (
                         <div key={status} className="mb-8">

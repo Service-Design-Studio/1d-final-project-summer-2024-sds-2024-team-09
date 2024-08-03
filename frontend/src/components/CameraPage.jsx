@@ -211,15 +211,15 @@ const CameraPage = () => {
                     {/* This will be replaced by the actual video player */}
                     <p className="text-gray-500">Video Player</p>
                 </div>
-                <div className="mt-8 flex justify-between">
+                <div className="mt-8 px-32 flex justify-between">
                     <button
-                        className="px-10 py-2 bg-blue-500 text-white font-semibold rounded-lg shadow-md hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-400 focus:ring-opacity-75"
+                        className="px-10 py-2 btn btn-primary text-white font-semibold rounded-lg shadow-md hover:bg-primary-700 focus:outline-none focus:ring-2 focus:ring-blue-400 focus:ring-opacity-75"
                         onClick={handleJoinAsHost}
                     >
                         Watch Live
                     </button>
                     <button
-                        className="px-10 py-2 bg-red-500 text-white font-semibold rounded-lg shadow-md hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-red-400 focus:ring-opacity-75"
+                        className="px-10 py-2 btn-secondary btn text-white font-semibold rounded-lg shadow-md hover:bg-secondary-700 focus:outline-none focus:ring-2 focus:ring-red-400 focus:ring-opacity-75"
                         onClick={endStream}
                     >
                         Leave
