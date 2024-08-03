@@ -1,9 +1,7 @@
 import React, { useState } from 'react';
 import config from '../../../config';
-import { waitFor } from '@testing-library/react';
 
 function CameraForm({ onSave, onCancel }) {
-    // State variables for each form input
     const [name, setName] = useState('');
     const [appId, setAppId] = useState('');
     const [channel, setChannel] = useState('');
@@ -12,42 +10,38 @@ function CameraForm({ onSave, onCancel }) {
 
     const userDetails = JSON.parse(localStorage.getItem('user-data'));
     const user_id = userDetails["user"]["id"];
+    console.log("user_id", user_id);
 
-    // Handle form submission
-    async function sendCameraData() {
+    const handleSubmit = async (e) => {
+        e.preventDefault();
+
         const newCameraData = {
-            "camera": {
-                "app_id": appId,
-                "channel": channel,
-                "token": token,
-                "camera_name": name,
-                "user_id": parseInt(localStorage.getItem(user_id), 10),
-                "status": 'Not Live', // Default status for new cameras
-                "image_url": imageLink,
+            camera: {
+                app_id: appId,
+                channel: channel,
+                token: token,
+                camera_name: name,
+                user_id: user_id,
+                status: 'Not Live',
+                image_url: imageLink,
             }
         };
+
         console.log("this is", newCameraData);
+        console.log(newCameraData);
 
         const API_BASE_URL = config['API_BASE_URL'];
+
         try {
             const response = await fetch(`${API_BASE_URL}/api/v1/cameras`, {
-                method: 'PATCH',
+                method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
                 },
-                body: JSON.stringify({
-                    "camera": {
-                        "app_id": appId,
-                        "channel": channel,
-                        "token": token,
-                        "camera_name": name,
-                        "user_id": parseInt(localStorage.getItem(user_id), 10),
-                        "status": 'Not Live', // Default status for new cameras
-                        "image_url": imageLink,
-                    }
-                }),
+                body: JSON.stringify(newCameraData), // Ensure the body is stringified
             });
-            console.log('Response:', response);
+
+            console.log(response);
 
             if (!response.ok) {
                 const errorDetail = await response.json();
@@ -55,8 +49,16 @@ function CameraForm({ onSave, onCancel }) {
                 throw new Error(`HTTP error! status: ${response.status}`);
             }
 
-            const data = await response.json();
-            console.log('Success:', data);
+            // Ensure the response is valid JSON
+            if (response.headers.get('content-type')?.includes('application/json')) {
+                const data = await response.json();
+                console.log('Success:', data);
+                onSave(data);
+            } else {
+                console.error('Unexpected content type:', response.headers.get('content-type'));
+                throw new Error('Unexpected content type');
+            }
+
         } catch (error) {
             console.error('Error:', error);
         }
@@ -66,7 +68,7 @@ function CameraForm({ onSave, onCancel }) {
         <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 z-10">
             <div className="bg-white p-8 rounded-lg shadow-lg">
                 <h2 className="text-2xl font-bold mb-4">Add New Camera</h2>
-                <form onSubmit={sendCameraData}>
+                <form onSubmit={handleSubmit}>
                     <div className="mb-4">
                         <label className="block text-gray-700 text-sm font-bold mb-2">Name</label>
                         <input
@@ -114,9 +116,8 @@ function CameraForm({ onSave, onCancel }) {
                     </div>
                     <div className="flex items-center justify-between">
                         <button
-                            type="button"
+                            type="submit"
                             className="bg-primary hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
-                            onClick={sendCameraData}
                         >
                             Add
                         </button>
