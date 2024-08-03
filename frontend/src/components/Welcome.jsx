@@ -11,7 +11,7 @@ function Welcome() {
                         <a href="/user" className="btn btn-primary btn-md text-white mx-2">User Page</a>
                         <a href="/camlogin" className="btn btn-secondary text-black btn-md mx-2">Camera Page</a>
                         <a href="https://github.com" className="btn btn-secondary text-black btn-md mx-2">Github</a>
-                        <a href="https://your-website.com" className="btn btn-secondary text-black btn-md mx-2">Website</a>
+                        <a href="https://sites.google.com/mymail.sutd.edu.sg/teambaymax/home?authuser=4" className="btn btn-secondary text-black btn-md mx-2">Website</a>
                     </div>
                 </div>
             </div>

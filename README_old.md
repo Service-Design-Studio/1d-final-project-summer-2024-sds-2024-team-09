@@ -1,102 +1,30 @@
-<!-- Improved compatibility of back to top link: See: https://github.com/othneildrew/Best-README-Template/pull/73 -->
-<a id="readme-top"></a>
+# My Rails Project
 
-
-<!-- PROJECT LOGO -->
-<br />
-<div align="center">
-  <a href="https://github.com/github_username/repo_name">
-    <img src="readme_img/logo.png" alt="Logo" width="200" height="200">
-  </a>
-
-<h3 align="center">crybaby</h3>
-
-  <p align="center">
-    project_description
-    <br />
-    <a href="https://sites.google.com/mymail.sutd.edu.sg/teambaymax/home?authuser=4"><strong>Visit our website »</strong></a>
-    <br />
-    <br />
-    <a href="https://youtu.be/L2SNQhx0_Yo">Introduction To Team</a>
-    ·
-    <a href="https://youtu.be/L2SNQhx0_Yo">Product Video</a>
-  </p>
-</div>
-
-
-
-<!-- TABLE OF CONTENTS -->
-<details>
-  <summary>Table of Contents</summary>
-  <ol>
-    <li>
-      <a href="#about-the-project">About The Project</a>
-      <ul>
-        <li><a href="#built-with">Built With</a></li>
-      </ul>
-    </li>
-    <li>
-      <a href="#getting-started">Getting Started</a>
-      <ul>
-        <li><a href="#prerequisites">Prerequisites</a></li>
-        <li><a href="#installation">Installation</a></li>
-      </ul>
-    </li>
-    <li><a href="#usage">Usage</a></li>
-    <li><a href="#roadmap">Roadmap</a></li>
-    <li><a href="#contributing">Contributing</a></li>
-    <li><a href="#license">License</a></li>
-    <li><a href="#contact">Contact</a></li>
-    <li><a href="#acknowledgments">Acknowledgments</a></li>
-  </ol>
-</details>
-
-
-
-<!-- ABOUT THE PROJECT -->
-## About The Project
-
-<p align="center">
-<a href="readme_img/cover_pic.png">
-  <img src="readme_img/cover_pic.png" alt="Product Name Screen Shot" width="640" height="360" />
-</a>
-</p>
-
+## Description
 This project is a web application built with Ruby on Rails. It includes a PostgreSQL database and Docker for containerization. The application is designed to manage tasks, providing features such as user authentication, task creation, and progress tracking.
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
 
+## Table of Contents
+- [Prerequisites](#prerequisites)
+- [Installation](#installation)
+- [Configuration](#configuration)
+- [Usage](#usage)
+  - [User Usage](#user-usage)
+  - [Developer Usage](#developer-usage)
+- [Architecture](#architecture)
+  - [Controllers](#controllers)
+  - [Views](#views)
+  - [Database Schema](#database-schema)
+- [Running Tests](#running-tests)
+- [Deployment](#deployment)
+- [Contributing](#contributing)
+- [License](#license)
+- [Contact Information](#contact-information)
 
-
-### Built With
-
-Frontend:
-
-[![React][React.js]][React-url]
-
-Backend:
-
-[![Rails][Rails]][Rails-url]
-[![Python][Python]][Python-url]
-[![Google Cloud][GoogleCloud]][GoogleCloud-url]
-
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
-
-
-
-<!-- GETTING STARTED -->
-## Getting Started
-
-This is an example of how you may give instructions on setting up your project locally.
-To get a local copy up and running follow these simple example steps.
-
-### Prerequisites
-
+## Prerequisites
 - **Ruby version**: 3.2.4
 - **Rails version**: 7.1.3
 - **Docker version**: 20.10.7
 - **PostgreSQL version**: 13
-
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 ## Key Dependencies
 The project uses several key dependencies, including:
@@ -108,8 +36,6 @@ The project uses several key dependencies, including:
 - Webpacker for managing JavaScript
 - Turbo and Stimulus for modern Rails development
 - need to add pythonnnnnnnnnnnnnnnnnn file
-
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 For a complete list of dependencies, please refer to the `Gemfile` in the project repository.
 
@@ -141,10 +67,12 @@ For a complete list of dependencies, please refer to the `Gemfile` in the projec
     docker-compose up --build
     ```
 
-    <p align="right">(<a href="#readme-top">back to top</a>)</p>
+## Configuration
+Copy the example environment file and edit as needed:
 
+cp .env.example .env
+Open .env in your editor and set the variables
 
-<!-- USAGE EXAMPLES -->
 ## Usage
 
 ### User Usage
@@ -169,7 +97,6 @@ For a complete list of dependencies, please refer to the `Gemfile` in the projec
     ```
    or deploy the program onto a cloud platform.
 
-
 #### Front-end
 The front-end details are still to be confirmed (TBC).!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
@@ -183,9 +110,6 @@ The front-end details are still to be confirmed (TBC).!!!!!!!!!!!!!!!!!!!!!!!!!!
         ```
 2. **Ensure Connectivity**:
     - Verify that all components (backend, AI system, front-end) are properly connected and communicating.
-
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
-
 
 ## Architecture
 
@@ -373,9 +297,6 @@ sprint 4 we are not so sure what else to do since is telegram notification from 
 ## Deployment
 details are still to be confirmed (TBC).!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
-
-
 ## Contributing
 We welcome contributions to our project! To contribute, please follow these steps:
 
@@ -424,49 +345,16 @@ We welcome contributions to our project! To contribute, please follow these step
    - You may be asked to make additional changes or provide more information.
    - Once your pull request is approved, it will be merged into the main branch.
 
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
-
-
 ### Guidelines
 
 - **Code Style**: Follow the coding style guidelines of the project.
 - **Testing**: Ensure your changes pass all tests. Add new tests for your changes if applicable.
 - **Documentation**: Update the documentation to reflect your changes.
 
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
+### Getting Help
 
+If you need help or have questions, please open an issue on GitHub. We are happy to help you get started!
 
-<!-- ROADMAP -->
-## Roadmap
-
-- [ ] Feature 1
-- [ ] Feature 2
-- [ ] Feature 3
-    - [ ] Nested Feature
-
-See the [open issues](https://github.com/github_username/repo_name/issues) for a full list of proposed features (and known issues).
-
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
-
-<!-- CONTRIBUTING -->
-## Contributing
-
-Contributions are what make the open source community such an amazing place to learn, inspire, and create. Any contributions you make are **greatly appreciated**.
-
-If you have a suggestion that would make this better, please fork the repo and create a pull request. You can also simply open an issue with the tag "enhancement".
-Don't forget to give the project a star! Thanks again!
-
-1. Fork the Project
-2. Create your Feature Branch (`git checkout -b feature/AmazingFeature`)
-3. Commit your Changes (`git commit -m 'Add some AmazingFeature'`)
-4. Push to the Branch (`git push origin feature/AmazingFeature`)
-5. Open a Pull Request
-
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
-
-
-
-<!-- LICENSE -->
 ## License
 
 This project is licensed under the CryBaby License. 
@@ -495,23 +383,7 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
-
-
-
-<!-- CONTACT -->
-## Contact
-
-Your Name - [@twitter_handle](https://twitter.com/twitter_handle) - email@email_client.com
-
-Project Link: [https://github.com/github_username/repo_name](https://github.com/github_username/repo_name)
-
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
-
-
-
-<!-- ACKNOWLEDGMENTS -->
-## Acknowledgments
+## Contact Information
 
 For any inquiries, questions, or issues, please feel free to contact our team:
 
@@ -534,34 +406,22 @@ For any inquiries, questions, or issues, please feel free to contact our team:
   - Email: [Tiger_Lim@mymail.sutd.edu.sg]
   - GitHub: [https://github.com/Regitiger]
 
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
+You can also reach out to us via our project's GitHub repository by opening an issue.
+
+[GitHub Repository](https://github.com/Service-Design-Studio)
 
 
 
-<!-- MARKDOWN LINKS & IMAGES -->
-<!-- https://www.markdownguide.org/basic-syntax/#reference-style-links -->
-[contributors-shield]: https://img.shields.io/github/contributors/github_username/repo_name.svg?style=for-the-badge
-[contributors-url]: https://github.com/github_username/repo_name/graphs/contributors
-[forks-shield]: https://img.shields.io/github/forks/github_username/repo_name.svg?style=for-the-badge
-[forks-url]: https://github.com/github_username/repo_name/network/members
-[stars-shield]: https://img.shields.io/github/stars/github_username/repo_name.svg?style=for-the-badge
-[stars-url]: https://github.com/github_username/repo_name/stargazers
-[issues-shield]: https://img.shields.io/github/issues/github_username/repo_name.svg?style=for-the-badge
-[issues-url]: https://github.com/github_username/repo_name/issues
-[license-shield]: https://img.shields.io/github/license/github_username/repo_name.svg?style=for-the-badge
-[license-url]: https://github.com/github_username/repo_name/blob/master/LICENSE.txt
-[linkedin-shield]: https://img.shields.io/badge/-LinkedIn-black.svg?style=for-the-badge&logo=linkedin&colorB=555
-[linkedin-url]: https://linkedin.com/in/linkedin_username
-[product-screenshot]: images/screenshot.png
-[React.js]: https://img.shields.io/badge/-React-61DAFB?logo=react&logoColor=white&style=for-the-badge
-[React-url]: https://reactjs.org/
+<!-- **Video History Page Compilation -**
 
-[Rails]: https://img.shields.io/badge/-Rails-CC0000?logo=ruby-on-rails&logoColor=white&style=for-the-badge
-[Rails-url]: https://rubyonrails.org/
+ • app/views/pages/video_history.html.erb: HTML, CSS and Javascript template for the video history page
+ 
+ • controller/api/videos_controller.rb: controller that handles API requests related to video resources
 
-[Python]: https://img.shields.io/badge/-Python-3776AB?logo=python&logoColor=white&style=for-the-badge
-[Python-url]: https://www.python.org/
+ • public/videos: video files stored here
 
-[GoogleCloud]: https://img.shields.io/badge/-Google%20Cloud-4285F4?logo=google-cloud&logoColor=white&style=for-the-badge
-[GoogleCloud-url]: https://cloud.google.com/
+ • db/seeds.rb: Seed the database with sample videos
+- To add/delete video: Run rails console -> Video.destroy_all -> Run rails db:seed after quitting rails console
+   -->
+
 
