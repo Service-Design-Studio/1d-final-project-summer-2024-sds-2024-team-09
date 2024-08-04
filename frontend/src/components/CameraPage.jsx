@@ -42,7 +42,7 @@ const CameraPage = () => {
     }, []);
 
     const APP_ID = "d543c7c876734c4a82da72a588edd047";
-    const TOKEN = '007eJxTYDgn6XW/bEH6yZVbzil8W7L/iUB2YuWmNuPr99atfhz4zOGFAkOKqYlxsnmyhbmZubFJskmihVFKorlRoqmFRWpKioGJuezkNWkNgYwMv0wLWBgZIBDEZ2NISqzMTaxgYAAAkagjYg==';
+    const TOKEN = '007eJxTYHjwOHWz89LXQVGTdjGs4szvP+PC+u6Z8RueqUya57erS0UqMKSYmhgnmydbmJuZG5skmyRaGKUkmhslmlpYpKakGJiYv2xYn9YQyMjQWPmahZEBAkF8NoakxMrcxAoGBgCguiDB';
     const CHANNEL = "baymax";
 
     // const APP_ID = cameraData.app_id;
