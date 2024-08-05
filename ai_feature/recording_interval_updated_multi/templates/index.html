@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>User Page</title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+  <script src="https://download.agora.io/sdk/release/AgoraRTC_N.js"></script>
+</head>
+<body>
+  <div class="container mt-5">
+    <h1>Video Recording</h1>
+    <div id="camera-list" class="row">
+      <!-- Camera previews will be dynamically added here -->
+    </div>
+    <div class="mt-4">
+      <h2>Total Streaming Devices: <span id="streaming-count">0</span></h2>
+    </div>
+
+    <h2 class="mt-5">Uploaded Videos</h2>
+    <ul>
+      {% for video in videos %}
+        <li>
+          <h3>{{ video }}</h3>
+          <video controls>
+            <source src="{{ url_for('static', filename='uploads/' + video) }}" type="video/mp4">
+            Your browser does not support the video tag.
+          </video>
+        </li>
+      {% endfor %}
+    </ul>
+  </div>
+
+  <script>
+    const APP_ID = 'd543c7c876734c4a82da72a588edd047';
+    const TOKEN = '007eJxTYAjh//7YJMHm+9lnOxT1mcJKHjkbixza+MBmRcik3Z4cpWcUGFJMTYyTzZMtzM3MjU2STRItjFISzY0STS0sUlNSDEzMV3vOS2sIZGQ4OjONhZEBAkF8NoakxMrcxAoGBgB8WyAw';
+    const CHANNEL = 'baymax';
+
+    let rtc = {
+        client: null,
+        remoteUsers: {},
+        streamingCount: 0,
+        displayCount: 0,
+        mediaRecorder: null,
+        recordedChunks: []
+    };
+
+    const updateStreamingCount = () => {
+        document.getElementById('streaming-count').innerText = rtc.streamingCount;
+    };
+
+    const joinChannel = async () => {
+        rtc.client = AgoraRTC.createClient({ mode: "live", codec: "vp8" });
+        await rtc.client.join(APP_ID, CHANNEL, TOKEN, null);
+
+        rtc.client.on("user-published", async (user, mediaType) => {
+            await rtc.client.subscribe(user, mediaType);
+
+            if (mediaType === "video") {
+                const remoteVideoTrack = user.videoTrack;
+                rtc.displayCount++;
+                const cameraContainer = document.createElement('div');
+                cameraContainer.classList.add('card', 'mt-4', 'col-md-6');
+                cameraContainer.id = `camera-${user.uid}`;
+                cameraContainer.innerHTML = `
+                    <div class="card-body text-center">
+                        <h1 class="card-title">Camera ${rtc.displayCount}</h1>
+                        <div id="camera-${user.uid}-preview" style="width: 320px; height: 240px;"></div>
+                        <p class="card-text">UID: ${user.uid}</p>
+                        <a href="/camera_broadcast" class="btn btn-primary btn-lg">
+                            Watch Live
+                        </a>
+                    </div>
+                `;
+
+                document.getElementById('camera-list').appendChild(cameraContainer);
+                remoteVideoTrack.play(`camera-${user.uid}-preview`, { fit: "contain" });
+            }
+
+            if (mediaType === "audio") {
+                const remoteAudioTrack = user.audioTrack;
+                remoteAudioTrack.play();
+            }
+
+            rtc.remoteUsers[user.uid] = user;
+            rtc.streamingCount++;
+            updateStreamingCount();
+        });
+
+        rtc.client.on("user-unpublished", (user) => {
+            const cameraContainer = document.getElementById(`camera-${user.uid}`);
+            if (cameraContainer) {
+                cameraContainer.remove();
+            }
+            delete rtc.remoteUsers[user.uid];
+            rtc.streamingCount--;
+            updateStreamingCount();
+        });
+    };
+
+    const startRecording = () => {
+        const combinedStream = new MediaStream();
+
+        for (let uid in rtc.remoteUsers) {
+            const user = rtc.remoteUsers[uid];
+            if (user.videoTrack) {
+                const videoTrack = user.videoTrack.getMediaStreamTrack();
+                combinedStream.addTrack(videoTrack);
+            }
+            if (user.audioTrack) {
+                const audioTrack = user.audioTrack.getMediaStreamTrack();
+                combinedStream.addTrack(audioTrack);
+            }
+        }
+
+        rtc.mediaRecorder = new MediaRecorder(combinedStream, {
+            mimeType: 'video/webm;codecs=vp9'
+        });
+
+        rtc.mediaRecorder.ondataavailable = (event) => {
+            if (event.data.size > 0) {
+                rtc.recordedChunks.push(event.data);
+            }
+        };
+
+        rtc.mediaRecorder.onstop = async () => {
+            const blob = new Blob(rtc.recordedChunks, { type: 'video/webm' });
+            const formData = new FormData();
+            formData.append('video', blob, `recording_${new Date().toISOString().replace(/[:.]/g, '-')}.webm`);
+            rtc.recordedChunks = [];
+
+            await fetch('/upload', {
+                method: 'POST',
+                body: formData
+            });
+
+            // Optionally, refresh the page after a short delay
+            setTimeout(() => {
+                window.location.reload();
+            }, 1000);
+        };
+
+        rtc.mediaRecorder.start();
+    };
+
+    const stopRecording = () => {
+        rtc.mediaRecorder.stop();
+    };
+
+    const automateRecording = () => {
+        setInterval(() => {
+            if (rtc.mediaRecorder && rtc.mediaRecorder.state === 'recording') {
+                stopRecording();
+            }
+            startRecording();
+        }, 5000);  // 10 seconds interval
+    };
+
+    document.addEventListener('DOMContentLoaded', (event) => {
+        joinChannel();
+        automateRecording();
+    });
+  </script>
+</body>
+</html>

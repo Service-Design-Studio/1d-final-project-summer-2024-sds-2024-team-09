@@ -1,0 +1,10 @@
+.git
+.idea
+__pycache__
+*.wav
+.venv
+.pytest_cache
+.env
+*.csv
+cry_baby.json
+jya-keyfile.json
