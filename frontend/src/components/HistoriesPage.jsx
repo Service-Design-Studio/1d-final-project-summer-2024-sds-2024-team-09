@@ -25,7 +25,9 @@ const HistoriesPage = () => {
             
             axios.get(`${config.API_BASE_URL}/api/v1/videos?user_id=${userId}`)
                 .then(response => {
-                    setVideos(response.data); // Set the fetched videos directly
+                    const filteredVideos = response.data.filter(video => video.user_id === userId);
+                    console.log('Filtered videos:', filteredVideos);
+                    setVideos(filteredVideos);
                 })
                 .catch(error => {
                     console.error('There was an error fetching the videos!', error);
