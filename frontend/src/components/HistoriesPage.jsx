@@ -12,10 +12,11 @@ const HistoriesPage = () => {
     const [currentVideo, setCurrentVideo] = useState(null);
     const [editedDetails, setEditedDetails] = useState({ title: '', file_path: '', duration: '', is_critical: false, user_id: '' });
 
-    console.log(localStorage.getItem('user-data'));
+    // console.log(localStorage.getItem('user-data'));
 
     useEffect(() => {
-        axios.get(`${config.API_BASE_URL}/api/v1/videos`)
+        const userId = localStorage.getItem('user-data') ? JSON.parse(localStorage.getItem('user-data')).id : null;
+        axios.get(`${config.API_BASE_URL}/api/v1/videos?user_id=${userId}`)
             .then(response => {
                 setVideos(response.data);
             })
