@@ -1,6 +1,8 @@
 import React, { useEffect, useRef, useState } from 'react';
 import AgoraRTC, { AudienceLatencyLevelType } from 'agora-rtc-sdk-ng';
 import { useLocation, useParams, useNavigate } from 'react-router-dom';
+import config from '../../../config';
+
 
 const CameraDetails = () => {
   const { id } = useParams();
@@ -45,7 +47,7 @@ const CameraDetails = () => {
         }
       };
 
-      mediaRecorder.onstop = () => {
+      mediaRecorder.onstop = async () => {
         const blob = new Blob(rtc.recordedChunks, { type: 'video/webm' });
         const url = URL.createObjectURL(blob);
         const downloadLink = document.getElementById('download-link');
@@ -59,6 +61,26 @@ const CameraDetails = () => {
         downloadLink.download = filename;
         console.log(downloadLink);
         downloadLink.click();
+
+        const formData = new FormData();
+        formData.append('video[title]', `Recording ${new Date().toLocaleString()}`);
+        formData.append('video[file]', blob, `recording_${new Date().toISOString().replace(/[:.]/g, '-')}.webm`);
+
+            // Print formData contents
+        for (let [key, value] of formData.entries()) {
+            console.log(`${key}: ${value}`);
+        }
+
+        // Get CSRF token
+        const token = document.querySelector('meta[name="csrf-token"]').getAttribute('content');
+        
+        await fetch(`${config.API_BASE_URL}/api/videos/`, {
+            method: 'POST',
+            headers: {
+                'X-CSRF-Token': token
+            },
+            body: formData
+        });
 
         setTimeout(() => {
           window.location.reload();

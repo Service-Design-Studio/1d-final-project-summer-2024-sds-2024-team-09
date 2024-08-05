@@ -6,6 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>crybaby</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
+    <meta name="csrf-param" content="<%= request_forgery_protection_token %>">
+    <meta name="csrf-token" content="<%= form_authenticity_token %>">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="icon" href="./public/favicon.ico" type="image/x-icon">
 

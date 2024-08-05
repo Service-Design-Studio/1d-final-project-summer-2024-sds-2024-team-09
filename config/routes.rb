@@ -28,6 +28,11 @@ Rails.application.routes.draw do
     end
   end
 
+  namespace :api do
+    post 'api', to: 'videos#upload_to_gcs'
+  end
+  
+
   resources :users, only: [:new, :create, :show, :index] do 
     resources :cameras, only: [:new, :create, :show, :index]
   end
