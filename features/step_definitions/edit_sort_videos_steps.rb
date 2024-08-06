@@ -1,6 +1,6 @@
-Given('a video user exists and is logged in for editing and sorting') do
-  @user = FactoryBot.create(:user)
-  login_as(@user)
+Given('a video user exists and is logged in') do
+  @user = FactoryBot.create(:user, password: 'password', password_confirmation: 'password')
+  login_as(@user, scope: :user)
 end
 
 Given('a video with the title {string} and duration {string} exists') do |title, duration|

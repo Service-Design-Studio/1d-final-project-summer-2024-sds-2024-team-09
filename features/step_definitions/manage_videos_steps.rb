@@ -1,6 +1,6 @@
 Given('a video user exists and is logged in') do
   @user = FactoryBot.create(:user, password: 'password', password_confirmation: 'password')
-  log_in(@user)
+  login_as(@user, scope: :user)
 end
 
 When('a new video with the title {string} and duration {string} is stored') do |title, duration|
