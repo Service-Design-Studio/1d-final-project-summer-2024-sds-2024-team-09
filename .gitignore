@@ -34,6 +34,8 @@ gcs.keyfile
 /node_modules
 /public/assets
 frontend/google-cloud-sdk/
+agora-monitoring/node_modules/
+my-telegram-notifier/node_modules/
 
 # Ignore master key for decrypting credentials and more.
 /config/master.key

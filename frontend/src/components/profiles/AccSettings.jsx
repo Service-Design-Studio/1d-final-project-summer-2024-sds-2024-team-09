@@ -36,7 +36,7 @@ const AccSettings = () => {
                             <input type={passwordVisible ? "text" : "password"} placeholder="Password"
                                 className="input input-ghost w-full bg-transparent focus:outline-none focus:border-none font-lato font-regular text-xl placeholder-primary" />
                             <svg xmlns="http://www.w3.org/2000/svg" width="19" height="13" viewBox="0 0 19 13" fill="none"
-                                onClick={togglePasswordVisibility} className="cursor-pointer">
+                                onClick={togglePasswordVisibility} className="cursor-pointer" data-testid="toggle-visibility">
                                 <path fill="#C3C6CF"
                                     d={
                                         passwordVisible
@@ -58,19 +58,19 @@ const AccSettings = () => {
                         <h1 className="text-2xl text-primary font-bold mb-4 px-4 text-left">Change your Password</h1>
                         
                         <input type="text" placeholder="Current Password" 
-                        class="input w-full max-w shadow focus:shadow shadow-neutral focus:shadow-neutral font-lato text-lg font-normal gap-4
+                        className="input w-full max-w shadow focus:shadow shadow-neutral focus:shadow-neutral font-lato text-lg font-normal gap-4
                         bg-white focus:outline-none border-secondary-content focus:border-secondary-content"/>
                         
                         <div className='py-2'></div>
 
                         <input type="text" placeholder="New Password" 
-                        class="input w-full max-w shadow focus:shadow shadow-neutral focus:shadow-neutral font-lato text-lg font-normal
+                        className="input w-full max-w shadow focus:shadow shadow-neutral focus:shadow-neutral font-lato text-lg font-normal
                         bg-white focus:outline-none border-secondary-content focus:border-secondary-content"/>
 
                         <div className='py-2'></div>
 
                         <input type="text" placeholder="Retype Password" 
-                        class="input w-full max-w shadow focus:shadow shadow-neutral focus:shadow-neutral font-lato text-lg font-normal
+                        className="input w-full max-w shadow focus:shadow shadow-neutral focus:shadow-neutral font-lato text-lg font-normal
                         bg-white focus:outline-none border-secondary-content focus:border-secondary-content"/>
 
                         <div className='py-4'></div>
