@@ -26,7 +26,7 @@ const ProfilePage = () => {
 
     return (
         <div className="flex flex-col items-center">
-            <div className="items-center rounded-lg p-6">
+            <div className="items-center rounded-lg">
                 <div className="font-ubuntu p-4 py-8 flex flex-col h-screen">
                     <h1 className="text-2xl text-primary font-bold mb-4">Profile Page</h1>
 
