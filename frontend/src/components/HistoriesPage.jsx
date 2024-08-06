@@ -11,20 +11,36 @@ const HistoriesPage = () => {
     const [modalIsOpen, setModalIsOpen] = useState(false);
     const [currentVideo, setCurrentVideo] = useState(null);
     const [editedDetails, setEditedDetails] = useState({ title: '', file_path: '', duration: '', is_critical: false, user_id: '' });
-
-    console.log(localStorage.getItem('user-data'));
+    const [userId, setUserId] = useState(null);
 
     useEffect(() => {
-        axios.get(`${config.API_BASE_URL}/api/v1/videos`)
-            .then(response => {
-                setVideos(response.data);
-            })
-            .catch(error => {
-                console.error('There was an error fetching the videos!', error);
-            });
+        const userData = localStorage.getItem('user-data');
+        if (userData) {
+            const parsedUserData = JSON.parse(userData);
+            const userId = parsedUserData.user.id; // Access the nested user object
+            setUserId(userId);
+
+            console.log('Parsed user data:', parsedUserData); // Debugging line
+            console.log('User ID:', userId); // Debugging line
+            
+            axios.get(`${config.API_BASE_URL}/api/v1/videos?user_id=${userId}`)
+                .then(response => {
+                    const filteredVideos = response.data.filter(video => video.user_id === userId);
+                    console.log('Filtered videos:', filteredVideos);
+                    setVideos(filteredVideos);
+                })
+                .catch(error => {
+                    console.error('There was an error fetching the videos!', error);
+                });
+        } else {
+            console.error('User ID not found in local storage.');
+        }
     }, []);
 
-    const sortVideos = [...videos].sort((a, b) => {
+    // Filter videos to match the current user ID
+    const filteredVideos = videos.filter(video => video.user_id === userId);
+
+    const sortVideos = [...filteredVideos].sort((a, b) => {
         const dateA = new Date(a.created_at);
         const dateB = new Date(b.created_at);
         return sortOrder === 'asc' ? dateA - dateB : dateB - dateA;
