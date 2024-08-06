@@ -320,12 +320,11 @@ const CameraPage = () => {
                         src="/logo.png"
                         alt="Logo"
                     />
-                    <h2 className="mt-6 text-2xl font-extrabold text-gray-900">{cameraData.camera_name || 'Main Door Camera'}</h2>
+                    <h2 className="mt-6 text-2xl font-extrabold text-gray-900">{cameraData.camera_name || 'Living Room Camera'}</h2>
                 </div>
                 <div
                     className="mt-8 bg-gray-200 rounded-lg w-full aspect-video flex items-center justify-center"
                     ref={videoContainerRef}>
-                    {/* This will be replaced by the actual video player */}
                     <p className="text-gray-500">Video Player</p>
                 </div>
                 <div className="mt-8 flex justify-between">

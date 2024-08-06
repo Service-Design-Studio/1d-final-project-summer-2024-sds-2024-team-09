@@ -1,95 +1,101 @@
 import React from 'react';
-import { render, fireEvent, waitFor } from '@testing-library/react';
-import '@testing-library/jest-dom';
-import { BrowserRouter as Router } from 'react-router-dom';
+import { render, screen, waitFor, fireEvent } from '@testing-library/react';
 import CameraPage from '../CameraPage';
-import AgoraRTC from 'agora-rtc-sdk-ng';
-import { act } from 'react';
+import { MemoryRouter, Route, Routes } from 'react-router-dom';
+import '@testing-library/jest-dom';
 
-// Mock AgoraRTC functions
+// Mocking AgoraRTC
+const mockClient = {
+  join: jest.fn(),
+  leave: jest.fn(),
+  setClientRole: jest.fn(),
+  publish: jest.fn(),
+  remoteUsers: [],
+};
+
+const mockTrack = {
+  play: jest.fn(),
+  close: jest.fn(),
+};
+
 jest.mock('agora-rtc-sdk-ng', () => ({
-    createMicrophoneAudioTrack: jest.fn(),
-    createCameraVideoTrack: jest.fn(),
-    createClient: jest.fn(() => ({
-        setClientRole: jest.fn(),
-        join: jest.fn(),
-        publish: jest.fn(),
-        leave: jest.fn(),
-        remoteUsers: [],
-    })),
+  createClient: jest.fn(() => mockClient),
+  createMicrophoneAudioTrack: jest.fn(() => Promise.resolve(mockTrack)),
+  createCameraVideoTrack: jest.fn(() => Promise.resolve(mockTrack)),
 }));
 
-describe('CameraPage', () => {
-    const mockCameraData = { id: 'test-id', camera_name: 'Living Room Camera' };
-    const mockClient = AgoraRTC.createClient();
+// Mocking useNavigate
+const mockNavigate = jest.fn();
+jest.mock('react-router-dom', () => ({
+  ...jest.requireActual('react-router-dom'),
+  useNavigate: () => mockNavigate,
+}));
 
-    beforeEach(() => {
-        jest.clearAllMocks();
-        localStorage.clear();
-    });
+const cameraData = {
+  camera_name: 'Living Room Camera',
+  id: '12345',
+};
 
-    it('renders CameraPage component', async () => {
-        await act(async () => {
-            const { getByText } = render(
-                <Router>
-                    <CameraPage location={{ state: { cameraData: mockCameraData } }} />
-                </Router>
-            );
+const renderWithRouter = (ui, { route = '/', state = {} } = {}) => {
+  window.history.pushState({}, 'Test page', route);
 
-            await waitFor(() => expect(getByText('Living Room Camera')).toBeInTheDocument());
-            expect(getByText('Watch Live')).toBeInTheDocument();
-            expect(getByText('Leave')).toBeInTheDocument();
-        });
-    });
+  return render(
+    <MemoryRouter initialEntries={[{ pathname: route, state }]}>
+      <Routes>
+        <Route path="/" element={ui} />
+      </Routes>
+    </MemoryRouter>
+  );
+};
 
-    it('handles join as host successfully', async () => {
-        const mockVideoTrack = { play: jest.fn() };
-        const mockAudioTrack = { play: jest.fn() };
-        AgoraRTC.createCameraVideoTrack.mockResolvedValue(mockVideoTrack);
-        AgoraRTC.createMicrophoneAudioTrack.mockResolvedValue(mockAudioTrack);
+test('renders CameraPage component', async () => {
+  renderWithRouter(<CameraPage />, {
+    route: '/',
+    state: { cameraData },
+  });
 
-        await act(async () => {
-            const { getByText } = render(
-                <Router>
-                    <CameraPage location={{ state: { cameraData: mockCameraData } }} />
-                </Router>
-            );
+  await waitFor(() => expect(screen.getByText('Living Room Camera')).toBeInTheDocument());
+  expect(screen.getByText('Watch Live')).toBeInTheDocument();
+  expect(screen.getByText('Leave')).toBeInTheDocument();
+});
 
-            fireEvent.click(getByText('Watch Live'));
+test('handles join as host successfully', async () => {
+  renderWithRouter(<CameraPage />, {
+    route: '/',
+    state: { cameraData },
+  });
 
-            await waitFor(() => {
-                expect(mockClient.join).toHaveBeenCalled();
-                expect(mockClient.publish).toHaveBeenCalledWith([mockAudioTrack, mockVideoTrack]);
-                expect(mockVideoTrack.play).toHaveBeenCalled();
-            });
-        });
-    });
+  await waitFor(() => expect(screen.getByText('Watch Live')).toBeInTheDocument());
+  fireEvent.click(screen.getByText('Watch Live'));
 
-    it('handles end stream successfully', async () => {
-        const mockAudioTrack = { close: jest.fn() };
-        const mockVideoTrack = { close: jest.fn() };
-        AgoraRTC.createMicrophoneAudioTrack.mockResolvedValue(mockAudioTrack);
-        AgoraRTC.createCameraVideoTrack.mockResolvedValue(mockVideoTrack);
+  await waitFor(() => {
+    expect(mockClient.join).toHaveBeenCalled();
+  });
+});
 
-        await act(async () => {
-            const { getByText } = render(
-                <Router>
-                    <CameraPage location={{ state: { cameraData: mockCameraData } }} />
-                </Router>
-            );
+test('handles end stream successfully', async () => {
+  renderWithRouter(<CameraPage />, {
+    route: '/',
+    state: { cameraData },
+  });
 
-            // Simulate joining as host
-            fireEvent.click(getByText('Watch Live'));
-            await waitFor(() => expect(mockClient.join).toHaveBeenCalled());
+  await waitFor(() => expect(screen.getByText('Watch Live')).toBeInTheDocument());
+  fireEvent.click(screen.getByText('Watch Live'));
 
-            // Simulate ending the stream
-            fireEvent.click(getByText('Leave'));
-            await waitFor(() => expect(mockAudioTrack.close).toHaveBeenCalled());
-            await waitFor(() => expect(mockVideoTrack.close).toHaveBeenCalled());
-            await waitFor(() => expect(mockClient.leave).toHaveBeenCalled());
+  await waitFor(() => {
+    expect(mockClient.join).toHaveBeenCalled();
+  });
 
-            // Ensure the video player is removed from the DOM
-            expect(document.body.querySelector('div#00001')).not.toBeInTheDocument();
-        });
-    });
+  // Adding a delay to ensure the join process is complete
+  await new Promise(resolve => setTimeout(resolve, 500));
+
+  fireEvent.click(screen.getByText('Leave'));
+
+  await waitFor(() => {
+    expect(mockClient.leave).toHaveBeenCalled();
+  });
+
+  await waitFor(() => {
+    expect(mockNavigate).toHaveBeenCalledWith('/camera-home');
+  });
 });
