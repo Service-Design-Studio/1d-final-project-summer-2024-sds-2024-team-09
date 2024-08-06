@@ -67,6 +67,13 @@ gem 'webpacker'
 
 gem 'rack-cors', :require => 'rack/cors'
 
+#Gem to handle screenshotting from video to create thumbnail
+gem 'streamio-ffmpeg'
+
+
+#Gem to handle screenshotting from video to create thumbnail
+gem 'streamio-ffmpeg'
+
 gem 'devise'
 
 gem 'warden'

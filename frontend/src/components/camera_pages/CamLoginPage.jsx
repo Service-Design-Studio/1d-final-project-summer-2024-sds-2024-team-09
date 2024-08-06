@@ -45,10 +45,17 @@ function CamLoginPage() {
         console.log('User logged in successfully:', data);
         handleNavigate(data)
       } else {
-        setError(data.message);
+        // Display specific error messages based on the response
+        if (response.status === 401) {
+          setError('Incorrect username or password. Please try again.');
+        } else if (response.status === 404) {
+          setError('User not found. Please check your credentials and try again.');
+        } else {
+          setError(data.message || 'An unknown error occurred. Please try again.');
+        }
       }
     } catch (error) {
-      setError('An error occurred. Please try again.');
+      setError('Network error. Please check your connection and try again.');
     }
   };
 

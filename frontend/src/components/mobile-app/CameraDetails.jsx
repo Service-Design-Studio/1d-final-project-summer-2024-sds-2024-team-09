@@ -7,6 +7,8 @@ const CameraDetails = () => {
   const location = useLocation();
   const { cameraData } = location.state || {};
   const navigate = useNavigate();
+  const videoContainerRef = useRef(null);
+  const [error, setError] = useState(null);
 
   const [rtc, setRtc] = useState({
     localAudioTrack: null,
@@ -17,66 +19,73 @@ const CameraDetails = () => {
     recordedChunks: [],
   });
 
-  const videoContainerRef = useRef(null);
-
   const startRecording = () => {
-    const combinedStream = new MediaStream();
+    try {
+      const combinedStream = new MediaStream();
 
-    for (let uid in rtc.remoteUsers) {
-      const user = rtc.remoteUsers[uid];
-      if (user.videoTrack) {
-        const videoTrack = user.videoTrack.getMediaStreamTrack();
-        combinedStream.addTrack(videoTrack);
+      for (let uid in rtc.remoteUsers) {
+        const user = rtc.remoteUsers[uid];
+        if (user.videoTrack) {
+          const videoTrack = user.videoTrack.getMediaStreamTrack();
+          combinedStream.addTrack(videoTrack);
+        }
+        if (user.audioTrack) {
+          const audioTrack = user.audioTrack.getMediaStreamTrack();
+          combinedStream.addTrack(audioTrack);
+        }
       }
-      if (user.audioTrack) {
-        const audioTrack = user.audioTrack.getMediaStreamTrack();
-        combinedStream.addTrack(audioTrack);
-      }
+
+      const mediaRecorder = new MediaRecorder(combinedStream, {
+        mimeType: 'video/webm;codecs=vp9,opus'
+      });
+
+      mediaRecorder.ondataavailable = (event) => {
+        if (event.data.size > 0) {
+          rtc.recordedChunks.push(event.data);
+        }
+      };
+
+      mediaRecorder.onstop = () => {
+        const blob = new Blob(rtc.recordedChunks, { type: 'video/webm' });
+        const url = URL.createObjectURL(blob);
+        const downloadLink = document.getElementById('download-link');
+        const date = new Date();
+        const dateString = date.toISOString().split('T')[0];
+        const timeString = date.toTimeString().split(' ')[0].replace(/:/g, '-');
+        const filename = `recording_${dateString}_${timeString}.webm`;
+        console.log("filename ", filename);
+        console.log("url: ", url);
+        downloadLink.href = url;
+        downloadLink.download = filename;
+        console.log(downloadLink);
+        downloadLink.click();
+
+        setTimeout(() => {
+          window.location.reload();
+        }, 50000);
+      };
+
+      mediaRecorder.start();
+      setRtc((prevRtc) => ({ ...prevRtc, mediaRecorder }));
+      document.getElementById('start-recording').disabled = true;
+      document.getElementById('stop-recording').disabled = false;
+      setError('');
     }
-
-    const mediaRecorder = new MediaRecorder(combinedStream, {
-      mimeType: 'video/webm;codecs=vp9,opus'
-    });
-
-    mediaRecorder.ondataavailable = (event) => {
-      if (event.data.size > 0) {
-        setRtc((prevRtc) => ({
-          ...prevRtc,
-          recordedChunks: [...prevRtc.recordedChunks, event.data],
-        }));
-      }
-    };
-
-    mediaRecorder.onstop = () => {
-      const blob = new Blob(rtc.recordedChunks, { type: 'video/webm' });
-      const url = URL.createObjectURL(blob);
-      const downloadLink = document.getElementById('download-link');
-      const date = new Date();
-      const dateString = date.toISOString().split('T')[0];
-      const timeString = date.toTimeString().split(' ')[0].replace(/:/g, '-');
-      const filename = `recording_${dateString}_${timeString}.webm`;
-      downloadLink.href = url;
-      downloadLink.download = filename;
-      downloadLink.style.display = 'block';
-      downloadLink.click();
-
-      // Refresh the page after a short delay
-      setTimeout(() => {
-        window.location.reload();
-      }, 10000);
-    };
-
-    mediaRecorder.start();
-    setRtc((prevRtc) => ({ ...prevRtc, mediaRecorder }));
-    document.getElementById('start-recording').disabled = true;
-    document.getElementById('stop-recording').disabled = false;
+    catch (error) {
+      setError('Recording failed. Please try again.');
+    }
   };
 
   const stopRecording = () => {
-    if (rtc.mediaRecorder) {
-      rtc.mediaRecorder.stop();
-      document.getElementById('start-recording').disabled = false;
-      document.getElementById('stop-recording').disabled = true;
+    try {
+      if (rtc.mediaRecorder) {
+        rtc.mediaRecorder.stop();
+        document.getElementById('start-recording').disabled = false;
+        document.getElementById('stop-recording').disabled = true;
+        setError('');
+      }
+    } catch (error) {
+      setError('Failed to stop recording. Please try again.');
     }
   };
 
@@ -86,13 +95,14 @@ const CameraDetails = () => {
 
   useEffect(() => {
 
-    const APP_ID = "d543c7c876734c4a82da72a588edd047";
-    const TOKEN = "007eJxTYOCt4YssUczu3sR24HHbnzPy32/Nm93+9YHfwvyX55eomZkqMKSYmhgnmydbmJuZG5skmyRaGKUkmhslmlpYpKakGJiYL/i9MK0hkJFh2htJRkYGCATx2RiSEitzEysYGAD+UiJB";
-    const CHANNEL = "baymax";
+    // const APP_ID = "fa3a10495b62421c8f7179b868b65feb";
+    // const TOKEN = "007eJxTYDh81K/0eKXgHf/y7pMOZWvb80y/Pb8rpWtT2RoXGzNjjbQCQ1qicaKhgYmlaZKZkYmRYbJFmrmhuWWShZlFkplpWmrS86RVaQ2BjAynmWYzMTJAIIjPxpCUWJmbWMHAAACuxiCe";
+    // const CHANNEL = "baymax";
 
-    // const APP_ID = cameraData?.app_id;
-    // const TOKEN = cameraData?.token;
-    // const CHANNEL = cameraData?.channel;
+    const APP_ID = cameraData?.app_id;
+    console.log('ID:', id);
+    const TOKEN = cameraData?.token;
+    const CHANNEL = cameraData?.channel;
 
     const joinChannel = async () => {
       const client = AgoraRTC.createClient({
@@ -155,23 +165,30 @@ const CameraDetails = () => {
         });
 
         setRtc((prevRtc) => ({ ...prevRtc, client }));
+        setError('');
       } catch (error) {
         console.error('Failed to join as audience:', error);
+        setError('Failed to join the channel. Consider updating the camera details and try again.');
       }
     };
 
     const leaveChannel = async () => {
-      if (rtc.client) {
-        await rtc.client.leave();
-        rtc.client.removeAllListeners();
+      try {
+        if (rtc.client) {
+          await rtc.client.leave();
+          rtc.client.removeAllListeners();
 
-        // Clear the video container when leaving
-        if (videoContainerRef.current) {
-          videoContainerRef.current.innerHTML = 'Video Player Here';
+          // Clear the video container when leaving
+          if (videoContainerRef.current) {
+            videoContainerRef.current.innerHTML = 'Video Player Here';
+          }
+
+          setRtc((prevRtc) => ({ ...prevRtc, client: null }));
+          console.log("Left the channel successfully");
         }
-
-        setRtc((prevRtc) => ({ ...prevRtc, client: null }));
-        console.log("Left the channel successfully");
+      } catch (error) {
+        console.error('Failed to leave the channel:', error);
+        setError('Failed to leave the channel. Please try again.');
       }
     };
 
@@ -199,6 +216,7 @@ const CameraDetails = () => {
           <button className="btn btn-ghost btn-sm mr-4" onClick={backUser}>&lt;</button>
           <h1 className="text-xl font-semibold">{cameraData.camera_name}</h1>
         </header>
+        {error && <div className="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded mb-4">{error}</div>}
         <div
           className="bg-gray-200 h-48 rounded-lg flex items-center justify-center mb-6"
           ref={videoContainerRef}

@@ -1,4 +1,3 @@
-#app\controllers\api\v1\videos_controller.rb
 class Api::V1::VideosController < ApplicationController
   skip_before_action :require_login
   skip_before_action :verify_authenticity_token
@@ -40,8 +39,13 @@ class Api::V1::VideosController < ApplicationController
     end
   end
 
-  # Strong parameters to permit only allowed attributes
+  private
+
+  def get_thumbnail
+    # Method implementation here
+  end
+
   def video_params
-    params.require(:video).permit(:title, :file_path, :duration, :is_critical, :user_id)
+    params.require(:video).permit(:title, :file_path, :duration, :is_critical, :user_id, :thumbnail_url)
   end
 end

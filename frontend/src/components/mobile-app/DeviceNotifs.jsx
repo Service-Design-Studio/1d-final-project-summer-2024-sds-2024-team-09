@@ -60,6 +60,47 @@ const DeviceNotifs = ({ title, count, camera, onHoverChange }) => {
             if (response.ok) {
                 console.log('Camera Details updated successfully:', data);
                 setShowForm(false);
+
+                // Retrieve the existing data from localStorage
+                const existingData = localStorage.getItem('user-data');
+                console.log('Existing Data:', existingData);
+                let parsedData;
+
+                try {
+                    parsedData = existingData ? JSON.parse(existingData) : null;
+                    console.log("parsedData: ", parsedData);
+                } catch (error) {
+                    console.error('Failed to parse localStorage data:', error);
+                    parsedData = null;
+                }
+
+                // Update the camera details in the parsed data
+                if (parsedData && parsedData.user) {
+                    const cameras = parsedData.user.cameras || [];
+                    console.log("cameras", cameras);
+                    const cameraIndex = cameras.findIndex(c => c.id === camera.id);
+                    console.log("cameraIndex", cameraIndex);
+
+                    if (cameraIndex !== -1) {
+                        console.log("data", data);
+                        let updatedCamera = cameras[cameraIndex];
+                        console.log("camera", updatedCamera);
+                        updatedCamera["camera_name"] = data["camera_name"];
+                        updatedCamera["channel"] = data["channel"];
+                        updatedCamera["app_id"] = data["app_id"];
+                        updatedCamera["token"] = data["token"];
+                        console.log("Updated data", updatedCamera);
+                    } else {
+                        cameras.push(data.camera);
+                    }
+                    console.log("Updated camera information", cameras[cameraIndex]);
+
+                    parsedData.user.cameras = cameras;
+
+                    // Save the updated data back to localStorage
+                    localStorage.setItem('user-data', JSON.stringify(parsedData));
+                    console.log(localStorage.getItem('user-data'));
+                }
             } else {
                 setError(data.errors || 'An error occurred');
             }
@@ -67,6 +108,7 @@ const DeviceNotifs = ({ title, count, camera, onHoverChange }) => {
         } catch (error) {
             setError('Camera Details update failed. Please try again.');
         }
+        location.reload();
 
         console.log({
             name,
@@ -74,26 +116,27 @@ const DeviceNotifs = ({ title, count, camera, onHoverChange }) => {
             channel,
             token,
         });
+
     };
 
     return (
         <div className="relative">
-            <div className="absolute inset-0 flex p-8 text-black">
+            <div className="absolute inset-0 font-ubuntu flex p-8 text-black">
                 <div className="text-left">
                     <button
                         onClick={() => handleNavigate(camera)}
                     >
-                        <h3 className="text-lg font-bold">{title}</h3>
+                        <h3 className="text-lg font-bold text-white">{title}</h3>
                     </button>
                 </div>
-                <div className={`absolute right-10 mr-12 text-right w-10 h-10 rounded-full ${getCircleStyle(count)}`}>
+                {/* <div className={`absolute right-10 mr-12 text-right w-10 h-10 rounded-full ${getCircleStyle(count)}`}>
                     <div className={" absolute right-3.5 top-1"}>
                         <h3 className="font-bold text-xl">{count} </h3>
                     </div>
-                </div>
+                </div> */}
                 <div className="absolute right-10 top-7 text-right w-10 h-10 rounded-full z-10 mt-1">
                     <button
-                        className="p-2 text-xl text-gray-600 rounded-full hover:bg-gray-200 z-11"
+                        className="p-2 text-xl text-white rounded-full hover:bg-gray-200 z-11"
                         onMouseEnter={() => onHoverChange(true)}
                         onMouseLeave={() => onHoverChange(false)}
                         onClick={handleEditClick}

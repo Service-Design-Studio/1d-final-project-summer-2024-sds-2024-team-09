@@ -1,11 +1,18 @@
 import React from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+
+const truncateText = (text, maxLength) => {
+    if (text.length <= maxLength) return text;
+    return text.substring(0, maxLength) + '...';
+};
 
 const VideoPlayer = () => {
     const { filePath, title } = useParams();
     console.log('filePath:', filePath);
     console.log('title:', title);
-
+    const maxLength = 100;
+    const truncatedTitle = truncateText(title, maxLength);
     const extension = "webm";
     // const extension = filePath.split('.').pop();
     const file_path_url = `https://storage.googleapis.com/video-upload-jya/${title}.${extension}`;
@@ -37,7 +44,9 @@ const VideoPlayer = () => {
                     </svg>
                 </button>
                 <div className="text-center">
-                    <h2 className="mt-4 text-xl font-extrabold text-gray-900">{title}</h2>
+                    <h2 className="mt-4 px-10 text-lg font-extrabold text-gray-900 overflow-hidden text-ellipsis whitespace-nowrap">
+                        {truncatedTitle}
+                    </h2>
                 </div>
                 <div className="mt-16 bg-gray-100 rounded-lg w-full h-40 flex items-center justify-center">
                     <div className="video-player flex items-center justify-center mt-4">
@@ -49,33 +58,14 @@ const VideoPlayer = () => {
                     </div>
                 </div>
                 <div className="mt-20 bg-gray-100 rounded-lg w-full h-12 flex items-center justify-center">
-                    <button className="mx-2">
-                        <svg
-                            className="h-6 w-6 text-gray-700"
-                            fill="currentColor"
-                            viewBox="0 0 20 20"
-                            xmlns="http://www.w3.org/2000/svg"
-                        >
-                            <path
-                                fillRule="evenodd"
-                                d="M5 8a3 3 0 00-3 3v3a3 3 0 003 3h5a3 3 0 003-3V9H8.5V4H8a1 1 0 00-1 1v3H5zM4 8H2V7a1 1 0 011-1h1v2z"
-                                clipRule="evenodd"
-                            />
-                        </svg>
+                    <button className=" border border-green-500 rounded-md flex items-center text-green-700 hover:text-green-800 mx-2">
+                        <span className="mx-2">Like</span>
                     </button>
-                    <button className="mx-2">
-                        <svg
-                            className="h-6 w-6 text-gray-700"
-                            fill="currentColor"
-                            viewBox="0 0 20 20"
-                            xmlns="http://www.w3.org/2000/svg"
-                        >
-                            <path
-                                fillRule="evenodd"
-                                d="M15 12a3 3 0 01-3 3H7a3 3 0 01-3-3V9a3 3 0 013-3h5a3 3 0 013 3v3zM16 11h2V9a1 1 0 00-1-1h-1v3z"
-                                clipRule="evenodd"
-                            />
-                        </svg>
+                    <button className="border border-yellow-500 rounded-md flex items-center text-yellow-700 hover:text-yellow-800 mx-2">
+                        <span className="mx-2">Flag</span>
+                    </button>
+                    <button className="border border-red-500 rounded-md flex items-center text-red-700 hover:text-red-800 mx-2">
+                        <span className="mx-2">Dislike</span>
                     </button>
                 </div>
                 <div className="mt-4">

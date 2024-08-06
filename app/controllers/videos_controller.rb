@@ -4,7 +4,7 @@ class VideosController < ApplicationController
 
   def user
     @user_setting = current_user.user_setting || current_user.create_user_setting
-    @videos = current_user.videos # Fetch videos belonging to the current user
+    @videos = current_user.videos
   end
 
   def index
@@ -18,7 +18,7 @@ class VideosController < ApplicationController
       @videos = @videos.order(created_at: params[:order] == 'desc' ? :desc : :asc)
     end
   rescue ActiveRecord::ActiveRecordError => e
-    flash.now[:error] = "Unable to fetch crying snippets. Please try again later."
+    flash.now[:error] = "Unable to fetch videos. Please try again later."
     @videos = []
   end
 
@@ -43,7 +43,6 @@ class VideosController < ApplicationController
     @video = current_user.videos.new(video_params)
     if @video.save
       upload_to_gcs(@video)
-      Rails.logger.debug "Video Path after Upload: #{@video.file_path}"
       redirect_to @video, notice: 'Video was successfully created.'
     else
       render :new
@@ -51,23 +50,12 @@ class VideosController < ApplicationController
   end
 
   def update
-    @video = current_user.videos.find_by(uuid: params[:id]) || current_user.videos.find(params[:id])
-
-    # Preserve the original file path unless explicitly changed
-    original_file_path = @video.file_path
-    Rails.logger.debug "Original file path: #{original_file_path}"
-
     if @video.update(video_params.except(:file_path))
-      if video_params[:file_path].blank?
-        @video.update(file_path: original_file_path)
-        Rails.logger.debug "File path preserved: #{original_file_path}"
-      end
       respond_to do |format|
         format.json { render json: @video, status: :ok }
         format.html { redirect_to @video, notice: 'Video was successfully updated.' }
       end
     else
-      Rails.logger.error "Failed to update video: #{@video.errors.full_messages.join(', ')}"
       respond_to do |format|
         format.json { render json: @video.errors, status: :unprocessable_entity }
         format.html { render :edit }
@@ -76,7 +64,6 @@ class VideosController < ApplicationController
   end
 
   def destroy
-    @video = current_user.videos.find_by(uuid: params[:id]) || current_user.videos.find(params[:id])
     if @video.destroy
       delete_from_gcs(@video.file_path)
       head :no_content
@@ -98,12 +85,11 @@ class VideosController < ApplicationController
     sort_by = params[:sort_by] || 'created_at'
     order = params[:order] || 'asc'
 
-    # Fetch videos for the current user, sorted by the specified column and order
     @videos = current_user.videos.order("#{sort_by} #{order}")
 
-    # Map the video attributes to a hash, ensuring we handle cases where the attachment might be nil
     videos_with_urls = @videos.map do |video|
-      file_path_url = "https://storage.googleapis.com/video-upload-jya/#{video.title}.webm"
+      file_path_url = "https://storage.googleapis.com/video-upload-jya/#{video.file_path}"
+      thumbnail_url = video.thumbnail_url.present? ? video.thumbnail_url : "https://storage.googleapis.com/video-upload-jya/default_thumbnail.jpg"
 
       {
         id: video.id,
@@ -111,6 +97,7 @@ class VideosController < ApplicationController
         created_at: video.created_at,
         duration: video.duration,
         file_path_url: file_path_url,
+        thumbnail_url: thumbnail_url,
         uuid: video.uuid
       }
     end
@@ -140,20 +127,56 @@ class VideosController < ApplicationController
         expires: 600, # URL expires in 10 minutes
         headers: { "Access-Control-Allow-Origin" => "*" } # Allow CORS
       )
-      Rails.logger.debug "Generated signed URL: #{signed_url}"
       signed_url
     else
-      Rails.logger.error "File not found: #{file_path}"
       nil
     end
   end
 
   def upload_to_gcs(video)
+    temp_file_path = save_temp_video_file(video)
+
     storage = Google::Cloud::Storage.new
     bucket = storage.bucket("video-upload-jya")
-    object_name = "videos/#{current_user.id}/#{video.uuid}/#{video.recorded_at.strftime('%Y%m%d%H%M%S')}.webm"
-    file = bucket.create_file(video.file_path, object_name)
+    object_name = "#{current_user.id}/#{video.uuid}/#{video.title}.webm"
+    file = bucket.create_file(temp_file_path, object_name)
     video.update_columns(file_path: object_name)
+
+    generate_and_upload_thumbnail(video)
+
+    File.delete(temp_file_path) if File.exist?(temp_file_path)
+  end
+
+  def save_temp_video_file(video)
+    temp_file_path = "#{Rails.root}/tmp/#{video.uuid}.webm"
+    File.open(temp_file_path, 'wb') do |file|
+      file.write(video.file.download)
+    end
+    temp_file_path
+  end
+
+  def generate_and_upload_thumbnail(video)
+    input_file_path = "#{Rails.root}/tmp/#{video.uuid}.webm"
+    output_file_path = "#{Rails.root}/tmp/#{video.uuid}_thumbnail.jpg"
+
+    begin
+      FFMPEG.ffmpeg_binary = 'C:/Users/Lee Jya Yin/AppData/Local/Microsoft/WinGet/Packages/Gyan.FFmpeg.Essentials_Microsoft.Winget.Source_8wekyb3d8bbwe/ffmpeg-7.0.1-essentials_build/bin/ffmpeg.exe'
+      FFMPEG.ffprobe_binary = 'C:/Users/Lee Jya Yin/AppData/Local/Microsoft/WinGet/Packages/Gyan.FFmpeg.Essentials_Microsoft.Winget.Source_8wekyb3d8bbwe/ffmpeg-7.0.1-essentials_build/bin/ffprobe.exe'
+
+      movie = FFMPEG::Movie.new(input_file_path)
+      movie.screenshot(output_file_path, seek_time: 0)
+      
+      storage = Google::Cloud::Storage.new
+      bucket = storage.bucket("video-upload-jya")
+      thumbnail_name = "#{current_user.id}/#{video.uuid}/thumbnail.jpg"
+      file = bucket.create_file(output_file_path, thumbnail_name)
+      
+      video.update_columns(thumbnail_url: file.public_url)
+    rescue => e
+      Rails.logger.error "Failed to generate/upload thumbnail: #{e.message}"
+    ensure
+      File.delete(output_file_path) if File.exist?(output_file_path)
+    end
   end
 
   def delete_from_gcs(file_path)
@@ -163,10 +186,8 @@ class VideosController < ApplicationController
 
     if file
       file.delete
-      Rails.logger.info "File with key #{file_path} deleted from GCS bucket video-upload-jya"
     else
-      Rails.logger.error "File with key #{file_path} not found in GCS bucket video-upload-jya"
-      false
+      Rails.logger.error "File not found in GCS: #{file_path}"
     end
   end
 end

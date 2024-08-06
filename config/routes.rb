@@ -45,9 +45,14 @@ Rails.application.routes.draw do
     namespace :v1 do
       resources :users, only: [:index, :create, :show, :update, :destroy]
       resources :sessions, only: [:create]
-      resources :videos, only: [:index, :show, :create, :update, :destroy]
-      resources :cameras, only: [:index, :show, :create, :update, :destroy]
+      resources :videos, only: [:index, :show, :create, :update, :destroy] 
+      resources :cameras, only: [:index, :show, :create, :update, :destroy] do 
+        member do
+          patch :go_live
+          patch :go_not_live
+        end
+      end
     end      
-    resources :videos, only: [:index, :create, :destroy, :update], param: :uuid
+    resources :videos, only: [:index, :create, :destroy, :update], param: :id
   end
 end
