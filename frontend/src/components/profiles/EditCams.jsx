@@ -55,7 +55,7 @@ const EditCams = () => {
                 </div>
 
                 <div className='flex justify-center py-4 flex flex-col items-center'>
-                    <button class="btn rounded-xl btn-active btn-outline w-96 bg-white outline-neutral font-lato text-lg">+ Add New Camera</button>
+                    <button className="btn rounded-xl btn-active btn-outline w-96 bg-white outline-neutral font-lato text-lg">+ Add New Camera</button>
                 </div>
 
             </div>

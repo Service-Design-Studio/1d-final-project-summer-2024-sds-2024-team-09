@@ -75,5 +75,8 @@ Rails.application.configure do
   config.action_controller.raise_on_missing_callback_actions = true
 
   config.serve_static_files = true
+  config.log_level = :debug
+  config.logger = Logger.new(STDOUT)
+  config.logger.level = Logger::DEBUG
 
 end
