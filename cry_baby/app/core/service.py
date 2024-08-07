@@ -1,23 +1,16 @@
-import asyncio
 import pathlib
 import pdb
 import shutil
 import threading
 from typing import List
 import os
-import librosa
-import requests
-import soundfile as sf
 from moviepy.editor import VideoFileClip, concatenate_videoclips
-from pydub import AudioSegment
 import hexalog.ports
-from telegram import Bot
 from datetime import datetime, timezone, timedelta
 
 from cry_baby.app.core import ports
 from cry_baby.pkg.audio_file_client.core.ports import AudioFileClient
 from cry_baby.pkg.upload_video.upload_video_sql import upload_to_gcs
-from cry_baby.pkg.telegram.telegram_bot import send_message
 from cry_baby.app.core.utils import convert_webm_to_wav, split_audio_into_chunks, evaluate_from_audio_file, combine_video, send_telegram_message, send_telegram_video
 
 SHUTDOWN_EVENT = threading.Event()
@@ -52,7 +45,6 @@ class CryBabyService(ports.Service):
         self.start_time = ""
         self.end_time = ""
         self.telegram_bot_token = telegram_bot_token
-        self.cry_detection_bot = Bot(token=telegram_bot_token)
         self.telegram_chat_id = telegram_chat_id
 
     def convert_webm_to_wav(self, webm_file: pathlib.Path, 
@@ -70,7 +62,6 @@ class CryBabyService(ports.Service):
         return combine_video(directory, start_video, end_video, self.logger)
 
     def upload_to_gcs_service(self, combined_video_name):
-        #pdb.set_trace()
         combined_video_path_str = str(self.cry_video_file_path / combined_video_name)
         duration = VideoFileClip(combined_video_path_str).duration
         
@@ -121,6 +112,7 @@ class CryBabyService(ports.Service):
         Continuously monitor a directory and classify audio files as long as the directory is not empty.
         """
         self.logger.info(f"Starting continuous evaluation in directory: {self.video_file_path}")
+        #pdb.set_trace()
         while not SHUTDOWN_EVENT.is_set():
             try:
                 video_files = list(sorted(self.video_file_path.glob('*.webm')))
