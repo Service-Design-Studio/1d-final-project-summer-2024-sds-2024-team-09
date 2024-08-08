@@ -70,14 +70,15 @@ class CryBabyService(ports.Service):
                                  combined_video_path_str, 
                                  f"Cry Detected 👶🏻 for {duration}secs from {self.start_time} to {self.end_time}")
         video_metadata = {
-            "title": combined_video_name,
+            "title": str(pathlib.Path(combined_video_name).stem),
             "duration": duration,  # Duration in seconds
-            "user_id": 1,
+            "user_id": 2,
             "is_critical": False
         } # 'AItest_upload/ai_classifier_uploads/' + 
+        self.logger.info((combined_video_path_str,str(pathlib.Path(combined_video_name).stem)))
         upload_to_gcs('video-upload-jya', 
                       combined_video_path_str, 
-                      str(pathlib.Path(combined_video_name).stem), 
+                      str(pathlib.Path(combined_video_name).stem)+".webm", 
                       video_metadata)
         self.logger.info(f"Uploading {combined_video_name} to GCS")
         self.cry_idle_counter = 0
