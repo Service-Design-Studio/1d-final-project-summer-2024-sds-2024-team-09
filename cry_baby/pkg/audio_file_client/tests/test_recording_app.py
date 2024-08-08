@@ -1,7 +1,7 @@
 import io
 import os
 import pytest
-from to_record import app
+from recording_interval_updated.recording_interval_updated.to_record import app
 
 @pytest.fixture
 def client():

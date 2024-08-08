@@ -121,8 +121,14 @@ class CryBabyService(ports.Service):
                         self.convert_webm_to_wav(video,self.temp_audio_file_path,self.raw_audio_file_path)
                         raw_audio_files = list(sorted(self.raw_audio_file_path.glob('*.wav')))
                         for audio in raw_audio_files:
-                            prediction = self.evaluate_from_audio_file(audio)
-                            audio.unlink()
+                            if audio.duration > 4.5:
+                                audio_files = self.split_audio_into_chunks(audio)
+                                for audio in audio_files:
+                                    prediction = self.evaluate_from_audio_file(audio)
+                                    audio.unlink()
+                            else:
+                                prediction = self.evaluate_from_audio_file(audio)
+                                audio.unlink()
                         if prediction < 0.8:
                             if self.start_video == "":
                                 os.remove(video)

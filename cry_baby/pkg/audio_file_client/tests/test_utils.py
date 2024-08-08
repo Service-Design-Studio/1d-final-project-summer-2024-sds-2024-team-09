@@ -1,3 +1,4 @@
+import os
 import pytest
 import pathlib
 import logging
@@ -57,6 +58,8 @@ def test_convert_webm_to_wav(create_dummy_webm_file, setup_paths):
         
         mock_video.audio.write_audiofile.assert_called_once()
         mock_audio.export.assert_called_once()
+        assert os.path.isfile(raw_audio_file_path), "The .wav file was not created."
+        assert raw_audio_file_path.endswith('.wav'), "The created file does not have a .wav extension."
 
 def test_split_audio_into_chunks(tmp_path):
     audio_file_path = tmp_path / "test_audio.wav"
