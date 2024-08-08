@@ -1,0 +1,52 @@
+[tool.poetry]
+name = "cry-baby"
+version = "0.1.0"
+description = ""
+authors = ["ericcbonet <ericcbonet@gmail.com>"]
+readme = "README.md"
+
+
+[tool.poetry.dependencies]
+python = "^3.10,<3.12"
+hexalog = "^0.6.0"
+pyaudio = "^0.2.14"
+numpy = "^1.26.3"
+keras = "^2.13.0"
+librosa = "^0.10.1"
+soundfile = "^0.12.1"
+
+
+tensorflow = { version = "^2.13.0", platform = "darwin", markers = "platform_machine != 'arm64'"}
+tensorflow-io-gcs-filesystem = { version="^0.34.0", platform = "darwin", markers = "platform_machine == 'arm64'"}
+
+tflite-runtime = { version = "^2.14.0", platform = "linux" }
+tensorflow-macos = { version = "^2.13.0", platform = "darwin", markers = "platform_machine == 'arm64'"}
+
+huggingface-hub = "^0.20.1"
+sounddevice = "^0.4.7"
+moviepy = "^1.0.3"
+flask = "^3.0.3"
+pydub = "^0.25.1"
+google-cloud = "^0.34.0"
+google = "^3.0.0"
+google-cloud-storage = "^2.17.0"
+asyncio = "^3.4.3"
+python-telegram-bot = "^21.4"
+behave = "^1.2.6"
+pytest = "^8.3.1"
+databases = "^0.9.0"
+sqlalchemy = "^2.0.31"
+psycopg2-binary = "^2.9.9"
+requests = "^2.32.3"
+requests-mock = "^1.12.1"
+
+
+[tool.poetry.group.dev.dependencies]
+
+black = "^23.12.1"
+isort = "^5.13.2"
+flake8 = "^7.0.0"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
