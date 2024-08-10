@@ -181,13 +181,18 @@ For a complete list of dependencies, please refer to the `Gemfile` in the projec
     - [hugging face account](https://huggingface.co/welcome) and an API token and a token copy `example.env` to `.env` and add your token there
     - [agora account](https://console.agora.io/) and App ID, channcel and token is created by Agora API
 4. **Run the recorder for AI detection**:
+      **Change directory to the repository**:
 
         ```bash
         cd baby_cry_AI
         ```
+      **Run recording function for detection**:
+
         ```bash
         ./to_record.py
         ```
+      **Run detection for AI**:
+
         ```bash
         make run
         ```
@@ -291,3 +296,20 @@ For any inquiries, questions, or issues, please feel free to contact our team:
 [GoogleCloud]: https://img.shields.io/badge/-Google%20Cloud-4285F4?logo=google-cloud&logoColor=white&style=for-the-badge
 [GoogleCloud-url]: https://cloud.google.com/
 
+Data sources include:
+[Ubenwa CryCeleb2023](https://huggingface.co/datasets/Ubenwa/CryCeleb2023)
+[ESC-50 Dataset for environmental sound classification](https://dagshub.com/kinkusuma/esc50-dataset), also featuring non-crying samples
+Audio clips downloaded from YouTube, such as [this one](https://www.youtube.com/watch?v=lmbJP1yObZc)
+Friends who were willing to record there babies crying
+
+Preprocessing
+The raw audio files were processed into 4-second Mel Spectrogram clips using [Librosa](https://librosa.org/doc/0.10.1/generated/librosa.feature.melspectrogram.html#librosa.feature.melspectrogram), which provides a two-dimensional representation of the sound based on the [mel-scale frequencies](https://en.wikipedia.org/wiki/Mel_scale).
+The preprocessing routine is integral to Cry Baby's runtime operations and is available [here](./cry_baby/pkg/audio_file_client/adapters/librosa_client.py).
+
+Model architecture
+The model's architecture is inspired by the design presented in [this research paper](https://www.pacet-conf.gr/Files/PACET2022paper194.pdf). Below is a visualization of the model structure:
+![CNN Model visualized](https://cdn.ericcbonet.com/baby-cry-cnn-model-visualization.png?)
+
+Training and evaluation
+Training was conducted over 10 epochs with a batch size of 32. The corresponding training and validation loss and accuracy metrics are illustrated below.
+![loss and accuracy metrics](https://cdn.ericcbonet.com/cry-baby-accuracy-loss-metrics.png?)
