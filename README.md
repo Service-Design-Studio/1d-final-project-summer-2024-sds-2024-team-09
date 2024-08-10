@@ -210,7 +210,7 @@ This project uses a combination of Cucumber for Behavior-Driven Development (BDD
 
 To run the relevant tests, follow these steps:
 1. **Cucumber BDD Testing**:
-    - The Cucumber BDD tests are located in the `features` directory. This includes the feature files, step definitions, and any support files necessary for the BDD tests:
+    - The Cucumber BDD tests are located in the `features` directory. This includes the feature files written in Gherkin, step definitions, and any support files necessary for the BDD tests:
       ```bash
       C:\Users\Asus\T5 - SDS\T5-SDS\1d-final-project-summer-2024-sds-2024-team-09\features
       ```
@@ -223,6 +223,7 @@ To run the relevant tests, follow these steps:
           ```bash
           bundle exec cucumber
           ```
+      - This command will automatically detect and run all the tests in the `features` directory
 
 2. **Jest Testing**:
     - The Jest tests for the frontend components are located in the following directory:
@@ -238,6 +239,11 @@ To run the relevant tests, follow these steps:
           ```bash
           npm test
           ```
+          or
+          ```bash
+          npx jest
+          ```
+
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
