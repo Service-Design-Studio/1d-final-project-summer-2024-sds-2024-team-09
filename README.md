@@ -105,7 +105,8 @@ The project uses several key dependencies, including:
 - RSpec for testing
 - Webpacker for managing JavaScript
 - Turbo and Stimulus for modern Rails development
-- `poetry install`, it should also automatically install the correct version of TensorFlow or TensorFlow Lite
+- Python: ^3.10, <3.12
+- Poetry Dependencies Manager for Python
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -170,9 +171,6 @@ For a complete list of dependencies, please refer to the `Gemfile` in the projec
     or deploy the program onto a cloud platform.
 
 #### AI feature
-Requirements:
-python ^3.10, <3.12
-poetry dependency manager
 1. **Installation**:
     ```bash
     cd 1d-final-project-summer-2024-sds-2024-team-09/ai_feature
