@@ -308,6 +308,7 @@ The preprocessing routine is integral to Cry Baby's runtime operations and is av
 
 Model architecture
 The model's architecture is inspired by the design presented in [this research paper](https://www.pacet-conf.gr/Files/PACET2022paper194.pdf). Below is a visualization of the model structure:
+
 ![CNN Model visualized](https://cdn.ericcbonet.com/baby-cry-cnn-model-visualization.png?)
 
 Training and evaluation
