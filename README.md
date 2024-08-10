@@ -183,23 +183,24 @@ For a complete list of dependencies, please refer to the `Gemfile` in the projec
 4. **Run the recorder for AI detection**:
       **Change directory to the repository**:
 
-        ```bash
-        cd baby_cry_AI
+        ```
+        cd ai_feature
         ```
      **Connect to GCLoud SQL**:
 
-        ```bash
+        ```
         ./cloud_sql_proxy [your project id]:[your project region]:[your gcloud sql]-sql -p 5432
         ```
-      **Run recording function for detection**:
+     **Run detection for AI**:
 
-        ```bash
-        ./to_record.py
         ```
-      **Run detection for AI**:
-
-        ```bash
         make run
+        ```
+     **Run recording function for detection**:
+
+        ```
+        cd recording_interval_updated/recording_interval_updated
+        python to_record.py
         ```
 3. **Ensure Connectivity**:
     - Verify that all components (backend, AI system, front-end) are properly connected and communicating.
