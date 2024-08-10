@@ -170,14 +170,18 @@ For a complete list of dependencies, please refer to the `Gemfile` in the projec
     or deploy the program onto a cloud platform.
 
 #### AI-end
-1. **Change directory to the repository:**
+1. **Change directory to the repository**:
     ```bash
     cd 1d-final-project-summer-2024-sds-2024-team-09/baby_cry_AI
     ```
-1. **Set up `baby_cry_AI`**:
+2. **Set up `baby_cry_AI`**:
     - Install the AI model on a Linux system that can run 24/7.
+    - python dependency is contained in `pyproject.toml`
+
     - [hugging face account](https://huggingface.co/welcome) and an API token and a token copy `example.env` to `.env` and add your token there
-    - Run the recorder for AI detection:
+    - [agora account](https://console.agora.io/) and App ID, channcel and token is created by Agora API
+4. **Run the recorder for AI detection**:
+
         ```bash
         cd baby_cry_AI
         ```
@@ -187,14 +191,13 @@ For a complete list of dependencies, please refer to the `Gemfile` in the projec
         ```bash
         make run
         ```
-2. **Ensure Connectivity**:
+3. **Ensure Connectivity**:
     - Verify that all components (backend, AI system, front-end) are properly connected and communicating.
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 
 ## Architecture
-<!-- PROJECT LOGO -->
 <br />
 <div align="center">
   <a href="https://github.com/github_username/repo_name">
