@@ -46,7 +46,6 @@
     <li><a href="#roadmap">Roadmap</a></li>
     <li><a href="#contributing">Contributing</a></li>
     <li><a href="#license">License</a></li>
-    <li><a href="#contact">Contact</a></li>
     <li><a href="#acknowledgments">Acknowledgments</a></li>
   </ol>
 </details>
@@ -156,8 +155,6 @@ For a complete list of dependencies, please refer to the `Gemfile` in the projec
 6. **Join Telegram Channel**: Get notified when a baby crying is detected.
 7. **View History**: Access manually recorded videos or automatically recorded videos when a baby cries, arranged by dates.
 
-### Developer Usage
-
 #### Main Backend
 1. **Install dependencies**:
     ```bash
@@ -225,18 +222,6 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
-
-
-
-<!-- CONTACT -->
-## Contact
-
-Your Name - [@twitter_handle](https://twitter.com/twitter_handle) - email@email_client.com
-
-Project Link: [https://github.com/github_username/repo_name](https://github.com/github_username/repo_name)
-
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
-
 
 
 <!-- ACKNOWLEDGMENTS -->
