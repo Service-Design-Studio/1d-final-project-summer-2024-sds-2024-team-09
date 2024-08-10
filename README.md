@@ -205,6 +205,40 @@ For a complete list of dependencies, please refer to the `Gemfile` in the projec
 3. **Ensure Connectivity**:
     - Verify that all components (backend, AI system, front-end) are properly connected and communicating.
 
+#### Testing
+This project uses a combination of Cucumber for Behavior-Driven Development (BDD) testing and Jest for unit and integration testing of components.
+
+To run the relevant tests, follow these steps:
+1. **Cucumber BDD Testing**:
+    - The Cucumber BDD tests are located in the `features` directory. This includes the feature files, step definitions, and any support files necessary for the BDD tests:
+      ```bash
+      C:\Users\Asus\T5 - SDS\T5-SDS\1d-final-project-summer-2024-sds-2024-team-09\features
+      ```
+    - **Running the Cucumber tests**:
+      1. **Navigate to the project root**:
+          ```bash
+          cd C:\Users\Asus\T5 - SDS\T5-SDS\1d-final-project-summer-2024-sds-2024-team-09
+          ```
+      2. **Run the Cucumber tests**:
+          ```bash
+          bundle exec cucumber
+          ```
+
+2. **Jest Testing**:
+    - The Jest tests for the frontend components are located in the following directory:
+      ```bash
+      C:\Users\Asus\T5 - SDS\T5-SDS\1d-final-project-summer-2024-sds-2024-team-09\frontend\src\components\__tests__
+      ```
+    - **Running the Jest tests**:
+      1. **Navigate to the frontend directory**:
+          ```bash
+          cd C:\Users\Asus\T5 - SDS\T5-SDS\1d-final-project-summer-2024-sds-2024-team-09\frontend
+          ```
+      2. **Run the Jest tests**:
+          ```bash
+          npm test
+          ```
+
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 
