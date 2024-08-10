@@ -189,7 +189,7 @@ The front-end details are still to be confirmed (TBC).!!!!!!!!!!!!!!!!!!!!!!!!!!
 <br />
 <div align="center">
   <a href="https://github.com/github_username/repo_name">
-    <img src="readme_img/Architecture.jpg" alt="Logo" width="200" height="200">
+    <img src="readme_img/Architecture.jpg" alt="Logo">
   </a>
 
 <!-- LICENSE -->
