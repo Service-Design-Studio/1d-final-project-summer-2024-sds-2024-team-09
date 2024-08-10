@@ -169,22 +169,29 @@ For a complete list of dependencies, please refer to the `Gemfile` in the projec
     ```
     or deploy the program onto a cloud platform.
 
-#### AI-end
-1. **Change directory to the repository**:
+#### AI feature
+Requirements:
+python ^3.10, <3.12
+poetry dependency manager
+1. **Installation**:
     ```bash
-    cd 1d-final-project-summer-2024-sds-2024-team-09/baby_cry_AI
+    cd 1d-final-project-summer-2024-sds-2024-team-09/ai_feature
+    poetry install
     ```
 2. **Set up `baby_cry_AI`**:
-    - Install the AI model on a Linux system that can run 24/7.
-    - python dependency is contained in `pyproject.toml`
-
-    - [hugging face account](https://huggingface.co/welcome) and an API token and a token copy `example.env` to `.env` and add your token there
-    - [agora account](https://console.agora.io/) and App ID, channcel and token is created by Agora API
+    - make a copy of example.env and fill up the necessary fields, including huggingface token and agora token
+    - additionally fill in agora token in ai_feature/recording_interval_updated/recording_interval_updated/templates/index.html
+    - setup Google Cloud SQL proxy https://cloud.google.com/sql/docs/mysql/sql-proxy
 4. **Run the recorder for AI detection**:
       **Change directory to the repository**:
 
         ```bash
         cd baby_cry_AI
+        ```
+     **Connect to GCLoud SQL**:
+
+        ```bash
+        ./cloud_sql_proxy [your project id]:[your project region]:[your gcloud sql]-sql -p 5432
         ```
       **Run recording function for detection**:
 
