@@ -159,6 +159,7 @@ For a complete list of dependencies, please refer to the `Gemfile` in the projec
 1. **Change directory to the repository:**
     ```bash
     cd 1d-final-project-summer-2024-sds-2024-team-09
+    cd frontend
     ```
 2. **Install dependencies for React**:
     ```bash
