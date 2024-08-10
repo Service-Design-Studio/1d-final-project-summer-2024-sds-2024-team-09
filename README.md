@@ -39,7 +39,6 @@
       <a href="#getting-started">Getting Started</a>
       <ul>
         <li><a href="#prerequisites">Prerequisites</a></li>
-        <li><a href="#installation">Installation</a></li>
       </ul>
     </li>
     <li><a href="#usage">Usage</a></li>
@@ -106,42 +105,11 @@ The project uses several key dependencies, including:
 - RSpec for testing
 - Webpacker for managing JavaScript
 - Turbo and Stimulus for modern Rails development
-- need to add pythonnnnnnnnnnnnnnnnnn file
+- `poetry install`, it should also automatically install the correct version of TensorFlow or TensorFlow Lite
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 For a complete list of dependencies, please refer to the `Gemfile` in the project repository.
-
-## Installation
-1. **Clone the repository:**
-
-    ```bash
-    git clone https://github.com/yourusername/yourproject.git
-    cd yourproject
-    ```
-
-2. **Install dependencies:**
-
-    ```bash
-    bundle install
-    ```
-
-3. **Set up the database:**
-
-    ```bash
-    rails db:create
-    rails db:migrate
-    rails db:seed
-    ```
-
-4. **Build and run the Docker container:**
-
-    ```bash
-    docker-compose up --build
-    ```
-
-    <p align="right">(<a href="#readme-top">back to top</a>)</p>
-
 
 <!-- USAGE EXAMPLES -->
 ## Usage
@@ -155,28 +123,69 @@ For a complete list of dependencies, please refer to the `Gemfile` in the projec
 6. **Join Telegram Channel**: Get notified when a baby crying is detected.
 7. **View History**: Access manually recorded videos or automatically recorded videos when a baby cries, arranged by dates.
 
+**Clone the repository:**
+    ```bash
+    git clone https://github.com/Service-Design-Studio/1d-final-project-summer-2024-sds-2024-team-09.git
+    ```
+
 #### Main Backend
-1. **Install dependencies**:
+1. **Change directory to the repository:**
+    ```bash
+    cd 1d-final-project-summer-2024-sds-2024-team-09
+    ```
+2. **Install dependencies for rails**:
     ```bash
     bundle install
     ```
-2. **Run the Rails server**:
+3. **Set up the database:**
+    ```bash
+    rails db:create
+    rails db:migrate
+    rails db:seed
+    ```
+4. **Run the Rails server**:
     ```bash
     rails server
     ```
-   or deploy the program onto a cloud platform.
+5. **Build and run the Docker container: (deploy the program onto a cloud platform)**
+    ```bash
+    docker-compose up --build
+    ```
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 
 #### Front-end
-The front-end details are still to be confirmed (TBC).!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+1. **Change directory to the repository:**
+    ```bash
+    cd 1d-final-project-summer-2024-sds-2024-team-09
+    ```
+2. **Install dependencies for React**:
+    ```bash
+    npm install
+    ```
+3. **Run executes the dev script for React**:
+    ```bash
+    npm run dev
+    ```
+    or deploy the program onto a cloud platform.
 
 #### AI-end
+1. **Change directory to the repository:**
+    ```bash
+    cd 1d-final-project-summer-2024-sds-2024-team-09/baby_cry_AI
+    ```
 1. **Set up `baby_cry_AI`**:
     - Install the AI model on a Linux system that can run 24/7.
+    - [hugging face account](https://huggingface.co/welcome) and an API token and a token copy `example.env` to `.env` and add your token there
     - Run the recorder for AI detection:
         ```bash
         cd baby_cry_AI
-        ./run_recorder.sh
+        ```
+        ```bash
+        ./to_record.py
+        ```
+        ```bash
+        make run
         ```
 2. **Ensure Connectivity**:
     - Verify that all components (backend, AI system, front-end) are properly connected and communicating.
