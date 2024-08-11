@@ -75,7 +75,7 @@ def test_extract_mel_spectrogram(create_dummy_audio_file):
 def test_extract_mel_spectrogram_with_real_audio():
     librosa_client = LibrosaClient()
     mel_spectrogram = librosa_client.extract_mel_spectrogram(
-        DIR / "data" / "test.wav",
+        TMP_PATH / "test_audio.wav",
         pre_processing_settings=domain.MelSpectrogramPreprocessingSettings(
             duration_seconds=4,
             sampling_rate_hz=SR,
