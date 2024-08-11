@@ -69,18 +69,18 @@ def combine_video(directory: pathlib.Path, start_video: str, end_video: str, log
         return ""
 
     final_clip = concatenate_videoclips(clips, method="compose")
-    output_path = directory / f"{start_video}_to_{end_video}_combined.mp4"
+    output_path = directory / f"{start_video}_combined.mp4"
     final_clip.write_videofile(str(output_path), codec='libx264', audio_codec='aac')
     
     return str(output_path)
 
 def send_telegram_message(bot_token: str, chat_id: str, message: str):
     url = f"https://api.telegram.org/bot{bot_token}/sendMessage"
-    params = {
+    data = {
         'chat_id': chat_id,
         'text': message
     }
-    response = requests.get(url, params=params)
+    response = requests.post(url, json=data)
     return response.json()
 
 def send_telegram_video(bot_token: str, chat_id: str, video_path: str, caption: str = ""):
@@ -94,8 +94,9 @@ def send_telegram_video(bot_token: str, chat_id: str, video_path: str, caption: 
     return response.json()
 
 
-duration = 10
-start_video = "Baby_Cry_60-64.mp4"
-end_video = "Baby_Cry_60-64.mp4"
+
+# duration = 10
+# start_video = "Baby_Cry_60-64.mp4"
+# end_video = "Baby_Cry_60-64.mp4"
 # send_telegram_message(os.getenv("TELEGRAM_BOT_TOKEN"), os.getenv("TELEGRAM_CHAT_ID"), "Hello from Cry Baby!")
 #send_telegram_video(os.getenv("TELEGRAM_BOT_TOKEN"), os.getenv("TELEGRAM_CHAT_ID"), "/home/mike/cry-baby/audio/cry_videos/Baby_Cry_60-64.mp4_to_Baby_Cry_60-64.mp4_combined.mp4",f"Cry Detected 👶🏻 for {duration}secs from {start_video} to {end_video}")
