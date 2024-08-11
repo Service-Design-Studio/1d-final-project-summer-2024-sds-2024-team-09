@@ -384,6 +384,7 @@ files = [
 ]
 
 [[package]]
+
 name = "coverage"
 version = "7.6.0"
 description = "Code coverage measurement for Python"
@@ -448,6 +449,7 @@ files = [
 toml = ["tomli"]
 
 [[package]]
+
 name = "databases"
 version = "0.9.0"
 description = "Async database support for Python."
@@ -1723,6 +1725,7 @@ version = "23.2"
 description = "Core utilities for Python packages"
 optional = false
 python-versions = ">=3.7"
+
 files = [
     {file = "packaging-23.2-py3-none-any.whl", hash = "sha256:8c491190033a9af7e1d931d0b5dacc2ef47509b34dd0de67ed209b5203fc88c7"},
     {file = "packaging-23.2.tar.gz", hash = "sha256:048fb0e9405036518eaaf48a55953c750c11e1a1b68e0dd1a9d62ed0c092cfc5"},
@@ -1740,6 +1743,7 @@ files = [
 ]
 
 [[package]]
+
 name = "parse-type"
 version = "0.6.2"
 description = "Simplifies to build parse types based on the parse module"
@@ -2115,6 +2119,7 @@ version = "2.21"
 description = "C parser in Python"
 optional = false
 python-versions = ">=2.7, !=3.0.*, !=3.1.*, !=3.2.*, !=3.3.*"
+
 files = [
     {file = "pycparser-2.21-py2.py3-none-any.whl", hash = "sha256:8ee45429555515e1f6b185e78100aea234072576aa43ab53aefcae078162fca9"},
     {file = "pycparser-2.21.tar.gz", hash = "sha256:e644fdec12f7872f86c58ff790da456218b10f863970249516d60a5eaca77206"},
@@ -2127,6 +2132,7 @@ description = "Manipulate audio with an simple and easy high level interface"
 optional = false
 python-versions = "*"
 files = [
+
     {file = "pydub-0.25.1-py2.py3-none-any.whl", hash = "sha256:65617e33033874b59d87db603aa1ed450633288aefead953b30bded59cb599a6"},
     {file = "pydub-0.25.1.tar.gz", hash = "sha256:980a33ce9949cab2a569606b65674d748ecbca4f0796887fd6f46173a7b0d30f"},
 ]
@@ -3041,4 +3047,6 @@ files = [
 [metadata]
 lock-version = "2.0"
 python-versions = "^3.10,<3.12"
+
 content-hash = "ead93da6ec49a37f309c956ee8f2dd27062ac8e67ae12340c316de2c37e29848"
+

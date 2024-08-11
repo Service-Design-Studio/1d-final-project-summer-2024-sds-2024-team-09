@@ -39,7 +39,9 @@ sqlalchemy = "^2.0.31"
 psycopg2-binary = "^2.9.9"
 requests = "^2.32.3"
 requests-mock = "^1.12.1"
+
 coverage = "^7.6.0"
+
 
 
 [tool.poetry.group.dev.dependencies]

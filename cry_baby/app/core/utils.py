@@ -76,11 +76,11 @@ def combine_video(directory: pathlib.Path, start_video: str, end_video: str, log
 
 def send_telegram_message(bot_token: str, chat_id: str, message: str):
     url = f"https://api.telegram.org/bot{bot_token}/sendMessage"
-    params = {
+    data = {
         'chat_id': chat_id,
         'text': message
     }
-    response = requests.get(url, params=params)
+    response = requests.post(url, json=data)
     return response.json()
 
 def send_telegram_video(bot_token: str, chat_id: str, video_path: str, caption: str = ""):
@@ -92,6 +92,7 @@ def send_telegram_video(bot_token: str, chat_id: str, video_path: str, caption: 
     with open(video_path, 'rb') as video_file:
         response = requests.post(url, data=params, files={'video': video_file})
     return response.json()
+
 
 
 # duration = 10

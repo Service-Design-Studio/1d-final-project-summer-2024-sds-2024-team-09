@@ -113,7 +113,6 @@ class CryBabyService(ports.Service):
         Continuously monitor a directory and classify audio files as long as the directory is not empty.
         """
         self.logger.info(f"Starting continuous evaluation in directory: {self.video_file_path}")
-        #pdb.set_trace()
         while not SHUTDOWN_EVENT.is_set():
             try:
                 video_files = list(sorted(self.video_file_path.glob('*.webm')))

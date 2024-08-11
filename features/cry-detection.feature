@@ -24,4 +24,3 @@ Feature: AI Monitoring/Classification Feature for Child Distress Cries
   Scenario: Ignoring Normal Noises (True Negative)
     When the children are playing and making loud but non-distressful noises
     Then the video is discarded
-
