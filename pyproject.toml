@@ -9,7 +9,6 @@ readme = "README.md"
 [tool.poetry.dependencies]
 python = "^3.10,<3.12"
 hexalog = "^0.6.0"
-pyaudio = "^0.2.14"
 numpy = "^1.26.3"
 keras = "^2.13.0"
 librosa = "^0.10.1"
